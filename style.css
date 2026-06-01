@@ -20,7 +20,7 @@
     
     /* Text shades */
     --text-main: #f1f3f9;
-    --text-muted: #a5adc6;
+    --text-muted: #cbd5e1;
     --text-dark: #0b0d19;
     
     /* Shadows & Effects */
@@ -1718,7 +1718,8 @@ a:focus-visible,
 input:focus-visible, 
 select:focus-visible, 
 textarea:focus-visible,
-.tool-card:focus-visible {
+.tool-card:focus-visible,
+button:focus, a:focus, input:focus, select:focus, textarea:focus, .tool-card:focus {
     outline: 3px solid var(--primary);
     outline-offset: 2px;
 }
