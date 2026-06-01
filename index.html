@@ -177,131 +177,126 @@
                     </div>
 
                     <!-- Dashboard Category: Design & Graphics -->
-                    <div class="dashboard-category-section">
-                        <h2 class="dashboard-category-header">
-                            <i data-lucide="palette" class="category-icon text-design"></i>
-                            <span>Design & Graphics</span>
-                            <span class="category-count">5 Utilities</span>
-                        </h2>
-                        <div class="tools-grid">
-                            <div class="tool-card animate-card" onclick="switchTab('qr-generator')">
-                                <div class="tool-card-icon qr-gradient">
-                                    <i data-lucide="qr-code"></i>
-                                </div>
-                                <h3>Custom QR Code Generator</h3>
-                                <p>Generate highly stylized QR codes with gradient fills, round custom corners, and upload your brand logo for free.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                    <div class="tools-grid">
+                        <!-- Tool Card 1: Custom QR Generator -->
+                        <div class="tool-card animate-card" onclick="switchTab('qr-generator')">
+                            <span class="card-badge badge-design">Design</span>
+                            <div class="tool-card-icon qr-gradient">
+                                <i data-lucide="qr-code"></i>
                             </div>
-                            
-                            <div class="tool-card animate-card" onclick="switchTab('image-compressor')">
-                                <div class="tool-card-icon compress-gradient">
-                                    <i data-lucide="image"></i>
-                                </div>
-                                <h3>Browser Image Compressor</h3>
-                                <p>Reduce file size of your JPEG, PNG, or convert them directly to WebP completely offline using Canvas.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                            </div>
-                            
-                            <div class="tool-card animate-card" onclick="switchTab('css-builder')">
-                                <div class="tool-card-icon css-gradient">
-                                    <i data-lucide="code-2"></i>
-                                </div>
-                                <h3>Advanced Glassmorphism Studio</h3>
-                                <p>Create visual CSS gradients and glassmorphism layouts with direct slider controls and instant code exports.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                            </div>
-
-                            <div class="tool-card animate-card" onclick="switchTab('svg-blob')">
-                                <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #8a2be2, #4a00e0); display: flex; align-items: center; justify-content: center;">
-                                    <i data-lucide="waves" style="color: #fff;"></i>
-                                </div>
-                                <h3>SVG Blob & Wave Generator</h3>
-                                <p>Generate highly custom fluid organic shapes and CSS vector gradients. Export SVG codes and assets instantly.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                            </div>
-
-                            <div class="tool-card animate-card" onclick="switchTab('color-palette')">
-                                <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #e65c00, #f9d423);">
-                                    <i data-lucide="palette" style="color: #fff;"></i>
-                                </div>
-                                <h3>Color Palette & Contrast Checker</h3>
-                                <p>Create visual hex schemes harmonies and analyze text color contrast ratios for WCAG AA/AAA compliance indicators.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                            </div>
+                            <h3>Custom QR Code Generator</h3>
+                            <p>Generate highly stylized QR codes with gradient fills, round custom corners, and upload your brand logo for free.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
                         </div>
-                    </div>
-
-                    <!-- Dashboard Category: Developer Utilities -->
-                    <div class="dashboard-category-section">
-                        <h2 class="dashboard-category-header">
-                            <i data-lucide="terminal" class="category-icon text-dev"></i>
-                            <span>Developer Utilities</span>
-                            <span class="category-count">4 Utilities</span>
-                        </h2>
-                        <div class="tools-grid">
-                            <div class="tool-card animate-card" onclick="switchTab('json-formatter')">
-                                <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
-                                    <i data-lucide="braces" style="color: #fff;"></i>
-                                </div>
-                                <h3>JSON Formatter & Validator</h3>
-                                <p>Clean, syntax-highlight, compress, and validate JSON strings offline with interactive nodes tree parsing.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        
+                        <!-- Tool Card 2: Image Compressor -->
+                        <div class="tool-card animate-card" onclick="switchTab('image-compressor')">
+                            <span class="card-badge badge-design">Design</span>
+                            <div class="tool-card-icon compress-gradient">
+                                <i data-lucide="image"></i>
                             </div>
-
-                            <div class="tool-card animate-card" onclick="switchTab('base64')">
-                                <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #f12711, #f5af19);">
-                                    <i data-lucide="binary" style="color: #fff;"></i>
-                                </div>
-                                <h3>Base64 Encoder & Decoder</h3>
-                                <p>Encode plain text or binary files to Base64 strings, or decode Base64 back securely and offline.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                            </div>
-
-                            <div class="tool-card animate-card" onclick="switchTab('meta-generator')">
-                                <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
-                                    <i data-lucide="tags" style="color: #fff;"></i>
-                                </div>
-                                <h3>Meta Tag Generator & Previewer</h3>
-                                <p>Generate highly-rated SEO meta tags and preview your search snippet in real-time for Google & Facebook.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                            </div>
-
-                            <div class="tool-card animate-card" onclick="switchTab('password-generator')">
-                                <div class="tool-card-icon compress-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                                    <i data-lucide="key-round" style="color: #fff;"></i>
-                                </div>
-                                <h3>Password Gen & Strength Meter</h3>
-                                <p>Create unbreakable passwords offline using Web Crypto API. Tweak lengths, analyze entropy, and track crack time.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                            </div>
+                            <h3>Browser Image Compressor</h3>
+                            <p>Reduce file size of your JPEG, PNG, or convert them directly to WebP completely offline using Canvas.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
                         </div>
-                    </div>
-
-                    <!-- Dashboard Category: Finance & Math -->
-                    <div class="dashboard-category-section">
-                        <h2 class="dashboard-category-header">
-                            <i data-lucide="calculator" class="category-icon text-finance"></i>
-                            <span>Finance & Math</span>
-                            <span class="category-count">2 Utilities</span>
-                        </h2>
-                        <div class="tools-grid">
-                            <div class="tool-card animate-card" onclick="switchTab('finance-calc')">
-                                <div class="tool-card-icon finance-gradient">
-                                    <i data-lucide="trending-up"></i>
-                                </div>
-                                <h3>Compound Interest & FIRE Calc</h3>
-                                <p>Forecast your savings, compound growth, and outline your financial independence targets with dynamic charts.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        
+                        <!-- Tool Card 3: CSS Studio -->
+                        <div class="tool-card animate-card" onclick="switchTab('css-builder')">
+                            <span class="card-badge badge-design">Design</span>
+                            <div class="tool-card-icon css-gradient">
+                                <i data-lucide="code-2"></i>
                             </div>
+                            <h3>Advanced Glassmorphism Studio</h3>
+                            <p>Create visual CSS gradients and glassmorphism layouts with direct slider controls and instant code exports.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
 
-                            <div class="tool-card animate-card" onclick="switchTab('inflation-calc')">
-                                <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                                    <i data-lucide="percent" style="color: #fff;"></i>
-                                </div>
-                                <h3>Inflation & Money Depreciation Calc</h3>
-                                <p>Track purchasing power losses and compound inflation depreciation trajectories over time with charts.</p>
-                                <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        <!-- Tool Card 4: SVG Blob Gen -->
+                        <div class="tool-card animate-card" onclick="switchTab('svg-blob')">
+                            <span class="card-badge badge-design">Design</span>
+                            <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #8a2be2, #4a00e0); display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="waves" style="color: #fff;"></i>
                             </div>
+                            <h3>SVG Blob & Wave Generator</h3>
+                            <p>Generate highly custom fluid organic shapes and CSS vector gradients. Export SVG codes and assets instantly.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
+
+                        <!-- Tool Card 5: Color Palette -->
+                        <div class="tool-card animate-card" onclick="switchTab('color-palette')">
+                            <span class="card-badge badge-design">Design</span>
+                            <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #e65c00, #f9d423);">
+                                <i data-lucide="palette" style="color: #fff;"></i>
+                            </div>
+                            <h3>Color Palette & Contrast Checker</h3>
+                            <p>Create visual hex schemes harmonies and analyze text color contrast ratios for WCAG AA/AAA compliance indicators.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
+
+                        <!-- Tool Card 6: JSON Formatter -->
+                        <div class="tool-card animate-card" onclick="switchTab('json-formatter')">
+                            <span class="card-badge badge-dev">Developer</span>
+                            <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
+                                <i data-lucide="braces" style="color: #fff;"></i>
+                            </div>
+                            <h3>JSON Formatter & Validator</h3>
+                            <p>Clean, syntax-highlight, compress, and validate JSON strings offline with interactive nodes tree parsing.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
+
+                        <!-- Tool Card 7: Base64 Encoder -->
+                        <div class="tool-card animate-card" onclick="switchTab('base64')">
+                            <span class="card-badge badge-dev">Developer</span>
+                            <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #f12711, #f5af19);">
+                                <i data-lucide="binary" style="color: #fff;"></i>
+                            </div>
+                            <h3>Base64 Encoder & Decoder</h3>
+                            <p>Encode plain text or binary files to Base64 strings, or decode Base64 back securely and offline.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
+
+                        <!-- Tool Card 8: Meta Tag Gen -->
+                        <div class="tool-card animate-card" onclick="switchTab('meta-generator')">
+                            <span class="card-badge badge-dev">Developer</span>
+                            <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
+                                <i data-lucide="tags" style="color: #fff;"></i>
+                            </div>
+                            <h3>Meta Tag Generator & Previewer</h3>
+                            <p>Generate highly-rated SEO meta tags and preview your search snippet in real-time for Google & Facebook.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
+
+                        <!-- Tool Card 9: Password Gen -->
+                        <div class="tool-card animate-card" onclick="switchTab('password-generator')">
+                            <span class="card-badge badge-dev">Developer</span>
+                            <div class="tool-card-icon compress-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+                                <i data-lucide="key-round" style="color: #fff;"></i>
+                            </div>
+                            <h3>Password Gen & Strength Meter</h3>
+                            <p>Create unbreakable passwords offline using Web Crypto API. Tweak lengths, analyze entropy, and track crack time.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
+
+                        <!-- Tool Card 10: Compound Interest -->
+                        <div class="tool-card animate-card" onclick="switchTab('finance-calc')">
+                            <span class="card-badge badge-finance">Finance</span>
+                            <div class="tool-card-icon finance-gradient">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <h3>Compound Interest & FIRE Calc</h3>
+                            <p>Forecast your savings, compound growth, and outline your financial independence targets with dynamic charts.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
+                        </div>
+
+                        <!-- Tool Card 11: Inflation Calc -->
+                        <div class="tool-card animate-card" onclick="switchTab('inflation-calc')">
+                            <span class="card-badge badge-finance">Finance</span>
+                            <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+                                <i data-lucide="percent" style="color: #fff;"></i>
+                            </div>
+                            <h3>Inflation & Money Depreciation Calc</h3>
+                            <p>Track purchasing power losses and compound inflation depreciation trajectories over time with charts.</p>
+                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
                         </div>
                     </div>
                 </section>
