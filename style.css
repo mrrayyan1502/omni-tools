@@ -1717,7 +1717,8 @@ button:focus-visible,
 a:focus-visible, 
 input:focus-visible, 
 select:focus-visible, 
-textarea:focus-visible {
+textarea:focus-visible,
+.tool-card:focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 2px;
 }

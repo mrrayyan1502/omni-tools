@@ -179,7 +179,7 @@
                     <!-- Dashboard Category: Design & Graphics -->
                     <div class="tools-grid">
                         <!-- Tool Card 1: Custom QR Generator -->
-                        <div class="tool-card animate-card" onclick="switchTab('qr-generator')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('qr-generator')">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon qr-gradient">
                                 <i data-lucide="qr-code"></i>
@@ -190,7 +190,7 @@
                         </div>
                         
                         <!-- Tool Card 2: Image Compressor -->
-                        <div class="tool-card animate-card" onclick="switchTab('image-compressor')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('image-compressor')">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon compress-gradient">
                                 <i data-lucide="image"></i>
@@ -201,7 +201,7 @@
                         </div>
                         
                         <!-- Tool Card 3: CSS Studio -->
-                        <div class="tool-card animate-card" onclick="switchTab('css-builder')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('css-builder')">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon css-gradient">
                                 <i data-lucide="code-2"></i>
@@ -212,7 +212,7 @@
                         </div>
 
                         <!-- Tool Card 4: SVG Blob Gen -->
-                        <div class="tool-card animate-card" onclick="switchTab('svg-blob')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('svg-blob')">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #8a2be2, #4a00e0); display: flex; align-items: center; justify-content: center;">
                                 <i data-lucide="waves" style="color: #fff;"></i>
@@ -223,7 +223,7 @@
                         </div>
 
                         <!-- Tool Card 5: Color Palette -->
-                        <div class="tool-card animate-card" onclick="switchTab('color-palette')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('color-palette')">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #e65c00, #f9d423);">
                                 <i data-lucide="palette" style="color: #fff;"></i>
@@ -234,7 +234,7 @@
                         </div>
 
                         <!-- Tool Card 6: JSON Formatter -->
-                        <div class="tool-card animate-card" onclick="switchTab('json-formatter')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('json-formatter')">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
                                 <i data-lucide="braces" style="color: #fff;"></i>
@@ -245,7 +245,7 @@
                         </div>
 
                         <!-- Tool Card 7: Base64 Encoder -->
-                        <div class="tool-card animate-card" onclick="switchTab('base64')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('base64')">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #f12711, #f5af19);">
                                 <i data-lucide="binary" style="color: #fff;"></i>
@@ -256,7 +256,7 @@
                         </div>
 
                         <!-- Tool Card 8: Meta Tag Gen -->
-                        <div class="tool-card animate-card" onclick="switchTab('meta-generator')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('meta-generator')">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
                                 <i data-lucide="tags" style="color: #fff;"></i>
@@ -267,7 +267,7 @@
                         </div>
 
                         <!-- Tool Card 9: Password Gen -->
-                        <div class="tool-card animate-card" onclick="switchTab('password-generator')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('password-generator')">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon compress-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
                                 <i data-lucide="key-round" style="color: #fff;"></i>
@@ -278,7 +278,7 @@
                         </div>
 
                         <!-- Tool Card 10: Compound Interest -->
-                        <div class="tool-card animate-card" onclick="switchTab('finance-calc')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('finance-calc')">
                             <span class="card-badge badge-finance">Finance</span>
                             <div class="tool-card-icon finance-gradient">
                                 <i data-lucide="trending-up"></i>
@@ -289,7 +289,7 @@
                         </div>
 
                         <!-- Tool Card 11: Inflation Calc -->
-                        <div class="tool-card animate-card" onclick="switchTab('inflation-calc')">
+                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('inflation-calc')">
                             <span class="card-badge badge-finance">Finance</span>
                             <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
                                 <i data-lucide="percent" style="color: #fff;"></i>
@@ -2486,5 +2486,20 @@
             document.body.appendChild(script);
         })();
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.tool-card');
+    cards.forEach(card => {
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+});
+</script>
 </body>
+
 </html>
