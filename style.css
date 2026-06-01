@@ -564,6 +564,19 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--primary);
 }
 
+/* Explicit Dropdown Select & Options Contrast Fix for Native Browser Overlays */
+select.form-control {
+    background-color: var(--bg-sidebar); /* Solid dark background to prevent translucent/blurry bugs */
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+select.form-control option {
+    background-color: var(--bg-sidebar); /* Solid background for dropdown list options */
+    color: var(--text-main);            /* High-contrast readable text */
+    padding: 0.75rem;
+}
+
 /* Color Picker Styling Wrapper */
 .color-picker-wrapper {
     display: flex;
