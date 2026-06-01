@@ -395,8 +395,20 @@ h1, h2, h3, h4, h5, h6 {
 /* Tools Grid */
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .tool-card {
