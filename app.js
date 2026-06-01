@@ -451,25 +451,29 @@ function switchTab(tabId, pushToHistory = true) {
 
     // Force scroll to top of EVERYTHING (window, html, body, and all structural wrappers)
     const forceScrollToTop = () => {
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
         
-        const scrollSelectors = ['.content-viewport', '.main-wrapper', '.app-container', '#contentViewport'];
+        const scrollSelectors = ['.content-viewport', '.main-wrapper', '.app-container', '#contentViewport', '.tab-panel'];
         scrollSelectors.forEach(selector => {
-            const el = document.querySelector(selector);
-            if (el) {
-                el.scrollTop = 0;
-            }
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => {
+                if (el) {
+                    el.scrollTop = 0;
+                    el.scrollLeft = 0;
+                }
+            });
         });
     };
 
-    // Execute scroll resets instantly
+    // Execute scroll resets instantly and with progressive timeouts to bypass rendering/reflow delays
     forceScrollToTop();
-
-    // Safeguard reflow intervals for DOM painting delays
-    setTimeout(forceScrollToTop, 20);
-    setTimeout(forceScrollToTop, 100);
+    setTimeout(forceScrollToTop, 10);
+    setTimeout(forceScrollToTop, 50);
+    setTimeout(forceScrollToTop, 150);
+    setTimeout(forceScrollToTop, 300);
+    setTimeout(forceScrollToTop, 600);
     
     // Close mobile menu if active
     const appSidebar = document.getElementById('appSidebar');
