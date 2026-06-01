@@ -20,7 +20,7 @@
     
     /* Text shades */
     --text-main: #f1f3f9;
-    --text-muted: #8b92b6;
+    --text-muted: #a5adc6;
     --text-dark: #0b0d19;
     
     /* Shadows & Effects */
@@ -279,7 +279,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.6rem 1rem 0.6rem 2.2rem;
     border-radius: var(--radius-sm);
     font-size: 0.9rem;
-    outline: none;
+    /* outline: none removed for WCAG */
     transition: var(--transition);
 }
 
@@ -452,7 +452,7 @@ h1, h2, h3, h4, h5, h6 {
 .css-gradient { background: linear-gradient(135deg, #11998e, #38ef7d); }
 .finance-gradient { background: linear-gradient(135deg, #ffd200, #f7971e); }
 
-.tool-card h3 {
+.tool-card h2 {
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
     color: var(--text-main);
@@ -556,7 +556,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.75rem 1rem;
     border-radius: var(--radius-sm);
     font-size: 0.95rem;
-    outline: none;
+    /* outline: none removed for WCAG */
     transition: var(--transition);
 }
 
@@ -617,7 +617,7 @@ input[type="range"] {
     height: 6px;
     background: var(--border-color);
     border-radius: 3px;
-    outline: none;
+    /* outline: none removed for WCAG */
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -649,7 +649,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     cursor: pointer;
     transition: var(--transition);
     border: 1px solid transparent;
-    outline: none;
+    /* outline: none removed for WCAG */
 }
 
 .btn-primary {
@@ -1709,4 +1709,15 @@ input[type="range"]#blobRoundness::-webkit-slider-thumb {
 .badge-finance {
     background-color: rgba(255, 155, 80, 0.12);
     color: #ff9b50;
+}
+
+
+/* WCAG AA Keyboard Focus Indicator */
+button:focus-visible, 
+a:focus-visible, 
+input:focus-visible, 
+select:focus-visible, 
+textarea:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
 }
