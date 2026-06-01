@@ -565,16 +565,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Explicit Dropdown Select & Options Contrast Fix for Native Browser Overlays */
+/* Explicit Dropdown Select & Options Contrast Fix for Native Browser Overlays */
 select.form-control {
-    background-color: var(--bg-sidebar); /* Solid dark background to prevent translucent/blurry bugs */
-    color: var(--text-main);
+    background-color: #0f1225 !important; /* Solid dark background to prevent translucent/blurry bugs */
+    color: #ffffff !important;
     cursor: pointer;
 }
 
-select.form-control option {
-    background-color: var(--bg-sidebar); /* Solid background for dropdown list options */
-    color: var(--text-main);            /* High-contrast readable text */
-    padding: 0.75rem;
+select.form-control option, select option {
+    background-color: #0f1225 !important; /* Solid background for dropdown list options */
+    color: #ffffff !important;            /* Solid high-contrast white text */
+    padding: 0.75rem !important;
 }
 
 /* Color Picker Styling Wrapper */
