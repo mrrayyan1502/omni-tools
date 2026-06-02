@@ -143,10 +143,10 @@
                 </button>
                 <div class="header-search">
                     <i data-lucide="search" class="search-icon"></i>
-                    <input type="text" placeholder="Search tools..." id="toolSearch" oninput="searchTools()">
+                    <input type="text" placeholder="Search tools..." id="toolSearch" aria-label="Search tools" oninput="searchTools()">
                 </div>
                 <div class="header-actions">
-                    <a href="https://github.com" target="_blank" class="header-action-btn" title="View Project Source">
+                    <a href="https://github.com" target="_blank" class="header-action-btn" title="View Project Source" aria-label="View Project Source on GitHub">
                         <i data-lucide="github"></i>
                     </a>
                 </div>
@@ -180,7 +180,7 @@
                     <!-- Dashboard Category: Design & Graphics -->
                     <div class="tools-grid">
                         <!-- Tool Card 1: Custom QR Generator -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('qr-generator')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('qr-generator')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('qr-generator'); event.preventDefault(); }">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon qr-gradient">
                                 <i data-lucide="qr-code"></i>
@@ -191,7 +191,7 @@
                         </div>
                         
                         <!-- Tool Card 2: Image Compressor -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('image-compressor')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('image-compressor')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('image-compressor'); event.preventDefault(); }">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon compress-gradient">
                                 <i data-lucide="image"></i>
@@ -202,7 +202,7 @@
                         </div>
                         
                         <!-- Tool Card 3: CSS Studio -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('css-builder')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('css-builder')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('css-builder'); event.preventDefault(); }">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon css-gradient">
                                 <i data-lucide="code-2"></i>
@@ -213,7 +213,7 @@
                         </div>
 
                         <!-- Tool Card 4: SVG Blob Gen -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('svg-blob')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('svg-blob')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('svg-blob'); event.preventDefault(); }">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #8a2be2, #4a00e0); display: flex; align-items: center; justify-content: center;">
                                 <i data-lucide="waves" style="color: #fff;"></i>
@@ -224,7 +224,7 @@
                         </div>
 
                         <!-- Tool Card 5: Color Palette -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('color-palette')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('color-palette')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('color-palette'); event.preventDefault(); }">
                             <span class="card-badge badge-design">Design</span>
                             <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #e65c00, #f9d423);">
                                 <i data-lucide="palette" style="color: #fff;"></i>
@@ -235,7 +235,7 @@
                         </div>
 
                         <!-- Tool Card 6: JSON Formatter -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('json-formatter')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('json-formatter')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('json-formatter'); event.preventDefault(); }">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
                                 <i data-lucide="braces" style="color: #fff;"></i>
@@ -246,7 +246,7 @@
                         </div>
 
                         <!-- Tool Card 7: Base64 Encoder -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('base64')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('base64')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('base64'); event.preventDefault(); }">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #f12711, #f5af19);">
                                 <i data-lucide="binary" style="color: #fff;"></i>
@@ -257,7 +257,7 @@
                         </div>
 
                         <!-- Tool Card 8: Meta Tag Gen -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('meta-generator')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('meta-generator')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('meta-generator'); event.preventDefault(); }">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
                                 <i data-lucide="tags" style="color: #fff;"></i>
@@ -268,7 +268,7 @@
                         </div>
 
                         <!-- Tool Card 9: Password Gen -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('password-generator')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('password-generator')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('password-generator'); event.preventDefault(); }">
                             <span class="card-badge badge-dev">Developer</span>
                             <div class="tool-card-icon compress-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
                                 <i data-lucide="key-round" style="color: #fff;"></i>
@@ -279,7 +279,7 @@
                         </div>
 
                         <!-- Tool Card 10: Compound Interest -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('finance-calc')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('finance-calc')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('finance-calc'); event.preventDefault(); }">
                             <span class="card-badge badge-finance">Finance</span>
                             <div class="tool-card-icon finance-gradient">
                                 <i data-lucide="trending-up"></i>
@@ -290,7 +290,7 @@
                         </div>
 
                         <!-- Tool Card 11: Inflation Calc -->
-                        <div class="tool-card animate-card" tabindex="0" onclick="switchTab('inflation-calc')">
+                        <div class="tool-card animate-card" tabindex="0" role="button" onclick="switchTab('inflation-calc')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { switchTab('inflation-calc'); event.preventDefault(); }">
                             <span class="card-badge badge-finance">Finance</span>
                             <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
                                 <i data-lucide="percent" style="color: #fff;"></i>
@@ -313,7 +313,7 @@
                         <!-- Controls panel -->
                         <div class="workspace-controls glass-card">
                             <div class="control-group">
-                                <label class="control-label">QR Content / Target Link</label>
+                                <label for="qrText" class="control-label">QR Content / Target Link</label>
                                 <input type="text" id="qrText" class="form-control" placeholder="https://yourwebsite.com" value="https://omnitools.co" oninput="generateQRCode()">
                             </div>
 
@@ -326,14 +326,14 @@
                             <!-- Color Subtab -->
                             <div class="control-subpanel active" id="subpanel-qr-colors">
                                 <div class="control-group">
-                                    <label class="control-label">Fill Style</label>
+                                    <label for="qrColorType" class="control-label">Fill Style</label>
                                     <select id="qrColorType" class="form-control" onchange="toggleQRColorFields()">
                                         <option value="single">Single Color</option>
                                         <option value="gradient">Gradient Blend</option>
                                     </select>
                                 </div>
                                 <div id="qrSingleColorGroup" class="control-group">
-                                    <label class="control-label">Foreground Color</label>
+                                    <label for="qrColorMain" class="control-label">Foreground Color</label>
                                     <div class="color-picker-wrapper">
                                         <input type="color" id="qrColorMain" value="#00f2fe" onchange="generateQRCode()">
                                         <input type="text" id="qrColorMainText" class="form-control hex-text" value="#00f2fe" readonly>
@@ -342,11 +342,11 @@
                                 <div id="qrGradientGroup" class="control-group hidden">
                                     <div class="grid-2">
                                         <div>
-                                            <label class="control-label">Gradient Start</label>
+                                            <label for="qrColorGradStart" class="control-label">Gradient Start</label>
                                             <input type="color" id="qrColorGradStart" class="w-100" value="#00f2fe" onchange="generateQRCode()">
                                         </div>
                                         <div>
-                                            <label class="control-label">Gradient End</label>
+                                            <label for="qrColorGradEnd" class="control-label">Gradient End</label>
                                             <input type="color" id="qrColorGradEnd" class="w-100" value="#4facfe" onchange="generateQRCode()">
                                         </div>
                                     </div>
@@ -354,7 +354,7 @@
                                     <input type="range" id="qrGradAngle" min="0" max="360" value="45" oninput="generateQRCode()">
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Background Color</label>
+                                    <label for="qrColorBg" class="control-label">Background Color</label>
                                     <div class="color-picker-wrapper">
                                         <input type="color" id="qrColorBg" value="#ffffff" onchange="generateQRCode()">
                                         <input type="text" id="qrColorBgText" class="form-control hex-text" value="#ffffff" readonly>
@@ -365,7 +365,7 @@
                             <!-- Shapes & Style Subtab -->
                             <div class="control-subpanel" id="subpanel-qr-corners">
                                 <div class="control-group">
-                                    <label class="control-label">Dot Block Style</label>
+                                    <label for="qrDotStyle" class="control-label">Dot Block Style</label>
                                     <select id="qrDotStyle" class="form-control" onchange="generateQRCode()">
                                         <option value="rounded">Rounded Dots (Premium)</option>
                                         <option value="dots">Circular Dots</option>
@@ -374,7 +374,7 @@
                                     </select>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Corner Ring Outer Style</label>
+                                    <label for="qrCornerOuterStyle" class="control-label">Corner Ring Outer Style</label>
                                     <select id="qrCornerOuterStyle" class="form-control" onchange="generateQRCode()">
                                         <option value="square" selected>Square Ring</option>
                                         <option value="dot">Circular Ring</option>
@@ -382,7 +382,7 @@
                                     </select>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Corner Eye Inner Style</label>
+                                    <label for="qrCornerInnerStyle" class="control-label">Corner Eye Inner Style</label>
                                     <select id="qrCornerInnerStyle" class="form-control" onchange="generateQRCode()">
                                         <option value="square" selected>Square Eye</option>
                                         <option value="dot">Circular Eye</option>
@@ -394,7 +394,7 @@
                             <!-- Branding Logo Subtab -->
                             <div class="control-subpanel" id="subpanel-qr-logo">
                                 <div class="control-group">
-                                    <label class="control-label">Custom Logo Image</label>
+                                    <label for="qrLogoFile" class="control-label">Custom Logo Image</label>
                                     <div class="file-upload-zone" id="qrLogoDropzone">
                                         <i data-lucide="upload-cloud"></i>
                                         <span>Click or drag logo here</span>
@@ -507,7 +507,7 @@
                         <!-- Controls & Upload panel -->
                         <div class="workspace-controls glass-card">
                             <div class="control-group">
-                                <label class="control-label">Upload Image</label>
+                                <label for="compressFileInput" class="control-label">Upload Image</label>
                                 <div class="file-upload-zone" id="compressDropzone" onclick="triggerCompressFileInput()">
                                     <i data-lucide="image" class="large-upload-icon"></i>
                                     <span>Click to upload or drag & drop</span>
@@ -526,7 +526,7 @@
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label">Output Target Format</label>
+                                    <label for="compressFormat" class="control-label">Output Target Format</label>
                                     <select id="compressFormat" class="form-control" onchange="triggerImageCompression()">
                                         <option value="image/webp">Convert to WebP (Recommended - Smallest)</option>
                                         <option value="image/jpeg">Convert to JPEG</option>
@@ -679,18 +679,18 @@
                                 <label class="control-label">Glass Theme Tone</label>
                                 <div class="grid-2">
                                     <div>
-                                        <label class="small-label">Base Color</label>
+                                        <label for="glassBaseColor" class="small-label">Base Color</label>
                                         <input type="color" id="glassBaseColor" class="w-100" value="#ffffff" onchange="updateGlassStudio()">
                                     </div>
                                     <div>
-                                        <label class="small-label">Border Color</label>
+                                        <label for="glassBorderColor" class="small-label">Border Color</label>
                                         <input type="color" id="glassBorderColor" class="w-100" value="#ffffff" onchange="updateGlassStudio()">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label">Background Simulation Preset</label>
+                                <label for="glassBgPreset" class="control-label">Background Simulation Preset</label>
                                 <select id="glassBgPreset" class="form-control" onchange="updateGlassBackgroundSimulation()">
                                     <option value="neon-gradient">Neon Gradient (Deep Vibe)</option>
                                     <option value="sunset-mesh">Sunset Mesh (Warm Vibe)</option>
@@ -806,27 +806,27 @@
                         <!-- Controls panel -->
                         <div class="workspace-controls glass-card">
                             <div class="control-group">
-                                <label class="control-label">Initial Investment / Principal ($)</label>
+                                <label for="finPrincipal" class="control-label">Initial Investment / Principal ($)</label>
                                 <input type="number" id="finPrincipal" class="form-control" value="10000" oninput="calculateFinancialGrowth()">
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Monthly Additions ($)</label>
+                                <label for="finMonthly" class="control-label">Monthly Additions ($)</label>
                                 <input type="number" id="finMonthly" class="form-control" value="500" oninput="calculateFinancialGrowth()">
                             </div>
                             <div class="control-group">
                                 <div class="grid-2">
                                     <div>
-                                        <label class="control-label">Annual Yield (%)</label>
+                                        <label for="finRate" class="control-label">Annual Yield (%)</label>
                                         <input type="number" id="finRate" class="form-control" value="9" min="1" max="50" step="0.1" oninput="calculateFinancialGrowth()">
                                     </div>
                                     <div>
-                                        <label class="control-label">Timeframe (Years)</label>
+                                        <label for="finYears" class="control-label">Timeframe (Years)</label>
                                         <input type="number" id="finYears" class="form-control" value="25" min="1" max="50" oninput="calculateFinancialGrowth()">
                                     </div>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Compounding Frequency</label>
+                                <label for="finCompounding" class="control-label">Compounding Frequency</label>
                                 <select id="finCompounding" class="form-control" onchange="calculateFinancialGrowth()">
                                     <option value="12" selected>Monthly Compounding</option>
                                     <option value="1">Annual Compounding</option>
@@ -994,19 +994,19 @@
                         <div class="workspace-controls glass-card">
                             <form id="contactForm" onsubmit="handleContactSubmit(event)">
                                 <div class="control-group">
-                                    <label class="control-label">Your Name</label>
+                                    <label for="contactName" class="control-label">Your Name</label>
                                     <input type="text" id="contactName" class="form-control" placeholder="John Doe" required>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Your Email</label>
+                                    <label for="contactEmail" class="control-label">Your Email</label>
                                     <input type="email" id="contactEmail" class="form-control" placeholder="john@example.com" required>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Subject</label>
+                                    <label for="contactSubject" class="control-label">Subject</label>
                                     <input type="text" id="contactSubject" class="form-control" placeholder="Bug report, feedback, etc." required>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Your Message</label>
+                                    <label for="contactMessage" class="control-label">Your Message</label>
                                     <textarea id="contactMessage" class="form-control" rows="5" placeholder="Write your message here..." style="resize: none;" required></textarea>
                                 </div>
                                 <button type="submit" id="btnContactSubmit" class="btn btn-primary w-100">
@@ -1066,7 +1066,7 @@
                         <!-- Controls + Input -->
                         <div class="workspace-controls glass-card d-flex flex-grow-1" style="flex-direction: column; min-height: 480px;">
                             <div class="control-group d-flex justify-between align-center" style="margin-bottom: 1rem;">
-                                <label class="control-label" style="margin: 0;">Input Raw JSON String</label>
+                                <label for="jsonInput" class="control-label" style="margin: 0;">Input Raw JSON String</label>
                                 <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="loadSampleJSON()">
                                     <i data-lucide="file-code" style="width: 14px; height: 14px;"></i> Load Sample
                                 </button>
@@ -1184,13 +1184,13 @@
                                 <label class="control-label">Gradient Fill Tone</label>
                                 <div class="grid-2" style="gap: 1rem;">
                                     <div>
-                                        <label class="small-label">Start Color</label>
+                                        <label for="blobGradStart" class="small-label">Start Color</label>
                                         <div class="color-picker-wrapper">
                                             <input type="color" id="blobGradStart" value="#00f2fe" onchange="generateSVGBlob()">
                                         </div>
                                     </div>
                                     <div>
-                                        <label class="small-label">End Color</label>
+                                        <label for="blobGradEnd" class="small-label">End Color</label>
                                         <div class="color-picker-wrapper">
                                             <input type="color" id="blobGradEnd" value="#4facfe" onchange="generateSVGBlob()">
                                         </div>
@@ -1277,7 +1277,7 @@
                         <!-- Palette Generator & Grids -->
                         <div class="workspace-controls glass-card flex-center-column" style="gap: 1.5rem; justify-content: flex-start; align-items: stretch; min-height: 480px;">
                             <div class="control-group d-flex justify-between align-center" style="margin: 0;">
-                                <label class="control-label" style="margin: 0;">Harmonized Color Schemes</label>
+                                <label for="paletteHarmony" class="control-label" style="margin: 0;">Harmonized Color Schemes</label>
                                 <select id="paletteHarmony" class="form-control" style="width: auto; padding: 0.4rem 1rem; font-size: 0.85rem;" onchange="generateColorsPalette()">
                                     <option value="analogous" selected>Analogous (Neighbours)</option>
                                     <option value="monochromatic">Monochromatic (Shades)</option>
@@ -1304,13 +1304,13 @@
 
                             <div class="grid-2" style="gap: 1rem; margin-bottom: 1.5rem;">
                                 <div>
-                                    <label class="small-label">Background HEX</label>
+                                    <label for="contrastBg" class="small-label">Background HEX</label>
                                     <div class="color-picker-wrapper">
                                         <input type="color" id="contrastBg" value="#0b0d19" onchange="runContrastAnalysis()">
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="small-label">Text HEX</label>
+                                    <label for="contrastText" class="small-label">Text HEX</label>
                                     <div class="color-picker-wrapper">
                                         <input type="color" id="contrastText" value="#00f2fe" onchange="runContrastAnalysis()">
                                     </div>
@@ -1388,7 +1388,7 @@
                         <div class="workspace-controls glass-card">
                             <!-- Password text block output screen -->
                             <div class="control-group">
-                                <label class="control-label">Generated Password</label>
+                                <label for="passOutput" class="control-label">Generated Password</label>
                                 <div class="color-picker-wrapper" style="position: relative; width: 100%;">
                                     <input type="text" id="passOutput" class="form-control" style="font-family: monospace; font-size: 1.1rem; padding-right: 50px; text-shadow: 0 0 1px var(--primary-glow); letter-spacing: 0.05em;" readonly>
                                     <button class="copy-code-btn" style="position: absolute; right: 4px; top: 4px; height: 36px; padding: 0 0.8rem; background-color: transparent; border: none;" onclick="copyPasswordToClipboard()">
@@ -1406,7 +1406,7 @@
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label">Complexity Settings</label>
+                                <label for="passUpper" class="control-label">Complexity Settings</label>
                                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;">
                                     <div class="d-flex align-center" style="gap: 0.5rem;">
                                         <input type="checkbox" id="passUpper" checked onchange="generateSecurePassword()">
@@ -1512,7 +1512,7 @@
                             <!-- Text Mode controls -->
                             <div id="subpanel-base64-text" class="control-subpanel active" style="flex-grow: 1; display: flex; flex-direction: column;">
                                 <div class="control-group" style="flex-grow: 1; display: flex; flex-direction: column;">
-                                    <label class="control-label">Input UTF-8 Raw String</label>
+                                    <label for="base64TextInput" class="control-label">Input UTF-8 Raw String</label>
                                     <textarea id="base64TextInput" class="form-control" style="font-family: monospace; font-size: 0.85rem; resize: none; flex-grow: 1; min-height: 200px; background-color: rgba(0, 0, 0, 0.3);" placeholder="Type or paste your text here..." oninput="processBase64Text()"></textarea>
                                 </div>
                             </div>
@@ -1520,7 +1520,7 @@
                             <!-- File Mode controls -->
                             <div id="subpanel-base64-file" class="control-subpanel" style="flex-grow: 1;">
                                 <div class="control-group">
-                                    <label class="control-label">Upload Target File</label>
+                                    <label for="base64FileInput" class="control-label">Upload Target File</label>
                                     <div class="file-upload-zone" id="base64Dropzone" onclick="triggerBase64FileInput()">
                                         <i data-lucide="file-up" class="large-upload-icon"></i>
                                         <span>Click or drag any file here</span>
@@ -1551,7 +1551,7 @@
                         <!-- Right column preview/output -->
                         <div class="workspace-preview glass-card flex-center-column" style="padding: 1.5rem; justify-content: flex-start; align-items: stretch; min-height: 480px;">
                             <div class="control-group" style="flex-grow: 1; display: flex; flex-direction: column;">
-                                <label class="control-label">Processed Output String</label>
+                                <label for="base64Output" class="control-label">Processed Output String</label>
                                 <div class="code-export-box w-100" style="flex-grow: 1; display: flex; flex-direction: column;">
                                     <textarea id="base64Output" class="form-control" style="font-family: monospace; font-size: 0.85rem; resize: none; flex-grow: 1; min-height: 300px; background-color: rgba(0, 0, 0, 0.4); color: #a6c1ee;" readonly placeholder="Base64 output string will render here..."></textarea>
                                     <button class="copy-code-btn" style="top: 8px; right: 8px;" onclick="copyBase64Output()">
@@ -1631,7 +1631,7 @@
                         <!-- Left column controls Form inputs -->
                         <div class="workspace-controls glass-card" style="min-height: 520px;">
                             <div class="control-group">
-                                <label class="control-label">Site Title (Engaging)</label>
+                                <label for="metaTitle" class="control-label">Site Title (Engaging)</label>
                                 <input type="text" id="metaTitle" class="form-control" placeholder="e.g. Premium Developer Utilities" value="OmniTools - The Premium Creator Utility Hub" oninput="updateMetaTagsAndPreviews()">
                                 <label class="small-label d-flex justify-between mt-2">
                                     <span>Recommended: 50-60 characters</span>
@@ -1639,7 +1639,7 @@
                                 </label>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Site Description</label>
+                                <label for="metaDesc" class="control-label">Site Description</label>
                                 <textarea id="metaDesc" class="form-control" rows="3" style="resize: none;" placeholder="e.g. Free offline web-based toolbox for creators..." oninput="updateMetaTagsAndPreviews()">OmniTools is a 100% free, private, and offline-first developer utility hub. Generate customized QR codes, compress images, and calculate growth.</textarea>
                                 <label class="small-label d-flex justify-between mt-2">
                                     <span>Recommended: 150-160 characters</span>
@@ -1648,16 +1648,16 @@
                             </div>
                             <div class="grid-2" style="gap: 1rem;">
                                 <div class="control-group">
-                                    <label class="control-label">Target URL</label>
+                                    <label for="metaUrl" class="control-label">Target URL</label>
                                     <input type="text" id="metaUrl" class="form-control" placeholder="https://yourwebsite.com" value="https://www.omnitechtools.com" oninput="updateMetaTagsAndPreviews()">
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Keywords</label>
+                                    <label for="metaKeywords" class="control-label">Keywords</label>
                                     <input type="text" id="metaKeywords" class="form-control" placeholder="seo, tools, dev" value="seo tools, qr generator, image compressor" oninput="updateMetaTagsAndPreviews()">
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Featured Image URL (OpenGraph)</label>
+                                <label for="metaImageUrl" class="control-label">Featured Image URL (OpenGraph)</label>
                                 <input type="text" id="metaImageUrl" class="form-control" placeholder="https://yourwebsite.com/logo.png" value="https://www.omnitechtools.com/style.css" oninput="updateMetaTagsAndPreviews()">
                             </div>
                         </div>
@@ -1768,7 +1768,7 @@
                         <!-- Controls panel -->
                         <div class="workspace-controls glass-card">
                             <div class="control-group">
-                                <label class="control-label">Starting Capital / Principal ($)</label>
+                                <label for="infCapital" class="control-label">Starting Capital / Principal ($)</label>
                                 <input type="number" id="infCapital" class="form-control" value="10000" oninput="calculateInflationLoss()">
                             </div>
                             <div class="control-group">
@@ -2488,19 +2488,7 @@
         })();
     </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.tool-card');
-    cards.forEach(card => {
-        card.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                card.click();
-            }
-        });
-    });
-});
-</script>
+
 </body>
 
 </html>
