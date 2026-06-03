@@ -828,7 +828,9 @@ function initImageCompressor() {
 
 function triggerCompressFileInput(event) {
     if (event && event.target && event.target.id === 'compressFileInput') return;
-    document.getElementById('compressFileInput').click();
+    const fileInput = document.getElementById('compressFileInput');
+    if (fileInput) fileInput.value = '';
+    fileInput.click();
 }
 
 function updateCompressQualityLabel() {
@@ -1958,7 +1960,9 @@ function switchBase64Mode(mode, element) {
 
 function triggerBase64FileInput(event) {
     if (event && event.target && event.target.id === 'base64FileInput') return;
-    document.getElementById('base64FileInput').click();
+    const fileInput = document.getElementById('base64FileInput');
+    if (fileInput) fileInput.value = '';
+    fileInput.click();
 }
 
 function handleBase64FileUpload(event) {
