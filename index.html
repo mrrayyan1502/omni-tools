@@ -21,6 +21,9 @@
     <meta property="og:title" content="OmniTools - Premium Free Creator & Developer Utilities">
     <meta property="og:description" content="100% private, browser-based utilities: Custom QR codes, offline image compressor, CSS glassmorphism builder, and compound interest charts.">
     
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="style.css?v=2.1">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -535,10 +538,11 @@
                         <!-- Preview panel -->
                         <div class="workspace-preview glass-card flex-center-column">
                             <div id="compressPreviewHolder" class="compress-preview-wrapper flex-center-column">
-                                <div class="empty-preview-state">
+                                <div class="empty-preview-state" id="compressEmptyState">
                                     <i data-lucide="file-image"></i>
                                     <p>Upload an image to see real-time compression preview</p>
                                 </div>
+                                <img id="compressedPreview" src="" alt="Compressed Preview" style="display: none; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: var(--radius-md);">
                             </div>
                             
                             <!-- Stat indicators -->

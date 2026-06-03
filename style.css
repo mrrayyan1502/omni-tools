@@ -722,7 +722,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .hidden-file-input {
-    display: none;
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+    z-index: -1;
 }
 
 /* Control Tab Controls */
