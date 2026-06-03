@@ -504,7 +504,7 @@
                         <div class="workspace-controls glass-card">
                             <div class="control-group">
                                 <label for="compressFileInput" class="control-label">Upload Image</label>
-                                <div class="file-upload-zone" id="compressDropzone" onclick="triggerCompressFileInput()">
+                                <div class="file-upload-zone" id="compressDropzone" onclick="triggerCompressFileInput(event)">
                                     <i data-lucide="image" class="large-upload-icon"></i>
                                     <span>Click to upload or drag & drop</span>
                                     <p class="file-size-limit">Supports JPG, PNG, WebP (Max 25MB)</p>
@@ -1420,7 +1420,7 @@
                             <div id="subpanel-base64-file" class="control-subpanel" style="flex-grow: 1;">
                                 <div class="control-group">
                                     <label for="base64FileInput" class="control-label">Upload Target File</label>
-                                    <div class="file-upload-zone" id="base64Dropzone" onclick="triggerBase64FileInput()">
+                                    <div class="file-upload-zone" id="base64Dropzone" onclick="triggerBase64FileInput(event)">
                                         <i data-lucide="file-up" class="large-upload-icon"></i>
                                         <span>Click or drag any file here</span>
                                         <p class="file-size-limit">SVG, PNG, PDF, ZIP (Max 15MB)</p>

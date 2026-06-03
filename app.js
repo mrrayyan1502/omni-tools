@@ -826,7 +826,8 @@ function initImageCompressor() {
     }
 }
 
-function triggerCompressFileInput() {
+function triggerCompressFileInput(event) {
+    if (event && event.target && event.target.id === 'compressFileInput') return;
     document.getElementById('compressFileInput').click();
 }
 
@@ -1955,7 +1956,8 @@ function switchBase64Mode(mode, element) {
     document.getElementById('base64Output').value = "";
 }
 
-function triggerBase64FileInput() {
+function triggerBase64FileInput(event) {
+    if (event && event.target && event.target.id === 'base64FileInput') return;
     document.getElementById('base64FileInput').click();
 }
 
