@@ -2135,7 +2135,7 @@
         (function() {
             var prefix = (window.location.protocol === 'file:') ? '' : '/';
             var script = document.createElement('script');
-            script.src = prefix + 'app.js';
+            script.src = prefix + 'app.js?v=' + new Date().getTime();
             document.body.appendChild(script);
         })();
     </script>

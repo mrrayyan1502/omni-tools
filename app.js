@@ -768,7 +768,7 @@ function downloadQRCode(extension) {
     try {
         const url = new URL(qrText);
         safeName = `qr-${url.hostname}`;
-    } catch {
+    } catch (e) {
         safeName = `qr-${qrText.substring(0, 12).replace(/[^a-z0-9]/gi, '_').toLowerCase()}`;
     }
 
@@ -2131,7 +2131,7 @@ function updateMetaTagsAndPreviews() {
         try {
             const domain = new URL(url).hostname;
             socDomain.innerText = domain;
-        } catch {
+        } catch (e) {
             socDomain.innerText = "www.yourwebsite.com";
         }
     }
