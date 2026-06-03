@@ -451,6 +451,11 @@ function switchTab(tabId, pushToHistory = true) {
 
     // Force scroll to top of EVERYTHING (window, html, body, and all structural wrappers)
     const forceScrollToTop = () => {
+        // Blur active element to prevent browser's native scroll-anchoring from pulling us back down to the footer link
+        if (document.activeElement && document.activeElement !== document.body) {
+            document.activeElement.blur();
+        }
+
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
@@ -462,6 +467,9 @@ function switchTab(tabId, pushToHistory = true) {
                 if (el) {
                     el.scrollTop = 0;
                     el.scrollLeft = 0;
+                    if (typeof el.scrollTo === 'function') {
+                        el.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                    }
                 }
             });
         });

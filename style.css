@@ -313,6 +313,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem;
     flex-grow: 1;
     overflow-y: auto;
+    overflow-anchor: none; /* Disables browser's native scroll-anchoring behavior that fights javascript scroll-to-top */
 }
 
 /* Tab Panels Switching */
