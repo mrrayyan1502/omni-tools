@@ -1,40 +1,3 @@
-function startApp() {
-    // Initialize Lucide Vector Icons safely
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-    
-    // Core Navigation & Routing Handling
-    initNavigation();
-    
-    // Core Image Compressor Setup (Pre-instantiated, zero heavy libraries)
-    initImageCompressor();
-
-    // Core Glassmorphism Studio Setup (Pre-instantiated, zero heavy libraries)
-    initGlassStudio();
-
-    // 4 Bawaal Tools Setup (Pre-instantiated, ultra-performance)
-    initJSONFormatter();
-    initSVGBlob();
-    initColorPalette();
-    initPasswordGenerator();
-
-    // 3 New AdSense Tools Setup (Pre-instantiated)
-    initBase64Tool();
-    initMetaTagGenerator();
-    initInflationCalc();
-}
-
-// Robust execution handle for asynchronous or direct script loads
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startApp);
-} else {
-    startApp();
-}
-
-/* ==========================================================================
-   1. Core Layout & Navigation
-   ========================================================================== */
 /* ==========================================================================
    1. Core Layout, Navigation & HTML5 History Router
    ========================================================================== */
@@ -89,6 +52,33 @@ const tabToRouteMap = {
     'blog-article-fire': '/blog/financial-independence-compound-growth/',
     'blog-article-privacy': '/blog/developer-utilities-privacy/'
 };
+
+function startApp() {
+    // Initialize Lucide Vector Icons safely
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    // Core Navigation & Routing Handling
+    initNavigation();
+    
+    // Core Image Compressor Setup (Pre-instantiated, zero heavy libraries)
+    initImageCompressor();
+
+    // Core Glassmorphism Studio Setup (Pre-instantiated, zero heavy libraries)
+    initGlassStudio();
+
+    // 4 Bawaal Tools Setup (Pre-instantiated, ultra-performance)
+    initJSONFormatter();
+    initSVGBlob();
+    initColorPalette();
+    initPasswordGenerator();
+
+    // 3 New AdSense Tools Setup (Pre-instantiated)
+    initBase64Tool();
+    initMetaTagGenerator();
+}
+
 
 function initNavigation() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -2310,3 +2300,10 @@ function shareOnWhatsApp(toolId) {
     window.open(`https://api.whatsapp.com/send?text=${fullMessage}`, '_blank');
 }
 
+
+// Robust execution handle for asynchronous or direct script loads
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp);
+} else {
+    startApp();
+}
