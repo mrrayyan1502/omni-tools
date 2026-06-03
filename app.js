@@ -449,39 +449,37 @@ function switchTab(tabId, pushToHistory = true) {
         }
     }
 
-    // Force scroll to top of EVERYTHING (window, html, body, and all structural wrappers)
+    // Force scroll to top of EVERYTHING (bulletproof for SPAs)
     const forceScrollToTop = () => {
-        // Blur active element to prevent browser's native scroll-anchoring from pulling us back down to the footer link
-        if (document.activeElement && document.activeElement !== document.body) {
-            document.activeElement.blur();
-        }
+        try {
+            if (document.activeElement && document.activeElement !== document.body) {
+                document.activeElement.blur();
+            }
+        } catch (e) {}
 
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+        try { window.scrollTo(0, 0); } catch (e) {}
+        try { document.documentElement.scrollTop = 0; } catch (e) {}
+        try { document.body.scrollTop = 0; } catch (e) {}
         
-        const scrollSelectors = ['.content-viewport', '.main-wrapper', '.app-container', '#contentViewport', '.tab-panel'];
-        scrollSelectors.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(el => {
-                if (el) {
-                    el.scrollTop = 0;
-                    el.scrollLeft = 0;
-                    if (typeof el.scrollTo === 'function') {
-                        el.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                    }
-                }
+        try {
+            const scrollSelectors = ['.content-viewport', '.main-wrapper', '#contentViewport'];
+            scrollSelectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(el => {
+                    if (el) el.scrollTop = 0;
+                });
             });
-        });
+        } catch (e) {}
     };
 
-    // Execute scroll resets instantly and with progressive timeouts to bypass rendering/reflow delays
-    forceScrollToTop();
-    setTimeout(forceScrollToTop, 10);
-    setTimeout(forceScrollToTop, 50);
-    setTimeout(forceScrollToTop, 150);
-    setTimeout(forceScrollToTop, 300);
-    setTimeout(forceScrollToTop, 600);
+    // Execute scroll resets progressively to bypass rendering/reflow delays
+    requestAnimationFrame(() => {
+        forceScrollToTop();
+        setTimeout(forceScrollToTop, 10);
+        setTimeout(forceScrollToTop, 50);
+        setTimeout(forceScrollToTop, 150);
+        setTimeout(forceScrollToTop, 300);
+    });
     
     // Close mobile menu if active
     const appSidebar = document.getElementById('appSidebar');
