@@ -2287,7 +2287,7 @@ function renderInflationChart(labels, originalData, futureData) {
 /* ==========================================================================
    Viral Growth Hooks
    ========================================================================== */
-function shareOnWhatsApp(toolId) {
+function shareTool(toolId) {
     const messages = {
         'qr-generator': "I just created an awesome custom QR Code instantly! Try this 100% free, private tool here: ",
         'image-compressor': "I just optimized my images without losing quality! Try this blazing fast offline tool: "
@@ -2295,9 +2295,23 @@ function shareOnWhatsApp(toolId) {
     
     const baseText = messages[toolId] || "Check out this amazing free developer utility hub: ";
     const url = "https://www.omnitechtools.com/" + (toolId !== 'qr-generator' && toolId !== 'image-compressor' ? '' : toolId + '/');
-    const fullMessage = encodeURIComponent(baseText + url);
     
-    window.open(`https://api.whatsapp.com/send?text=${fullMessage}`, '_blank');
+    if (navigator.share) {
+        navigator.share({
+            title: 'OmniTools',
+            text: baseText,
+            url: url
+        }).catch(err => {
+            console.log("Share cancelled or failed.", err);
+        });
+    } else {
+        // Fallback for desktop/unsupported browsers: Copy to clipboard
+        navigator.clipboard.writeText(baseText + url).then(() => {
+            showToast("Share link copied to clipboard! You can now paste it anywhere.");
+        }).catch(err => {
+            showToast("Failed to copy link. Please copy manually: " + url);
+        });
+    }
 }
 
 
