@@ -777,6 +777,12 @@ function downloadQRCode(extension) {
         extension: extension
     });
     
+    // Viral Loop: Show WhatsApp sharing hook
+    const waShare = document.getElementById('wa-share-qr');
+    if (waShare) {
+        waShare.style.display = 'block';
+    }
+    
     showToast(`QR Code successfully downloaded as ${extension.toUpperCase()}!`);
 }
 
@@ -919,6 +925,12 @@ function downloadCompressedImage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    
+    // Viral Loop: Show WhatsApp sharing hook
+    const waShare = document.getElementById('wa-share-img');
+    if (waShare) {
+        waShare.style.display = 'block';
+    }
     
     showToast("Optimized image downloaded!");
 }
@@ -2274,5 +2286,21 @@ function renderInflationChart(labels, originalData, futureData) {
             }
         }
     });
+}
+
+/* ==========================================================================
+   Viral Growth Hooks
+   ========================================================================== */
+function shareOnWhatsApp(toolId) {
+    const messages = {
+        'qr-generator': "I just created an awesome custom QR Code instantly! Try this 100% free, private tool here: ",
+        'image-compressor': "I just optimized my images without losing quality! Try this blazing fast offline tool: "
+    };
+    
+    const baseText = messages[toolId] || "Check out this amazing free developer utility hub: ";
+    const url = "https://www.omnitechtools.com/" + (toolId !== 'qr-generator' && toolId !== 'image-compressor' ? '' : toolId + '/');
+    const fullMessage = encodeURIComponent(baseText + url);
+    
+    window.open(`https://api.whatsapp.com/send?text=${fullMessage}`, '_blank');
 }
 
