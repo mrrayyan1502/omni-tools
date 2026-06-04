@@ -1153,27 +1153,35 @@ function handleContactSubmit(event) {
     const btn = document.getElementById('btnContactSubmit');
     const name = document.getElementById('contactName').value;
     const email = document.getElementById('contactEmail').value;
+    const subject = document.getElementById('contactSubject').value;
+    const message = document.getElementById('contactMessage').value;
     
-    if (!btn || !name || !email) return;
+    if (!btn || !name || !email || !message) return;
     
     // Simulate beautiful premium loading sequence
     const originalText = btn.innerHTML;
     btn.disabled = true;
-    btn.innerHTML = `<i data-lucide="loader" class="animate-spin"></i> Sending Message...`;
+    btn.innerHTML = `<i data-lucide="loader" class="animate-spin"></i> Preparing Email...`;
     lucide.createIcons(); // render standard icons
     
     setTimeout(() => {
-        // Reset form inputs
+        // Since we are client-side only, redirect to default email client with pre-filled data
+        const mailtoLink = `mailto:omnitechtools.support@gmail.com?subject=${encodeURIComponent(subject || 'Support Request')}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+        window.location.href = mailtoLink;
+        
+        btn.innerHTML = `<i data-lucide="check-circle"></i> Opening Email Client...`;
+        btn.classList.replace('btn-primary', 'btn-success');
+        lucide.createIcons();
         document.getElementById('contactForm').reset();
         
-        // Restore button state
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-        lucide.createIcons();
+        showToast("Opening your default email app...");
         
-        // Trigger success feedback popup
-        showToast(`Thank you, ${name}! Your message has been sent successfully. We will reply to ${email} within 24 hours.`, "success");
-    }, 1500);
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.replace('btn-success', 'btn-primary');
+            btn.disabled = false;
+        }, 3000);
+    }, 800);
 }
 
 /* ==========================================================================
