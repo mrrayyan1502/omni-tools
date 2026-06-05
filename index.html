@@ -22,27 +22,17 @@
     <meta property="og:description" content="100% private, browser-based utilities: Custom QR codes, offline image compressor, CSS glassmorphism builder, and compound interest charts.">
     
     <!-- Core CSS -->
-    <link rel="stylesheet" href="style.css?v=2.1">
+    <link rel="stylesheet" href="/style.css?v=2.1">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Main Style Sheet (Smart Dynamic Loader for Local & Production) -->
-    <script>
-        (function() {
-            var prefix = (window.location.protocol === 'file:') ? '' : '/';
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = prefix + 'style.css';
-            document.head.appendChild(link);
-        })();
-    </script>
     
     <!-- Third Party CDN Libraries (100% Free & Client-Side) -->
     <!-- Lucide Icons for clean UI vectors (Critical) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body>
 
@@ -2240,16 +2230,8 @@
         </div>
     </div>
 
-    <!-- Core App Engine script (Smart Dynamic Loader for Local & Production) -->
-    <script>
-        (function() {
-            var prefix = (window.location.protocol === 'file:') ? '' : '/';
-            var script = document.createElement('script');
-            script.src = prefix + 'app.js?v=' + new Date().getTime();
-            document.body.appendChild(script);
-        })();
-    </script>
-
+    <!-- Core App Engine script -->
+    <script src="/app.js" defer></script>
 
 </body>
 
