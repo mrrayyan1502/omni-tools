@@ -1799,3 +1799,112 @@ button:focus, a:focus, input:focus, select:focus, textarea:focus, .tool-card:foc
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
+/* --- Premium Share Block --- */
+.share-results-block {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.share-block-header {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 1.25rem;
+}
+
+.share-buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+/* WhatsApp Emerald Green */
+.share-btn.whatsapp {
+    background: rgba(37, 211, 102, 0.15);
+    border-color: rgba(37, 211, 102, 0.3);
+    color: #25D366;
+}
+.share-btn.whatsapp:hover {
+    background: #25D366;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Telegram Sky Blue */
+.share-btn.telegram {
+    background: rgba(0, 136, 204, 0.15);
+    border-color: rgba(0, 136, 204, 0.3);
+    color: #0088cc;
+}
+.share-btn.telegram:hover {
+    background: #0088cc;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 136, 204, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Twitter/X Slate */
+.share-btn.twitter {
+    background: rgba(226, 232, 240, 0.1);
+    border-color: rgba(226, 232, 240, 0.2);
+    color: #e2e8f0;
+}
+.share-btn.twitter:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    box-shadow: 0 0 20px rgba(226, 232, 240, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Copy Link Primary */
+.share-btn.copylink {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: rgba(0, 242, 254, 0.2);
+    color: var(--accent-primary);
+}
+.share-btn.copylink:hover {
+    background: var(--accent-primary);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    transform: translateY(-2px);
+}
+.share-btn svg {
+    width: 18px;
+    height: 18px;
+}
+/* Facebook Blue */
+.share-btn.facebook {
+    background: rgba(24, 119, 242, 0.15);
+    border-color: rgba(24, 119, 242, 0.3);
+    color: #1877f2;
+}
+.share-btn.facebook:hover {
+    background: #1877f2;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(24, 119, 242, 0.4);
+    transform: translateY(-2px);
+}

@@ -2340,3 +2340,62 @@ if (document.readyState === 'loading') {
 } else {
     startApp();
 }
+
+/* ==========================================================================
+   Premium Sharing Logic
+   ========================================================================== */
+function shareToolResult(platform, btnElement = null) {
+    // Get active tab info
+    const activeTabId = document.querySelector('.tab-panel.active') ? document.querySelector('.tab-panel.active').id.replace('panel-', '') : 'home';
+    const currentUrl = window.location.href;
+    
+    // Dynamic message based on tool
+    let shareMessage = "Check out OmniTools, a premium suite of free developer utilities!";
+    
+    if (activeTabId === 'qr-generator') {
+        shareMessage = "Just created a stunning custom premium QR Code for free on OmniTools! Try it here:";
+    } else if (activeTabId === 'image-compressor') {
+        shareMessage = "Optimized my website images offline using OmniTools. Lightning fast and secure! Check it out:";
+    } else if (activeTabId === 'css-builder') {
+        shareMessage = "Built a beautiful Glassmorphism UI component for free on OmniTools! Try the generator:";
+    } else if (activeTabId === 'finance-calc') {
+        shareMessage = "Just ran my FIRE retirement numbers on OmniTools! Calculate your financial freedom timeline here:";
+    } else if (activeTabId === 'password-generator') {
+        shareMessage = "Generated a cryptographically secure password entirely offline using OmniTools! Stay secure:";
+    } else if (activeTabId === 'color-palette') {
+        shareMessage = "Exploring beautiful WCAG-compliant color palettes on OmniTools! See the combinations:";
+    } else if (activeTabId === 'svg-blob') {
+        shareMessage = "Generated some awesome organic SVG blobs and waves for my UI design using OmniTools:";
+    }
+
+    const encodedMsg = encodeURIComponent(shareMessage);
+    const encodedUrl = encodeURIComponent(currentUrl);
+    
+    if (platform === 'whatsapp') {
+        window.open(https://api.whatsapp.com/send?text=%20, '_blank');
+    } else if (platform === 'telegram') {
+        window.open(https://t.me/share/url?url=&text=, '_blank');
+    } else if (platform === 'twitter') {
+        window.open(https://twitter.com/intent/tweet?text=&url=, '_blank');
+    } else if (platform === 'facebook') {
+        window.open(https://www.facebook.com/sharer/sharer.php?u=, '_blank');
+    } else if (platform === 'copy') {
+        navigator.clipboard.writeText(${shareMessage} ).then(() => {
+            if (btnElement) {
+                const originalText = btnElement.querySelector('span').innerText;
+                const originalIcon = btnElement.innerHTML;
+                
+                // Show success state
+                btnElement.innerHTML = '<i data-lucide="check" style="color: #000;"></i> <span style="color: #000;">Copied!</span>';
+                lucide.createIcons();
+                
+                // Revert after 2 seconds
+                setTimeout(() => {
+                    btnElement.innerHTML = originalIcon;
+                    lucide.createIcons();
+                }, 2000);
+            }
+            showToast("Share link copied to clipboard!");
+        });
+    }
+}
