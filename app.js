@@ -143,40 +143,51 @@ function switchTab(tabId, pushToHistory = true) {
     }
 
     // Dynamic SEO Titles & Meta Descriptions
-    let prettyTitle = "OmniTools - Premium Free Creator & Developer Utility Hub";
+    let prettyTitle = "OmniTools - Free Premium Creator & Developer Utility Hub 2026";
     let metaDesc = "OmniTools is a 100% free, private, and offline-first creator & developer utility hub. Generate custom QR codes, compress images, and more.";
-    let schemaJson = null;
+    let schemaJson = []; // Array to hold multiple schemas
+    let ogImageUrl = "https://www.omnitechtools.com/og-default.jpg";
 
     if (tabId === 'qr-generator') {
-        prettyTitle = "Custom QR Code Generator with Logo & Gradients | OmniTools";
-        metaDesc = "Generate highly stylized QR codes with gradient fills, round custom corners, and upload your brand logo for free.";
-        schemaJson = {
+        prettyTitle = "Free Custom QR Code Generator Online 2026 | Make QR Instantly";
+        metaDesc = "Generate highly stylized QR codes with gradient fills, round custom corners, and upload your brand logo for free completely offline.";
+        ogImageUrl = "https://www.omnitechtools.com/og-qr.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Custom QR Code Generator",
             "operatingSystem": "Web Browser",
             "applicationCategory": "MultimediaApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        }, {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                { "@type": "Question", "name": "Is this QR Code generator completely free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, our custom QR code generator is 100% free with no scanning limits and no expiration dates." } },
+                { "@type": "Question", "name": "Can I add my logo to the QR code?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. You can securely upload your brand logo and embed it in the center of the QR code offline." } },
+                { "@type": "Question", "name": "Are these QR codes safe to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our tool works entirely offline in your browser, meaning your data and URLs are never sent to external servers." } }
+            ]
+        });
     } else if (tabId === 'image-compressor') {
-        prettyTitle = "Online Image Compressor & WebP Converter (Private & Offline) | OmniTools";
-        metaDesc = "Reduce file size of your JPEG, PNG, or convert them directly to WebP completely offline using Canvas.";
-        schemaJson = {
+        prettyTitle = "Free Image Compressor Online 2026 | Compress JPG PNG WebP Fast";
+        metaDesc = "Reduce file size of your JPEG, PNG, or convert them directly to WebP completely offline without losing quality.";
+        ogImageUrl = "https://www.omnitechtools.com/og-image.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Browser Image Compressor",
             "operatingSystem": "Web Browser",
             "applicationCategory": "DesignApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        }, {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                { "@type": "Question", "name": "How does the image compressor work offline?", "acceptedAnswer": { "@type": "Answer", "text": "It uses your browser's native HTML5 Canvas API to redraw and compress the image locally, ensuring zero data leaves your device." } },
+                { "@type": "Question", "name": "Does image compression reduce quality?", "acceptedAnswer": { "@type": "Answer", "text": "You have full control over the quality slider. Small reductions in size usually have zero visible impact on image quality." } },
+                { "@type": "Question", "name": "Can I convert PNG to WebP?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can upload PNG or JPEG formats and instantly export them as next-generation WebP files." } }
+            ]
+        });
         
         // Custom URL Simulator trigger
         if (window.location.pathname === '/webp-converter/') {
@@ -186,35 +197,37 @@ function switchTab(tabId, pushToHistory = true) {
             }
         }
     } else if (tabId === 'css-builder') {
-        prettyTitle = "Advanced CSS Glassmorphism Generator & UI Studio | OmniTools";
+        prettyTitle = "Free CSS Glassmorphism Generator 2026 | Blur & Gradients UI";
         metaDesc = "Create visual CSS gradients and glassmorphism layouts with direct slider controls and instant code exports.";
-        schemaJson = {
+        ogImageUrl = "https://www.omnitechtools.com/og-css.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Glassmorphism CSS Studio",
             "operatingSystem": "Web Browser",
             "applicationCategory": "DeveloperApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        }, {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                { "@type": "Question", "name": "What is Glassmorphism in CSS?", "acceptedAnswer": { "@type": "Answer", "text": "Glassmorphism is a UI design trend that uses CSS backdrop-filter to create frosted glass effects with translucent backgrounds." } },
+                { "@type": "Question", "name": "Is the backdrop-filter supported in all browsers?", "acceptedAnswer": { "@type": "Answer", "text": "It is fully supported in modern Chrome, Safari, and Edge. However, it's a good practice to provide an opaque fallback color." } },
+                { "@type": "Question", "name": "Is the exported CSS free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, all CSS code generated by this tool is open-source and free to use in any commercial or personal project." } }
+            ]
+        });
     } else if (tabId === 'finance-calc') {
-        prettyTitle = "Compound Interest & FIRE Target Calculator with Charts | OmniTools";
+        prettyTitle = "Free Compound Interest Calculator 2026 | FIRE Target & Charts";
         metaDesc = "Forecast your savings, compound growth, and outline your financial independence targets with dynamic charts.";
-        schemaJson = {
+        ogImageUrl = "https://www.omnitechtools.com/og-finance.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "FIRE Compound Interest Calculator",
             "operatingSystem": "Web Browser",
             "applicationCategory": "FinanceApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        });
 
         // Custom URL Simulator trigger
         if (window.location.pathname === '/fire-calculator/') {
@@ -236,99 +249,81 @@ function switchTab(tabId, pushToHistory = true) {
         prettyTitle = "Contact Us & Support Helpdesk | OmniTools";
         metaDesc = "Get in touch with the OmniTools creators for partnership opportunities, feedback, bug reporting, or developer utility support.";
     } else if (tabId === 'json-formatter') {
-        prettyTitle = "JSON Formatter, Beautifier & Validator (Offline) | OmniTools";
+        prettyTitle = "Free JSON Formatter & Validator Online 2026 | Secure & Offline";
         metaDesc = "Clean, syntax-highlight, compress, and validate JSON strings offline with interactive nodes tree parsing.";
-        schemaJson = {
+        ogImageUrl = "https://www.omnitechtools.com/og-json.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "JSON Formatter & Validator",
             "operatingSystem": "Web Browser",
             "applicationCategory": "DeveloperApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        });
     } else if (tabId === 'svg-blob') {
-        prettyTitle = "SVG Blob & Wave Generator - Custom Organic Shapes | OmniTools";
+        prettyTitle = "Free SVG Blob Generator Online 2026 | Custom Wave Assets";
         metaDesc = "Generate highly custom fluid organic shapes and CSS vector gradients. Export SVG codes and assets instantly.";
-        schemaJson = {
+        ogImageUrl = "https://www.omnitechtools.com/og-svg.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "SVG Blob Generator",
             "operatingSystem": "Web Browser",
             "applicationCategory": "DesignApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        });
     } else if (tabId === 'color-palette') {
-        prettyTitle = "Color Palette Generator & WCAG Contrast Checker | OmniTools";
+        prettyTitle = "Free Color Palette Generator 2026 | WCAG Contrast Checker";
         metaDesc = "Create visual hex schemes harmonies and analyze text color contrast ratios for WCAG AA/AAA compliance indicators.";
-        schemaJson = {
+        ogImageUrl = "https://www.omnitechtools.com/og-color.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Color Palette Generator",
             "operatingSystem": "Web Browser",
             "applicationCategory": "DesignApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        });
     } else if (tabId === 'password-generator') {
-        prettyTitle = "Secure Password Generator & Strength Meter (Web Crypto) | OmniTools";
+        prettyTitle = "Free Secure Password Generator 2026 | Unbreakable Passwords";
         metaDesc = "Create unbreakable passwords offline using Web Crypto API. Tweak lengths, analyze entropy, and track crack time.";
-        schemaJson = {
+        ogImageUrl = "https://www.omnitechtools.com/og-password.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Secure Password Generator",
             "operatingSystem": "Web Browser",
             "applicationCategory": "SecurityApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        });
     } else if (tabId === 'base64') {
-        prettyTitle = "Base64 Encoder & Decoder for Text and Binary | OmniTools";
-        metaDesc = "Encode plain text or binary files to Base64 strings, or decode Base64 back securely and offline.";
-        schemaJson = {
+        prettyTitle = "Free Base64 Encoder Online 2026 | Decode Text & Binary Files";
+        metaDesc = "Encode plain text or binary files to Base64 strings, or decode Base64 back securely and completely offline.";
+        ogImageUrl = "https://www.omnitechtools.com/og-base64.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Base64 Encoder & Decoder",
             "operatingSystem": "Web Browser",
             "applicationCategory": "DeveloperApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        });
     } else if (tabId === 'meta-generator') {
-        prettyTitle = "SEO Meta Tag Generator & Search Snippet Previewer | OmniTools";
+        prettyTitle = "Free SEO Meta Tag Generator 2026 | Google Snippet Previewer";
         metaDesc = "Generate highly-rated SEO meta tags and preview your search snippet in real-time for Google & Facebook.";
-        schemaJson = {
+        ogImageUrl = "https://www.omnitechtools.com/og-meta.jpg";
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "SEO Meta Tag Generator",
             "operatingSystem": "Web Browser",
             "applicationCategory": "DeveloperApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            }
-        };
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        });
     } else if (tabId === 'inflation-calc') {
         prettyTitle = "Inflation & Money Depreciation Calculator with Charts | OmniTools";
         metaDesc = "Track purchasing power losses and compound inflation depreciation trajectories over time with charts.";
-        schemaJson = {
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Inflation Depreciation Calculator",
@@ -339,66 +334,66 @@ function switchTab(tabId, pushToHistory = true) {
                 "price": "0",
                 "priceCurrency": "USD"
             }
-        };
+        });
     } else if (tabId === 'blog') {
         prettyTitle = "Premium SEO Guides & Digital Creator Blog | OmniTools";
         metaDesc = "Explore the official OmniTools blog. Read expert tutorials on QR codes, image compression, CSS UI trends, personal finance calculations, and web security.";
-        schemaJson = {
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "Blog",
             "name": "OmniTools Creator Blog",
             "description": "High-value articles about web development, UI design, speed optimization, and digital marketing."
-        };
+        });
     } else if (tabId === 'blog-article-qr') {
         prettyTitle = "QR Codes in Digital Marketing: Boosting Conversions | OmniTools";
         metaDesc = "Learn how stylized custom QR codes with gradient fills and logo embeds bridge the offline-to-online marketing gap to boost user conversion rates.";
-        schemaJson = {
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "The Ultimate Guide to QR Codes in Digital Marketing: Boosting Offline-to-Online Conversion Rates",
             "datePublished": "2026-06-01",
             "author": { "@type": "Organization", "name": "OmniTools" }
-        };
+        });
     } else if (tabId === 'blog-article-compress') {
         prettyTitle = "Web Image Compression: Optimizing Speed & Core Web Vitals | OmniTools";
         metaDesc = "The definitive technical guide on offline JPEG, PNG, and WebP compression. Optimize site loading speeds and enhance Core Web Vitals automatically.";
-        schemaJson = {
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "The Technical Guide to Web Image Compression: Optimizing Performance, SEO, and Core Web Vitals",
             "datePublished": "2026-06-01",
             "author": { "@type": "Organization", "name": "OmniTools" }
-        };
+        });
     } else if (tabId === 'blog-article-glass') {
         prettyTitle = "Glassmorphism UI Trends & Backdrop Filter Styling | OmniTools";
         metaDesc = "Master the visual style of frosted glass UI design. Learn the CSS backdrop-filter formulas, accessibility parameters, and visual shadows design techniques.";
-        schemaJson = {
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "Glassmorphism in Modern UI Design: Mastering CSS Backdrop Filters and Frosted Glass Aesthetics",
             "datePublished": "2026-06-01",
             "author": { "@type": "Organization", "name": "OmniTools" }
-        };
+        });
     } else if (tabId === 'blog-article-fire') {
         prettyTitle = "The Math of Financial Independence & FIRE Safe Withdrawals | OmniTools";
         metaDesc = "Analyze the mathematical foundation of financial independence. Master the Rule of 25, 4% Safe Withdrawal Rate, and compound interest wealth growth lines.";
-        schemaJson = {
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "The Math of Financial Independence: How Compound Interest and FIRE Metrics Define Your Future",
             "datePublished": "2026-06-01",
             "author": { "@type": "Organization", "name": "OmniTools" }
-        };
+        });
     } else if (tabId === 'blog-article-privacy') {
         prettyTitle = "Browser Privacy & Serverless Client-Side Web Tools | OmniTools";
         metaDesc = "Explore why serverless, client-side web utility architectures are the future of user privacy. Learn how offline FileReader and Web Crypto APIs protect data.";
-        schemaJson = {
+        schemaJson.push({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "Why Serverless Client-Side Utilities are the Future of Web Developer Tools and Browser Privacy",
             "datePublished": "2026-06-01",
             "author": { "@type": "Organization", "name": "OmniTools" }
-        };
+        });
     }
 
     document.title = prettyTitle;
@@ -412,6 +407,12 @@ function switchTab(tabId, pushToHistory = true) {
     // Update OpenGraph tags dynamically
     let ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', prettyTitle);
+    
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', metaDesc);
+    
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', ogImageUrl);
     
     const canonicalOrigin = "https://www.omnitechtools.com";
     let ogUrl = document.querySelector('meta[property="og:url"]');
@@ -428,6 +429,16 @@ function switchTab(tabId, pushToHistory = true) {
 
     // Inject Search Engine structured data schemas
     injectSchema(schemaJson);
+
+    // Ensure Single Active H1 Tag
+    document.querySelectorAll('.panel-h1-title').forEach(el => {
+        el.outerHTML = `<h2 class="panel-h1-title panel-title">${el.innerHTML}</h2>`;
+    });
+    
+    const activePanelHeader = document.querySelector(`#panel-${tabId} .panel-title`);
+    if (activePanelHeader && activePanelHeader.tagName.toLowerCase() !== 'h1') {
+        activePanelHeader.outerHTML = `<h1 class="panel-h1-title panel-title">${activePanelHeader.innerHTML}</h1>`;
+    }
 
     // Push State to browser history API safely (handling security limits in local file:// modes)
     if (pushToHistory) {
