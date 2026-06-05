@@ -2372,15 +2372,15 @@ function shareToolResult(platform, btnElement = null) {
     const encodedUrl = encodeURIComponent(currentUrl);
     
     if (platform === 'whatsapp') {
-        window.open(https://api.whatsapp.com/send?text=%20, '_blank');
+        window.open(`https://api.whatsapp.com/send?text=${encodedMsg}%20${encodedUrl}`, '_blank');
     } else if (platform === 'telegram') {
-        window.open(https://t.me/share/url?url=&text=, '_blank');
+        window.open(`https://t.me/share/url?url=${encodedUrl}&text=${encodedMsg}`, '_blank');
     } else if (platform === 'twitter') {
-        window.open(https://twitter.com/intent/tweet?text=&url=, '_blank');
+        window.open(`https://twitter.com/intent/tweet?text=${encodedMsg}&url=${encodedUrl}`, '_blank');
     } else if (platform === 'facebook') {
-        window.open(https://www.facebook.com/sharer/sharer.php?u=, '_blank');
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
     } else if (platform === 'copy') {
-        navigator.clipboard.writeText(${shareMessage} ).then(() => {
+        navigator.clipboard.writeText(`${shareMessage} ${currentUrl}`).then(() => {
             if (btnElement) {
                 const originalText = btnElement.querySelector('span').innerText;
                 const originalIcon = btnElement.innerHTML;
