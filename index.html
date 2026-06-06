@@ -27,8 +27,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Third Party CDN Libraries (100% Free & Client-Side) -->
     <!-- Lucide Icons for clean UI vectors (Critical) -->
@@ -2461,7 +2461,42 @@
         </div>
     </div>
 
+
+    <!-- Accessibility Widget -->
+    <button class="a11y-fab" id="a11yToggleBtn" onclick="toggleA11yPanel()" aria-label="Accessibility Tools">
+        <i data-lucide="accessibility"></i>
+    </button>
+
+    <div class="a11y-panel glass-card" id="a11yPanel">
+        <div class="a11y-header">
+            <h3>Accessibility Tools</h3>
+            <button class="a11y-close" onclick="toggleA11yPanel()"><i data-lucide="x"></i></button>
+        </div>
+        
+        <div class="a11y-content">
+            <div class="a11y-group">
+                <label>Text Size:</label>
+                <div class="a11y-button-group">
+                    <button class="a11y-btn" onclick="changeTextSize(-1)">A-</button>
+                    <button class="a11y-btn" onclick="changeTextSize(0)">Reset</button>
+                    <button class="a11y-btn" onclick="changeTextSize(1)">A+</button>
+                </div>
+            </div>
+
+            <div class="a11y-group">
+                <label>Contrast:</label>
+                <button class="a11y-btn a11y-toggle-btn" id="a11yContrastBtn" onclick="toggleHighContrast()">Toggle High Contrast</button>
+            </div>
+
+            <div class="a11y-group">
+                <label>Font Style:</label>
+                <button class="a11y-btn a11y-toggle-btn" id="a11yDyslexicBtn" onclick="toggleDyslexicFont()">Dyslexic Friendly Font</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Core App Engine script -->
+
     <script src="/app.js" defer></script>
 
 </body>
