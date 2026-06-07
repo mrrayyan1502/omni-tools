@@ -2498,3 +2498,42 @@ function toggleDyslexicFont(forceState = null) {
 document.addEventListener('DOMContentLoaded', () => {
     initA11y();
 });
+/* ==========================================================================
+   Global Currency State Management
+   ========================================================================== */
+let globalUserCurrency = '$';
+
+function initCurrency() {
+    const savedCurrency = localStorage.getItem('omni-currency');
+    if (savedCurrency) {
+        updateGlobalCurrency(savedCurrency, false);
+    }
+}
+
+function updateGlobalCurrency(symbol, save = true) {
+    globalUserCurrency = symbol;
+    if (save) {
+        localStorage.setItem('omni-currency', symbol);
+    }
+    
+    // Update all dropdowns
+    const dropdowns = document.querySelectorAll('.currency-selector');
+    dropdowns.forEach(dd => dd.value = symbol);
+
+    // Update all label spans
+    const labels = document.querySelectorAll('.currency-label');
+    labels.forEach(lbl => lbl.innerText = symbol);
+
+    // Re-trigger math charts if functions exist
+    if (typeof calculateFinancialGrowth === 'function') {
+        calculateFinancialGrowth();
+    }
+    if (typeof calculateInflationLoss === 'function') {
+        calculateInflationLoss();
+    }
+}
+
+// Attach to DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    initCurrency();
+});
