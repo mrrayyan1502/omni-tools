@@ -1152,7 +1152,7 @@ function renderFinanceChart(labels, totalData, depositsData) {
 }
 
 function formatCurrency(amount) {
-    return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return '$/€/£ ' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 /* ==========================================================================

@@ -840,11 +840,11 @@
                         <!-- Controls panel -->
                         <div class="workspace-controls glass-card">
                             <div class="control-group">
-                                <label for="finPrincipal" class="control-label">Initial Investment / Principal ($)</label>
+                                <label for="finPrincipal" class="control-label">Initial Investment / Principal ($ / € / £)</label>
                                 <input type="number" id="finPrincipal" class="form-control" value="10000" oninput="calculateFinancialGrowth()">
                             </div>
                             <div class="control-group">
-                                <label for="finMonthly" class="control-label">Monthly Additions ($)</label>
+                                <label for="finMonthly" class="control-label">Monthly Additions ($ / € / £)</label>
                                 <input type="number" id="finMonthly" class="form-control" value="500" oninput="calculateFinancialGrowth()">
                             </div>
                             <div class="control-group">
@@ -879,15 +879,15 @@
                             <div class="finance-stat-grid w-100 mt-3">
                                 <div class="stat-box highlight-box">
                                     <span>Total Value</span>
-                                    <strong id="finTotalValue">$0.00</strong>
+                                    <strong id="finTotalValue">$/€/£ 0.00</strong>
                                 </div>
                                 <div class="stat-box">
                                     <span>Total Deposits</span>
-                                    <strong id="finTotalDeposits">$0.00</strong>
+                                    <strong id="finTotalDeposits">$/€/£ 0.00</strong>
                                 </div>
                                 <div class="stat-box text-success">
                                     <span>Total Interest Earned</span>
-                                    <strong id="finTotalInterest">$0.00</strong>
+                                    <strong id="finTotalInterest">$/€/£ 0.00</strong>
                                 </div>
                             </div>
                         </div>
@@ -1922,7 +1922,7 @@
                         <!-- Controls panel -->
                         <div class="workspace-controls glass-card">
                             <div class="control-group">
-                                <label for="infCapital" class="control-label">Starting Capital / Principal ($)</label>
+                                <label for="infCapital" class="control-label">Starting Capital / Principal ($ / € / £)</label>
                                 <input type="number" id="infCapital" class="form-control" value="10000" oninput="calculateInflationLoss()">
                             </div>
                             <div class="control-group">
@@ -1951,15 +1951,15 @@
                             <div class="finance-stat-grid w-100 mt-3">
                                 <div class="stat-box">
                                     <span>Original Value</span>
-                                    <strong id="infOrigValue">$10,000.00</strong>
+                                    <strong id="infOrigValue">$/€/£ 10,000.00</strong>
                                 </div>
                                 <div class="stat-box text-danger">
                                     <span>Future Purchasing Power</span>
-                                    <strong id="infFutureValue" style="color: var(--danger);">$0.00</strong>
+                                    <strong id="infFutureValue" style="color: var(--danger);">$/€/£ 0.00</strong>
                                 </div>
                                 <div class="stat-box text-danger" style="border-color: rgba(255, 23, 68, 0.2);">
                                     <span>Value Lost (Depreciation)</span>
-                                    <strong id="infValueLost" style="color: var(--danger);">$0.00</strong>
+                                    <strong id="infValueLost" style="color: var(--danger);">$/€/£ 0.00</strong>
                                 </div>
                             </div>
                         </div>
