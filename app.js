@@ -49,6 +49,14 @@ const tabToRouteMap = {
     'blog-article-qr': '/blog/qr-codes-digital-marketing/',
     'blog-article-compress': '/blog/image-compression-performance/',
     'blog-article-glass': '/blog/css-glassmorphism-trends/',
+    'blog-article-json': '/blog/json-formatting-guide/',
+    'blog-article-svg': '/blog/svg-organic-blobs-design/',
+    'blog-article-color': '/blog/ui-color-theory-palettes/',
+    'blog-article-password': '/blog/secure-password-cryptography/',
+    'blog-article-base64': '/blog/base64-encoding-explained/',
+    'blog-article-meta': '/blog/seo-meta-tags-guide/',
+    'blog-article-inflation': '/blog/inflation-wealth-depreciation/',
+
     'blog-article-fire': '/blog/financial-independence-compound-growth/',
     'blog-article-privacy': '/blog/developer-utilities-privacy/'
 };
@@ -145,7 +153,34 @@ function switchTab(tabId, pushToHistory = true) {
     // Dynamic SEO Titles & Meta Descriptions
     let prettyTitle = "OmniTools - Free Premium Creator & Developer Utility Hub 2026";
     let metaDesc = "OmniTools is a 100% free, private, and offline-first creator & developer utility hub. Generate custom QR codes, compress images, and more.";
-    let schemaJson = []; // Array to hold multiple schemas
+    let schemaJson = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "OmniTools",
+            "url": "https://www.omnitechtools.com/"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "OmniTools Suite",
+            "url": "https://www.omnitechtools.com/",
+            "logo": "https://www.omnitechtools.com/logo.svg",
+            "description": "Premium Offline-First Developer Utilities and Creator Tools"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "OmniTools Web Utilities",
+            "operatingSystem": "Any",
+            "applicationCategory": "DeveloperApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0.00",
+                "priceCurrency": "USD"
+            }
+        }
+    ]; // Array to hold multiple schemas
     let ogImageUrl = "https://www.omnitechtools.com/og-default.jpg";
 
     if (tabId === 'qr-generator') {
