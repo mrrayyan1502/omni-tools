@@ -288,6 +288,79 @@
                             <p>Track purchasing power losses and compound inflation depreciation trajectories over time with charts.</p>
                             <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
                         </div>
+
+                        <!-- 9 NEW TOOLS DASHBOARD CARDS -->
+                        <div class="tool-card" onclick="routeTo(event, 'jwt-decoder')">
+                            <div class="tool-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                <i data-lucide="unlock"></i>
+                            </div>
+                            <h3>JWT Decoder</h3>
+                            <p>Decode, verify, and inspect JSON Web Tokens securely offline.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'markdown-editor')">
+                            <div class="tool-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                                <i data-lucide="file-edit"></i>
+                            </div>
+                            <h3>Markdown Editor</h3>
+                            <p>Write, preview, and format Markdown documents with live rendering.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'regex-tester')">
+                            <div class="tool-icon" style="background: rgba(244, 63, 94, 0.1); color: #f43f5e;">
+                                <i data-lucide="regex"></i>
+                            </div>
+                            <h3>Regex Tester</h3>
+                            <p>Build, test, and debug Regular Expressions visually and offline.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'sql-formatter')">
+                            <div class="tool-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                <i data-lucide="database"></i>
+                            </div>
+                            <h3>SQL Formatter</h3>
+                            <p>Beautify and format complex SQL database queries instantly.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'css-box-shadow')">
+                            <div class="tool-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                                <i data-lucide="box"></i>
+                            </div>
+                            <h3>Box Shadow Gen</h3>
+                            <p>Visually create advanced CSS3 box shadows with layered rendering.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'word-counter')">
+                            <div class="tool-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                                <i data-lucide="type"></i>
+                            </div>
+                            <h3>SEO Word Counter</h3>
+                            <p>Count words, characters, and analyze keyword density for SEO.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'lorem-ipsum')">
+                            <div class="tool-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
+                                <i data-lucide="align-left"></i>
+                            </div>
+                            <h3>Lorem Ipsum Gen</h3>
+                            <p>Generate placeholder dummy text for UI mockups and web design.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'uuid-generator')">
+                            <div class="tool-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
+                                <i data-lucide="fingerprint"></i>
+                            </div>
+                            <h3>UUID Generator</h3>
+                            <p>Generate secure, cryptographically random v4 UUIDs/GUIDs.</p>
+                        </div>
+                        
+                        <div class="tool-card" onclick="routeTo(event, 'url-encoder')">
+                            <div class="tool-icon" style="background: rgba(20, 184, 166, 0.1); color: #14b8a6;">
+                                <i data-lucide="link"></i>
+                            </div>
+                            <h3>URL Encoder/Decoder</h3>
+                            <p>Safely encode and decode URL strings and URI components.</p>
+                        </div>
                     </div>
                 </section>
 
@@ -2785,6 +2858,10 @@
         </div>
     </div>
     
+    
+    <!-- Tool Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sql-formatter@15.3.0/dist/sql-formatter.min.js" defer></script>
     <!-- Core App Engine script -->
 
     <script src="/app.js" defer></script>
