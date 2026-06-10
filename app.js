@@ -345,6 +345,12 @@ function switchTab(tabId, pushToHistory = true) {
         metaDesc = "Decode and inspect JSON Web Tokens (JWT) 100% offline in your browser. Keep your authentication secrets private.";
         schemaJson.push({ "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "JWT Decoder", "applicationCategory": "DeveloperApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } });
     } else if (tabId === 'markdown-editor') {
+        loadScript("https://cdn.jsdelivr.net/npm/marked/marked.min.js", () => {
+            console.log("Markdown parser loaded dynamically.");
+            if (document.getElementById('markdownInput').value) {
+                renderMarkdown();
+            }
+        });
         prettyTitle = "Free Online Markdown Editor with Live Preview 2026";
         metaDesc = "Write, edit, and preview Markdown to HTML instantly. 100% free offline-first markdown viewer.";
         schemaJson.push({ "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Markdown Editor", "applicationCategory": "DeveloperApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } });
@@ -353,6 +359,12 @@ function switchTab(tabId, pushToHistory = true) {
         metaDesc = "Test, build, and debug Regular Expressions instantly in your browser. Perfect visual regex tester for developers.";
         schemaJson.push({ "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Regex Tester", "applicationCategory": "DeveloperApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } });
     } else if (tabId === 'sql-formatter') {
+        loadScript("https://cdn.jsdelivr.net/npm/sql-formatter@15.3.0/dist/sql-formatter.min.js", () => {
+            console.log("SQL formatter loaded dynamically.");
+            if (document.getElementById('sqlInput').value) {
+                formatSQL();
+            }
+        });
         prettyTitle = "Free SQL Formatter & Beautifier Offline 2026";
         metaDesc = "Format and beautify complex SQL queries instantly. Supports MySQL, PostgreSQL, and standard SQL formatting.";
         schemaJson.push({ "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "SQL Formatter", "applicationCategory": "DeveloperApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } });
