@@ -3534,14 +3534,14 @@
                     </div>
                     <div class="tool-layout">
                         <div class="input-panel glass-card">
-                            <div class="form-group">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
                                 <label>Enter Text to Speak (Up to 5000 words)</label>
-                                <textarea id="ttsInput" class="input-field" rows="8" placeholder="Hello world, this is OmniTools..."></textarea>
+                                <textarea id="ttsInput" class="input-field" rows="8" placeholder="Hello world, this is OmniTools..." style="width: 100%; resize: vertical;"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label>Voice</label>
-                                <select id="ttsVoices" class="input-field"></select>
-                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 5px;">Note: Some voices require an active internet connection to work.</p>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
+                                <label>Voice Language</label>
+                                <select id="ttsVoices" class="input-field" style="width: 100%;"></select>
+                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 5px;">Note: Some voices require an active internet connection to work. If a voice doesn't play, please select another one from the list.</p>
                             </div>
                             <div style="display: flex; gap: 15px;">
                                 <div class="form-group" style="flex: 1;">

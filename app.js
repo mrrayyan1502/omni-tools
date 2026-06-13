@@ -3119,13 +3119,35 @@ function downloadYtThumbnail() {
 let ttsVoices = [];
 function populateVoices() {
     if (!window.speechSynthesis) return;
-    ttsVoices = window.speechSynthesis.getVoices();
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length === 0) return;
+    
+    // Prevent dropdown from constantly resetting if voices haven't changed
+    if (ttsVoices.length === voices.length) return;
+    
+    // Sort voices by language so they are grouped together cleanly
+    ttsVoices = voices.slice().sort((a, b) => a.lang.localeCompare(b.lang));
+    
     const select = document.getElementById('ttsVoices');
     if (!select) return;
+    
+    // Save current selection (if any) before wiping the dropdown
+    const previousSelectionName = select.options[select.selectedIndex]?.text;
+    
     select.innerHTML = '';
     ttsVoices.forEach((v, i) => {
-        select.add(new Option(`${v.name} (${v.lang})`, i));
+        select.add(new Option(`${v.lang} - ${v.name}`, i));
     });
+    
+    // Restore user's previous selection so it doesn't jump back to English
+    if (previousSelectionName) {
+        for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].text === previousSelectionName) {
+                select.selectedIndex = i;
+                break;
+            }
+        }
+    }
 }
 if (window.speechSynthesis) {
     window.speechSynthesis.onvoiceschanged = populateVoices;
