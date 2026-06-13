@@ -53,7 +53,6 @@
         '/pdf-merge/': { title: 'Free PDF Merger Online - Combine PDFs Offline', desc: 'Merge multiple PDF files into a single document securely. Works offline in your browser, no upload required.' },
         '/unit-converter/': { title: 'Free Online Unit Converter - Length, Weight, Temp', desc: 'Convert units instantly: length, weight, temperature, and digital storage. Fast, free and offline.' },
         '/youtube-thumbnail-downloader/': { title: 'YouTube Thumbnail Downloader - Free HD Image', desc: 'Download high-quality (HD) YouTube video thumbnails instantly. Just paste the video URL.' },
-        '/text-to-speech/': { title: 'Free Text to Speech Converter - Human Voices', desc: 'Convert text to natural speech. Fast offline TTS generator with custom pitch and speed controls.' },
         '/': { title: 'OmniTools - Free Online Developer & Creator Tools', desc: '100+ free, private browser-based tools: QR code generator, image compressor, JSON formatter, password generator & more. No signup needed.' },
         '/qr-code-generator/': { title: 'Free QR Code Generator - Custom Styled QR Creator Online', desc: 'Create custom QR codes with logos, gradient fills & rounded dots. Free SVG/PNG export. Level H error correction for maximum scannability.' },
         '/image-compressor/': { title: 'Free Online Image Compressor - Compress JPEG/PNG/WebP', desc: 'Compress images online without losing quality. Support JPEG, PNG & WebP. 100% free, no upload required - works in your browser.' },
@@ -96,8 +95,7 @@
     }
     
         '/pdf-merger/': { title: 'Free PDF Merger - Merge PDF Files Online', desc: 'Combine multiple PDF files into one online free. No upload, 100% private. Merge PDFs securely in your browser.' },
-        '/youtube-thumbnail-downloader/': { title: 'Free YouTube Thumbnail Downloader - HD Quality', desc: 'Download YouTube video thumbnails in HD quality. Extract max resolution thumbnails instantly.' },
-        '/text-to-speech/': { title: 'Free Text to Speech Online - AI Voice Generator', desc: 'Convert text to speech online free. Multi-language support, adjustable pitch and speed.' },
+        '/youtube-thumbnail-downloader/': { title: 'Free YouTube Thumbnail Downloader - HD Quality', desc: 'Download YouTube video thumbnails in HD quality. Extract max resolution thumbnails instantly.' }
     // Listen for route changes (popstate and manual navigation)
     window.addEventListener('popstate', () => updateSEOMeta(window.location.pathname));
     document.addEventListener('DOMContentLoaded', () => {
@@ -201,10 +199,6 @@
                 <a href="/youtube-thumbnail-downloader/" class="nav-item" id="nav-youtube-thumbnail" onclick="routeTo(event, 'youtube-thumbnail')">
                     <i data-lucide="youtube"></i>
                     <span>YT Thumbnail Gen</span>
-                </a>
-                <a href="/text-to-speech/" class="nav-item" id="nav-text-to-speech" onclick="routeTo(event, 'text-to-speech')">
-                    <i data-lucide="volume-2"></i>
-                    <span>Text to Speech</span>
                 </a>
                 <!-- 9 NEW TOOLS NAVIGATION -->
                 <a href="/jwt-decoder/" class="nav-item" id="nav-jwt-decoder" onclick="routeTo(event, 'jwt-decoder')">
@@ -3524,62 +3518,6 @@
                             <button class="btn btn-success w-100 mt-4" id="ytDownloadBtn" style="display:none;" onclick="downloadYtThumbnail()">
                                 <i data-lucide="download"></i> Download HD Thumbnail
                             </button>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="tab-panel" id="panel-text-to-speech">
-                    <div class="tool-header">
-                        <h2>Text to Speech</h2>
-                        <p>Convert text to natural human voice. 100% Offline.</p>
-                    </div>
-                    <div class="tool-layout">
-                        <div class="input-panel glass-card">
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
-                                <label>Enter Text to Speak (Up to 5000 words)</label>
-                                <textarea id="ttsInput" class="input-field" rows="8" placeholder="Hello world, this is OmniTools..." style="width: 100%; resize: vertical;"></textarea>
-                            </div>
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
-                                <label>Voice Language</label>
-                                <select id="ttsVoices" class="input-field" style="width: 100%;">
-                                    <optgroup label="Cloud Voices (High Quality - Requires Internet)">
-                                        <option value="cloud-en-us">English (United States)</option>
-                                        <option value="cloud-en-gb">English (United Kingdom)</option>
-                                        <option value="cloud-en-au">English (Australia)</option>
-                                        <option value="cloud-hi-IN">Hindi (India)</option>
-                                        <option value="cloud-ur-PK">Urdu (Pakistan)</option>
-                                        <option value="cloud-es-ES">Spanish (Spain)</option>
-                                        <option value="cloud-fr-FR">French (France)</option>
-                                        <option value="cloud-de-DE">German (Germany)</option>
-                                        <option value="cloud-ar-SA">Arabic (Saudi Arabia)</option>
-                                    </optgroup>
-                                    <optgroup label="System Voices (Offline)" id="offlineVoicesGroup">
-                                        <!-- Loaded Dynamically -->
-                                    </optgroup>
-                                </select>
-                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 5px;">Note: Cloud voices work 100% of the time but require internet. System voices work offline.</p>
-                            </div>
-                            <div style="display: flex; gap: 15px;">
-                                <div class="form-group" style="flex: 1;">
-                                    <label>Pitch</label>
-                                    <input type="range" id="ttsPitch" min="0" max="2" value="1" step="0.1" style="width: 100%;">
-                                </div>
-                                <div class="form-group" style="flex: 1;">
-                                    <label>Speed</label>
-                                    <input type="range" id="ttsRate" min="0.5" max="2" value="1" step="0.1" style="width: 100%;">
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: 10px; margin-top: 15px;">
-                                <button class="btn btn-primary" style="flex: 1;" onclick="playTTS()">
-                                    <i data-lucide="play"></i> Speak
-                                </button>
-                                <button class="btn btn-outline" style="flex: 1;" onclick="stopTTS()">
-                                    <i data-lucide="square"></i> Stop
-                                </button>
-                                <button class="btn btn-success" style="flex: 1;" id="ttsDownloadBtn" onclick="downloadTTSAudio()">
-                                    <i data-lucide="download"></i> Download MP3
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </section>
