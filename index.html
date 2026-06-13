@@ -16,7 +16,18 @@
     <meta name="description" content="OmniTools is a 100% free, private, and offline-first creator & developer utility hub. Generate custom QR codes, compress images, and more.">
     <link rel="canonical" href="https://www.omnitechtools.com/">
     
-    <!-- OpenGraph / Facebook -->
+        <!-- OpenGraph / Facebook -->
+    <meta property="og:image" content="https://www.omnitechtools.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://www.omnitechtools.com/">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OmniTools - Premium Free Creator & Developer Utilities">
+    <meta name="twitter:description" content="100% private, browser-based utilities.">
+    <meta name="twitter:image" content="https://www.omnitechtools.com/og-image.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="OmniTools - Premium Free Creator & Developer Utilities">
     <meta property="og:description" content="100% private, browser-based utilities: Custom QR codes, offline image compressor, CSS glassmorphism builder, and compound interest charts.">
@@ -33,6 +44,67 @@
     <!-- Third Party CDN Libraries (100% Free & Client-Side) -->
     <!-- Lucide Icons for clean UI vectors (Critical) -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- Dynamic SEO Meta Tags (per route) -->
+    <script>
+    // SEO metadata for each route
+    const seoMeta = {
+        '/': { title: 'OmniTools - Free Online Developer & Creator Tools', desc: '100+ free, private browser-based tools: QR code generator, image compressor, JSON formatter, password generator & more. No signup needed.' },
+        '/qr-code-generator/': { title: 'Free QR Code Generator - Custom Styled QR Creator Online', desc: 'Create custom QR codes with logos, gradient fills & rounded dots. Free SVG/PNG export. Level H error correction for maximum scannability.' },
+        '/image-compressor/': { title: 'Free Online Image Compressor - Compress JPEG/PNG/WebP', desc: 'Compress images online without losing quality. Support JPEG, PNG & WebP. 100% free, no upload required - works in your browser.' },
+        '/css-glassmorphism-generator/': { title: 'CSS Glassmorphism Generator - Glass Effect CSS Online', desc: 'Create stunning glassmorphism CSS effects with our free generator. Adjust blur, opacity, background & export CSS instantly.' },
+        '/json-formatter/': { title: 'Free JSON Formatter & Validator Online', desc: 'Beautify, minify & validate your JSON with syntax highlighting. 100% offline, your data never leaves your browser.' },
+        '/svg-blob-generator/': { title: 'Free SVG Blob & Wave Generator - Organic Shapes', desc: 'Generate organic SVG blob shapes & waves with bezier curves. Custom colors, gradients & free SVG download.' },
+        '/color-palette-generator/': { title: 'Color Palette Generator - WCAG Contrast Checker', desc: 'Generate beautiful color palettes with WCAG AA/AAA accessibility contrast checking. Analogous, monochromatic & complementary schemes.' },
+        '/password-generator/': { title: 'Secure Password Generator - Strong Random Passwords', desc: 'Generate cryptographically secure passwords with entropy calculation. Custom length, symbols & time-to-crack estimates.' },
+        '/base64-encoder-decoder/': { title: 'Free Base64 Encoder/Decoder Online', desc: 'Encode text or files to Base64 & decode back. 100% client-side, no server uploads. Supports Data URI embedding.' },
+        '/meta-tag-generator/': { title: 'SEO Meta Tag Generator - Preview Google & Facebook', desc: 'Generate optimized meta tags with live Google SERP & Facebook preview. Check title length, description & Open Graph tags.' },
+        '/compound-interest-calculator/': { title: 'Compound Interest Calculator - FIRE Calculator Online', desc: 'Calculate investment growth with compound interest. FIRE calculator with 4% safe withdrawal rate visualization.' },
+        '/inflation-calculator/': { title: 'Inflation Calculator - Money Depreciation Calculator', desc: 'Calculate how inflation reduces your purchasing power over time. See your money's future value with historical inflation rates.' },
+        '/jwt-decoder/': { title: 'Free JWT Decoder - Decode JSON Web Tokens Online', desc: 'Decode and inspect JWT tokens offline. View header & payload. 100% client-side, no data sent to servers.' },
+        '/regex-tester/': { title: 'Online Regex Tester - JavaScript Regular Expressions', desc: 'Test JavaScript regular expressions in real-time. Match, replace & split with live results. Free online regex tester.' },
+        '/sql-formatter/': { title: 'SQL Formatter - Beautify SQL Queries Online', desc: 'Format and beautify complex SQL queries for better readability. Supports SELECT, INSERT, UPDATE & more.' },
+        '/markdown-editor/': { title: 'Live Markdown Editor Online - Write & Preview', desc: 'Write markdown with live HTML preview. Support headings, lists, code blocks & tables. Free online markdown editor.' },
+        '/word-counter/': { title: 'Free SEO Word Counter - Count Words & Characters', desc: 'Count words, characters, sentences & reading time. Optimize your content for SEO with our free word counter.' },
+        '/uuid-generator/': { title: 'Free UUID v4 Generator - Random Unique IDs', desc: 'Generate cryptographically random UUID v4 identifiers. Free, instant, no signup required.' },
+        '/url-encoder/': { title: 'Free URL Encoder/Decoder Online', desc: 'Encode & decode URLs for safe web transmission. Handle special characters with percent-encoding.' },
+        '/lorem-ipsum/': { title: 'Lorem Ipsum Generator - Free Dummy Text Generator', desc: 'Generate lorem ipsum dummy text for your designs. Custom paragraphs, words & HTML output.' },
+        '/css-box-shadow/': { title: 'CSS Box Shadow Generator - Layered Shadows', desc: 'Create beautiful layered CSS box shadows with real-time preview. Multiple layers, custom colors & instant CSS export.' }
+    };
+    
+    function updateSEOMeta(path) {
+        const meta = seoMeta[path] || seoMeta['/'];
+        if (!meta) return;
+        document.title = meta.title;
+        let descEl = document.querySelector('meta[name="description"]');
+        if (descEl) descEl.setAttribute('content', meta.desc);
+        let ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', meta.title);
+        let ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', meta.desc);
+        let ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute('content', 'https://www.omnitechtools.com' + path);
+        let twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) twTitle.setAttribute('content', meta.title);
+        let twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) twDesc.setAttribute('content', meta.desc);
+    }
+    
+    // Listen for route changes (popstate and manual navigation)
+    window.addEventListener('popstate', () => updateSEOMeta(window.location.pathname));
+    document.addEventListener('DOMContentLoaded', () => {
+        updateSEOMeta(window.location.pathname);
+        // Also observe for SPA route changes
+        const observer = new MutationObserver(() => {
+            const currentPath = window.location.pathname;
+            if (currentPath !== window._lastSeoPath) {
+                window._lastSeoPath = currentPath;
+                updateSEOMeta(currentPath);
+            }
+        });
+        observer.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
+    });
+    </script>
+
 </head>
 <body>
 
