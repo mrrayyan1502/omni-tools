@@ -406,7 +406,7 @@ function switchTab(tabId, pushToHistory = true) {
         } else if (tabId === 'image-resizer') {
         schemaJson.push({ "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Image Resizer", "applicationCategory": "MultimediaApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } });
     } else if (tabId === 'pdf-merge') {
-        loadScript("https://unpkg.com/pdf-lib/dist/pdf-lib.min.js", () => {
+        loadScript("https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js", () => {
             console.log("pdf-lib loaded dynamically.");
         });
         schemaJson.push({ "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "PDF Merge", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } });
@@ -2932,7 +2932,11 @@ function renderPdfList(e) {
 }
 
 async function mergePdfs() {
-    if (!window.PDFLib) return alert("PDF library is still loading. Please try again in a second.");
+    if (!window.PDFLib) {
+        alert("Loading PDF engine, please wait a second and try again...");
+        loadScript("https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js");
+        return;
+    }
     const { PDFDocument } = window.PDFLib;
     document.getElementById('btnMergePdfs').innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Merging...';
     if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
@@ -2957,8 +2961,8 @@ async function mergePdfs() {
         };
         document.getElementById('pdfMergeResult').style.display = 'block';
     } catch (e) {
-        alert("Error merging PDFs. Make sure they are valid and not password protected.");
-        console.error(e);
+        alert("Error: " + e.message + "\\nMake sure the PDFs are not password protected or corrupted.");
+        console.error("PDF Merge Error:", e);
     }
     document.getElementById('btnMergePdfs').innerHTML = '<i data-lucide="file-plus"></i> Merge PDFs';
     if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
