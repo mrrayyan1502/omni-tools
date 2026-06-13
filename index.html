@@ -3540,8 +3540,23 @@
                             </div>
                             <div class="form-group" style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
                                 <label>Voice Language</label>
-                                <select id="ttsVoices" class="input-field" style="width: 100%;"></select>
-                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 5px;">Note: Some voices require an active internet connection to work. If a voice doesn't play, please select another one from the list.</p>
+                                <select id="ttsVoices" class="input-field" style="width: 100%;">
+                                    <optgroup label="Cloud Voices (High Quality - Requires Internet)">
+                                        <option value="cloud-en-us">English (United States)</option>
+                                        <option value="cloud-en-gb">English (United Kingdom)</option>
+                                        <option value="cloud-en-au">English (Australia)</option>
+                                        <option value="cloud-hi-IN">Hindi (India)</option>
+                                        <option value="cloud-ur-PK">Urdu (Pakistan)</option>
+                                        <option value="cloud-es-ES">Spanish (Spain)</option>
+                                        <option value="cloud-fr-FR">French (France)</option>
+                                        <option value="cloud-de-DE">German (Germany)</option>
+                                        <option value="cloud-ar-SA">Arabic (Saudi Arabia)</option>
+                                    </optgroup>
+                                    <optgroup label="System Voices (Offline)" id="offlineVoicesGroup">
+                                        <!-- Loaded Dynamically -->
+                                    </optgroup>
+                                </select>
+                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 5px;">Note: Cloud voices work 100% of the time but require internet. System voices work offline.</p>
                             </div>
                             <div style="display: flex; gap: 15px;">
                                 <div class="form-group" style="flex: 1;">

@@ -3133,47 +3133,109 @@ function populateVoices() {
     ttsVoices = localVoices.sort((a, b) => a.lang.localeCompare(b.lang));
     
     const select = document.getElementById('ttsVoices');
-    if (!select) return;
+    const offlineGroup = document.getElementById('offlineVoicesGroup');
+    if (!select || !offlineGroup) return;
     
-    // Save current selection (if any) before wiping the dropdown
-    const previousSelectionName = select.options[select.selectedIndex]?.text;
+    // Save current selection (if any)
+    const previousSelectionValue = select.value;
     
-    select.innerHTML = '';
+    offlineGroup.innerHTML = '';
     ttsVoices.forEach((v, i) => {
-        select.add(new Option(`${v.lang} - ${v.name}`, i));
+        const option = new Option(`${v.lang} - ${v.name}`, i);
+        offlineGroup.appendChild(option);
     });
     
-    // Restore user's previous selection so it doesn't jump back to English
-    if (previousSelectionName) {
-        for (let i = 0; i < select.options.length; i++) {
-            if (select.options[i].text === previousSelectionName) {
-                select.selectedIndex = i;
-                break;
-            }
-        }
+    // Restore user's previous selection
+    if (previousSelectionValue) {
+        select.value = previousSelectionValue;
     }
 }
 if (window.speechSynthesis) {
     window.speechSynthesis.onvoiceschanged = populateVoices;
 }
 
-function playTTS() {
-    if (!window.speechSynthesis) return alert("Your browser does not support Text to Speech.");
-    window.speechSynthesis.cancel();
+let currentCloudAudio = null;
+
+async function playTTS() {
     const text = document.getElementById('ttsInput').value;
     if (!text.trim()) return;
-    const utterance = new SpeechSynthesisUtterance(text);
-    const selectedVoice = document.getElementById('ttsVoices').value;
-    if (ttsVoices[selectedVoice]) {
-        utterance.voice = ttsVoices[selectedVoice];
+    
+    const selectedVoiceValue = document.getElementById('ttsVoices').value;
+    
+    // Stop any currently playing audio
+    stopTTS();
+
+    if (selectedVoiceValue.startsWith('cloud-')) {
+        // Play using Cloud API
+        const lang = selectedVoiceValue.replace('cloud-', '');
+        
+        // Chunking
+        const chunks = text.match(/.{1,200}(?:\s|$)/g) || [text];
+        let audioBuffers = [];
+        
+        // Show loading indicator
+        const btn = document.getElementById('ttsDownloadBtn').previousElementSibling;
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Loading...';
+        if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+        
+        try {
+            for (let i = 0; i < chunks.length; i++) {
+                const chunk = encodeURIComponent(chunks[i]);
+                const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${chunk}`;
+                const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+                
+                const res = await fetch(proxyUrl);
+                if (!res.ok) throw new Error("API Limit");
+                
+                audioBuffers.push(await res.arrayBuffer());
+            }
+            
+            let totalLength = audioBuffers.reduce((acc, val) => acc + val.byteLength, 0);
+            let result = new Uint8Array(totalLength);
+            let offset = 0;
+            for (let buffer of audioBuffers) {
+                result.set(new Uint8Array(buffer), offset);
+                offset += buffer.byteLength;
+            }
+            
+            const blob = new Blob([result], { type: 'audio/mpeg' });
+            const url = URL.createObjectURL(blob);
+            currentCloudAudio = new Audio(url);
+            
+            // Apply speed/pitch if possible (Audio only supports playbackRate)
+            const rate = parseFloat(document.getElementById('ttsRate').value);
+            currentCloudAudio.playbackRate = rate;
+            
+            currentCloudAudio.play();
+            
+        } catch (e) {
+            alert("Error loading cloud voice. Try an offline voice.");
+            console.error(e);
+        }
+        
+        btn.innerHTML = originalHtml;
+        if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+        
+    } else {
+        // Play using Offline System Voices
+        if (!window.speechSynthesis) return alert("Your browser does not support offline Text to Speech.");
+        const utterance = new SpeechSynthesisUtterance(text);
+        if (ttsVoices[selectedVoiceValue]) {
+            utterance.voice = ttsVoices[selectedVoiceValue];
+        }
+        utterance.pitch = parseFloat(document.getElementById('ttsPitch').value);
+        utterance.rate = parseFloat(document.getElementById('ttsRate').value);
+        window.speechSynthesis.speak(utterance);
     }
-    utterance.pitch = parseFloat(document.getElementById('ttsPitch').value);
-    utterance.rate = parseFloat(document.getElementById('ttsRate').value);
-    window.speechSynthesis.speak(utterance);
 }
 
 function stopTTS() {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (currentCloudAudio) {
+        currentCloudAudio.pause();
+        currentCloudAudio = null;
+    }
 }
 
 async function downloadTTSAudio() {
@@ -3193,11 +3255,13 @@ async function downloadTTSAudio() {
         const chunks = text.match(/.{1,200}(?:\s|$)/g) || [text];
         let audioBuffers = [];
         
-        // Find language from selected voice if possible, fallback to 'en'
+        // Find language from selected voice
         let lang = 'en';
-        const selectedVoiceIdx = document.getElementById('ttsVoices').value;
-        if (ttsVoices[selectedVoiceIdx]) {
-            lang = ttsVoices[selectedVoiceIdx].lang.split('-')[0] || 'en';
+        const selectedVoiceValue = document.getElementById('ttsVoices').value;
+        if (selectedVoiceValue.startsWith('cloud-')) {
+            lang = selectedVoiceValue.replace('cloud-', '');
+        } else if (ttsVoices[selectedVoiceValue]) {
+            lang = ttsVoices[selectedVoiceValue].lang.split('-')[0] || 'en';
         }
 
         for (let i = 0; i < chunks.length; i++) {
