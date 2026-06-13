@@ -71,9 +71,13 @@ const tabToRouteMap = {
 };
 
 function startApp() {
-    // Initialize Lucide Vector Icons safely
+    // Initialize Lucide Vector Icons safely, DEFERRED for Mobile FCP Performance
     if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
+        setTimeout(() => {
+            requestAnimationFrame(() => {
+                lucide.createIcons();
+            });
+        }, 100);
     }
     
     // Core Navigation & Routing Handling
