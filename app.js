@@ -2843,10 +2843,18 @@ function loadResizerImage(e) {
         resizerImgObj.onload = () => {
             document.getElementById('resizerWidth').value = resizerImgObj.width;
             document.getElementById('resizerHeight').value = resizerImgObj.height;
-            document.getElementById('resizerPreviewArea').innerHTML = '';
-            resizerImgObj.style.maxWidth = '100%';
-            resizerImgObj.style.borderRadius = '4px';
-            document.getElementById('resizerPreviewArea').appendChild(resizerImgObj);
+            
+            // Hide the placeholder text safely
+            const p = document.getElementById('resizerPreviewArea').querySelector('p');
+            if (p) p.style.display = 'none';
+            
+            // Show original image on canvas as preview
+            const canvas = document.getElementById('resizerCanvas');
+            canvas.width = resizerImgObj.width;
+            canvas.height = resizerImgObj.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(resizerImgObj, 0, 0);
+            canvas.style.display = 'block';
         }
         resizerImgObj.src = event.target.result;
     };
@@ -2882,9 +2890,6 @@ function resizeImage() {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(resizerImgObj, 0, 0, w, h);
     
-    document.getElementById('resizerPreviewArea').innerHTML = '';
-    canvas.style.display = 'block';
-    document.getElementById('resizerPreviewArea').appendChild(canvas);
     document.getElementById('resizerDownloadBtn').style.display = 'block';
 }
 
