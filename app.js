@@ -537,6 +537,9 @@ function switchTab(tabId, pushToHistory = true) {
         try {
             const targetRoute = tabToRouteMap[tabId] || '/';
             history.pushState({ tabId: tabId }, prettyTitle, targetRoute);
+            if (typeof updateSEOMeta === 'function') {
+                updateSEOMeta(targetRoute);
+            }
         } catch (historyErr) {
             console.warn("HTML5 History pushState is blocked or unsupported in this context:", historyErr);
         }

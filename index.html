@@ -93,15 +93,6 @@
     window.addEventListener('popstate', () => updateSEOMeta(window.location.pathname));
     document.addEventListener('DOMContentLoaded', () => {
         updateSEOMeta(window.location.pathname);
-        // Also observe for SPA route changes
-        const observer = new MutationObserver(() => {
-            const currentPath = window.location.pathname;
-            if (currentPath !== window._lastSeoPath) {
-                window._lastSeoPath = currentPath;
-                updateSEOMeta(currentPath);
-            }
-        });
-        observer.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
     });
     </script>
 
