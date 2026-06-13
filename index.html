@@ -48,6 +48,11 @@
     <script>
     // SEO metadata for each route
     const seoMeta = {
+        '/image-resizer/': { title: 'Free Image Resizer Online - Resize Photos Offline', desc: 'Resize images instantly in your browser. Custom width and height. 100% offline, private and free.' },
+        '/pdf-merge/': { title: 'Free PDF Merger Online - Combine PDFs Offline', desc: 'Merge multiple PDF files into a single document securely. Works offline in your browser, no upload required.' },
+        '/unit-converter/': { title: 'Free Online Unit Converter - Length, Weight, Temp', desc: 'Convert units instantly: length, weight, temperature, and digital storage. Fast, free and offline.' },
+        '/youtube-thumbnail-downloader/': { title: 'YouTube Thumbnail Downloader - Free HD Image', desc: 'Download high-quality (HD) YouTube video thumbnails instantly. Just paste the video URL.' },
+        '/text-to-speech/': { title: 'Free Text to Speech Converter - Human Voices', desc: 'Convert text to natural speech. Fast offline TTS generator with custom pitch and speed controls.' },
         '/': { title: 'OmniTools - Free Online Developer & Creator Tools', desc: '100+ free, private browser-based tools: QR code generator, image compressor, JSON formatter, password generator & more. No signup needed.' },
         '/qr-code-generator/': { title: 'Free QR Code Generator - Custom Styled QR Creator Online', desc: 'Create custom QR codes with logos, gradient fills & rounded dots. Free SVG/PNG export. Level H error correction for maximum scannability.' },
         '/image-compressor/': { title: 'Free Online Image Compressor - Compress JPEG/PNG/WebP', desc: 'Compress images online without losing quality. Support JPEG, PNG & WebP. 100% free, no upload required - works in your browser.' },
@@ -175,6 +180,28 @@
                 </a>
                 
                 
+                
+                <!-- 5 HIGH-TRAFFIC TOOLS NAVIGATION -->
+                <a href="/image-resizer/" class="nav-item" id="nav-image-resizer" onclick="routeTo(event, 'image-resizer')">
+                    <i data-lucide="crop"></i>
+                    <span>Image Resizer</span>
+                </a>
+                <a href="/pdf-merge/" class="nav-item" id="nav-pdf-merge" onclick="routeTo(event, 'pdf-merge')">
+                    <i data-lucide="file-plus"></i>
+                    <span>PDF Merge</span>
+                </a>
+                <a href="/unit-converter/" class="nav-item" id="nav-unit-converter" onclick="routeTo(event, 'unit-converter')">
+                    <i data-lucide="arrow-right-left"></i>
+                    <span>Unit Converter</span>
+                </a>
+                <a href="/youtube-thumbnail-downloader/" class="nav-item" id="nav-youtube-thumbnail" onclick="routeTo(event, 'youtube-thumbnail')">
+                    <i data-lucide="youtube"></i>
+                    <span>YT Thumbnail Gen</span>
+                </a>
+                <a href="/text-to-speech/" class="nav-item" id="nav-text-to-speech" onclick="routeTo(event, 'text-to-speech')">
+                    <i data-lucide="volume-2"></i>
+                    <span>Text to Speech</span>
+                </a>
                 <!-- 9 NEW TOOLS NAVIGATION -->
                 <a href="/jwt-decoder/" class="nav-item" id="nav-jwt-decoder" onclick="routeTo(event, 'jwt-decoder')">
                     <i data-lucide="unlock"></i>
