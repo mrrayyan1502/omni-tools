@@ -3182,7 +3182,7 @@ async function playTTS() {
         
         currentCloudAudioChunks = chunks.map(chunk => {
             const encoded = encodeURIComponent(chunk);
-            return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${encoded}`;
+            return `/api/tts?lang=${lang}&text=${encoded}`;
         });
         currentChunkIndex = 0;
         
@@ -3294,32 +3294,21 @@ async function downloadTTSAudio() {
             lang = ttsVoices[selectedVoiceValue].lang.split('-')[0] || 'en';
         }
 
-        const proxies = [
-            url => `https://api.codetabs.com/v1/proxy?quest=${url}`,
-            url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-            url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`
-        ];
-
         for (let i = 0; i < chunks.length; i++) {
             const chunk = encodeURIComponent(chunks[i]);
-            const targetUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${chunk}`;
+            const targetUrl = `/api/tts?lang=${lang}&text=${chunk}`;
             
-            let success = false;
-            for (let proxy of proxies) {
-                try {
-                    const res = await fetchWithTimeout(proxy(targetUrl), 8000);
-                    if (!res.ok) throw new Error("API Limit");
-                    audioBuffers.push(await res.arrayBuffer());
-                    success = true;
-                    break;
-                } catch (e) {
-                    console.warn("Proxy failed, trying next fallback...");
-                }
+            try {
+                const res = await fetchWithTimeout(targetUrl, 15000);
+                if (!res.ok) throw new Error("API Limit");
+                audioBuffers.push(await res.arrayBuffer());
+            } catch (e) {
+                console.error("Internal API failed:", e);
+                throw new Error("Failed to fetch audio chunk.");
             }
-            if (!success) throw new Error("All proxy methods failed. Network block.");
             
             if (i < chunks.length - 1) {
-                await new Promise(r => setTimeout(r, 300));
+                await new Promise(r => setTimeout(r, 200));
             }
         }
         
