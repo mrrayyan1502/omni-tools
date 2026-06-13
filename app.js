@@ -3155,6 +3155,8 @@ if (window.speechSynthesis) {
 }
 
 let currentCloudAudio = null;
+let currentCloudAudioChunks = [];
+let currentChunkIndex = 0;
 
 async function playTTS() {
     const text = document.getElementById('ttsInput').value;
@@ -3166,56 +3168,56 @@ async function playTTS() {
     stopTTS();
 
     if (selectedVoiceValue.startsWith('cloud-')) {
-        // Play using Cloud API
+        // Play using Cloud API directly via Audio object (Bypasses CORS entirely!)
         const lang = selectedVoiceValue.replace('cloud-', '');
         
-        // Chunking
+        // Chunking by roughly 200 characters
         const chunks = text.match(/.{1,200}(?:\s|$)/g) || [text];
-        let audioBuffers = [];
         
-        // Show loading indicator
-        const btn = document.getElementById('ttsDownloadBtn').previousElementSibling;
-        const originalHtml = btn.innerHTML;
-        btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Loading...';
-        if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
-        
-        try {
-            for (let i = 0; i < chunks.length; i++) {
-                const chunk = encodeURIComponent(chunks[i]);
-                const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${chunk}`;
-                const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
-                
-                const res = await fetch(proxyUrl);
-                if (!res.ok) throw new Error("API Limit");
-                
-                audioBuffers.push(await res.arrayBuffer());
-            }
-            
-            let totalLength = audioBuffers.reduce((acc, val) => acc + val.byteLength, 0);
-            let result = new Uint8Array(totalLength);
-            let offset = 0;
-            for (let buffer of audioBuffers) {
-                result.set(new Uint8Array(buffer), offset);
-                offset += buffer.byteLength;
-            }
-            
-            const blob = new Blob([result], { type: 'audio/mpeg' });
-            const url = URL.createObjectURL(blob);
-            currentCloudAudio = new Audio(url);
-            
-            // Apply speed/pitch if possible (Audio only supports playbackRate)
-            const rate = parseFloat(document.getElementById('ttsRate').value);
-            currentCloudAudio.playbackRate = rate;
-            
-            currentCloudAudio.play();
-            
-        } catch (e) {
-            alert("Error loading cloud voice. Try an offline voice.");
-            console.error(e);
+        const btn = document.getElementById('ttsDownloadBtn').previousElementSibling.previousElementSibling;
+        if (btn) {
+            btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Loading...';
+            if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
         }
         
-        btn.innerHTML = originalHtml;
-        if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+        currentCloudAudioChunks = chunks.map(chunk => {
+            const encoded = encodeURIComponent(chunk);
+            return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${encoded}`;
+        });
+        currentChunkIndex = 0;
+        
+        function playNextChunk() {
+            if (currentChunkIndex < currentCloudAudioChunks.length) {
+                const url = currentCloudAudioChunks[currentChunkIndex];
+                currentCloudAudio = new Audio(url);
+                const rate = parseFloat(document.getElementById('ttsRate').value);
+                currentCloudAudio.playbackRate = rate;
+                
+                if (btn && currentChunkIndex === 0) {
+                    btn.innerHTML = '<i data-lucide="play"></i> Playing...';
+                    if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+                }
+                
+                currentCloudAudio.onended = () => {
+                    currentChunkIndex++;
+                    playNextChunk();
+                };
+                currentCloudAudio.onerror = (e) => {
+                    console.error("Audio chunk failed:", e);
+                    currentChunkIndex++;
+                    playNextChunk();
+                };
+                currentCloudAudio.play().catch(e => {
+                    console.error("Playback blocked:", e);
+                    alert("Playback was blocked. Please make sure your sound is on.");
+                    stopTTS();
+                });
+            } else {
+                stopTTS(); // reset button UI
+            }
+        }
+        
+        playNextChunk();
         
     } else {
         // Play using Offline System Voices
@@ -3236,26 +3238,50 @@ function stopTTS() {
         currentCloudAudio.pause();
         currentCloudAudio = null;
     }
+    currentCloudAudioChunks = [];
+    currentChunkIndex = 0;
+    
+    // Reset Play button UI
+    const downloadBtn = document.getElementById('ttsDownloadBtn');
+    if (downloadBtn) {
+        const playBtn = downloadBtn.previousElementSibling.previousElementSibling;
+        if (playBtn) {
+            playBtn.innerHTML = '<i data-lucide="play"></i> Speak';
+            if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+        }
+    }
 }
+
+// Helper fetch with timeout
+const fetchWithTimeout = (url, ms = 10000) => {
+    return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('Timeout')), ms);
+        fetch(url).then(res => {
+            clearTimeout(timer);
+            resolve(res);
+        }).catch(err => {
+            clearTimeout(timer);
+            reject(err);
+        });
+    });
+};
 
 async function downloadTTSAudio() {
     const text = document.getElementById('ttsInput').value.trim();
     if (!text) return alert("Please enter some text first.");
     
-    // Safety check for massive texts
     if (text.length > 30000) return alert("Text is too long for MP3 generation. Please limit to around 5000 words.");
 
     const btn = document.getElementById('ttsDownloadBtn');
+    const originalHtml = btn.innerHTML;
     btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Generating...';
     if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
     btn.disabled = true;
 
     try {
-        // Chunk by roughly 200 characters to prevent API limits
         const chunks = text.match(/.{1,200}(?:\s|$)/g) || [text];
         let audioBuffers = [];
         
-        // Find language from selected voice
         let lang = 'en';
         const selectedVoiceValue = document.getElementById('ttsVoices').value;
         if (selectedVoiceValue.startsWith('cloud-')) {
@@ -3264,24 +3290,35 @@ async function downloadTTSAudio() {
             lang = ttsVoices[selectedVoiceValue].lang.split('-')[0] || 'en';
         }
 
+        const proxies = [
+            url => `https://api.codetabs.com/v1/proxy?quest=${url}`,
+            url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+            url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`
+        ];
+
         for (let i = 0; i < chunks.length; i++) {
             const chunk = encodeURIComponent(chunks[i]);
-            const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${chunk}`;
-            const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+            const targetUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${chunk}`;
             
-            const res = await fetch(proxyUrl);
-            if (!res.ok) throw new Error("API Limit Reached or Network Error");
+            let success = false;
+            for (let proxy of proxies) {
+                try {
+                    const res = await fetchWithTimeout(proxy(targetUrl), 8000);
+                    if (!res.ok) throw new Error("API Limit");
+                    audioBuffers.push(await res.arrayBuffer());
+                    success = true;
+                    break;
+                } catch (e) {
+                    console.warn("Proxy failed, trying next fallback...");
+                }
+            }
+            if (!success) throw new Error("All proxy methods failed. Network block.");
             
-            const buffer = await res.arrayBuffer();
-            audioBuffers.push(buffer);
-            
-            // Wait 300ms between chunks to prevent getting blocked
             if (i < chunks.length - 1) {
                 await new Promise(r => setTimeout(r, 300));
             }
         }
         
-        // Merge array buffers into one MP3
         let totalLength = audioBuffers.reduce((acc, val) => acc + val.byteLength, 0);
         let result = new Uint8Array(totalLength);
         let offset = 0;
@@ -3295,14 +3332,17 @@ async function downloadTTSAudio() {
         const a = document.createElement('a');
         a.href = downloadUrl;
         a.download = 'tts-audio.mp3';
+        document.body.appendChild(a);
         a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
         
     } catch (e) {
-        alert("Could not generate MP3. The text might be too long or the server is busy.");
+        alert("Could not generate MP3. The server might be busy or your internet is blocking proxies.");
         console.error("TTS Download Error:", e);
     }
     
-    btn.innerHTML = '<i data-lucide="download"></i> Download MP3';
+    btn.innerHTML = originalHtml;
     btn.disabled = false;
     if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
 }
