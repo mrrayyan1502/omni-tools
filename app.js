@@ -3072,9 +3072,12 @@ function downloadYtThumbnail() {
     document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Downloading...';
     if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
 
+    // Remove protocol for wsrv.nl
+    const cleanUrl = url.replace(/^https?:\/\//, '');
+
     const proxies = [
+        'https://wsrv.nl/?url=' + encodeURIComponent(cleanUrl),
         'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url),
-        'https://corsproxy.io/?' + encodeURIComponent(url),
         'https://api.allorigins.win/raw?url=' + encodeURIComponent(url)
     ];
 
@@ -3089,14 +3092,22 @@ function downloadYtThumbnail() {
             const res = await fetch(proxies[index]);
             if (!res.ok) throw new Error("Proxy response not ok");
             const blob = await res.blob();
+            
+            // Validate blob is an image
+            if (!blob.type.startsWith('image/')) throw new Error("Not an image");
+
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = 'youtube-thumbnail-hd.jpg';
+            document.body.appendChild(a);
             a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
             
             document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="download"></i> Download HD Thumbnail';
             if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
         } catch (e) {
+            console.warn("Proxy failed:", proxies[index], e);
             tryFetch(index + 1);
         }
     }
