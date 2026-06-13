@@ -3035,16 +3035,40 @@ function extractYtThumbnail() {
 function downloadYtThumbnail() {
     const url = document.getElementById('ytDownloadBtn').dataset.url;
     if (!url) return;
-    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
-    fetch(proxyUrl)
-        .then(res => res.blob())
-        .then(blob => {
+    
+    document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Downloading...';
+    if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+
+    const proxies = [
+        'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url),
+        'https://corsproxy.io/?' + encodeURIComponent(url),
+        'https://api.allorigins.win/raw?url=' + encodeURIComponent(url)
+    ];
+
+    async function tryFetch(index) {
+        if (index >= proxies.length) {
+            document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="download"></i> Download HD Thumbnail';
+            if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+            alert("Could not download automatically. Please Right-Click the image above and select 'Save Image As'.");
+            return;
+        }
+        try {
+            const res = await fetch(proxies[index]);
+            if (!res.ok) throw new Error("Proxy response not ok");
+            const blob = await res.blob();
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = 'youtube-thumbnail-hd.jpg';
             a.click();
-        })
-        .catch(err => alert("Could not download automatically. Please Right-Click the image and select 'Save Image As'."));
+            
+            document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="download"></i> Download HD Thumbnail';
+            if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+        } catch (e) {
+            tryFetch(index + 1);
+        }
+    }
+    
+    tryFetch(0);
 }
 
 // 5. Text to Speech
