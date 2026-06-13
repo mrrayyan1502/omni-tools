@@ -2914,20 +2914,49 @@ function downloadResizedImage() {
 // 2. PDF Merge
 let pdfFilesToMerge = [];
 function renderPdfList(e) {
-    pdfFilesToMerge = Array.from(e.target.files);
+    const newFiles = Array.from(e.target.files);
+    pdfFilesToMerge = pdfFilesToMerge.concat(newFiles);
+    e.target.value = ''; // Reset input to allow adding the same file again if needed
+    updatePdfListView();
+}
+
+function removePdfFile(index) {
+    pdfFilesToMerge.splice(index, 1);
+    updatePdfListView();
+}
+
+function updatePdfListView() {
     const list = document.getElementById('pdfFileList');
     list.innerHTML = '';
     if (pdfFilesToMerge.length < 2) {
-        list.innerHTML = '<li class="text-muted" style="list-style: none; padding-left: 0;">Please select at least 2 PDF files.</li>';
+        list.innerHTML = '<li class="text-muted" style="list-style: none; padding-left: 0;">Please select at least 2 PDF files. (' + pdfFilesToMerge.length + ' selected)</li>';
         document.getElementById('btnMergePdfs').disabled = true;
-        return;
+    } else {
+        document.getElementById('btnMergePdfs').disabled = false;
     }
+    
     pdfFilesToMerge.forEach((f, i) => {
         let li = document.createElement('li');
         li.textContent = f.name;
+        
+        let removeBtn = document.createElement('button');
+        removeBtn.innerHTML = '&times;';
+        removeBtn.style.marginLeft = '15px';
+        removeBtn.style.background = 'rgba(255, 68, 68, 0.1)';
+        removeBtn.style.border = 'none';
+        removeBtn.style.color = '#ff4444';
+        removeBtn.style.cursor = 'pointer';
+        removeBtn.style.borderRadius = '50%';
+        removeBtn.style.width = '24px';
+        removeBtn.style.height = '24px';
+        removeBtn.style.display = 'inline-flex';
+        removeBtn.style.alignItems = 'center';
+        removeBtn.style.justifyContent = 'center';
+        removeBtn.onclick = () => removePdfFile(i);
+        
+        li.appendChild(removeBtn);
         list.appendChild(li);
     });
-    document.getElementById('btnMergePdfs').disabled = false;
     document.getElementById('pdfMergeResult').style.display = 'none';
 }
 
@@ -3106,8 +3135,71 @@ function playTTS() {
     window.speechSynthesis.speak(utterance);
 }
 
-function stopTTS() {
-    if (window.speechSynthesis) window.speechSynthesis.cancel();
+async function downloadTTSAudio() {
+    const text = document.getElementById('ttsInput').value.trim();
+    if (!text) return alert("Please enter some text first.");
+    
+    // Safety check for massive texts
+    if (text.length > 30000) return alert("Text is too long for MP3 generation. Please limit to around 5000 words.");
+
+    const btn = document.getElementById('ttsDownloadBtn');
+    btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Generating...';
+    if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+    btn.disabled = true;
+
+    try {
+        // Chunk by roughly 200 characters to prevent API limits
+        const chunks = text.match(/.{1,200}(?:\s|$)/g) || [text];
+        let audioBuffers = [];
+        
+        // Find language from selected voice if possible, fallback to 'en'
+        let lang = 'en';
+        const selectedVoiceIdx = document.getElementById('ttsVoices').value;
+        if (ttsVoices[selectedVoiceIdx]) {
+            lang = ttsVoices[selectedVoiceIdx].lang.split('-')[0] || 'en';
+        }
+
+        for (let i = 0; i < chunks.length; i++) {
+            const chunk = encodeURIComponent(chunks[i]);
+            const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&q=${chunk}`;
+            const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+            
+            const res = await fetch(proxyUrl);
+            if (!res.ok) throw new Error("API Limit Reached or Network Error");
+            
+            const buffer = await res.arrayBuffer();
+            audioBuffers.push(buffer);
+            
+            // Wait 300ms between chunks to prevent getting blocked
+            if (i < chunks.length - 1) {
+                await new Promise(r => setTimeout(r, 300));
+            }
+        }
+        
+        // Merge array buffers into one MP3
+        let totalLength = audioBuffers.reduce((acc, val) => acc + val.byteLength, 0);
+        let result = new Uint8Array(totalLength);
+        let offset = 0;
+        for (let buffer of audioBuffers) {
+            result.set(new Uint8Array(buffer), offset);
+            offset += buffer.byteLength;
+        }
+        
+        const blob = new Blob([result], { type: 'audio/mpeg' });
+        const downloadUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = 'tts-audio.mp3';
+        a.click();
+        
+    } catch (e) {
+        alert("Could not generate MP3. The text might be too long or the server is busy.");
+        console.error("TTS Download Error:", e);
+    }
+    
+    btn.innerHTML = '<i data-lucide="download"></i> Download MP3';
+    btn.disabled = false;
+    if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
 }
 
 // Init unit converter and voices

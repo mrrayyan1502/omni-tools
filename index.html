@@ -3443,11 +3443,11 @@
                     </div>
                     <div class="tool-layout">
                         <div class="input-panel glass-card">
-                            <div class="form-group">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
                                 <label>Select PDF Files (Select Multiple)</label>
-                                <input type="file" id="pdfMergeFiles" accept="application/pdf" multiple class="input-field" onchange="renderPdfList(event)">
+                                <input type="file" id="pdfMergeFiles" accept="application/pdf" multiple class="input-field" style="height: auto; padding: 10px;" onchange="renderPdfList(event)">
                             </div>
-                            <p class="text-muted" style="font-size: 0.85rem; margin-top: -10px; margin-bottom: 15px;">Files are processed locally in your browser. Nothing is uploaded.</p>
+                            <p class="text-muted" style="font-size: 0.85rem; margin-top: 5px; margin-bottom: 15px;">Files are processed locally in your browser. Nothing is uploaded.</p>
                             <button class="btn btn-primary w-100" id="btnMergePdfs" onclick="mergePdfs()" disabled>
                                 <i data-lucide="file-plus"></i> Merge PDFs
                             </button>
@@ -3535,12 +3535,13 @@
                     <div class="tool-layout">
                         <div class="input-panel glass-card">
                             <div class="form-group">
-                                <label>Enter Text to Speak</label>
-                                <textarea id="ttsInput" class="input-field" rows="6" placeholder="Hello world, this is OmniTools..."></textarea>
+                                <label>Enter Text to Speak (Up to 5000 words)</label>
+                                <textarea id="ttsInput" class="input-field" rows="8" placeholder="Hello world, this is OmniTools..."></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Voice</label>
                                 <select id="ttsVoices" class="input-field"></select>
+                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 5px;">Note: Some voices require an active internet connection to work.</p>
                             </div>
                             <div style="display: flex; gap: 15px;">
                                 <div class="form-group" style="flex: 1;">
@@ -3552,12 +3553,14 @@
                                     <input type="range" id="ttsRate" min="0.5" max="2" value="1" step="0.1" style="width: 100%;">
                                 </div>
                             </div>
-                            <button class="btn btn-primary w-100 mt-3" onclick="playTTS()">
-                                <i data-lucide="play"></i> Speak Now
-                            </button>
-                            <button class="btn btn-outline w-100 mt-2" onclick="stopTTS()">
-                                <i data-lucide="square"></i> Stop
-                            </button>
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button class="btn btn-primary w-100" onclick="playTTS()">
+                                    <i data-lucide="play"></i> Speak
+                                </button>
+                                <button class="btn btn-success w-100" id="ttsDownloadBtn" onclick="downloadTTSAudio()">
+                                    <i data-lucide="download"></i> Download MP3
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>
