@@ -3209,7 +3209,11 @@ async function playTTS() {
                 };
                 currentCloudAudio.play().catch(e => {
                     console.error("Playback blocked:", e);
-                    alert("Playback was blocked. Please make sure your sound is on.");
+                    if (e.name === 'NotAllowedError') {
+                        alert("Browser blocked auto-playback. Please click Speak again.");
+                    } else {
+                        alert("Google TTS blocked the audio stream. Please use the Download MP3 button instead.");
+                    }
                     stopTTS();
                 });
             } else {
