@@ -3123,10 +3123,14 @@ function populateVoices() {
     if (voices.length === 0) return;
     
     // Prevent dropdown from constantly resetting if voices haven't changed
-    if (ttsVoices.length === voices.length) return;
+    if (ttsVoices.length > 0 && ttsVoices.length === voices.filter(v => v.localService).length) return;
+    
+    // Filter only local voices to ensure they work reliably without internet
+    let localVoices = voices.filter(v => v.localService);
+    if (localVoices.length === 0) localVoices = voices; // fallback if no local voices
     
     // Sort voices by language so they are grouped together cleanly
-    ttsVoices = voices.slice().sort((a, b) => a.lang.localeCompare(b.lang));
+    ttsVoices = localVoices.sort((a, b) => a.lang.localeCompare(b.lang));
     
     const select = document.getElementById('ttsVoices');
     if (!select) return;
@@ -3166,6 +3170,10 @@ function playTTS() {
     utterance.pitch = parseFloat(document.getElementById('ttsPitch').value);
     utterance.rate = parseFloat(document.getElementById('ttsRate').value);
     window.speechSynthesis.speak(utterance);
+}
+
+function stopTTS() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
 }
 
 async function downloadTTSAudio() {

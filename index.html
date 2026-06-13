@@ -3554,10 +3554,13 @@
                                 </div>
                             </div>
                             <div style="display: flex; gap: 10px; margin-top: 15px;">
-                                <button class="btn btn-primary w-100" onclick="playTTS()">
+                                <button class="btn btn-primary" style="flex: 1;" onclick="playTTS()">
                                     <i data-lucide="play"></i> Speak
                                 </button>
-                                <button class="btn btn-success w-100" id="ttsDownloadBtn" onclick="downloadTTSAudio()">
+                                <button class="btn btn-outline" style="flex: 1;" onclick="stopTTS()">
+                                    <i data-lucide="square"></i> Stop
+                                </button>
+                                <button class="btn btn-success" style="flex: 1;" id="ttsDownloadBtn" onclick="downloadTTSAudio()">
                                     <i data-lucide="download"></i> Download MP3
                                 </button>
                             </div>
