@@ -40,7 +40,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
     
     <!-- Third Party CDN Libraries (100% Free & Client-Side) -->
     <!-- Lucide Icons for clean UI vectors (Critical) -->
@@ -258,7 +259,7 @@
             
             <!-- Header -->
             <header class="app-header">
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+                <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Toggle Mobile Menu">
                     <i data-lucide="menu"></i>
                 </button>
                 <div class="header-search">
@@ -2043,7 +2044,7 @@
                                 <label for="base64Output" class="control-label">Processed Output String</label>
                                 <div class="code-export-box w-100" style="flex-grow: 1; display: flex; flex-direction: column;">
                                     <textarea id="base64Output" class="form-control" style="font-family: monospace; font-size: 0.85rem; resize: none; flex-grow: 1; min-height: 300px; background-color: rgba(0, 0, 0, 0.4); color: #a6c1ee;" readonly placeholder="Base64 output string will render here..."></textarea>
-                                    <button class="copy-code-btn" style="top: 8px; right: 8px;" onclick="copyBase64Output()">
+                                    <button class="copy-code-btn" style="top: 8px; right: 8px;" onclick="copyBase64Output()" aria-label="Copy Base64 Output">
                                         <i data-lucide="copy"></i> Copy
                                     </button>
                                 </div>
@@ -2194,7 +2195,7 @@
                             <div id="subpanel-meta-code" class="control-subpanel" style="flex-grow: 1; display: flex; flex-direction: column;">
                                 <div class="code-export-box w-100" style="flex-grow: 1; display: flex; flex-direction: column;">
                                     <textarea id="metaGeneratedCode" class="form-control" style="font-family: monospace; font-size: 0.75rem; resize: none; flex-grow: 1; min-height: 250px; background-color: rgba(0, 0, 0, 0.4); color: #a6c1ee;" readonly></textarea>
-                                    <button class="copy-code-btn" style="top: 8px; right: 8px;" onclick="copyMetaTagsCode()">
+                                    <button class="copy-code-btn" style="top: 8px; right: 8px;" onclick="copyMetaTagsCode()" aria-label="Copy Meta Tags HTML">
                                         <i data-lucide="copy"></i> Copy
                                     </button>
                                 </div>
@@ -3617,7 +3618,7 @@
     <div class="a11y-panel glass-card" id="a11yPanel">
         <div class="a11y-header">
             <h3>Accessibility Tools</h3>
-            <button class="a11y-close" onclick="toggleA11yPanel()"><i data-lucide="x"></i></button>
+            <button class="a11y-close" onclick="toggleA11yPanel()" aria-label="Close Accessibility Panel"><i data-lucide="x"></i></button>
         </div>
         
         <div class="a11y-content">
