@@ -97,6 +97,7 @@ function startApp() {
     
     // Core Navigation & Routing Handling
     initNavigation();
+    initAnalyticsConsent();
     
     // Core Image Compressor Setup (Pre-instantiated, zero heavy libraries)
     initImageCompressor();
@@ -128,9 +129,21 @@ function initNavigation() {
         });
         
         // Close mobile drawer when clicking content viewport
-        document.getElementById('contentViewport').addEventListener('click', () => {
-            appSidebar.classList.remove('mobile-active');
-        });
+        const contentViewport = document.getElementById('contentViewport');
+        if (contentViewport) {
+            contentViewport.addEventListener('click', () => {
+                appSidebar.classList.remove('mobile-active');
+            });
+        }
+    }
+
+    // Generated pages contain one real, crawlable panel. Keep it visible and
+    // use normal links instead of the legacy SPA router.
+    const standalonePanels = document.querySelectorAll('.tab-panel');
+    if (standalonePanels.length === 1) {
+        standalonePanels[0].style.display = 'block';
+        standalonePanels[0].classList.add('active');
+        return;
     }
 
     // Bind browser popstate events (Back/Forward arrows navigation)
@@ -1079,8 +1092,27 @@ function formatFileSize(bytes) {
    4. Glassmorphism CSS Studio Playground
    ========================================================================== */
 function initGlassStudio() {
+    if (!document.getElementById('glassOpacity')) return;
     // Generate initial card visual
     updateGlassStudio();
+}
+
+function initAnalyticsConsent() {
+    const notice = document.getElementById('cookieNotice');
+    if (!notice) return;
+    if (!localStorage.getItem('omni-analytics-consent')) {
+        notice.hidden = false;
+    }
+}
+
+function setAnalyticsConsent(accepted) {
+    const value = accepted ? 'granted' : 'denied';
+    localStorage.setItem('omni-analytics-consent', value);
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', { analytics_storage: value });
+    }
+    const notice = document.getElementById('cookieNotice');
+    if (notice) notice.hidden = true;
 }
 
 function updateGlassStudio() {
@@ -2652,10 +2684,10 @@ function updateGlobalCurrency(symbol, save = true) {
     labels.forEach(lbl => lbl.innerText = symbol);
 
     // Re-trigger math charts if functions exist
-    if (typeof calculateFinancialGrowth === 'function') {
+    if (typeof calculateFinancialGrowth === 'function' && document.getElementById('finPrincipal')) {
         calculateFinancialGrowth();
     }
-    if (typeof calculateInflationLoss === 'function') {
+    if (typeof calculateInflationLoss === 'function' && document.getElementById('infInitial')) {
         calculateInflationLoss();
     }
 }
