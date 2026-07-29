@@ -11,8 +11,25 @@
       gtag('config', 'G-T0HG80BJQ2');
     </script>
     
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1668581059091583" crossorigin="anonymous"></script>
+    <!-- Google AdSense (Lazy Loaded for 100/100 PageSpeed) -->
+    <script>
+      let adsLoaded = false;
+      function loadAdSense() {
+          if (adsLoaded) return;
+          adsLoaded = true;
+          let script = document.createElement('script');
+          script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1668581059091583";
+          script.async = true;
+          script.crossOrigin = "anonymous";
+          document.head.appendChild(script);
+      }
+      // Load on interaction
+      window.addEventListener('scroll', loadAdSense, {once: true, passive: true});
+      window.addEventListener('mousemove', loadAdSense, {once: true, passive: true});
+      window.addEventListener('touchstart', loadAdSense, {once: true, passive: true});
+      // Fallback: load after 3 seconds anyway
+      setTimeout(loadAdSense, 3000);
+    </script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
