@@ -24,25 +24,25 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="referrer" content="no-referrer">
-    <title>Free Online Tools for Creators &amp; Developers | OmniTools</title>
-    <meta name="description" content="Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.">
-    <link rel="canonical" href="https://www.omnitechtools.com/">
+    <title>Cryptographic Hash Generator – SHA-256, SHA-512 &amp; SHA-1</title>
+    <meta name="description" content="Generate secure SHA-256, SHA-512, SHA-384 and SHA-1 checksums locally in your browser using the native Web Cryptography API.">
+    <link rel="canonical" href="https://www.omnitechtools.com/hash-generator/">
 
         <!-- OpenGraph / Facebook -->
     <meta property="og:image" content="https://www.omnitechtools.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://www.omnitechtools.com/">
+    <meta property="og:url" content="https://www.omnitechtools.com/hash-generator/">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Online Tools for Creators &amp; Developers | OmniTools">
-    <meta name="twitter:description" content="Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.">
+    <meta name="twitter:title" content="Cryptographic Hash Generator – SHA-256, SHA-512 &amp; SHA-1">
+    <meta name="twitter:description" content="Generate secure SHA-256, SHA-512, SHA-384 and SHA-1 checksums locally in your browser using the native Web Cryptography API.">
     <meta name="twitter:image" content="https://www.omnitechtools.com/og-image.png">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Free Online Tools for Creators &amp; Developers | OmniTools">
-    <meta property="og:description" content="Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.">
+    <meta property="og:title" content="Cryptographic Hash Generator – SHA-256, SHA-512 &amp; SHA-1">
+    <meta property="og:description" content="Generate secure SHA-256, SHA-512, SHA-384 and SHA-1 checksums locally in your browser using the native Web Cryptography API.">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="/style.css?v=2.2">
@@ -58,7 +58,7 @@
     <!-- Lucide Icons for clean UI vectors (Critical) -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <!-- Dynamic SEO Meta Tags (per route) -->
-    <meta name="robots" content="index,follow,max-image-preview:large"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.omnitechtools.com/#organization", "name": "OmniTools", "url": "https://www.omnitechtools.com/", "logo": {"@type": "ImageObject", "url": "https://www.omnitechtools.com/og-image.png"}, "description": "Privacy-focused, 100% browser-based utility tools for developers and creators.", "sameAs": ["https://github.com/omnitechtools", "https://twitter.com/omnitechtools"]}, {"@type": "WebSite", "@id": "https://www.omnitechtools.com/#website", "url": "https://www.omnitechtools.com/", "name": "OmniTools", "publisher": {"@id": "https://www.omnitechtools.com/#organization"}, "potentialAction": {"@type": "SearchAction", "target": "https://www.omnitechtools.com/?q={search_term_string}", "query-input": "required name=search_term_string"}}, {"@type": "WebPage", "@id": "https://www.omnitechtools.com/#webpage", "url": "https://www.omnitechtools.com/", "name": "Free Online Tools for Creators and Developers", "description": "Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.", "isAccessibleForFree": true, "isPartOf": {"@id": "https://www.omnitechtools.com/#website"}}]}</script></head>
+    <meta name="robots" content="index,follow,max-image-preview:large"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/hash-generator/#app", "name": "Cryptographic Hash Generator", "url": "https://www.omnitechtools.com/hash-generator/", "description": "Generate secure SHA-256, SHA-512, SHA-384 and SHA-1 checksums locally in your browser using the native Web Cryptography API.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/hash-generator/#faq", "mainEntity": [{"@type": "Question", "name": "Is it safe to compute hashes of sensitive data here?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. OmniTools computes all hashes locally in your browser using the native Web Cryptography API (crypto.subtle.digest). Your text or file never leaves your device."}}, {"@type": "Question", "name": "Can a cryptographic hash be decrypted or reversed?", "acceptedAnswer": {"@type": "Answer", "text": "No. Cryptographic hashes are mathematically one-way functions. It is practically impossible to invert a SHA-256 or SHA-512 digest back to the original text."}}, {"@type": "Question", "name": "What is the difference between SHA-256 and SHA-1?", "acceptedAnswer": {"@type": "Answer", "text": "SHA-256 provides 256 bits of cryptographic security and is the global industry standard. SHA-1 is an older 160-bit algorithm now deprecated for security certificates but still used for Git commit checksums."}}]}]}</script></head>
 <body>
 
     <!-- App Shell Layout -->
@@ -85,7 +85,7 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="/" class="nav-item active" id="nav-dashboard" aria-current="page">
+                <a href="/" class="nav-item" id="nav-dashboard">
                     <i data-lucide="layout-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
@@ -196,7 +196,7 @@
                     <i data-lucide="clock"></i>
                     <span>Unix Timestamp</span>
                 </a>
-                <a href="/hash-generator/" class="nav-item" id="nav-hash-generator">
+                <a href="/hash-generator/" class="nav-item active" id="nav-hash-generator" aria-current="page">
                     <i data-lucide="shield"></i>
                     <span>Hash Generator</span>
                 </a>
@@ -240,224 +240,6 @@
                 <span class="sr-only">OmniTools - Premium Creator &amp; Developer Utility Hub</span>
 
                 <!-- TAB 1: DASHBOARD -->
-                <section class="tab-panel active" id="panel-dashboard">
-                    <div class="hero-section">
-                        <h1>Free Online Tools for Creators and Developers</h1>
-                        <p class="subtitle">Free, fast and privacy-focused. Supported tool inputs are processed locally in your browser.</p>
-                        <div class="hero-stats">
-                            <div class="stat-badge">
-                                <i data-lucide="activity"></i>
-                                <span>No Server Latency</span>
-                            </div>
-                            <div class="stat-badge">
-                                <i data-lucide="lock"></i>
-                                <span>Local Browser Processing</span>
-                            </div>
-                            <div class="stat-badge">
-                                <i data-lucide="coins"></i>
-                                <span>Free Forever</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dashboard Category: Design & Graphics -->
-                    <div class="tools-grid">
-                        <!-- Tool Card 1: Custom QR Generator -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/qr-code-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon qr-gradient">
-                                <i data-lucide="qr-code"></i>
-                            </div>
-                            <h2>Custom QR Code Generator</h2>
-                            <p>Generate highly stylized QR codes with gradient fills, round custom corners, and upload your brand logo for free.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 2: Image Compressor -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/image-compressor/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon compress-gradient">
-                                <i data-lucide="image"></i>
-                            </div>
-                            <h2>Browser Image Compressor</h2>
-                            <p>Reduce file size of your JPEG, PNG, or convert them directly to WebP completely offline using Canvas.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 3: CSS Studio -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/css-glassmorphism-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon css-gradient">
-                                <i data-lucide="code-2"></i>
-                            </div>
-                            <h2>Advanced Glassmorphism Studio</h2>
-                            <p>Create visual CSS gradients and glassmorphism layouts with direct slider controls and instant code exports.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 4: SVG Blob Gen -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/svg-blob-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #8a2be2, #4a00e0); display: flex; align-items: center; justify-content: center;">
-                                <i data-lucide="waves" style="color: #fff;"></i>
-                            </div>
-                            <h2>SVG Blob &amp; Wave Generator</h2>
-                            <p>Generate highly custom fluid organic shapes and CSS vector gradients. Export SVG codes and assets instantly.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 5: Color Palette -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/color-palette-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #e65c00, #f9d423);">
-                                <i data-lucide="palette" style="color: #fff;"></i>
-                            </div>
-                            <h2>Color Palette &amp; Contrast Checker</h2>
-                            <p>Create visual hex schemes harmonies and analyze text color contrast ratios for WCAG AA/AAA compliance indicators.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 6: JSON Formatter -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/json-formatter/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
-                                <i data-lucide="braces" style="color: #fff;"></i>
-                            </div>
-                            <h2>JSON Formatter &amp; Validator</h2>
-                            <p>Clean, syntax-highlight, compress, and validate JSON strings offline with interactive nodes tree parsing.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 7: Base64 Encoder -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/base64-encoder-decoder/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #f12711, #f5af19);">
-                                <i data-lucide="binary" style="color: #fff;"></i>
-                            </div>
-                            <h2>Base64 Encoder &amp; Decoder</h2>
-                            <p>Encode plain text or binary files to Base64 strings, or decode Base64 back securely and offline.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 8: Meta Tag Gen -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/meta-tag-generator/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
-                                <i data-lucide="tags" style="color: #fff;"></i>
-                            </div>
-                            <h2>Meta Tag Generator &amp; Previewer</h2>
-                            <p>Generate highly-rated SEO meta tags and preview your search snippet in real-time for Google &amp; Facebook.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 9: Password Gen -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/password-generator/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon compress-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                                <i data-lucide="key-round" style="color: #fff;"></i>
-                            </div>
-                            <h2>Password Gen &amp; Strength Meter</h2>
-                            <p>Create strong random passwords locally using the Web Crypto API. Adjust length and character options, then review the strength estimate.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 10: Compound Interest -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/compound-interest-calculator/">
-                            <span class="card-badge badge-finance">Finance</span>
-                            <div class="tool-card-icon finance-gradient">
-                                <i data-lucide="trending-up"></i>
-                            </div>
-                            <h2>Compound Interest &amp; FIRE Calc</h2>
-                            <p>Forecast your savings, compound growth, and outline your financial independence targets with dynamic charts.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 11: Inflation Calc -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/inflation-calculator/">
-                            <span class="card-badge badge-finance">Finance</span>
-                            <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                                <i data-lucide="percent" style="color: #fff;"></i>
-                            </div>
-                            <h2>Inflation &amp; Money Depreciation Calc</h2>
-                            <p>Track purchasing power losses and compound inflation depreciation trajectories over time with charts.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- 9 NEW TOOLS DASHBOARD CARDS -->
-                        <a class="tool-card" href="/jwt-decoder/" role="link">
-                            <div class="tool-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                                <i data-lucide="unlock"></i>
-                            </div>
-                            <h3>JWT Decoder</h3>
-                            <p>Decode, verify, and inspect JSON Web Tokens securely offline.</p>
-                        </a>
-
-                        <a class="tool-card" href="/markdown-editor/" role="link">
-                            <div class="tool-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
-                                <i data-lucide="file-edit"></i>
-                            </div>
-                            <h3>Markdown Editor</h3>
-                            <p>Write, preview, and format Markdown documents with live rendering.</p>
-                        </a>
-
-                        <a class="tool-card" href="/regex-tester/" role="link">
-                            <div class="tool-icon" style="background: rgba(244, 63, 94, 0.1); color: #f43f5e;">
-                                <i data-lucide="regex"></i>
-                            </div>
-                            <h3>Regex Tester</h3>
-                            <p>Build, test, and debug Regular Expressions visually and offline.</p>
-                        </a>
-
-                        <a class="tool-card" href="/sql-formatter/" role="link">
-                            <div class="tool-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
-                                <i data-lucide="database"></i>
-                            </div>
-                            <h3>SQL Formatter</h3>
-                            <p>Beautify and format complex SQL database queries instantly.</p>
-                        </a>
-
-                        <a class="tool-card" href="/css-box-shadow/" role="link">
-                            <div class="tool-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
-                                <i data-lucide="box"></i>
-                            </div>
-                            <h3>Box Shadow Gen</h3>
-                            <p>Visually create advanced CSS3 box shadows with layered rendering.</p>
-                        </a>
-
-                        <a class="tool-card" href="/word-counter/" role="link">
-                            <div class="tool-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
-                                <i data-lucide="type"></i>
-                            </div>
-                            <h3>SEO Word Counter</h3>
-                            <p>Count words, characters, and analyze keyword density for SEO.</p>
-                        </a>
-
-                        <a class="tool-card" href="/lorem-ipsum/" role="link">
-                            <div class="tool-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
-                                <i data-lucide="align-left"></i>
-                            </div>
-                            <h3>Lorem Ipsum Gen</h3>
-                            <p>Generate placeholder dummy text for UI mockups and web design.</p>
-                        </a>
-
-                        <a class="tool-card" href="/uuid-generator/" role="link">
-                            <div class="tool-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
-                                <i data-lucide="fingerprint"></i>
-                            </div>
-                            <h3>UUID Generator</h3>
-                            <p>Generate secure, cryptographically random v4 UUIDs/GUIDs.</p>
-                        </a>
-
-                        <a class="tool-card" href="/url-encoder/" role="link">
-                            <div class="tool-icon" style="background: rgba(20, 184, 166, 0.1); color: #14b8a6;">
-                                <i data-lucide="link"></i>
-                            </div>
-                            <h3>URL Encoder/Decoder</h3>
-                            <p>Safely encode and decode URL strings and URI components.</p>
-                        </a>
-                    </div>
-                </section>
-
                 <!-- TAB 2: QR GENERATOR -->
                 <!-- TAB 3: IMAGE COMPRESSOR -->
                 <!-- TAB 4: CSS STUDIO -->
@@ -499,6 +281,79 @@
                 <!-- 5 HIGH-TRAFFIC TOOLS PANELS -->
                 <!-- TAB: UNIX TIMESTAMP CONVERTER -->
                 <!-- TAB: CRYPTOGRAPHIC HASH GENERATOR -->
+                <section class="tab-panel active" id="panel-hash-generator">
+                    <div class="panel-header">
+                        <h1 class="panel-title">Cryptographic Hash Generator</h1>
+                        <p>Generate secure SHA-256, SHA-512, SHA-384, and SHA-1 checksums directly inside your browser using the native Web Cryptography API.</p>
+                    </div>
+
+                    <div class="tool-workspace grid-2">
+                        <!-- Input panel -->
+                        <div class="input-panel glass-card">
+                            <div class="form-group">
+                                <label for="hashTextInput">Input Text String to Hash</label>
+                                <textarea id="hashTextInput" class="input-field" rows="6" placeholder="Type or paste any text string here..." oninput="computeHashes()"></textarea>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                                <button class="btn btn-outline btn-sm" onclick="setSampleHashText()">Load Sample</button>
+                                <button class="btn btn-outline btn-sm" onclick="clearHashInput()">Clear</button>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Or Select a File for Local Checksum</label>
+                                <input type="file" id="hashFileInput" class="input-field" onchange="computeFileHash(event)">
+                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.3rem;">Files are computed in your browser using FileReader API. No file is ever uploaded.</p>
+                            </div>
+                        </div>
+
+                        <!-- Hashes Output panel -->
+                        <div class="output-panel glass-card">
+                            <div class="form-group">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-256 (Secure &amp; Recommended)</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha256')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha256" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #00f2fe;">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-512 (High Security Checksum)</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha512')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha512" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #22c55e;">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-384</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha384')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha384" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #eab308;">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-1 (Legacy / Git Checksums)</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha1')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha1" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #8b92b6;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEO Educational Guide -->
+                    <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
+                        <h3>What is a Cryptographic Hash Function?</h3>
+                        <p>A cryptographic hash function is a mathematical algorithm that maps data of arbitrary size to a bit array of a fixed size (a hash or digest). It is a one-way function, meaning it is computationally infeasible to invert or deduce the original input string from the hash result alone.</p>
+
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">Why SHA-256 is the Global Standard:</h4>
+                        <p>Published by the National Institute of Standards and Technology (NIST), SHA-256 generates a 256-bit (64-character hexadecimal) digest. It is mathematically collision-resistant, powering TLS/SSL certificates, Bitcoin proof-of-work consensus, and software release verification checksums worldwide.</p>
+
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">100% Client-Side Privacy Guarantee:</h4>
+                        <p>Unlike third-party hash sites that send your credentials to cloud servers, OmniTools utilizes your browser's native <code>window.crypto.subtle.digest</code> API. Your proprietary data and secret keys are hashed strictly in local device RAM.</p>
+                    </article>
+                </section>
+
                 <!-- TAB: JSON TO CSV & CSV TO JSON CONVERTER -->
                 <!-- Sticky Toast Notification popup -->
             <div id="toastAlert" class="toast-alert-badge">

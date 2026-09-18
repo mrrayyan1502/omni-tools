@@ -23,6 +23,9 @@ const routeMap = {
     '/image-resizer/': 'image-resizer',
     '/pdf-merge/': 'pdf-merge',
     '/unit-converter/': 'unit-converter',
+    '/unix-timestamp-converter/': 'unix-timestamp',
+    '/hash-generator/': 'hash-generator',
+    '/json-to-csv/': 'json-to-csv',
     '/text-to-speech/': 'text-to-speech',
     '/blog/': 'blog',
     '/blog/qr-codes-digital-marketing/': 'blog-article-qr',
@@ -58,6 +61,9 @@ const tabToRouteMap = {
     'image-resizer': '/image-resizer/',
     'pdf-merge': '/pdf-merge/',
     'unit-converter': '/unit-converter/',
+    'unix-timestamp': '/unix-timestamp-converter/',
+    'hash-generator': '/hash-generator/',
+    'json-to-csv': '/json-to-csv/',
     'text-to-speech': '/text-to-speech/',
     'url-encoder': '/url-encoder/',
     'meta-generator': '/meta-tag-generator/',
@@ -65,6 +71,9 @@ const tabToRouteMap = {
     'image-resizer': '/image-resizer/',
     'pdf-merge': '/pdf-merge/',
     'unit-converter': '/unit-converter/',
+    'unix-timestamp': '/unix-timestamp-converter/',
+    'hash-generator': '/hash-generator/',
+    'json-to-csv': '/json-to-csv/',
     'text-to-speech': '/text-to-speech/',
     'blog': '/blog/',
     'blog-article-qr': '/blog/qr-codes-digital-marketing/',
@@ -3233,4 +3242,297 @@ function downloadYtThumbnail() {
 // Init unit converter and voices
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('unitCategory')) updateUnitOptions();
+});
+
+
+/* ==========================================================================
+   NEW TOOL 1: UNIX TIMESTAMP CONVERTER
+   ========================================================================== */
+function initUnixTimestamp() {
+    setInterval(() => {
+        const ticker = document.getElementById('liveEpochTicker');
+        if (ticker) {
+            ticker.textContent = Math.floor(Date.now() / 1000);
+        }
+    }, 1000);
+
+    const epochInput = document.getElementById('epochInput');
+    if (epochInput && !epochInput.value) {
+        epochInput.value = Math.floor(Date.now() / 1000);
+        convertEpochToDate();
+    }
+}
+
+function convertEpochToDate() {
+    const input = document.getElementById('epochInput');
+    const gmtOut = document.getElementById('epochGmtResult');
+    const localOut = document.getElementById('epochLocalResult');
+    const relOut = document.getElementById('epochRelativeResult');
+    if (!input || !gmtOut) return;
+
+    let val = parseInt(input.value.trim(), 10);
+    if (isNaN(val)) {
+        gmtOut.textContent = 'Invalid timestamp';
+        localOut.textContent = '-';
+        relOut.textContent = '-';
+        return;
+    }
+    if (val < 10000000000) val *= 1000;
+
+    const d = new Date(val);
+    gmtOut.textContent = d.toUTCString();
+    localOut.textContent = d.toString();
+
+    const diff = Math.floor((d.getTime() - Date.now()) / 1000);
+    if (Math.abs(diff) < 5) {
+        relOut.textContent = 'Right now';
+    } else if (diff < 0) {
+        const sec = Math.abs(diff);
+        if (sec < 60) relOut.textContent = `${sec} seconds ago`;
+        else if (sec < 3600) relOut.textContent = `${Math.floor(sec/60)} minutes ago`;
+        else if (sec < 86400) relOut.textContent = `${Math.floor(sec/3600)} hours ago`;
+        else relOut.textContent = `${Math.floor(sec/86400)} days ago`;
+    } else {
+        if (diff < 60) relOut.textContent = `In ${diff} seconds`;
+        else if (diff < 3600) relOut.textContent = `In ${Math.floor(diff/60)} minutes`;
+        else if (diff < 86400) relOut.textContent = `In ${Math.floor(diff/3600)} hours`;
+        else relOut.textContent = `In ${Math.floor(diff/86400)} days`;
+    }
+}
+
+function setCurrentEpochToInput() {
+    const input = document.getElementById('epochInput');
+    if (input) {
+        input.value = Math.floor(Date.now() / 1000);
+        convertEpochToDate();
+    }
+}
+
+function copyCurrentEpoch() {
+    const val = Math.floor(Date.now() / 1000).toString();
+    navigator.clipboard.writeText(val).then(() => showToast('Current epoch copied!'));
+}
+
+function convertDateToEpoch() {
+    const input = document.getElementById('dateToEpochInput');
+    const secOut = document.getElementById('dateEpochSeconds');
+    const msOut = document.getElementById('dateEpochMillis');
+    if (!input || !input.value) return;
+
+    const d = new Date(input.value);
+    const ms = d.getTime();
+    const sec = Math.floor(ms / 1000);
+    if (secOut) secOut.textContent = sec;
+    if (msOut) msOut.textContent = ms;
+}
+
+function copyEpochSeconds() {
+    const secOut = document.getElementById('dateEpochSeconds');
+    if (secOut && secOut.textContent !== '-') {
+        navigator.clipboard.writeText(secOut.textContent).then(() => showToast('Timestamp copied!'));
+    }
+}
+
+/* ==========================================================================
+   NEW TOOL 2: CRYPTOGRAPHIC HASH GENERATOR
+   ========================================================================== */
+async function computeHashes() {
+    const text = document.getElementById('hashTextInput')?.value || '';
+    if (!text) {
+        ['hashSha256', 'hashSha512', 'hashSha384', 'hashSha1'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+        return;
+    }
+
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+
+    async function hash(algo) {
+        const buffer = await crypto.subtle.digest(algo, data);
+        const hashArray = Array.from(new Uint8Array(buffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    try {
+        const [sha256, sha512, sha384, sha1] = await Promise.all([
+            hash('SHA-256'),
+            hash('SHA-512'),
+            hash('SHA-384'),
+            hash('SHA-1')
+        ]);
+        const el256 = document.getElementById('hashSha256');
+        const el512 = document.getElementById('hashSha512');
+        const el384 = document.getElementById('hashSha384');
+        const el1 = document.getElementById('hashSha1');
+        if (el256) el256.value = sha256;
+        if (el512) el512.value = sha512;
+        if (el384) el384.value = sha384;
+        if (el1) el1.value = sha1;
+    } catch(e) {
+        console.error('Hash error:', e);
+    }
+}
+
+function setSampleHashText() {
+    const el = document.getElementById('hashTextInput');
+    if (el) {
+        el.value = 'OmniTools is a 100% private, client-side utility suite.';
+        computeHashes();
+    }
+}
+
+function clearHashInput() {
+    const el = document.getElementById('hashTextInput');
+    if (el) {
+        el.value = '';
+        computeHashes();
+    }
+}
+
+function copyHash(type) {
+    const map = { sha256: 'hashSha256', sha512: 'hashSha512', sha384: 'hashSha384', sha1: 'hashSha1' };
+    const el = document.getElementById(map[type]);
+    if (el && el.value) {
+        navigator.clipboard.writeText(el.value).then(() => showToast(`${type.toUpperCase()} copied!`));
+    }
+}
+
+function computeFileHash(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+        const data = e.target.result;
+        async function hash(algo) {
+            const buffer = await crypto.subtle.digest(algo, data);
+            return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+        const [sha256, sha512, sha384, sha1] = await Promise.all([
+            hash('SHA-256'), hash('SHA-512'), hash('SHA-384'), hash('SHA-1')
+        ]);
+        document.getElementById('hashSha256').value = sha256;
+        document.getElementById('hashSha512').value = sha512;
+        document.getElementById('hashSha384').value = sha384;
+        document.getElementById('hashSha1').value = sha1;
+        showToast(`Computed hashes for ${file.name}`);
+    };
+    reader.readAsArrayBuffer(file);
+}
+
+/* ==========================================================================
+   NEW TOOL 3: JSON TO CSV CONVERTER
+   ========================================================================== */
+function convertJsonToCsv() {
+    const input = document.getElementById('jsonCsvInput')?.value.trim() || '';
+    const output = document.getElementById('jsonCsvOutput');
+    const tableWrapper = document.getElementById('jsonCsvTableWrapper');
+    const delimiter = document.getElementById('csvDelimiterSelect')?.value || ',';
+
+    if (!input) {
+        if (output) output.value = '';
+        if (tableWrapper) tableWrapper.innerHTML = '<p class="text-muted">Table preview will appear here.</p>';
+        return;
+    }
+
+    try {
+        let data = JSON.parse(input);
+        if (!Array.isArray(data)) {
+            data = [data];
+        }
+        if (data.length === 0) {
+            if (output) output.value = '';
+            return;
+        }
+
+        const headers = Array.from(new Set(data.flatMap(item => Object.keys(item))));
+
+        function escapeCsv(val) {
+            if (val === null || val === undefined) return '';
+            let str = typeof val === 'object' ? JSON.stringify(val) : String(val);
+            if (str.includes(delimiter) || str.includes('"') || str.includes('\n')) {
+                str = '"' + str.replace(/"/g, '""') + '"';
+            }
+            return str;
+        }
+
+        const csvRows = [];
+        csvRows.push(headers.map(escapeCsv).join(delimiter));
+
+        for (const item of data) {
+            const row = headers.map(h => escapeCsv(item[h]));
+            csvRows.push(row.join(delimiter));
+        }
+
+        const csvResult = csvRows.join('\n');
+        if (output) output.value = csvResult;
+
+        if (tableWrapper) {
+            let html = '<table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">';
+            html += '<thead><tr style="border-bottom: 2px solid rgba(255,255,255,0.1); text-align: left;">';
+            headers.forEach(h => html += `<th style="padding: 0.5rem; color: #00f2fe;">${h}</th>`);
+            html += '</tr></thead><tbody>';
+            data.slice(0, 10).forEach(row => {
+                html += '<tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">';
+                headers.forEach(h => {
+                    const val = row[h] !== undefined ? (typeof row[h] === 'object' ? JSON.stringify(row[h]) : row[h]) : '';
+                    html += `<td style="padding: 0.5rem; color: #8b92b6;">${val}</td>`;
+                });
+                html += '</tr>';
+            });
+            html += '</tbody></table>';
+            if (data.length > 10) html += `<p class="text-muted" style="margin-top: 0.5rem; font-size: 0.8rem;">Showing first 10 of ${data.length} rows</p>`;
+            tableWrapper.innerHTML = html;
+        }
+    } catch(e) {
+        if (output) output.value = 'Invalid JSON: ' + e.message;
+        if (tableWrapper) tableWrapper.innerHTML = '<p class="text-danger" style="color: #ef4444;">Please provide a valid JSON array.</p>';
+    }
+}
+
+function setSampleJsonCsv() {
+    const sample = [
+        { id: 101, product: "Wireless Headphones", price: 79.99, in_stock: true, rating: 4.8 },
+        { id: 102, product: "Mechanical Keyboard", price: 129.50, in_stock: true, rating: 4.9 },
+        { id: 103, product: "Ultra-Wide Monitor", price: 349.00, in_stock: false, rating: 4.7 }
+    ];
+    const el = document.getElementById('jsonCsvInput');
+    if (el) {
+        el.value = JSON.stringify(sample, null, 2);
+        convertJsonToCsv();
+    }
+}
+
+function clearJsonCsv() {
+    const el = document.getElementById('jsonCsvInput');
+    if (el) {
+        el.value = '';
+        convertJsonToCsv();
+    }
+}
+
+function copyCsvResult() {
+    const el = document.getElementById('jsonCsvOutput');
+    if (el && el.value) {
+        navigator.clipboard.writeText(el.value).then(() => showToast('CSV copied to clipboard!'));
+    }
+}
+
+function downloadCsvFile() {
+    const el = document.getElementById('jsonCsvOutput');
+    if (!el || !el.value) return;
+    const blob = new Blob([el.value], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'omnitools-export.csv';
+    link.click();
+    URL.revokeObjectURL(url);
+    showToast('Downloaded CSV file!');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initUnixTimestamp();
 });

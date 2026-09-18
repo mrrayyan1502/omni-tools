@@ -24,25 +24,25 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="referrer" content="no-referrer">
-    <title>Free Online Tools for Creators &amp; Developers | OmniTools</title>
-    <meta name="description" content="Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.">
-    <link rel="canonical" href="https://www.omnitechtools.com/">
+    <title>Unix Timestamp &amp; Epoch Converter Online</title>
+    <meta name="description" content="Convert Unix epoch timestamps to human-readable UTC and local dates. Live clock, millisecond support and relative time tracking.">
+    <link rel="canonical" href="https://www.omnitechtools.com/unix-timestamp-converter/">
 
         <!-- OpenGraph / Facebook -->
     <meta property="og:image" content="https://www.omnitechtools.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://www.omnitechtools.com/">
+    <meta property="og:url" content="https://www.omnitechtools.com/unix-timestamp-converter/">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Online Tools for Creators &amp; Developers | OmniTools">
-    <meta name="twitter:description" content="Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.">
+    <meta name="twitter:title" content="Unix Timestamp &amp; Epoch Converter Online">
+    <meta name="twitter:description" content="Convert Unix epoch timestamps to human-readable UTC and local dates. Live clock, millisecond support and relative time tracking.">
     <meta name="twitter:image" content="https://www.omnitechtools.com/og-image.png">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Free Online Tools for Creators &amp; Developers | OmniTools">
-    <meta property="og:description" content="Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.">
+    <meta property="og:title" content="Unix Timestamp &amp; Epoch Converter Online">
+    <meta property="og:description" content="Convert Unix epoch timestamps to human-readable UTC and local dates. Live clock, millisecond support and relative time tracking.">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="/style.css?v=2.2">
@@ -58,7 +58,7 @@
     <!-- Lucide Icons for clean UI vectors (Critical) -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <!-- Dynamic SEO Meta Tags (per route) -->
-    <meta name="robots" content="index,follow,max-image-preview:large"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.omnitechtools.com/#organization", "name": "OmniTools", "url": "https://www.omnitechtools.com/", "logo": {"@type": "ImageObject", "url": "https://www.omnitechtools.com/og-image.png"}, "description": "Privacy-focused, 100% browser-based utility tools for developers and creators.", "sameAs": ["https://github.com/omnitechtools", "https://twitter.com/omnitechtools"]}, {"@type": "WebSite", "@id": "https://www.omnitechtools.com/#website", "url": "https://www.omnitechtools.com/", "name": "OmniTools", "publisher": {"@id": "https://www.omnitechtools.com/#organization"}, "potentialAction": {"@type": "SearchAction", "target": "https://www.omnitechtools.com/?q={search_term_string}", "query-input": "required name=search_term_string"}}, {"@type": "WebPage", "@id": "https://www.omnitechtools.com/#webpage", "url": "https://www.omnitechtools.com/", "name": "Free Online Tools for Creators and Developers", "description": "Free private browser-based tools for images, code, QR codes, documents and everyday calculations. No signup required.", "isAccessibleForFree": true, "isPartOf": {"@id": "https://www.omnitechtools.com/#website"}}]}</script></head>
+    <meta name="robots" content="index,follow,max-image-preview:large"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/unix-timestamp-converter/#app", "name": "Unix Timestamp & Epoch Converter Online", "url": "https://www.omnitechtools.com/unix-timestamp-converter/", "description": "Convert Unix epoch timestamps to human-readable UTC and local dates. Live clock, millisecond support and relative time tracking.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/unix-timestamp-converter/#faq", "mainEntity": [{"@type": "Question", "name": "What is Unix Epoch time?", "acceptedAnswer": {"@type": "Answer", "text": "Unix time is the number of elapsed seconds since 00:00:00 UTC on January 1, 1970. It provides a timezone-independent integer format widely used across operating systems, databases, and APIs."}}, {"@type": "Question", "name": "Does this converter support milliseconds?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The tool automatically detects whether your timestamp input is in seconds (10 digits) or milliseconds (13 digits) and converts it accurately."}}, {"@type": "Question", "name": "What is the Year 2038 Problem?", "acceptedAnswer": {"@type": "Answer", "text": "Legacy 32-bit systems store timestamps as signed 32-bit integers, which will overflow on January 19, 2038. Modern 64-bit systems are completely immune to this limitation."}}]}]}</script></head>
 <body>
 
     <!-- App Shell Layout -->
@@ -85,7 +85,7 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="/" class="nav-item active" id="nav-dashboard" aria-current="page">
+                <a href="/" class="nav-item" id="nav-dashboard">
                     <i data-lucide="layout-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
@@ -192,7 +192,7 @@
                     <i data-lucide="link"></i>
                     <span>URL Encoder</span>
                 </a>
-                <a href="/unix-timestamp-converter/" class="nav-item" id="nav-unix-timestamp">
+                <a href="/unix-timestamp-converter/" class="nav-item active" id="nav-unix-timestamp" aria-current="page">
                     <i data-lucide="clock"></i>
                     <span>Unix Timestamp</span>
                 </a>
@@ -240,224 +240,6 @@
                 <span class="sr-only">OmniTools - Premium Creator &amp; Developer Utility Hub</span>
 
                 <!-- TAB 1: DASHBOARD -->
-                <section class="tab-panel active" id="panel-dashboard">
-                    <div class="hero-section">
-                        <h1>Free Online Tools for Creators and Developers</h1>
-                        <p class="subtitle">Free, fast and privacy-focused. Supported tool inputs are processed locally in your browser.</p>
-                        <div class="hero-stats">
-                            <div class="stat-badge">
-                                <i data-lucide="activity"></i>
-                                <span>No Server Latency</span>
-                            </div>
-                            <div class="stat-badge">
-                                <i data-lucide="lock"></i>
-                                <span>Local Browser Processing</span>
-                            </div>
-                            <div class="stat-badge">
-                                <i data-lucide="coins"></i>
-                                <span>Free Forever</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dashboard Category: Design & Graphics -->
-                    <div class="tools-grid">
-                        <!-- Tool Card 1: Custom QR Generator -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/qr-code-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon qr-gradient">
-                                <i data-lucide="qr-code"></i>
-                            </div>
-                            <h2>Custom QR Code Generator</h2>
-                            <p>Generate highly stylized QR codes with gradient fills, round custom corners, and upload your brand logo for free.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 2: Image Compressor -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/image-compressor/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon compress-gradient">
-                                <i data-lucide="image"></i>
-                            </div>
-                            <h2>Browser Image Compressor</h2>
-                            <p>Reduce file size of your JPEG, PNG, or convert them directly to WebP completely offline using Canvas.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 3: CSS Studio -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/css-glassmorphism-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon css-gradient">
-                                <i data-lucide="code-2"></i>
-                            </div>
-                            <h2>Advanced Glassmorphism Studio</h2>
-                            <p>Create visual CSS gradients and glassmorphism layouts with direct slider controls and instant code exports.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 4: SVG Blob Gen -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/svg-blob-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #8a2be2, #4a00e0); display: flex; align-items: center; justify-content: center;">
-                                <i data-lucide="waves" style="color: #fff;"></i>
-                            </div>
-                            <h2>SVG Blob &amp; Wave Generator</h2>
-                            <p>Generate highly custom fluid organic shapes and CSS vector gradients. Export SVG codes and assets instantly.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 5: Color Palette -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/color-palette-generator/">
-                            <span class="card-badge badge-design">Design</span>
-                            <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #e65c00, #f9d423);">
-                                <i data-lucide="palette" style="color: #fff;"></i>
-                            </div>
-                            <h2>Color Palette &amp; Contrast Checker</h2>
-                            <p>Create visual hex schemes harmonies and analyze text color contrast ratios for WCAG AA/AAA compliance indicators.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 6: JSON Formatter -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/json-formatter/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
-                                <i data-lucide="braces" style="color: #fff;"></i>
-                            </div>
-                            <h2>JSON Formatter &amp; Validator</h2>
-                            <p>Clean, syntax-highlight, compress, and validate JSON strings offline with interactive nodes tree parsing.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 7: Base64 Encoder -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/base64-encoder-decoder/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon qr-gradient" style="background: linear-gradient(135deg, #f12711, #f5af19);">
-                                <i data-lucide="binary" style="color: #fff;"></i>
-                            </div>
-                            <h2>Base64 Encoder &amp; Decoder</h2>
-                            <p>Encode plain text or binary files to Base64 strings, or decode Base64 back securely and offline.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 8: Meta Tag Gen -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/meta-tag-generator/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon css-gradient" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
-                                <i data-lucide="tags" style="color: #fff;"></i>
-                            </div>
-                            <h2>Meta Tag Generator &amp; Previewer</h2>
-                            <p>Generate highly-rated SEO meta tags and preview your search snippet in real-time for Google &amp; Facebook.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 9: Password Gen -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/password-generator/">
-                            <span class="card-badge badge-dev">Developer</span>
-                            <div class="tool-card-icon compress-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                                <i data-lucide="key-round" style="color: #fff;"></i>
-                            </div>
-                            <h2>Password Gen &amp; Strength Meter</h2>
-                            <p>Create strong random passwords locally using the Web Crypto API. Adjust length and character options, then review the strength estimate.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 10: Compound Interest -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/compound-interest-calculator/">
-                            <span class="card-badge badge-finance">Finance</span>
-                            <div class="tool-card-icon finance-gradient">
-                                <i data-lucide="trending-up"></i>
-                            </div>
-                            <h2>Compound Interest &amp; FIRE Calc</h2>
-                            <p>Forecast your savings, compound growth, and outline your financial independence targets with dynamic charts.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- Tool Card 11: Inflation Calc -->
-                        <a class="tool-card animate-card" tabindex="0" role="link" href="/inflation-calculator/">
-                            <span class="card-badge badge-finance">Finance</span>
-                            <div class="tool-card-icon finance-gradient" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                                <i data-lucide="percent" style="color: #fff;"></i>
-                            </div>
-                            <h2>Inflation &amp; Money Depreciation Calc</h2>
-                            <p>Track purchasing power losses and compound inflation depreciation trajectories over time with charts.</p>
-                            <span class="tool-action-link">Open Tool <i data-lucide="arrow-right"></i></span>
-                        </a>
-
-                        <!-- 9 NEW TOOLS DASHBOARD CARDS -->
-                        <a class="tool-card" href="/jwt-decoder/" role="link">
-                            <div class="tool-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                                <i data-lucide="unlock"></i>
-                            </div>
-                            <h3>JWT Decoder</h3>
-                            <p>Decode, verify, and inspect JSON Web Tokens securely offline.</p>
-                        </a>
-
-                        <a class="tool-card" href="/markdown-editor/" role="link">
-                            <div class="tool-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
-                                <i data-lucide="file-edit"></i>
-                            </div>
-                            <h3>Markdown Editor</h3>
-                            <p>Write, preview, and format Markdown documents with live rendering.</p>
-                        </a>
-
-                        <a class="tool-card" href="/regex-tester/" role="link">
-                            <div class="tool-icon" style="background: rgba(244, 63, 94, 0.1); color: #f43f5e;">
-                                <i data-lucide="regex"></i>
-                            </div>
-                            <h3>Regex Tester</h3>
-                            <p>Build, test, and debug Regular Expressions visually and offline.</p>
-                        </a>
-
-                        <a class="tool-card" href="/sql-formatter/" role="link">
-                            <div class="tool-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
-                                <i data-lucide="database"></i>
-                            </div>
-                            <h3>SQL Formatter</h3>
-                            <p>Beautify and format complex SQL database queries instantly.</p>
-                        </a>
-
-                        <a class="tool-card" href="/css-box-shadow/" role="link">
-                            <div class="tool-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
-                                <i data-lucide="box"></i>
-                            </div>
-                            <h3>Box Shadow Gen</h3>
-                            <p>Visually create advanced CSS3 box shadows with layered rendering.</p>
-                        </a>
-
-                        <a class="tool-card" href="/word-counter/" role="link">
-                            <div class="tool-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
-                                <i data-lucide="type"></i>
-                            </div>
-                            <h3>SEO Word Counter</h3>
-                            <p>Count words, characters, and analyze keyword density for SEO.</p>
-                        </a>
-
-                        <a class="tool-card" href="/lorem-ipsum/" role="link">
-                            <div class="tool-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
-                                <i data-lucide="align-left"></i>
-                            </div>
-                            <h3>Lorem Ipsum Gen</h3>
-                            <p>Generate placeholder dummy text for UI mockups and web design.</p>
-                        </a>
-
-                        <a class="tool-card" href="/uuid-generator/" role="link">
-                            <div class="tool-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
-                                <i data-lucide="fingerprint"></i>
-                            </div>
-                            <h3>UUID Generator</h3>
-                            <p>Generate secure, cryptographically random v4 UUIDs/GUIDs.</p>
-                        </a>
-
-                        <a class="tool-card" href="/url-encoder/" role="link">
-                            <div class="tool-icon" style="background: rgba(20, 184, 166, 0.1); color: #14b8a6;">
-                                <i data-lucide="link"></i>
-                            </div>
-                            <h3>URL Encoder/Decoder</h3>
-                            <p>Safely encode and decode URL strings and URI components.</p>
-                        </a>
-                    </div>
-                </section>
-
                 <!-- TAB 2: QR GENERATOR -->
                 <!-- TAB 3: IMAGE COMPRESSOR -->
                 <!-- TAB 4: CSS STUDIO -->
@@ -498,6 +280,95 @@
                 <!-- TAB: BLOG ARTICLE - INFLATION -->
                 <!-- 5 HIGH-TRAFFIC TOOLS PANELS -->
                 <!-- TAB: UNIX TIMESTAMP CONVERTER -->
+                <section class="tab-panel active" id="panel-unix-timestamp">
+                    <div class="panel-header">
+                        <h1 class="panel-title">Unix Timestamp &amp; Epoch Converter Online</h1>
+                        <p>Convert between Unix Epoch timestamps and human-readable UTC/local date formats instantly with live clock tracking.</p>
+                    </div>
+
+                    <!-- Live Epoch Ticker Banner -->
+                    <div class="glass-card mb-4" style="padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-left: 4px solid #eab308;">
+                        <div>
+                            <span class="text-muted" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Current Unix Epoch Time</span>
+                            <div id="liveEpochTicker" style="font-family: monospace; font-size: 1.85rem; font-weight: 700; color: #eab308;">1726690000</div>
+                        </div>
+                        <button class="btn btn-outline btn-sm" onclick="copyCurrentEpoch()">
+                            <i data-lucide="copy"></i> Copy Current Timestamp
+                        </button>
+                    </div>
+
+                    <div class="tool-workspace grid-2">
+                        <!-- Convert Epoch to Human Date -->
+                        <div class="input-panel glass-card">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i data-lucide="arrow-down-right" style="color: #4facfe;"></i> Timestamp to Human Date
+                            </h3>
+                            <div class="form-group">
+                                <label for="epochInput">Enter Unix Timestamp (Seconds or Milliseconds)</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="number" id="epochInput" class="input-field" placeholder="e.g. 1726690000" oninput="convertEpochToDate()">
+                                    <button class="btn btn-outline" onclick="setCurrentEpochToInput()" title="Use Current Time">Now</button>
+                                </div>
+                            </div>
+                            <div class="output-preview glass-card mt-3" style="padding: 1rem; font-size: 0.9rem;">
+                                <div style="margin-bottom: 0.75rem;">
+                                    <strong style="color: #8b92b6;">GMT / UTC:</strong>
+                                    <div id="epochGmtResult" style="font-family: monospace; color: #fff; font-size: 1rem; margin-top: 0.2rem;">-</div>
+                                </div>
+                                <div style="margin-bottom: 0.75rem;">
+                                    <strong style="color: #8b92b6;">Your Local Time:</strong>
+                                    <div id="epochLocalResult" style="font-family: monospace; color: #00f2fe; font-size: 1rem; margin-top: 0.2rem;">-</div>
+                                </div>
+                                <div>
+                                    <strong style="color: #8b92b6;">Relative Time:</strong>
+                                    <div id="epochRelativeResult" style="font-family: monospace; color: #22c55e; margin-top: 0.2rem;">-</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Convert Human Date to Epoch -->
+                        <div class="output-panel glass-card">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i data-lucide="arrow-up-right" style="color: #00f2fe;"></i> Human Date to Timestamp
+                            </h3>
+                            <div class="form-group">
+                                <label for="dateToEpochInput">Select Date and Time</label>
+                                <input type="datetime-local" id="dateToEpochInput" class="input-field" onchange="convertDateToEpoch()">
+                            </div>
+                            <div class="output-preview glass-card mt-3" style="padding: 1rem; font-size: 0.9rem;">
+                                <div style="margin-bottom: 0.75rem;">
+                                    <strong style="color: #8b92b6;">Unix Epoch (Seconds):</strong>
+                                    <div id="dateEpochSeconds" style="font-family: monospace; color: #eab308; font-size: 1.15rem; font-weight: 700; margin-top: 0.2rem;">-</div>
+                                </div>
+                                <div>
+                                    <strong style="color: #8b92b6;">Unix Epoch (Milliseconds):</strong>
+                                    <div id="dateEpochMillis" style="font-family: monospace; color: #fff; margin-top: 0.2rem;">-</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline w-100 mt-3" onclick="copyEpochSeconds()">
+                                <i data-lucide="copy"></i> Copy Seconds Timestamp
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SEO & Educational Guide Section -->
+                    <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
+                        <h3>What is Unix Epoch Time and Why is it Used?</h3>
+                        <p>Unix time (also known as POSIX time or Epoch time) is a universal standard for tracking time defined as the number of elapsed seconds since <strong>00:00:00 UTC on 1 January 1970</strong> (not counting leap seconds). It provides an unambiguous, timezone-independent integer format widely utilized across database indexes, API authentication headers, and distributed backend systems.</p>
+
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">Common Code Snippets to Get Current Timestamp:</h4>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; color: #00f2fe; margin-top: 0.5rem;">
+                            <div><strong>JavaScript:</strong> Math.floor(Date.now() / 1000)</div>
+                            <div><strong>Python:</strong> import time; int(time.time())</div>
+                            <div><strong>PHP:</strong> time()</div>
+                            <div><strong>Go:</strong> time.Now().Unix()</div>
+                        </div>
+
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">The Year 2038 Problem (Y2038):</h4>
+                        <p>Legacy 32-bit Unix systems represent timestamp values using signed 32-bit integers. On <strong>January 19, 2038</strong>, this integer will overflow into negative values, wrapping back to 1901. Modern 64-bit systems completely resolve this limitation, guaranteeing accurate date tracking for over 292 billion years.</p>
+                    </article>
+                </section>
+
                 <!-- TAB: CRYPTOGRAPHIC HASH GENERATOR -->
                 <!-- TAB: JSON TO CSV & CSV TO JSON CONVERTER -->
                 <!-- Sticky Toast Notification popup -->

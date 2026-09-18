@@ -264,9 +264,21 @@
                     <i data-lucide="fingerprint"></i>
                     <span>UUID Generator</span>
                 </a>
-                <a href="/url-encoder/" class="nav-item" id="nav-url-encoder" onclick="routeTo(event, 'url-encoder')">
+                                <a href="/url-encoder/" class="nav-item" id="nav-url-encoder" onclick="routeTo(event, 'url-encoder')">
                     <i data-lucide="link"></i>
                     <span>URL Encoder</span>
+                </a>
+                <a href="/unix-timestamp-converter/" class="nav-item" id="nav-unix-timestamp" onclick="routeTo(event, 'unix-timestamp')">
+                    <i data-lucide="clock"></i>
+                    <span>Unix Timestamp</span>
+                </a>
+                <a href="/hash-generator/" class="nav-item" id="nav-hash-generator" onclick="routeTo(event, 'hash-generator')">
+                    <i data-lucide="shield"></i>
+                    <span>Hash Generator</span>
+                </a>
+                <a href="/json-to-csv/" class="nav-item" id="nav-json-to-csv" onclick="routeTo(event, 'json-to-csv')">
+                    <i data-lucide="file-spreadsheet"></i>
+                    <span>JSON to CSV</span>
                 </a>
 
                 <div class="nav-label">Resources</div>
@@ -3547,6 +3559,233 @@
                             </button>
                         </div>
                     </div>
+                </section>
+
+
+                <!-- TAB: UNIX TIMESTAMP CONVERTER -->
+                <section class="tab-panel" id="panel-unix-timestamp">
+                    <div class="panel-header">
+                        <h2 class="panel-title"><i data-lucide="clock" class="panel-header-icon"></i> Unix Timestamp & Epoch Converter</h2>
+                        <p>Convert between Unix Epoch timestamps and human-readable UTC/local date formats instantly with live clock tracking.</p>
+                    </div>
+
+                    <!-- Live Epoch Ticker Banner -->
+                    <div class="glass-card mb-4" style="padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-left: 4px solid #eab308;">
+                        <div>
+                            <span class="text-muted" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Current Unix Epoch Time</span>
+                            <div id="liveEpochTicker" style="font-family: monospace; font-size: 1.85rem; font-weight: 700; color: #eab308;">1726690000</div>
+                        </div>
+                        <button class="btn btn-outline btn-sm" onclick="copyCurrentEpoch()">
+                            <i data-lucide="copy"></i> Copy Current Timestamp
+                        </button>
+                    </div>
+
+                    <div class="tool-workspace grid-2">
+                        <!-- Convert Epoch to Human Date -->
+                        <div class="input-panel glass-card">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i data-lucide="arrow-down-right" style="color: #4facfe;"></i> Timestamp to Human Date
+                            </h3>
+                            <div class="form-group">
+                                <label for="epochInput">Enter Unix Timestamp (Seconds or Milliseconds)</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="number" id="epochInput" class="input-field" placeholder="e.g. 1726690000" oninput="convertEpochToDate()">
+                                    <button class="btn btn-outline" onclick="setCurrentEpochToInput()" title="Use Current Time">Now</button>
+                                </div>
+                            </div>
+                            <div class="output-preview glass-card mt-3" style="padding: 1rem; font-size: 0.9rem;">
+                                <div style="margin-bottom: 0.75rem;">
+                                    <strong style="color: #8b92b6;">GMT / UTC:</strong>
+                                    <div id="epochGmtResult" style="font-family: monospace; color: #fff; font-size: 1rem; margin-top: 0.2rem;">-</div>
+                                </div>
+                                <div style="margin-bottom: 0.75rem;">
+                                    <strong style="color: #8b92b6;">Your Local Time:</strong>
+                                    <div id="epochLocalResult" style="font-family: monospace; color: #00f2fe; font-size: 1rem; margin-top: 0.2rem;">-</div>
+                                </div>
+                                <div>
+                                    <strong style="color: #8b92b6;">Relative Time:</strong>
+                                    <div id="epochRelativeResult" style="font-family: monospace; color: #22c55e; margin-top: 0.2rem;">-</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Convert Human Date to Epoch -->
+                        <div class="output-panel glass-card">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i data-lucide="arrow-up-right" style="color: #00f2fe;"></i> Human Date to Timestamp
+                            </h3>
+                            <div class="form-group">
+                                <label for="dateToEpochInput">Select Date and Time</label>
+                                <input type="datetime-local" id="dateToEpochInput" class="input-field" onchange="convertDateToEpoch()">
+                            </div>
+                            <div class="output-preview glass-card mt-3" style="padding: 1rem; font-size: 0.9rem;">
+                                <div style="margin-bottom: 0.75rem;">
+                                    <strong style="color: #8b92b6;">Unix Epoch (Seconds):</strong>
+                                    <div id="dateEpochSeconds" style="font-family: monospace; color: #eab308; font-size: 1.15rem; font-weight: 700; margin-top: 0.2rem;">-</div>
+                                </div>
+                                <div>
+                                    <strong style="color: #8b92b6;">Unix Epoch (Milliseconds):</strong>
+                                    <div id="dateEpochMillis" style="font-family: monospace; color: #fff; margin-top: 0.2rem;">-</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline w-100 mt-3" onclick="copyEpochSeconds()">
+                                <i data-lucide="copy"></i> Copy Seconds Timestamp
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SEO & Educational Guide Section -->
+                    <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
+                        <h3>What is Unix Epoch Time and Why is it Used?</h3>
+                        <p>Unix time (also known as POSIX time or Epoch time) is a universal standard for tracking time defined as the number of elapsed seconds since <strong>00:00:00 UTC on 1 January 1970</strong> (not counting leap seconds). It provides an unambiguous, timezone-independent integer format widely utilized across database indexes, API authentication headers, and distributed backend systems.</p>
+                        
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">Common Code Snippets to Get Current Timestamp:</h4>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; color: #00f2fe; margin-top: 0.5rem;">
+                            <div><strong>JavaScript:</strong> Math.floor(Date.now() / 1000)</div>
+                            <div><strong>Python:</strong> import time; int(time.time())</div>
+                            <div><strong>PHP:</strong> time()</div>
+                            <div><strong>Go:</strong> time.Now().Unix()</div>
+                        </div>
+
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">The Year 2038 Problem (Y2038):</h4>
+                        <p>Legacy 32-bit Unix systems represent timestamp values using signed 32-bit integers. On <strong>January 19, 2038</strong>, this integer will overflow into negative values, wrapping back to 1901. Modern 64-bit systems completely resolve this limitation, guaranteeing accurate date tracking for over 292 billion years.</p>
+                    </article>
+                </section>
+
+                <!-- TAB: CRYPTOGRAPHIC HASH GENERATOR -->
+                <section class="tab-panel" id="panel-hash-generator">
+                    <div class="panel-header">
+                        <h2 class="panel-title"><i data-lucide="shield" class="panel-header-icon"></i> Cryptographic Hash Generator</h2>
+                        <p>Generate secure SHA-256, SHA-512, SHA-384, and SHA-1 checksums directly inside your browser using the native Web Cryptography API.</p>
+                    </div>
+
+                    <div class="tool-workspace grid-2">
+                        <!-- Input panel -->
+                        <div class="input-panel glass-card">
+                            <div class="form-group">
+                                <label for="hashTextInput">Input Text String to Hash</label>
+                                <textarea id="hashTextInput" class="input-field" rows="6" placeholder="Type or paste any text string here..." oninput="computeHashes()"></textarea>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                                <button class="btn btn-outline btn-sm" onclick="setSampleHashText()">Load Sample</button>
+                                <button class="btn btn-outline btn-sm" onclick="clearHashInput()">Clear</button>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Or Select a File for Local Checksum</label>
+                                <input type="file" id="hashFileInput" class="input-field" onchange="computeFileHash(event)">
+                                <p class="text-muted" style="font-size: 0.8rem; margin-top: 0.3rem;">Files are computed in your browser using FileReader API. No file is ever uploaded.</p>
+                            </div>
+                        </div>
+
+                        <!-- Hashes Output panel -->
+                        <div class="output-panel glass-card">
+                            <div class="form-group">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-256 (Secure & Recommended)</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha256')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha256" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #00f2fe;">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-512 (High Security Checksum)</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha512')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha512" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #22c55e;">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-384</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha384')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha384" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #eab308;">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label style="display: flex; justify-content: space-between;">
+                                    <span>SHA-1 (Legacy / Git Checksums)</span>
+                                    <button class="btn btn-outline btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="copyHash('sha1')"><i data-lucide="copy"></i> Copy</button>
+                                </label>
+                                <input type="text" id="hashSha1" class="input-field" readonly style="font-family: monospace; font-size: 0.85rem; color: #8b92b6;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEO Educational Guide -->
+                    <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
+                        <h3>What is a Cryptographic Hash Function?</h3>
+                        <p>A cryptographic hash function is a mathematical algorithm that maps data of arbitrary size to a bit array of a fixed size (a hash or digest). It is a one-way function, meaning it is computationally infeasible to invert or deduce the original input string from the hash result alone.</p>
+                        
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">Why SHA-256 is the Global Standard:</h4>
+                        <p>Published by the National Institute of Standards and Technology (NIST), SHA-256 generates a 256-bit (64-character hexadecimal) digest. It is mathematically collision-resistant, powering TLS/SSL certificates, Bitcoin proof-of-work consensus, and software release verification checksums worldwide.</p>
+
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">100% Client-Side Privacy Guarantee:</h4>
+                        <p>Unlike third-party hash sites that send your credentials to cloud servers, OmniTools utilizes your browser's native <code>window.crypto.subtle.digest</code> API. Your proprietary data and secret keys are hashed strictly in local device RAM.</p>
+                    </article>
+                </section>
+
+                <!-- TAB: JSON TO CSV & CSV TO JSON CONVERTER -->
+                <section class="tab-panel" id="panel-json-to-csv">
+                    <div class="panel-header">
+                        <h2 class="panel-title"><i data-lucide="file-spreadsheet" class="panel-header-icon"></i> JSON to CSV Converter Online</h2>
+                        <p>Convert JSON arrays into clean CSV spreadsheets and tables with instant visual preview, custom delimiters, and file export.</p>
+                    </div>
+
+                    <div class="tool-workspace grid-2">
+                        <!-- Input side -->
+                        <div class="input-panel glass-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <label for="jsonCsvInput">Input JSON Array</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-outline btn-sm" onclick="setSampleJsonCsv()">Sample JSON</button>
+                                    <button class="btn btn-outline btn-sm" onclick="clearJsonCsv()">Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="jsonCsvInput" class="input-field" rows="10" placeholder='[&#10;  {"id": 1, "name": "Alice", "role": "Engineer"},&#10;  {"id": 2, "name": "Bob", "role": "Designer"}&#10;]' oninput="convertJsonToCsv()"></textarea>
+                            
+                            <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.75rem;">
+                                <label style="font-size: 0.85rem; color: #8b92b6;">Delimiter:</label>
+                                <select id="csvDelimiterSelect" class="input-field" style="width: auto; padding: 0.3rem 0.6rem;" onchange="convertJsonToCsv()">
+                                    <option value=",">Comma (,)</option>
+                                    <option value=";">Semicolon (;)</option>
+                                    <option value="&#9;">Tab</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Output side -->
+                        <div class="output-panel glass-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <label for="jsonCsvOutput">Generated CSV Result</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-outline btn-sm" onclick="copyCsvResult()"><i data-lucide="copy"></i> Copy</button>
+                                    <button class="btn btn-outline btn-sm" onclick="downloadCsvFile()"><i data-lucide="download"></i> Download .CSV</button>
+                                </div>
+                            </div>
+                            <textarea id="jsonCsvOutput" class="input-field" rows="10" readonly style="font-family: monospace; font-size: 0.85rem; color: #22c55e;" placeholder="CSV result will appear here..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Visual Data Table Preview -->
+                    <div class="glass-card mt-4" style="padding: 1.25rem;">
+                        <h4 style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="table" style="color: #00f2fe;"></i> Formatted Table Preview
+                        </h4>
+                        <div id="jsonCsvTableWrapper" style="overflow-x: auto; max-height: 250px;">
+                            <p class="text-muted" style="font-size: 0.85rem;">Table preview will automatically render when valid JSON is provided above.</p>
+                        </div>
+                    </div>
+
+                    <!-- SEO Educational Guide -->
+                    <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
+                        <h3>Why Convert JSON to CSV for Data Analysis?</h3>
+                        <p>JSON (JavaScript Object Notation) is the de facto standard format for REST APIs and NoSQL databases, but spreadsheet applications like Microsoft Excel, Google Sheets, and Apple Numbers require tabular <strong>CSV (Comma-Separated Values)</strong> format for pivot tables, sorting, and charting.</p>
+                        
+                        <h4 style="margin-top: 1.25rem; font-size: 1.1rem;">Safe Client-Side Parsing:</h4>
+                        <p>Most commercial converters upload your proprietary corporate datasets to external web servers. OmniTools processes and formats all records locally in browser memory, making it compliant with strict GDPR, HIPAA, and internal enterprise data privacy rules.</p>
+                    </article>
                 </section>
 
             <!-- Sticky Toast Notification popup -->

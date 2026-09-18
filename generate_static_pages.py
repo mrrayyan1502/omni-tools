@@ -64,6 +64,12 @@ ROUTES = {
           "Convert common length, weight, temperature and digital storage units instantly."),
     "/youtube-thumbnail-downloader/": ("panel-youtube-thumbnail", "YouTube Thumbnail Downloader – Get Video Images",
           "View and download publicly available YouTube video thumbnails by pasting a video URL."),
+    "/unix-timestamp-converter/": ("panel-unix-timestamp", "Unix Timestamp & Epoch Converter Online",
+          "Convert Unix epoch timestamps to human-readable UTC and local dates. Live clock, millisecond support and relative time tracking."),
+    "/hash-generator/": ("panel-hash-generator", "Cryptographic Hash Generator – SHA-256, SHA-512 & SHA-1",
+          "Generate secure SHA-256, SHA-512, SHA-384 and SHA-1 checksums locally in your browser using the native Web Cryptography API."),
+    "/json-to-csv/": ("panel-json-to-csv", "Free JSON to CSV Converter Online with Table Preview",
+          "Convert JSON arrays into clean CSV spreadsheets and tables locally in your browser. Live table preview and instant download."),
     "/about/": ("panel-about", "About OmniTools – Private Browser-Based Utilities",
           "Learn why OmniTools provides practical, free utilities that process supported inputs locally in your browser."),
     "/privacy-policy/": ("panel-privacy", "Privacy Policy | OmniTools",
@@ -211,6 +217,21 @@ TOOL_FAQS = {
     "/youtube-thumbnail-downloader/": [
         ("What thumbnail qualities can I download?", "You can download Maximum Resolution (1080p HD - maxresdefault), High Quality (hqdefault), and Medium Quality thumbnail images."),
         ("Do I need an account or API key?", "No account or API key is required. Simply paste the YouTube video link to view and download available thumbnails.")
+    ],
+    "/unix-timestamp-converter/": [
+        ("What is Unix Epoch time?", "Unix time is the number of elapsed seconds since 00:00:00 UTC on January 1, 1970. It provides a timezone-independent integer format widely used across operating systems, databases, and APIs."),
+        ("Does this converter support milliseconds?", "Yes. The tool automatically detects whether your timestamp input is in seconds (10 digits) or milliseconds (13 digits) and converts it accurately."),
+        ("What is the Year 2038 Problem?", "Legacy 32-bit systems store timestamps as signed 32-bit integers, which will overflow on January 19, 2038. Modern 64-bit systems are completely immune to this limitation.")
+    ],
+    "/hash-generator/": [
+        ("Is it safe to compute hashes of sensitive data here?", "Yes. OmniTools computes all hashes locally in your browser using the native Web Cryptography API (crypto.subtle.digest). Your text or file never leaves your device."),
+        ("Can a cryptographic hash be decrypted or reversed?", "No. Cryptographic hashes are mathematically one-way functions. It is practically impossible to invert a SHA-256 or SHA-512 digest back to the original text."),
+        ("What is the difference between SHA-256 and SHA-1?", "SHA-256 provides 256 bits of cryptographic security and is the global industry standard. SHA-1 is an older 160-bit algorithm now deprecated for security certificates but still used for Git commit checksums.")
+    ],
+    "/json-to-csv/": [
+        ("Are my JSON records uploaded to any server during conversion?", "No. The conversion executes 100% client-side in browser memory. Your private datasets and customer records are never uploaded or stored."),
+        ("How does it handle nested objects and arrays in JSON?", "Nested objects and arrays are safely serialized into JSON strings within CSV cells to preserve structure when imported into Excel or Google Sheets."),
+        ("Can I choose custom delimiters like semicolon or tab?", "Yes. You can select standard comma (,), semicolon (;), or tab (\\t) delimiters to fit your spreadsheet software.")
     ]
 }
 
