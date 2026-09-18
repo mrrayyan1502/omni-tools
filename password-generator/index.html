@@ -58,8 +58,7 @@
     <!-- Lucide Icons for clean UI vectors (Critical) -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <!-- Dynamic SEO Meta Tags (per route) -->
-    <meta name="robots" content="index,follow,max-image-preview:large"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Secure Password Generator & Strength Checker", "url": "https://www.omnitechtools.com/password-generator/", "description": "Generate strong random passwords locally with custom length, characters and an easy-to-understand strength estimate.", "isAccessibleForFree": true}</script><meta name="google-adsense-account" content="ca-pub-1778765695782629">
-</head>
+    <meta name="robots" content="index,follow,max-image-preview:large"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/password-generator/#app", "name": "Secure Password Generator & Strength Checker", "url": "https://www.omnitechtools.com/password-generator/", "description": "Generate strong random passwords locally with custom length, characters and an easy-to-understand strength estimate.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/password-generator/#faq", "mainEntity": [{"@type": "Question", "name": "How cryptographically secure are passwords created by OmniTools?", "acceptedAnswer": {"@type": "Answer", "text": "OmniTools uses the browser's crypto.getRandomValues API, providing cryptographically strong pseudo-random numbers that resist brute-force and dictionary attacks."}}, {"@type": "Question", "name": "Are generated passwords saved anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "Never. Passwords are generated exclusively on your local device. Once you close or reload the browser tab, the data is completely purged from memory."}}]}]}</script></head>
 <body>
 
     <!-- App Shell Layout -->
@@ -151,6 +150,10 @@
                 <a href="/unit-converter/" class="nav-item" id="nav-unit-converter">
                     <i data-lucide="arrow-right-left"></i>
                     <span>Unit Converter</span>
+                </a>
+                <a href="/youtube-thumbnail-downloader/" class="nav-item" id="nav-youtube-thumbnail">
+                    <i data-lucide="youtube"></i>
+                    <span>YT Thumbnail Gen</span>
                 </a>
                 <!-- 9 NEW TOOLS NAVIGATION -->
                 <a href="/jwt-decoder/" class="nav-item" id="nav-jwt-decoder">

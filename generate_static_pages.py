@@ -113,6 +113,107 @@ GUIDE_SOURCES = {
     "panel-meta-generator": "panel-color-palette",
 }
 
+TOOL_FAQS = {
+    "/qr-code-generator/": [
+        ("Is this QR code generator completely free and private?", "Yes. All QR codes are generated directly in your web browser using client-side JavaScript. No URLs, text, or uploaded logos are sent to or stored on any server."),
+        ("Can I add a custom brand logo and change colours?", "Yes. You can customize background colours, foreground module colours, corner dot styles, and embed your logo while maintaining high error correction (Level H - 30% recovery) for reliable scanning."),
+        ("What formats can I export my QR code in?", "You can download high-resolution PNG images for screens or scalable vector SVG files ideal for high-DPI print banners and packaging.")
+    ],
+    "/image-compressor/": [
+        ("Are my images uploaded to any remote server during compression?", "No. OmniTools compresses JPG, PNG, and WebP files entirely within your browser using HTML5 Canvas and local WebAssembly. Your photos never leave your device."),
+        ("Does compressing an image visibly degrade its quality?", "OmniTools uses visually lossless compression algorithms that remove unnecessary metadata and optimize color tables, reducing file size by up to 80% without noticeable quality loss."),
+        ("What image formats are supported?", "You can compress JPG, JPEG, PNG, and modern WebP image formats with real-time file size comparison.")
+    ],
+    "/json-formatter/": [
+        ("Is it safe to format confidential JSON files and API payloads here?", "Yes. OmniTools runs 100% client-side in browser memory. Your JSON data, tokens, and configuration keys are never transmitted over the internet or logged."),
+        ("What features does this JSON Formatter provide?", "It provides instant syntax validation, beautification with 2 or 4 space indentation, minification, tree-view inspection, and one-click clipboard copying.")
+    ],
+    "/css-glassmorphism-generator/": [
+        ("How is glassmorphism created in CSS?", "Glassmorphism combines CSS backdrop-filter (blur), semi-transparent background colors (RGBA), subtle borders, and soft shadows to create a modern frosted glass aesthetic."),
+        ("Is the generated CSS compatible with all browsers?", "Yes, all modern evergreen browsers (Chrome, Edge, Safari, Firefox) support backdrop-filter. The tool includes necessary cross-browser declarations.")
+    ],
+    "/compound-interest-calculator/": [
+        ("How does compound interest accelerate wealth growth?", "Compound interest calculates returns on both initial principal and accumulated interest over prior periods, creating an exponential growth curve over time."),
+        ("Can I add regular monthly contributions to the calculation?", "Yes. You can set initial balance, estimated annual interest rate, compounding frequency, and regular monthly or annual deposits to see detailed growth schedules.")
+    ],
+    "/password-generator/": [
+        ("How cryptographically secure are passwords created by OmniTools?", "OmniTools uses the browser's crypto.getRandomValues API, providing cryptographically strong pseudo-random numbers that resist brute-force and dictionary attacks."),
+        ("Are generated passwords saved anywhere?", "Never. Passwords are generated exclusively on your local device. Once you close or reload the browser tab, the data is completely purged from memory.")
+    ],
+    "/base64-encoder-decoder/": [
+        ("What is Base64 encoding typically used for?", "Base64 encodes binary or text data into safe ASCII string characters, widely used to embed inline images into HTML/CSS or transmit data across strict text protocols."),
+        ("Is Base64 an encryption method?", "No. Base64 is an encoding scheme, not encryption. Anyone can decode a Base64 string without needing an encryption key.")
+    ],
+    "/meta-tag-generator/": [
+        ("Which SEO and social meta tags are generated?", "The tool generates standard Title, Description, Viewport, Canonical, Robots, Open Graph (Facebook/LinkedIn), and Twitter Card meta tags."),
+        ("Does this tool include live search previews?", "Yes, you can preview how your webpage will look as a Google search result, Facebook share preview, and Twitter card in real time.")
+    ],
+    "/inflation-calculator/": [
+        ("How does inflation affect future purchasing power?", "Inflation erodes money's purchasing power over time, meaning future dollars will buy fewer goods and services than they do today."),
+        ("What formula is used for inflation calculation?", "The calculator applies standard compound inflation rate formulas across your specified timeframe to compute future purchasing power equivalents.")
+    ],
+    "/jwt-decoder/": [
+        ("Is it safe to inspect JWT tokens with OmniTools?", "Yes. Decoding happens entirely client-side in your browser. Tokens are never uploaded to any remote server or third-party service."),
+        ("Does this tool verify JWT cryptographic signatures?", "This tool decodes and displays JSON header claims and payload data for debugging purposes. It does not verify or validate cryptographic signatures.")
+    ],
+    "/markdown-editor/": [
+        ("Does the OmniTools Markdown editor support live preview?", "Yes. It offers a live split-screen editor with instant formatting, table rendering, task lists, code block syntax highlighting, and export to MD or HTML."),
+        ("Are my drafts saved if I close the tab?", "Yes, active markdown drafts are automatically stored in your browser's localStorage so you can resume writing without losing work.")
+    ],
+    "/regex-tester/": [
+        ("Which regex flavor is supported?", "OmniTools utilizes the native JavaScript ECMAScript RegExp engine, supporting standard flags like g (global), i (ignore case), m (multiline), and u (unicode)."),
+        ("Does it support regex string replacement testing?", "Yes. You can test match patterns as well as substitution patterns with live highlighted replacement output.")
+    ],
+    "/sql-formatter/": [
+        ("Which database dialects can this SQL formatter beautify?", "It formats standard ANSI SQL, PostgreSQL, MySQL, SQLite, and Microsoft SQL Server query syntax."),
+        ("Does formatting alter database query execution?", "No. It only improves query readability by standardizing indentation, capitalization, and clause line breaks.")
+    ],
+    "/css-box-shadow/": [
+        ("How do I make realistic CSS box shadows?", "Layering multiple subtle box-shadow declarations with soft blur radiuses and low opacity creates realistic, natural depth without harsh edges."),
+        ("Can I copy the CSS code directly into my stylesheet?", "Yes. With one click you can copy production-ready CSS rules including inset and multi-layer box-shadow properties.")
+    ],
+    "/word-counter/": [
+        ("What metrics does this word counter track?", "It counts words, total characters, characters without spaces, sentences, paragraphs, reading time, and speaking time."),
+        ("Is there any text character limit?", "No. Because text is processed in your local browser memory, you can analyze articles or code documents of any length.")
+    ],
+    "/lorem-ipsum/": [
+        ("What is Lorem Ipsum text used for?", "Lorem Ipsum is standard dummy placeholder text used by graphic designers, developers, and typesetters to focus on visual layout before final copy is ready."),
+        ("Can I generate HTML-wrapped paragraphs?", "Yes. You can generate custom paragraph counts, word counts, or lists with optional HTML tag wrapping for easy copy-pasting.")
+    ],
+    "/uuid-generator/": [
+        ("What is UUID version 4?", "UUID v4 is a 128-bit universally unique identifier generated using random bytes, ensuring unique identification across distributed systems."),
+        ("Are the generated UUIDs random?", "Yes. They are generated using the Web Cryptography API, making accidental collision statistically negligible.")
+    ],
+    "/url-encoder/": [
+        ("Why is URL encoding necessary?", "Certain characters like spaces, query delimiters, and ampersands have special meanings in URLs. Encoding converts them into safe percent-encoded escape sequences."),
+        ("Can I decode percent-encoded URLs back to plain text?", "Yes, you can instantly toggle between URL encoding and decoding with one click.")
+    ],
+    "/image-resizer/": [
+        ("Can I resize images proportionally?", "Yes. You can lock the aspect ratio to maintain dimensions automatically or enter custom width and height values in pixels."),
+        ("Does image resizing require server uploads?", "No. Resizing takes place inside your browser using canvas elements, guaranteeing complete privacy.")
+    ],
+    "/pdf-merge/": [
+        ("Can I merge confidential PDF documents safely?", "Yes. OmniTools merges PDF documents locally in your browser. No files are uploaded to our servers, ensuring total privacy for contracts and financial records."),
+        ("Can I reorder PDF files before merging?", "Yes. You can arrange and reorder documents before downloading the combined single PDF file.")
+    ],
+    "/unit-converter/": [
+        ("Which measurement units are supported?", "OmniTools converts length, mass/weight, temperature, digital data storage, area, volume, and speed units."),
+        ("Are conversion calculations accurate?", "Yes, conversions use standard international SI and imperial conversion factors with high decimal precision.")
+    ],
+    "/color-palette-generator/": [
+        ("How does the WCAG contrast checker help accessibility?", "It calculates relative luminance contrast between text and background colors against WCAG 2.1 AA (4.5:1) and AAA (7:1) readability requirements."),
+        ("What color models can I copy?", "You can copy color codes in HEX, RGB, and HSL formats with a single click.")
+    ],
+    "/svg-blob-generator/": [
+        ("What are SVG blobs used for?", "Organic SVG blob shapes add creative accents behind product screenshots, hero banners, and user profile avatars in modern web design."),
+        ("Can I export the SVG markup directly?", "Yes. You can adjust complexity and smoothness, then copy the raw SVG vector code or download an .svg file.")
+    ],
+    "/youtube-thumbnail-downloader/": [
+        ("What thumbnail qualities can I download?", "You can download Maximum Resolution (1080p HD - maxresdefault), High Quality (hqdefault), and Medium Quality thumbnail images."),
+        ("Do I need an account or API key?", "No account or API key is required. Simply paste the YouTube video link to view and download available thumbnails.")
+    ]
+}
+
 
 def clean_head(document, route, title, description):
     head = document.find(".//head")
@@ -151,16 +252,129 @@ def clean_head(document, route, title, description):
     set_meta("./meta[@name='twitter:title']", {"name": "twitter:title", "content": title})
     set_meta("./meta[@name='twitter:description']", {"name": "twitter:description", "content": description})
 
-    schema = {
+    # Remove all existing ld+json scripts in head to avoid duplicates
+    for old_json in list(head.xpath(".//script[@type='application/ld+json']")):
+        head.remove(old_json)
+
+    # Build Rich Interconnected Schema Graph
+    graph = []
+    if route == "/":
+        graph.append({
+            "@type": "Organization",
+            "@id": f"{BASE_URL}/#organization",
+            "name": "OmniTools",
+            "url": f"{BASE_URL}/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": f"{BASE_URL}/og-image.png"
+            },
+            "description": "Privacy-focused, 100% browser-based utility tools for developers and creators.",
+            "sameAs": [
+                "https://github.com/omnitechtools",
+                "https://twitter.com/omnitechtools"
+            ]
+        })
+        graph.append({
+            "@type": "WebSite",
+            "@id": f"{BASE_URL}/#website",
+            "url": f"{BASE_URL}/",
+            "name": "OmniTools",
+            "publisher": {"@id": f"{BASE_URL}/#organization"},
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": f"{BASE_URL}/?q={{search_term_string}}",
+                "query-input": "required name=search_term_string"
+            }
+        })
+        graph.append({
+            "@type": "WebPage",
+            "@id": f"{canonical_url}#webpage",
+            "url": canonical_url,
+            "name": H1S[route],
+            "description": description,
+            "isAccessibleForFree": True,
+            "isPartOf": {"@id": f"{BASE_URL}/#website"}
+        })
+    elif route.startswith("/blog/") and route != "/blog/":
+        graph.append({
+            "@type": "BlogPosting",
+            "@id": f"{canonical_url}#article",
+            "headline": H1S[route],
+            "description": description,
+            "mainEntityOfPage": canonical_url,
+            "datePublished": "2026-08-01T00:00:00+00:00",
+            "dateModified": "2026-09-18T00:00:00+00:00",
+            "author": {
+                "@type": "Organization",
+                "name": "OmniTools Editorial Team",
+                "url": f"{BASE_URL}/about/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "OmniTools",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": f"{BASE_URL}/og-image.png"
+                }
+            }
+        })
+    elif "panel-" in ROUTES[route][0] and route not in {"/about/", "/privacy-policy/", "/terms-of-service/", "/contact/", "/blog/"}:
+        cat = "DeveloperApplication"
+        if any(k in route for k in ["finance", "inflation", "interest", "counter", "calculator", "lorem", "converter"]):
+            cat = "UtilitiesApplication"
+        elif any(k in route for k in ["css", "color", "palette", "svg", "blob"]):
+            cat = "DesignApplication"
+
+        graph.append({
+            "@type": "WebApplication",
+            "@id": f"{canonical_url}#app",
+            "name": H1S[route],
+            "url": canonical_url,
+            "description": description,
+            "applicationCategory": cat,
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript. Requires HTML5.",
+            "isAccessibleForFree": True,
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        })
+
+        faqs = TOOL_FAQS.get(route, [])
+        if faqs:
+            graph.append({
+                "@type": "FAQPage",
+                "@id": f"{canonical_url}#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": q,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": a
+                        }
+                    }
+                    for q, a in faqs
+                ]
+            })
+    else:
+        graph.append({
+            "@type": "WebPage",
+            "@id": f"{canonical_url}#webpage",
+            "url": canonical_url,
+            "name": H1S[route],
+            "description": description,
+            "isAccessibleForFree": True
+        })
+
+    schema_data = {
         "@context": "https://schema.org",
-        "@type": "WebApplication" if "panel-" in ROUTES[route][0] and not route.startswith("/blog") and route not in {"/", "/about/", "/privacy-policy/", "/terms-of-service/", "/contact/"} else "WebPage",
-        "name": H1S[route],
-        "url": canonical_url,
-        "description": description,
-        "isAccessibleForFree": True,
+        "@graph": graph
     }
     schema_node = etree.SubElement(head, "script", type="application/ld+json")
-    schema_node.text = json.dumps(schema, ensure_ascii=False)
+    schema_node.text = json.dumps(schema_data, ensure_ascii=False)
 
 
 def make_links_crawlable(document):
