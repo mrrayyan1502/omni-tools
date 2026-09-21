@@ -8,11 +8,6 @@
       "permanent": true
     },
     {
-      "source": "/youtube-thumbnail-downloader/",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/webp-converter/",
       "destination": "/image-compressor/",
       "permanent": true
