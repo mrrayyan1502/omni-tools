@@ -21,6 +21,11 @@
       "source": "/pdf-merger/",
       "destination": "/pdf-merge/",
       "permanent": true
+    },
+    {
+      "source": "/youtube-thumbnail-downloader/",
+      "destination": "/diff-checker/",
+      "permanent": true
     }
   ],
   "headers": [

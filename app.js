@@ -20,6 +20,7 @@ const routeMap = {
     '/base64-encoder-decoder/': 'base64',
     '/meta-tag-generator/': 'meta-generator',
     '/inflation-calculator/': 'inflation-calc',
+    '/diff-checker/': 'diff-checker',
     '/image-resizer/': 'image-resizer',
     '/pdf-merge/': 'pdf-merge',
     '/unit-converter/': 'unit-converter',
@@ -58,6 +59,7 @@ const tabToRouteMap = {
     'word-counter': '/word-counter/',
     'lorem-ipsum': '/lorem-ipsum/',
     'uuid-generator': '/uuid-generator/',
+    'diff-checker': '/diff-checker/',
     'image-resizer': '/image-resizer/',
     'pdf-merge': '/pdf-merge/',
     'unit-converter': '/unit-converter/',
@@ -157,7 +159,8 @@ function initStandaloneTool() {
         ),
         'css-box-shadow': updateShadow,
         'lorem-ipsum': generateLorem,
-        'uuid-generator': generateUUIDs
+        'uuid-generator': generateUUIDs,
+        'diff-checker': () => { if (typeof loadDiffSample === 'function' && !document.getElementById('diffInputOriginal')?.value) loadDiffSample('code'); }
     };
 
     if (loaders[toolId]) loaders[toolId]();
@@ -3159,74 +3162,323 @@ function convertUnits() {
     document.getElementById('unitOutputVal').value = Number.isInteger(res) ? res : parseFloat(res.toFixed(6));
 }
 
-// 4. YouTube Thumbnail Downloader
-function extractYtThumbnail() {
-    const url = document.getElementById('ytUrlInput').value;
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
-    if (match && match[1]) {
-        const vid = match[1];
-        const imgUrl = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
-        const imgEl = document.getElementById('ytThumbnailImg');
-        imgEl.src = imgUrl;
-        imgEl.style.display = 'block';
-        document.getElementById('ytPreviewArea').querySelector('p').style.display = 'none';
-        document.getElementById('ytDownloadBtn').style.display = 'block';
-        document.getElementById('ytDownloadBtn').dataset.url = imgUrl;
+// ==================== DIFF CHECKER TOOL ====================
+let currentDiffViewMode = 'split';
+
+function setDiffViewMode(mode) {
+    currentDiffViewMode = mode;
+    const btnSplit = document.getElementById('diffBtnSplit');
+    const btnUnified = document.getElementById('diffBtnUnified');
+    if (btnSplit && btnUnified) {
+        if (mode === 'split') {
+            btnSplit.className = 'btn btn-sm btn-primary';
+            btnUnified.className = 'btn btn-sm btn-outline';
+        } else {
+            btnSplit.className = 'btn btn-sm btn-outline';
+            btnUnified.className = 'btn btn-sm btn-primary';
+        }
+    }
+    compareDiff();
+}
+
+function updateDiffInputStats() {
+    const orig = document.getElementById('diffInputOriginal')?.value || '';
+    const mod = document.getElementById('diffInputModified')?.value || '';
+    const origLines = orig ? orig.split('\n').length : 0;
+    const modLines = mod ? mod.split('\n').length : 0;
+    const elOrig = document.getElementById('diffOrigStats');
+    const elMod = document.getElementById('diffModStats');
+    if (elOrig) elOrig.innerText = `${origLines} lines | ${orig.length} chars`;
+    if (elMod) elMod.innerText = `${modLines} lines | ${mod.length} chars`;
+}
+
+function clearDiffInputs() {
+    const elOrig = document.getElementById('diffInputOriginal');
+    const elMod = document.getElementById('diffInputModified');
+    if (elOrig) elOrig.value = '';
+    if (elMod) elMod.value = '';
+    updateDiffInputStats();
+    const statsBar = document.getElementById('diffStatsBar');
+    const outBox = document.getElementById('diffOutputContainer');
+    if (statsBar) statsBar.style.display = 'none';
+    if (outBox) outBox.style.display = 'none';
+}
+
+function swapDiffText() {
+    const elOrig = document.getElementById('diffInputOriginal');
+    const elMod = document.getElementById('diffInputModified');
+    if (!elOrig || !elMod) return;
+    const temp = elOrig.value;
+    elOrig.value = elMod.value;
+    elMod.value = temp;
+    updateDiffInputStats();
+    compareDiff();
+}
+
+function loadDiffSample(type) {
+    const elOrig = document.getElementById('diffInputOriginal');
+    const elMod = document.getElementById('diffInputModified');
+    if (!elOrig || !elMod) return;
+
+    if (type === 'code') {
+        elOrig.value = `function calculateTotal(cart, taxRate) {
+    let subtotal = 0;
+    for (let i = 0; i < cart.length; i++) {
+        subtotal += cart[i].price;
+    }
+    const tax = subtotal * taxRate;
+    return subtotal + tax;
+}`;
+        elMod.value = `function calculateTotal(cart, taxRate, discount = 0) {
+    let subtotal = 0;
+    for (const item of cart) {
+        subtotal += item.price * (item.quantity || 1);
+    }
+    const discountedTotal = Math.max(0, subtotal - discount);
+    const tax = discountedTotal * taxRate;
+    return Number((discountedTotal + tax).toFixed(2));
+}`;
     } else {
-        document.getElementById('ytThumbnailImg').style.display = 'none';
-        document.getElementById('ytPreviewArea').querySelector('p').style.display = 'block';
-        document.getElementById('ytDownloadBtn').style.display = 'none';
+        elOrig.value = `OmniTools provides free, client-side web developer tools.
+Our utilities run directly in your browser.
+No server uploads are required for basic operations.
+Support for QR codes, image compression, and formatters.
+Contact support if you have questions.`;
+        elMod.value = `OmniTools provides 100% free, private-by-design creator tools.
+Our utilities run directly in your browser with zero latency.
+No server uploads or account registration are required.
+Support for QR codes, image compression, diff checking, and formatters.
+Feel free to contact our technical team if you have questions.`;
+    }
+    updateDiffInputStats();
+    compareDiff();
+}
+
+function handleDiffFileUpload(event, side) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const targetId = side === 'original' ? 'diffInputOriginal' : 'diffInputModified';
+        const el = document.getElementById(targetId);
+        if (el) el.value = e.target?.result || '';
+        updateDiffInputStats();
+        compareDiff();
+    };
+    reader.readAsText(file);
+}
+
+function escapeHtml(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function computeLCSDiff(lines1, lines2, ignoreWs, ignoreCase) {
+    const normalize = (l) => {
+        let s = l;
+        if (ignoreWs) s = s.trim();
+        if (ignoreCase) s = s.toLowerCase();
+        return s;
+    };
+
+    const m = lines1.length;
+    const n = lines2.length;
+    const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (normalize(lines1[i - 1]) === normalize(lines2[j - 1])) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            } else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+
+    let i = m, j = n;
+    const diff = [];
+    while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && normalize(lines1[i - 1]) === normalize(lines2[j - 1])) {
+            diff.unshift({ type: 'equal', text1: lines1[i - 1], text2: lines2[j - 1], num1: i, num2: j });
+            i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+            diff.unshift({ type: 'add', text2: lines2[j - 1], num2: j });
+            j--;
+        } else {
+            diff.unshift({ type: 'del', text1: lines1[i - 1], num1: i });
+            i--;
+        }
+    }
+    return diff;
+}
+
+function compareDiff() {
+    const orig = document.getElementById('diffInputOriginal')?.value;
+    const mod = document.getElementById('diffInputModified')?.value;
+    if (orig === undefined || mod === undefined) return;
+
+    if (!orig.trim() && !mod.trim()) {
+        const statsBar = document.getElementById('diffStatsBar');
+        const outBox = document.getElementById('diffOutputContainer');
+        if (statsBar) statsBar.style.display = 'none';
+        if (outBox) outBox.style.display = 'none';
+        return;
+    }
+
+    const ignoreWs = document.getElementById('diffIgnoreWhitespace')?.checked || false;
+    const ignoreCase = document.getElementById('diffIgnoreCase')?.checked || false;
+
+    const lines1 = orig.split('\n');
+    const lines2 = mod.split('\n');
+    const diff = computeLCSDiff(lines1, lines2, ignoreWs, ignoreCase);
+
+    let additions = 0, deletions = 0, unchanged = 0;
+    diff.forEach(item => {
+        if (item.type === 'add') additions++;
+        else if (item.type === 'del') deletions++;
+        else unchanged++;
+    });
+
+    const totalLines = Math.max(lines1.length, lines2.length);
+    const simPercent = totalLines > 0 ? Math.round((unchanged / (totalLines + (deletions + additions) / 2)) * 100) : 100;
+
+    const statAdded = document.getElementById('diffStatAdded');
+    const statRemoved = document.getElementById('diffStatRemoved');
+    const statUnchanged = document.getElementById('diffStatUnchanged');
+    const statSim = document.getElementById('diffStatSimilarity');
+    const statsBar = document.getElementById('diffStatsBar');
+    const outBox = document.getElementById('diffOutputContainer');
+    const outContent = document.getElementById('diffOutputContent');
+
+    if (statAdded) statAdded.innerText = '+' + additions;
+    if (statRemoved) statRemoved.innerText = '-' + deletions;
+    if (statUnchanged) statUnchanged.innerText = unchanged;
+    if (statSim) statSim.innerText = `${Math.min(100, Math.max(0, simPercent))}%`;
+    if (statsBar) statsBar.style.display = 'flex';
+    if (outBox) outBox.style.display = 'block';
+
+    if (!outContent) return;
+
+    if (currentDiffViewMode === 'unified') {
+        let html = '<div class="diff-table">';
+        diff.forEach(item => {
+            if (item.type === 'equal') {
+                html += `<div class="diff-row diff-equal">
+                    <div class="diff-line-num">${item.num1}</div>
+                    <div class="diff-line-num">${item.num2}</div>
+                    <div class="diff-line-sign"> </div>
+                    <div class="diff-line-text">${escapeHtml(item.text1)}</div>
+                </div>`;
+            } else if (item.type === 'del') {
+                html += `<div class="diff-row diff-removed">
+                    <div class="diff-line-num">${item.num1}</div>
+                    <div class="diff-line-num"></div>
+                    <div class="diff-line-sign">-</div>
+                    <div class="diff-line-text">${escapeHtml(item.text1)}</div>
+                </div>`;
+            } else if (item.type === 'add') {
+                html += `<div class="diff-row diff-added">
+                    <div class="diff-line-num"></div>
+                    <div class="diff-line-num">${item.num2}</div>
+                    <div class="diff-line-sign">+</div>
+                    <div class="diff-line-text">${escapeHtml(item.text2)}</div>
+                </div>`;
+            }
+        });
+        html += '</div>';
+        outContent.innerHTML = html;
+    } else {
+        let html = '<div class="diff-table">';
+        let i = 0;
+        while (i < diff.length) {
+            const item = diff[i];
+            if (item.type === 'equal') {
+                html += `<div class="diff-row diff-equal">
+                    <div class="diff-col diff-col-left">
+                        <div class="diff-line-num">${item.num1}</div>
+                        <div class="diff-line-sign"> </div>
+                        <div class="diff-line-text">${escapeHtml(item.text1)}</div>
+                    </div>
+                    <div class="diff-col">
+                        <div class="diff-line-num">${item.num2}</div>
+                        <div class="diff-line-sign"> </div>
+                        <div class="diff-line-text">${escapeHtml(item.text2)}</div>
+                    </div>
+                </div>`;
+                i++;
+            } else if (item.type === 'del') {
+                const next = diff[i + 1];
+                if (next && next.type === 'add') {
+                    html += `<div class="diff-row">
+                        <div class="diff-col diff-col-left diff-removed">
+                            <div class="diff-line-num">${item.num1}</div>
+                            <div class="diff-line-sign">-</div>
+                            <div class="diff-line-text">${escapeHtml(item.text1)}</div>
+                        </div>
+                        <div class="diff-col diff-added">
+                            <div class="diff-line-num">${next.num2}</div>
+                            <div class="diff-line-sign">+</div>
+                            <div class="diff-line-text">${escapeHtml(next.text2)}</div>
+                        </div>
+                    </div>`;
+                    i += 2;
+                } else {
+                    html += `<div class="diff-row">
+                        <div class="diff-col diff-col-left diff-removed">
+                            <div class="diff-line-num">${item.num1}</div>
+                            <div class="diff-line-sign">-</div>
+                            <div class="diff-line-text">${escapeHtml(item.text1)}</div>
+                        </div>
+                        <div class="diff-col diff-empty">
+                            <div class="diff-line-num"></div>
+                            <div class="diff-line-sign"> </div>
+                            <div class="diff-line-text"></div>
+                        </div>
+                    </div>`;
+                    i++;
+                }
+            } else if (item.type === 'add') {
+                html += `<div class="diff-row">
+                    <div class="diff-col diff-col-left diff-empty">
+                        <div class="diff-line-num"></div>
+                        <div class="diff-line-sign"> </div>
+                        <div class="diff-line-text"></div>
+                    </div>
+                    <div class="diff-col diff-added">
+                        <div class="diff-line-num">${item.num2}</div>
+                        <div class="diff-line-sign">+</div>
+                        <div class="diff-line-text">${escapeHtml(item.text2)}</div>
+                    </div>
+                </div>`;
+                i++;
+            }
+        }
+        html += '</div>';
+        outContent.innerHTML = html;
     }
 }
 
-function downloadYtThumbnail() {
-    const url = document.getElementById('ytDownloadBtn').dataset.url;
-    if (!url) return;
+function copyDiffOutput() {
+    const orig = document.getElementById('diffInputOriginal')?.value || '';
+    const mod = document.getElementById('diffInputModified')?.value || '';
+    const lines1 = orig.split('\n');
+    const lines2 = mod.split('\n');
+    const diff = computeLCSDiff(lines1, lines2, false, false);
     
-    document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Downloading...';
-    if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
+    let text = '--- Original\n+++ Modified\n';
+    diff.forEach(item => {
+        if (item.type === 'equal') text += ' ' + item.text1 + '\n';
+        else if (item.type === 'del') text += '-' + item.text1 + '\n';
+        else if (item.type === 'add') text += '+' + item.text2 + '\n';
+    });
 
-    // Remove protocol for wsrv.nl
-    const cleanUrl = url.replace(/^https?:\/\//, '');
-
-    const proxies = [
-        'https://wsrv.nl/?url=' + encodeURIComponent(cleanUrl),
-        'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url),
-        'https://api.allorigins.win/raw?url=' + encodeURIComponent(url)
-    ];
-
-    async function tryFetch(index) {
-        if (index >= proxies.length) {
-            document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="download"></i> Download HD Thumbnail';
-            if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
-            alert("Could not download automatically. Please Right-Click the image above and select 'Save Image As'.");
-            return;
-        }
-        try {
-            const res = await fetch(proxies[index]);
-            if (!res.ok) throw new Error("Proxy response not ok");
-            const blob = await res.blob();
-            
-            // Validate blob is an image
-            if (!blob.type.startsWith('image/')) throw new Error("Not an image");
-
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'youtube-thumbnail-hd.jpg';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(a.href);
-            
-            document.getElementById('ytDownloadBtn').innerHTML = '<i data-lucide="download"></i> Download HD Thumbnail';
-            if (typeof lucide !== 'undefined') setTimeout(() => requestAnimationFrame(() => lucide.createIcons()), 10);
-        } catch (e) {
-            console.warn("Proxy failed:", proxies[index], e);
-            tryFetch(index + 1);
-        }
-    }
-    
-    tryFetch(0);
+    navigator.clipboard.writeText(text)
+        .then(() => showToast('Unified diff patch copied to clipboard!'))
+        .catch(() => showToast('Could not copy to clipboard.', 'danger'));
 }
 
 // 5. Text to Speech

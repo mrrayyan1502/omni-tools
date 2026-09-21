@@ -62,8 +62,8 @@ ROUTES = {
           "Combine multiple PDF files in your browser. Your documents are processed locally and are not uploaded."),
     "/unit-converter/": ("panel-unit-converter", "Free Unit Converter – Length, Weight & Temperature",
           "Convert common length, weight, temperature and digital storage units instantly."),
-    "/youtube-thumbnail-downloader/": ("panel-youtube-thumbnail", "YouTube Thumbnail Downloader – Get Video Images",
-          "View and download publicly available YouTube video thumbnails by pasting a video URL."),
+    "/diff-checker/": ("panel-diff-checker", "Free Online Diff Checker – Compare Text & Code Differences",
+          "Compare two text or code files side-by-side online. Highlight character and line-by-line differences with additions and deletions instantly in your browser."),
     "/unix-timestamp-converter/": ("panel-unix-timestamp", "Unix Timestamp & Epoch Converter Online",
           "Convert Unix epoch timestamps to human-readable UTC and local dates. Live clock, millisecond support and relative time tracking."),
     "/hash-generator/": ("panel-hash-generator", "Cryptographic Hash Generator – SHA-256, SHA-512 & SHA-1",
@@ -214,9 +214,10 @@ TOOL_FAQS = {
         ("What are SVG blobs used for?", "Organic SVG blob shapes add creative accents behind product screenshots, hero banners, and user profile avatars in modern web design."),
         ("Can I export the SVG markup directly?", "Yes. You can adjust complexity and smoothness, then copy the raw SVG vector code or download an .svg file.")
     ],
-    "/youtube-thumbnail-downloader/": [
-        ("What thumbnail qualities can I download?", "You can download Maximum Resolution (1080p HD - maxresdefault), High Quality (hqdefault), and Medium Quality thumbnail images."),
-        ("Do I need an account or API key?", "No account or API key is required. Simply paste the YouTube video link to view and download available thumbnails.")
+    "/diff-checker/": [
+        ("Is my code or sensitive text uploaded to any server?", "No. All comparison and diff calculations occur 100% locally in your web browser. Nothing is ever sent to or stored on any server."),
+        ("What is the difference between Side-by-Side and Unified view?", "Side-by-Side mode presents the original and modified texts in two parallel columns. Unified mode merges the changes into a single stream with + and - line markers, just like Git diffs."),
+        ("Can I copy the diff results as a patch?", "Yes. You can click the Copy Diff Patch button to instantly copy standard unified diff text ready for code reviews or terminal patching.")
     ],
     "/unix-timestamp-converter/": [
         ("What is Unix Epoch time?", "Unix time is the number of elapsed seconds since 00:00:00 UTC on January 1, 1970. It provides a timezone-independent integer format widely used across operating systems, databases, and APIs."),
