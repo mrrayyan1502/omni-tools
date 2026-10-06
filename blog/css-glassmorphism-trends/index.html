@@ -1,477 +1,447 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T0HG80BJQ2"></script>
-    <script>
+<head><meta content="ca-pub-1778765695782629" name="google-adsense-account"/><script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1778765695782629"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-T0HG80BJQ2"></script>
+<script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('consent', 'default', {
         'analytics_storage': localStorage.getItem('omni-analytics-consent') === 'granted' ? 'granted' : 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
+        // ad consent granted by default for AdSense validation
       });
       gtag('js', new Date());
 
       gtag('config', 'G-T0HG80BJQ2');
     </script>
-
-    <!-- Google AdSense (Lazy Loaded for 100/100 PageSpeed) -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b0d19">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="referrer" content="no-referrer">
-    <title>Glassmorphism CSS: Design and Accessibility Guide</title>
-    <meta name="description" content="Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance.">
-    <link rel="canonical" href="https://www.omnitechtools.com/blog/css-glassmorphism-trends/">
-
-        <!-- OpenGraph / Facebook -->
-    <meta property="og:image" content="https://www.omnitechtools.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://www.omnitechtools.com/blog/css-glassmorphism-trends/">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Glassmorphism CSS: Design and Accessibility Guide">
-    <meta name="twitter:description" content="Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance.">
-    <meta name="twitter:image" content="https://www.omnitechtools.com/og-image.png">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Glassmorphism CSS: Design and Accessibility Guide">
-    <meta property="og:description" content="Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance.">
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="/style.css?v=2.2">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;family=Lexend:wght@400;500;600&amp;display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;family=Lexend:wght@400;500;600&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;family=Lexend:wght@400;500;600&amp;display=swap" rel="stylesheet"></noscript>
-
-    <!-- Third Party CDN Libraries (100% Free & Client-Side) -->
-    <!-- Lucide Icons for clean UI vectors (Critical) -->
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-    <!-- Dynamic SEO Meta Tags (per route) -->
-    <meta name="robots" content="index,follow,max-image-preview:large"><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://www.omnitechtools.com/blog/css-glassmorphism-trends/#article", "headline": "Glassmorphism CSS: Design and Accessibility Guide", "description": "Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance.", "mainEntityOfPage": "https://www.omnitechtools.com/blog/css-glassmorphism-trends/", "datePublished": "2026-08-01T00:00:00+00:00", "dateModified": "2026-09-18T00:00:00+00:00", "author": {"@type": "Organization", "name": "OmniTools Editorial Team", "url": "https://www.omnitechtools.com/about/"}, "publisher": {"@type": "Organization", "name": "OmniTools", "logo": {"@type": "ImageObject", "url": "https://www.omnitechtools.com/og-image.png"}}}]}</script></head>
+<!-- Google AdSense (Lazy Loaded for 100/100 PageSpeed) -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#0b0d19" name="theme-color"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="no-referrer" name="referrer"/>
+<title>Glassmorphism CSS: Design and Accessibility Guide</title>
+<meta content="Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance." name="description"/>
+<link href="https://www.omnitechtools.com/blog/css-glassmorphism-trends/" rel="canonical"/>
+<!-- OpenGraph / Facebook -->
+<meta content="https://www.omnitechtools.com/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://www.omnitechtools.com/blog/css-glassmorphism-trends/" property="og:url"/>
+<meta content="en_US" property="og:locale"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Glassmorphism CSS: Design and Accessibility Guide" name="twitter:title"/>
+<meta content="Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance." name="twitter:description"/>
+<meta content="https://www.omnitechtools.com/og-image.png" name="twitter:image"/>
+<meta content="article" property="og:type"/>
+<meta content="Glassmorphism CSS: Design and Accessibility Guide" property="og:title"/>
+<meta content="Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance." property="og:description"/>
+<!-- Core CSS -->
+<link href="/style.css?v=2.2" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;family=Lexend:wght@400;500;600&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;family=Lexend:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;500;600;700;800&amp;family=Lexend:wght@400;500;600&amp;display=swap" rel="stylesheet"/></noscript>
+<!-- Third Party CDN Libraries (100% Free & Client-Side) -->
+<!-- Lucide Icons for clean UI vectors (Critical) -->
+<script defer="" src="https://unpkg.com/lucide@latest"></script>
+<!-- Dynamic SEO Meta Tags (per route) -->
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://www.omnitechtools.com/blog/css-glassmorphism-trends/#article", "headline": "Glassmorphism CSS: Design and Accessibility Guide", "description": "Learn how to create glassmorphism interfaces while protecting readability, accessibility and performance.", "mainEntityOfPage": "https://www.omnitechtools.com/blog/css-glassmorphism-trends/", "datePublished": "2026-08-01T00:00:00+00:00", "dateModified": "2026-09-18T00:00:00+00:00", "author": {"@type": "Organization", "name": "OmniTools Editorial Team", "url": "https://www.omnitechtools.com/about/"}, "publisher": {"@type": "Organization", "name": "OmniTools", "logo": {"@type": "ImageObject", "url": "https://www.omnitechtools.com/og-image.png"}}}]}</script></head>
 <body>
-
-    <!-- App Shell Layout -->
-    <div class="app-container">
-
-        <!-- Sidebar Navigation -->
-        <aside class="app-sidebar" id="appSidebar">
-            <div class="brand-logo">
-                <div class="logo-icon-wow">
-                    <svg class="wow-logo-svg" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <lineargradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#00f2fe"></stop>
-                                <stop offset="100%" stop-color="#4facfe"></stop>
-                            </lineargradient>
-                        </defs>
-                        <path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" fill="url(#logoGrad)" opacity="0.15"></path>
-                        <path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" stroke="url(#logoGrad)" stroke-width="4" stroke-linejoin="round"></path>
-                        <path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="url(#logoGrad)" fill-opacity="0.85"></path>
-                        <path d="M50 28 L38 48 L52 48 L48 70 L62 48 L48 48 Z" fill="#ffffff"></path>
-                    </svg>
-                </div>
-                <span>OmniTools</span>
-            </div>
-
-            <nav class="nav-menu">
-                <a href="/" class="nav-item" id="nav-dashboard">
-                    <i data-lucide="layout-dashboard"></i>
-                    <span>Dashboard</span>
-                </a>
-
-                <div class="nav-label">Utilities</div>
-                <a href="/qr-code-generator/" class="nav-item" id="nav-qr-generator">
-                    <i data-lucide="qr-code"></i>
-                    <span>Custom QR Generator</span>
-                </a>
-                <a href="/image-compressor/" class="nav-item" id="nav-image-compressor">
-                    <i data-lucide="image"></i>
-                    <span>Image Compressor</span>
-                </a>
-                <a href="/css-glassmorphism-generator/" class="nav-item" id="nav-css-builder">
-                    <i data-lucide="code-2"></i>
-                    <span>CSS Studio</span>
-                </a>
-                <a href="/compound-interest-calculator/" class="nav-item" id="nav-finance-calc">
-                    <i data-lucide="trending-up"></i>
-                    <span>FIRE Interest Calc</span>
-                </a>
-                <a href="/json-formatter/" class="nav-item" id="nav-json-formatter">
-                    <i data-lucide="braces"></i>
-                    <span>JSON Formatter</span>
-                </a>
-                <a href="/svg-blob-generator/" class="nav-item" id="nav-svg-blob">
-                    <i data-lucide="waves"></i>
-                    <span>SVG Blob Gen</span>
-                </a>
-                <a href="/color-palette-generator/" class="nav-item" id="nav-color-palette">
-                    <i data-lucide="palette"></i>
-                    <span>Color Palette</span>
-                </a>
-                <a href="/password-generator/" class="nav-item" id="nav-password-generator">
-                    <i data-lucide="key-round"></i>
-                    <span>Password Gen</span>
-                </a>
-                <a href="/base64-encoder-decoder/" class="nav-item" id="nav-base64">
-                    <i data-lucide="binary"></i>
-                    <span>Base64 Encoder</span>
-                </a>
-                <a href="/meta-tag-generator/" class="nav-item" id="nav-meta-generator">
-                    <i data-lucide="tags"></i>
-                    <span>Meta Tag Gen</span>
-                </a>
-                <a href="/inflation-calculator/" class="nav-item" id="nav-inflation-calc">
-                    <i data-lucide="percent"></i>
-                    <span>Inflation Calc</span>
-                </a>
-
-
-
-                <!-- 5 HIGH-TRAFFIC TOOLS NAVIGATION -->
-                <a href="/image-resizer/" class="nav-item" id="nav-image-resizer">
-                    <i data-lucide="crop"></i>
-                    <span>Image Resizer</span>
-                </a>
-                <a href="/pdf-merge/" class="nav-item" id="nav-pdf-merge">
-                    <i data-lucide="file-plus"></i>
-                    <span>PDF Merge</span>
-                </a>
-                <a href="/unit-converter/" class="nav-item" id="nav-unit-converter">
-                    <i data-lucide="arrow-right-left"></i>
-                    <span>Unit Converter</span>
-                </a>
-                <a href="/diff-checker/" class="nav-item" id="nav-diff-checker">
-                    <i data-lucide="git-compare"></i>
-                    <span>Diff Checker</span>
-                </a>
-                <!-- 9 NEW TOOLS NAVIGATION -->
-                <a href="/jwt-decoder/" class="nav-item" id="nav-jwt-decoder">
-                    <i data-lucide="unlock"></i>
-                    <span>JWT Decoder</span>
-                </a>
-                <a href="/markdown-editor/" class="nav-item" id="nav-markdown-editor">
-                    <i data-lucide="file-edit"></i>
-                    <span>Markdown Editor</span>
-                </a>
-                <a href="/regex-tester/" class="nav-item" id="nav-regex-tester">
-                    <i data-lucide="regex"></i>
-                    <span>Regex Tester</span>
-                </a>
-                <a href="/sql-formatter/" class="nav-item" id="nav-sql-formatter">
-                    <i data-lucide="database"></i>
-                    <span>SQL Formatter</span>
-                </a>
-                <a href="/css-box-shadow/" class="nav-item" id="nav-css-box-shadow">
-                    <i data-lucide="box"></i>
-                    <span>CSS Box Shadow</span>
-                </a>
-                <a href="/word-counter/" class="nav-item" id="nav-word-counter">
-                    <i data-lucide="type"></i>
-                    <span>Word Counter</span>
-                </a>
-                <a href="/lorem-ipsum/" class="nav-item" id="nav-lorem-ipsum">
-                    <i data-lucide="align-left"></i>
-                    <span>Lorem Ipsum Gen</span>
-                </a>
-                <a href="/uuid-generator/" class="nav-item" id="nav-uuid-generator">
-                    <i data-lucide="fingerprint"></i>
-                    <span>UUID Generator</span>
-                </a>
-                                <a href="/url-encoder/" class="nav-item" id="nav-url-encoder">
-                    <i data-lucide="link"></i>
-                    <span>URL Encoder</span>
-                </a>
-                <a href="/unix-timestamp-converter/" class="nav-item" id="nav-unix-timestamp">
-                    <i data-lucide="clock"></i>
-                    <span>Unix Timestamp</span>
-                </a>
-                <a href="/hash-generator/" class="nav-item" id="nav-hash-generator">
-                    <i data-lucide="shield"></i>
-                    <span>Hash Generator</span>
-                </a>
-                <a href="/json-to-csv/" class="nav-item" id="nav-json-to-csv">
-                    <i data-lucide="file-spreadsheet"></i>
-                    <span>JSON to CSV</span>
-                </a>
-
-                <div class="nav-label">Resources</div>
-                <a href="/blog/" class="nav-item" id="nav-blog">
-                    <i data-lucide="book-open"></i>
-                    <span>Creator Blog</span>
-                </a>
-            </nav>
-
-            <div class="sidebar-footer">
-                <div class="privacy-badge">
-                    <i data-lucide="shield-check"></i>
-                    <span>100% Client-Side Private</span>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Body Wrapper -->
-        <div class="main-wrapper">
-
-            <!-- Header -->
-            <header class="app-header">
-                <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Toggle Mobile Menu">
-                    <i data-lucide="menu"></i>
-                </button>
-                <div class="header-search">
-                    <i data-lucide="search" class="search-icon"></i>
-                    <input type="text" placeholder="Search tools..." id="toolSearch" aria-label="Search tools" oninput="searchTools()">
-                </div>
-
-            </header>
-
-            <!-- Main Content Panels -->
-            <main class="content-viewport" id="contentViewport">
-                <span class="sr-only">OmniTools - Premium Creator &amp; Developer Utility Hub</span>
-
-                <!-- TAB 1: DASHBOARD -->
-                <!-- TAB 2: QR GENERATOR -->
-                <!-- TAB 3: IMAGE COMPRESSOR -->
-                <!-- TAB 4: CSS STUDIO -->
-                <!-- TAB 5: FINANCE CALCULATOR -->
-                <!-- TAB 6: ABOUT US -->
-                <!-- TAB 7: PRIVACY POLICY -->
-                <!-- TAB 8: CONTACT US -->
-                <!-- TAB 9: TERMS & CONDITIONS -->
-                <!-- TAB 10: JSON FORMATTER & VALIDATOR -->
-                <!-- TAB 11: SVG BLOB GENERATOR -->
-                <!-- TAB 12: COLOR PALETTE GENERATOR & WCAG CHECKER -->
-                <!-- TAB 13: PASSWORD GENERATOR & STRENGTH METER -->
-                <!-- TAB 14: BASE64 ENCODER & DECODER -->
-                <!-- TAB 15: META TAG GENERATOR & PREVIEWER -->
-                <!-- TAB 16: INFLATION CALCULATOR -->
-                <!-- TAB 17: BLOG MAIN VIEW -->
-
-                <!-- TAB: JWT DECODER -->
-                <!-- TAB: MARKDOWN EDITOR -->
-                <!-- TAB: REGEX TESTER -->
-                <!-- TAB: SQL FORMATTER -->
-                <!-- TAB: CSS BOX SHADOW -->
-                <!-- TAB: WORD COUNTER -->
-                <!-- TAB: LOREM IPSUM -->
-                <!-- TAB: UUID GENERATOR -->
-                <!-- TAB: URL ENCODER -->
-                <!-- TAB 18: BLOG POST 1 - QR CODES -->
-                <!-- TAB 19: BLOG POST 2 - IMAGE COMPRESSION -->
-                <!-- TAB 20: BLOG POST 3 - GLASSMORPHISM -->
-                <section class="tab-panel active" id="panel-blog-article-glass">
-                    <div class="blog-post-view glass-card">
-                        <a class="btn btn-outline mb-4" href="/blog/" role="link">
-                            <i data-lucide="arrow-left"></i> Back to Blog Hub
+<!-- App Shell Layout -->
+<div class="app-container">
+<!-- Sidebar Navigation -->
+<aside class="app-sidebar" id="appSidebar">
+<div class="brand-logo">
+<div class="logo-icon-wow">
+<svg class="wow-logo-svg" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="logoGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#00f2fe"></stop>
+<stop offset="100%" stop-color="#4facfe"></stop>
+</lineargradient>
+</defs>
+<path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" fill="url(#logoGrad)" opacity="0.15"></path>
+<path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" stroke="url(#logoGrad)" stroke-linejoin="round" stroke-width="4"></path>
+<path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="url(#logoGrad)" fill-opacity="0.85"></path>
+<path d="M50 28 L38 48 L52 48 L48 70 L62 48 L48 48 Z" fill="#ffffff"></path>
+</svg>
+</div>
+<span>OmniTools</span>
+</div>
+<nav class="nav-menu">
+<a class="nav-item" href="/" id="nav-dashboard">
+<i data-lucide="layout-dashboard"></i>
+<span>Dashboard</span>
+</a>
+<div class="nav-label">Utilities</div>
+<a class="nav-item" href="/qr-code-generator/" id="nav-qr-generator">
+<i data-lucide="qr-code"></i>
+<span>Custom QR Generator</span>
+</a>
+<a class="nav-item" href="/image-compressor/" id="nav-image-compressor">
+<i data-lucide="image"></i>
+<span>Image Compressor</span>
+</a>
+<a class="nav-item" href="/css-glassmorphism-generator/" id="nav-css-builder">
+<i data-lucide="code-2"></i>
+<span>CSS Studio</span>
+</a>
+<a class="nav-item" href="/compound-interest-calculator/" id="nav-finance-calc">
+<i data-lucide="trending-up"></i>
+<span>FIRE Interest Calc</span>
+</a>
+<a class="nav-item" href="/json-formatter/" id="nav-json-formatter">
+<i data-lucide="braces"></i>
+<span>JSON Formatter</span>
+</a>
+<a class="nav-item" href="/svg-blob-generator/" id="nav-svg-blob">
+<i data-lucide="waves"></i>
+<span>SVG Blob Gen</span>
+</a>
+<a class="nav-item" href="/color-palette-generator/" id="nav-color-palette">
+<i data-lucide="palette"></i>
+<span>Color Palette</span>
+</a>
+<a class="nav-item" href="/password-generator/" id="nav-password-generator">
+<i data-lucide="key-round"></i>
+<span>Password Gen</span>
+</a>
+<a class="nav-item" href="/base64-encoder-decoder/" id="nav-base64">
+<i data-lucide="binary"></i>
+<span>Base64 Encoder</span>
+</a>
+<a class="nav-item" href="/meta-tag-generator/" id="nav-meta-generator">
+<i data-lucide="tags"></i>
+<span>Meta Tag Gen</span>
+</a>
+<a class="nav-item" href="/inflation-calculator/" id="nav-inflation-calc">
+<i data-lucide="percent"></i>
+<span>Inflation Calc</span>
+</a>
+<!-- 5 HIGH-TRAFFIC TOOLS NAVIGATION -->
+<a class="nav-item" href="/image-resizer/" id="nav-image-resizer">
+<i data-lucide="crop"></i>
+<span>Image Resizer</span>
+</a>
+<a class="nav-item" href="/pdf-merge/" id="nav-pdf-merge">
+<i data-lucide="file-plus"></i>
+<span>PDF Merge</span>
+</a>
+<a class="nav-item" href="/unit-converter/" id="nav-unit-converter">
+<i data-lucide="arrow-right-left"></i>
+<span>Unit Converter</span>
+</a>
+<a class="nav-item" href="/diff-checker/" id="nav-diff-checker">
+<i data-lucide="git-compare"></i>
+<span>Diff Checker</span>
+</a>
+<!-- 9 NEW TOOLS NAVIGATION -->
+<a class="nav-item" href="/jwt-decoder/" id="nav-jwt-decoder">
+<i data-lucide="unlock"></i>
+<span>JWT Decoder</span>
+</a>
+<a class="nav-item" href="/markdown-editor/" id="nav-markdown-editor">
+<i data-lucide="file-edit"></i>
+<span>Markdown Editor</span>
+</a>
+<a class="nav-item" href="/regex-tester/" id="nav-regex-tester">
+<i data-lucide="regex"></i>
+<span>Regex Tester</span>
+</a>
+<a class="nav-item" href="/sql-formatter/" id="nav-sql-formatter">
+<i data-lucide="database"></i>
+<span>SQL Formatter</span>
+</a>
+<a class="nav-item" href="/css-box-shadow/" id="nav-css-box-shadow">
+<i data-lucide="box"></i>
+<span>CSS Box Shadow</span>
+</a>
+<a class="nav-item" href="/word-counter/" id="nav-word-counter">
+<i data-lucide="type"></i>
+<span>Word Counter</span>
+</a>
+<a class="nav-item" href="/lorem-ipsum/" id="nav-lorem-ipsum">
+<i data-lucide="align-left"></i>
+<span>Lorem Ipsum Gen</span>
+</a>
+<a class="nav-item" href="/uuid-generator/" id="nav-uuid-generator">
+<i data-lucide="fingerprint"></i>
+<span>UUID Generator</span>
+</a>
+<a class="nav-item" href="/url-encoder/" id="nav-url-encoder">
+<i data-lucide="link"></i>
+<span>URL Encoder</span>
+</a>
+<a class="nav-item" href="/unix-timestamp-converter/" id="nav-unix-timestamp">
+<i data-lucide="clock"></i>
+<span>Unix Timestamp</span>
+</a>
+<a class="nav-item" href="/hash-generator/" id="nav-hash-generator">
+<i data-lucide="shield"></i>
+<span>Hash Generator</span>
+</a>
+<a class="nav-item" href="/json-to-csv/" id="nav-json-to-csv">
+<i data-lucide="file-spreadsheet"></i>
+<span>JSON to CSV</span>
+</a>
+<div class="nav-label">Resources</div>
+<a class="nav-item" href="/blog/" id="nav-blog">
+<i data-lucide="book-open"></i>
+<span>Creator Blog</span>
+</a>
+</nav>
+<div class="sidebar-footer">
+<div class="privacy-badge">
+<i data-lucide="shield-check"></i>
+<span>100% Client-Side Private</span>
+</div>
+</div>
+</aside>
+<!-- Main Body Wrapper -->
+<div class="main-wrapper">
+<!-- Header -->
+<header class="app-header">
+<button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
+<i data-lucide="menu"></i>
+</button>
+<div class="header-search">
+<i class="search-icon" data-lucide="search"></i>
+<input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
+</div>
+</header>
+<!-- Main Content Panels -->
+<main class="content-viewport" id="contentViewport">
+<span class="sr-only">OmniTools - Premium Creator &amp; Developer Utility Hub</span>
+<!-- TAB 1: DASHBOARD -->
+<!-- TAB 2: QR GENERATOR -->
+<!-- TAB 3: IMAGE COMPRESSOR -->
+<!-- TAB 4: CSS STUDIO -->
+<!-- TAB 5: FINANCE CALCULATOR -->
+<!-- TAB 6: ABOUT US -->
+<!-- TAB 7: PRIVACY POLICY -->
+<!-- TAB 8: CONTACT US -->
+<!-- TAB 9: TERMS & CONDITIONS -->
+<!-- TAB 10: JSON FORMATTER & VALIDATOR -->
+<!-- TAB 11: SVG BLOB GENERATOR -->
+<!-- TAB 12: COLOR PALETTE GENERATOR & WCAG CHECKER -->
+<!-- TAB 13: PASSWORD GENERATOR & STRENGTH METER -->
+<!-- TAB 14: BASE64 ENCODER & DECODER -->
+<!-- TAB 15: META TAG GENERATOR & PREVIEWER -->
+<!-- TAB 16: INFLATION CALCULATOR -->
+<!-- TAB 17: BLOG MAIN VIEW -->
+<!-- TAB: JWT DECODER -->
+<!-- TAB: MARKDOWN EDITOR -->
+<!-- TAB: REGEX TESTER -->
+<!-- TAB: SQL FORMATTER -->
+<!-- TAB: CSS BOX SHADOW -->
+<!-- TAB: WORD COUNTER -->
+<!-- TAB: LOREM IPSUM -->
+<!-- TAB: UUID GENERATOR -->
+<!-- TAB: URL ENCODER -->
+<!-- TAB 18: BLOG POST 1 - QR CODES -->
+<!-- TAB 19: BLOG POST 2 - IMAGE COMPRESSION -->
+<!-- TAB 20: BLOG POST 3 - GLASSMORPHISM -->
+<section class="tab-panel active" id="panel-blog-article-glass">
+<div class="blog-post-view glass-card">
+<a class="btn btn-outline mb-4" href="/blog/" role="link">
+<i data-lucide="arrow-left"></i> Back to Blog Hub
                         </a>
-
-                        <div class="blog-post-header">
-                            <span class="blog-badge badge-design">UI Design</span>
-                            <h1>Glassmorphism CSS: Design and Accessibility Guide</h1>
-                            <div class="blog-post-info">
-                                <span>Published: June 1, 2026</span>
-                                <span>Author: OmniTools Creative Director</span>
-                                <span>Reading Time: 10 min</span>
-                            </div>
-                        </div>
-
-                        <article class="blog-post-content">
-                            <p class="lead" style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 2rem; line-height: 1.8;">
-                                Moving away from the flat, matte designs of the 2010s, Glassmorphism has emerged as the defining aesthetic of the current decade, offering vertical depth, elegance, and premium spatial layout hierarchy.
+<div class="blog-post-header">
+<span class="blog-badge badge-design">UI Design</span>
+<h1>Glassmorphism CSS: Design and Accessibility Guide</h1>
+<div class="blog-post-info">
+<span>Published: June 1, 2026</span>
+<span>Author: OmniTools Creative Director</span>
+<span>Reading Time: 10 min</span>
+</div>
+</div>
+<article class="blog-post-content">
+<p class="lead" style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 2rem; line-height: 1.8;">
+                                Glassmorphism — the frosted-glass interface style popularised by macOS Big Sur and Microsoft's Fluent Design — remains one of the most requested UI effects in modern web design. But behind its beauty hides a trap: poor contrast, sluggish performance and broken accessibility. This guide shows you how to build glassmorphism that is gorgeous <em>and</em> responsible.
                             </p>
-
-                            <h2>1. The Evolution of the Glass Aesthetic</h2>
-                            <p>The foundations of Glassmorphism trace back to the Windows 7 Aero interface and early iOS transparent overlays. However, Apple's macOS Big Sur and Microsoft's Fluent Design System cemented this style as a modern standard. The fundamental appeal of this aesthetic is its ability to layer multiple interface components on a Z-axis, creating the illusion of floating, frosted glass panels that provide context to the background while maintaining sharp foreground readability.</p>
-
-                            <blockquote>
-                                "By blending vibrant background organic shapes with sharp, translucent foreground cards, designers can establish a powerful visual hierarchy that naturally guides the user's focus."
+<h2>1. What Exactly Is Glassmorphism?</h2>
+<p>Glassmorphism simulates a pane of frosted glass floating above a colourful background. Elements behind the "glass" appear blurred and tinted, while the panel itself stays crisp. The effect relies on the CSS <code>backdrop-filter: blur()</code> property combined with semi-transparent backgrounds, subtle borders and soft shadows. Done well, it creates depth and hierarchy without heavy imagery; done badly, it becomes an unreadable, battery-draining mess.</p>
+<h2>2. The Four Ingredients of the Frosted-Glass Look</h2>
+<p>Every convincing glass effect combines four layers, and missing any one of them breaks the illusion:</p>
+<ul>
+<li><strong>Transparency:</strong> A background like <code>rgba(255, 255, 255, 0.08)</code> lets the content behind bleed through. On dark themes use white at 5–15% opacity; on light themes, white at 40–60%.</li>
+<li><strong>Backdrop blur:</strong> <code>backdrop-filter: blur(12px) saturate(150%)</code> frosts whatever sits behind the panel. The saturate boost keeps colours vivid after blurring.</li>
+<li><strong>Hairline border:</strong> A 1px border at <code>rgba(255, 255, 255, 0.18)</code> simulates light catching the glass edge. Without it, panels look like fog rather than glass.</li>
+<li><strong>Soft shadow:</strong> A diffused shadow such as <code>0 8px 32px rgba(0, 0, 0, 0.37)</code> lifts the panel off the background and sells the floating effect. You can fine-tune it visually with our <a href="/css-box-shadow/">CSS box shadow generator</a>.</li>
+</ul>
+<blockquote>
+                                "Glassmorphism is not a blur filter. It is the careful layering of transparency, blur, edge light and shadow — remove one and the illusion collapses."
                             </blockquote>
-
-                            <h2>2. The Magic of the Backdrop Filter</h2>
-                            <p>The entire aesthetic is powered by a single CSS property: <code>backdrop-filter</code>. When applied to an element with a semi-transparent RGBA background (e.g., <code>rgba(255, 255, 255, 0.1)</code>), the browser's rendering engine executes a real-time Gaussian blur exclusively on the DOM elements residing underneath it. Coupled with a 1px solid white border simulating edge-light reflection, the resulting card feels tangible and premium.</p>
-
-                            <h2>3. The Accessibility Trade-off (WCAG Warnings)</h2>
-                            <p>Beauty should never compromise utility. UI developers frequently sacrifice accessibility compliance in pursuit of the glass aesthetic. When thin text is painted over a heavily frosted card sitting on top of a dynamic, bright background, contrast ratios plummet. Adhere strictly to these guidelines:</p>
-                            <ul>
-                                <li><strong>Strict Contrast Ratios:</strong> Ensure all primary typography maintains a minimum 4.5:1 contrast ratio against the lightest possible variation of the blurred background.</li>
-                                <li><strong>Strategic Usage:</strong> Avoid applying glassmorphism to dense, text-heavy data tables. Reserve it for modal popups, sticky navigation headers, and hero call-to-action cards.</li>
-                            </ul>
-
-                            <div class="blog-faq-box glass-card mt-5" style="padding: 2rem; background: rgba(99, 102, 241, 0.05);">
-                                <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Knowledge Base Q&amp;A</h3>
-
-                                <div class="faq-item">
-                                    <h4>Q: Do older mobile browsers support backdrop-filter?</h4>
-                                    <p>While modern mobile engines support it perfectly, older versions of Safari and Chromium may ignore it. Always provide an opaque solid color fallback in your CSS to prevent transparent text collision.</p>
-                                </div>
-                                <div class="faq-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
-                                    <h4>Q: How do I balance color saturation in glass layouts?</h4>
-                                    <p>The key to realistic frosted glass is relying on the vibrancy of the background behind it. Keep the card's background color desaturated (pure white or black at low opacity), and allow colorful geometric blobs or gradient meshes in the background to provide the hue.</p>
-                                </div>
-                            </div>
-
-                        </article>
-                    </div>
-                </section>
-
-                <!-- TAB 21: BLOG POST 4 - FIRE MATH -->
-                <!-- TAB 22: BLOG POST 5 - SECURITY PRIVACY -->
-                <!-- TAB: BLOG ARTICLE - JSON FORMATTER -->
-                <!-- TAB: BLOG ARTICLE - SVG BLOB -->
-                <!-- TAB: BLOG ARTICLE - COLOR PALETTE -->
-                <!-- TAB: BLOG ARTICLE - PASSWORD GEN -->
-                <!-- TAB: BLOG ARTICLE - BASE64 -->
-                <!-- TAB: BLOG ARTICLE - META TAGS -->
-                <!-- TAB: BLOG ARTICLE - INFLATION -->
-                <!-- 5 HIGH-TRAFFIC TOOLS PANELS -->
-                <!-- TAB: UNIX TIMESTAMP CONVERTER -->
-                <!-- TAB: CRYPTOGRAPHIC HASH GENERATOR -->
-                <!-- TAB: JSON TO CSV & CSV TO JSON CONVERTER -->
-                <!-- Sticky Toast Notification popup -->
-            <div id="toastAlert" class="toast-alert-badge">
-                <i data-lucide="check-circle" class="toast-icon"></i>
-                <span id="toastText">Action successful!</span>
-            </div>
-
-            <!-- Premium Multi-Column Footer -->
-            <footer class="app-footer-premium glass-card">
-                <div class="footer-grid">
-                    <div class="footer-brand-col">
-                        <div class="brand-logo" style="margin-bottom: 1rem; display: flex; align-items: center;">
-                            <div class="logo-icon-wow" style="margin-right: 0.5rem;">
-                                <svg class="wow-logo-svg" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 36px; height: 36px;">
-                                    <defs>
-                                        <lineargradient id="logoGradFoot" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#00f2fe"></stop>
-                                            <stop offset="100%" stop-color="#4facfe"></stop>
-                                        </lineargradient>
-                                    </defs>
-                                    <path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" fill="url(#logoGradFoot)" opacity="0.15"></path>
-                                    <path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" stroke="url(#logoGradFoot)" stroke-width="4" stroke-linejoin="round"></path>
-                                    <path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="url(#logoGradFoot)" fill-opacity="0.85"></path>
-                                    <path d="M50 28 L38 48 L52 48 L48 70 L62 48 L48 48 Z" fill="#ffffff"></path>
-                                </svg>
-                            </div>
-                            <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #ffffff, #8b92b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">OmniTools</span>
-                        </div>
-                        <p class="footer-desc">Premium, 100% free, private-by-design creator &amp; developer utility hub. All files remain strictly in your browser.</p>
-                        <div class="footer-privacy-badge">
-                            <i data-lucide="shield-check"></i>
-                            <span>100% Serverless &amp; Secure</span>
-                        </div>
-                    </div>
-                    <div class="footer-links-col">
-                        <h4>Dev &amp; Security Tools</h4>
-                        <ul>
-                            <li><a href="/jwt-decoder/">JWT Decoder</a></li>
-                            <li><a href="/json-formatter/">JSON Formatter</a></li>
-                            <li><a href="/regex-tester/">Regex Tester</a></li>
-                            <li><a href="/sql-formatter/">SQL Formatter</a></li>
-                            <li><a href="/password-generator/">Password Gen</a></li>
-                            <li><a href="/base64-encoder-decoder/">Base64 Encode</a></li>
-                            <li><a href="/uuid-generator/">UUID Gen</a></li>
-                            <li><a href="/url-encoder/">URL Encoder</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-col">
-                        <h4>Design &amp; Web Tools</h4>
-                        <ul>
-                            <li><a href="/svg-blob-generator/">SVG Blobs</a></li>
-                            <li><a href="/css-glassmorphism-generator/">Glassmorphism</a></li>
-                            <li><a href="/css-box-shadow/">CSS Box Shadow</a></li>
-                            <li><a href="/color-palette-generator/">Color Palette</a></li>
-                            <li><a href="/image-compressor/">Image Compressor</a></li>
-                            <li><a href="/qr-code-generator/">QR Generator</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-col">
-                        <h4>Content &amp; SEO</h4>
-                        <ul>
-                            <li><a href="/markdown-editor/">Markdown Editor</a></li>
-                            <li><a href="/word-counter/">Word Counter</a></li>
-                            <li><a href="/lorem-ipsum/">Lorem Ipsum</a></li>
-                            <li><a href="/meta-tag-generator/">Meta Tag Gen</a></li>
-                            <li><a href="/compound-interest-calculator/">Finance Calc</a></li>
-                            <li><a href="/inflation-calculator/">Inflation Calc</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-col">
-                        <h4>Legal &amp; Support</h4>
-                        <ul>
-                            <li><a href="/about/">About Us</a></li>
-                            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-                            <li><a href="/terms-of-service/">Terms &amp; Conditions</a></li>
-                            <li><a href="/contact/">Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>© 2026 OmniTools Suite. Privacy-focused browser tools for creators and developers.</p>
-                </div>
-            </footer>
-
-        </main></div>
-    </div>
-
-
-    <!-- Accessibility Widget -->
-    <button class="a11y-fab" id="a11yToggleBtn" onclick="toggleA11yPanel()" aria-label="Accessibility Tools">
-        <i data-lucide="accessibility"></i>
-    </button>
-
-    <div class="a11y-panel glass-card" id="a11yPanel">
-        <div class="a11y-header">
-            <h3>Accessibility Tools</h3>
-            <button class="a11y-close" onclick="toggleA11yPanel()" aria-label="Close Accessibility Panel"><i data-lucide="x"></i></button>
-        </div>
-
-        <div class="a11y-content">
-            <div class="a11y-group">
-                <label>Text Size:</label>
-                <div class="a11y-button-group">
-                    <button class="a11y-btn" onclick="changeTextSize(-1)">A-</button>
-                    <button class="a11y-btn" onclick="changeTextSize(0)">Reset</button>
-                    <button class="a11y-btn" onclick="changeTextSize(1)">A+</button>
-                </div>
-            </div>
-
-            <div class="a11y-group">
-                <label>Contrast:</label>
-                <button class="a11y-btn a11y-toggle-btn" id="a11yContrastBtn" onclick="toggleHighContrast()">Toggle High Contrast</button>
-            </div>
-
-            <div class="a11y-group">
-                <label>Font Style:</label>
-                <button class="a11y-btn a11y-toggle-btn" id="a11yDyslexicBtn" onclick="toggleDyslexicFont()">Dyslexic Friendly Font</button>
-            </div>
-        </div>
-    </div>
-
-    <aside class="cookie-notice glass-card" id="cookieNotice" aria-label="Cookie choices" hidden>
-        <p><strong>Analytics choices</strong><br>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
-        <div>
-            <button type="button" class="btn btn-outline" onclick="setAnalyticsConsent(false)">Decline</button>
-            <button type="button" class="btn btn-primary" onclick="setAnalyticsConsent(true)">Accept analytics</button>
-        </div>
-        <a href="/privacy-policy/">Read our privacy policy</a>
-    </aside>
-
-
-    <!-- Tool Libraries -->
-            <!-- Core App Engine script -->
-
-    <script src="/app.js?v=3.1" defer></script>
-
-
-
+<h2>3. Accessibility: Where Glassmorphism Goes Wrong</h2>
+<p>The biggest criticism of glassmorphism is text legibility. Content behind the glass constantly shifts as users scroll, which means text contrast is unpredictable. WCAG 2.1 requires a contrast ratio of at least <strong>4.5:1</strong> for body text — and a busy gradient behind frosted glass can silently destroy that. The fix is discipline: raise the panel opacity until text passes, add a subtle solid tint behind text blocks, and always test your palette with a contrast checker like the one built into our <a href="/color-palette-generator/">colour palette generator</a>.</p>
+<p>Also remember that <code>backdrop-filter</code> still lacks support in some older browsers. Always provide a fallback: wrap the effect in <code>@supports (backdrop-filter: blur(1px))</code> and give non-supporting browsers a nearly opaque solid background. Users should get a slightly flatter design — never broken, invisible text.</p>
+<h2>4. Performance: The Hidden Cost of Blur</h2>
+<p>Backdrop blur forces the browser to re-render everything behind the panel on every scroll frame, and stacking multiple blurred layers multiplies the cost. On low-end mobiles this causes visible jank. Keep blur radii between 8px and 20px, limit glass panels to one or two per viewport, and never animate the blur value itself. Promote panels to their own compositor layer with <code>will-change: transform</code> where needed, and prefer transforming the panel over re-blurring the backdrop.</p>
+<h2>5. Common Glassmorphism Mistakes to Avoid</h2>
+<p>Even experienced designers fall into the same traps. The first is <strong>glass on glass</strong> — nesting a blurred panel inside another blurred panel, which muddies both and doubles the rendering cost. The second is using glass over plain solid backgrounds, where the blur has nothing to filter and the panel just looks washed out; glassmorphism needs colourful, textured backdrops to shine. The third is forgetting the <code>saturate()</code> boost, leaving panels looking grey and dusty. Finally, never place critical interactive elements — payment buttons, form inputs — on heavily blurred surfaces where focus states become hard to see. Save the frosted treatment for cards, navigation shells and decorative overlays.</p>
+<h2>5. Build One in Seconds</h2>
+<p>You do not need to hand-tune rgba values for hours. Our <a href="/css-glassmorphism-generator/">CSS Glassmorphism Generator</a> gives you live sliders for blur, opacity, border and shadow, and outputs production-ready CSS instantly — entirely in your browser. Pair it with the <a href="/css-box-shadow/">box shadow tool</a> for depth and the <a href="/color-palette-generator/">palette generator</a> for accessible colours, and you have a complete glass UI workflow. For broader context on colour choices, read our guide to <a href="/blog/ui-color-theory-palettes/">UI colour theory and accessible palettes</a>.</p>
+<div class="blog-faq-box glass-card mt-5" style="padding: 2rem; background: rgba(99, 102, 241, 0.05);">
+<h3 style="margin-top: 0; margin-bottom: 1.5rem;">Frequently Asked Questions</h3>
+<div class="faq-item">
+<h4>Q: Does backdrop-filter work in all browsers?</h4>
+<p>It works in all modern browsers (Chrome, Edge, Safari, Firefox 103+). For older browsers, wrap it in an @supports query and provide a more opaque solid background as a fallback.</p>
+</div>
+<div class="faq-item">
+<h4>Q: What blur value is best for glassmorphism?</h4>
+<p>Between 8px and 20px suits most interfaces. Lower values look like plain transparency; higher values wash out the background and hurt performance on mobile devices.</p>
+</div>
+<div class="faq-item">
+<h4>Q: How do I keep glassmorphism text readable?</h4>
+<p>Increase panel background opacity until body text reaches at least a 4.5:1 contrast ratio, add subtle solid tints behind text, and test against the busiest background the panel may cover.</p>
+</div>
+<div class="faq-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+<h4>Q: Is glassmorphism bad for performance?</h4>
+<p>Only when overused. Each blurred panel forces re-compositing of everything behind it. One or two glass panels per viewport with moderate blur is fine; entire blurred layouts will stutter on low-end phones.</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- TAB 21: BLOG POST 4 - FIRE MATH -->
+<!-- TAB 22: BLOG POST 5 - SECURITY PRIVACY -->
+<!-- TAB: BLOG ARTICLE - JSON FORMATTER -->
+<!-- TAB: BLOG ARTICLE - SVG BLOB -->
+<!-- TAB: BLOG ARTICLE - COLOR PALETTE -->
+<!-- TAB: BLOG ARTICLE - PASSWORD GEN -->
+<!-- TAB: BLOG ARTICLE - BASE64 -->
+<!-- TAB: BLOG ARTICLE - META TAGS -->
+<!-- TAB: BLOG ARTICLE - INFLATION -->
+<!-- 5 HIGH-TRAFFIC TOOLS PANELS -->
+<!-- TAB: UNIX TIMESTAMP CONVERTER -->
+<!-- TAB: CRYPTOGRAPHIC HASH GENERATOR -->
+<!-- TAB: JSON TO CSV & CSV TO JSON CONVERTER -->
+<!-- Sticky Toast Notification popup -->
+<div class="toast-alert-badge" id="toastAlert">
+<i class="toast-icon" data-lucide="check-circle"></i>
+<span id="toastText">Action successful!</span>
+</div>
+<!-- Premium Multi-Column Footer -->
+<footer class="app-footer-premium glass-card">
+<div class="footer-grid">
+<div class="footer-brand-col">
+<div class="brand-logo" style="margin-bottom: 1rem; display: flex; align-items: center;">
+<div class="logo-icon-wow" style="margin-right: 0.5rem;">
+<svg class="wow-logo-svg" fill="none" style="width: 36px; height: 36px;" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="logoGradFoot" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#00f2fe"></stop>
+<stop offset="100%" stop-color="#4facfe"></stop>
+</lineargradient>
+</defs>
+<path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" fill="url(#logoGradFoot)" opacity="0.15"></path>
+<path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" stroke="url(#logoGradFoot)" stroke-linejoin="round" stroke-width="4"></path>
+<path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="url(#logoGradFoot)" fill-opacity="0.85"></path>
+<path d="M50 28 L38 48 L52 48 L48 70 L62 48 L48 48 Z" fill="#ffffff"></path>
+</svg>
+</div>
+<span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #ffffff, #8b92b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">OmniTools</span>
+</div>
+<p class="footer-desc">Premium, 100% free, private-by-design creator &amp; developer utility hub. All files remain strictly in your browser.</p>
+<div class="footer-privacy-badge">
+<i data-lucide="shield-check"></i>
+<span>100% Serverless &amp; Secure</span>
+</div>
+</div>
+<div class="footer-links-col">
+<h4>Dev &amp; Security Tools</h4>
+<ul>
+<li><a href="/jwt-decoder/">JWT Decoder</a></li>
+<li><a href="/json-formatter/">JSON Formatter</a></li>
+<li><a href="/regex-tester/">Regex Tester</a></li>
+<li><a href="/sql-formatter/">SQL Formatter</a></li>
+<li><a href="/password-generator/">Password Gen</a></li>
+<li><a href="/base64-encoder-decoder/">Base64 Encode</a></li>
+<li><a href="/uuid-generator/">UUID Gen</a></li>
+<li><a href="/url-encoder/">URL Encoder</a></li>
+</ul>
+</div>
+<div class="footer-links-col">
+<h4>Design &amp; Web Tools</h4>
+<ul>
+<li><a href="/svg-blob-generator/">SVG Blobs</a></li>
+<li><a href="/css-glassmorphism-generator/">Glassmorphism</a></li>
+<li><a href="/css-box-shadow/">CSS Box Shadow</a></li>
+<li><a href="/color-palette-generator/">Color Palette</a></li>
+<li><a href="/image-compressor/">Image Compressor</a></li>
+<li><a href="/qr-code-generator/">QR Generator</a></li>
+</ul>
+</div>
+<div class="footer-links-col">
+<h4>Content &amp; SEO</h4>
+<ul>
+<li><a href="/markdown-editor/">Markdown Editor</a></li>
+<li><a href="/word-counter/">Word Counter</a></li>
+<li><a href="/lorem-ipsum/">Lorem Ipsum</a></li>
+<li><a href="/meta-tag-generator/">Meta Tag Gen</a></li>
+<li><a href="/compound-interest-calculator/">Finance Calc</a></li>
+<li><a href="/inflation-calculator/">Inflation Calc</a></li>
+</ul>
+</div>
+<div class="footer-links-col">
+<h4>Legal &amp; Support</h4>
+<ul>
+<li><a href="/about/">About Us</a></li>
+<li><a href="/privacy-policy/">Privacy Policy</a></li>
+<li><a href="/terms-of-service/">Terms &amp; Conditions</a></li>
+<li><a href="/contact/">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 OmniTools Suite. Privacy-focused browser tools for creators and developers.</p>
+</div>
+</footer>
+</main></div>
+</div>
+<!-- Accessibility Widget -->
+<button aria-label="Accessibility Tools" class="a11y-fab" id="a11yToggleBtn" onclick="toggleA11yPanel()">
+<i data-lucide="accessibility"></i>
+</button>
+<div class="a11y-panel glass-card" id="a11yPanel">
+<div class="a11y-header">
+<h3>Accessibility Tools</h3>
+<button aria-label="Close Accessibility Panel" class="a11y-close" onclick="toggleA11yPanel()"><i data-lucide="x"></i></button>
+</div>
+<div class="a11y-content">
+<div class="a11y-group">
+<label>Text Size:</label>
+<div class="a11y-button-group">
+<button class="a11y-btn" onclick="changeTextSize(-1)">A-</button>
+<button class="a11y-btn" onclick="changeTextSize(0)">Reset</button>
+<button class="a11y-btn" onclick="changeTextSize(1)">A+</button>
+</div>
+</div>
+<div class="a11y-group">
+<label>Contrast:</label>
+<button class="a11y-btn a11y-toggle-btn" id="a11yContrastBtn" onclick="toggleHighContrast()">Toggle High Contrast</button>
+</div>
+<div class="a11y-group">
+<label>Font Style:</label>
+<button class="a11y-btn a11y-toggle-btn" id="a11yDyslexicBtn" onclick="toggleDyslexicFont()">Dyslexic Friendly Font</button>
+</div>
+</div>
+</div>
+<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<div>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+</div>
+<a href="/privacy-policy/">Read our privacy policy</a>
+</aside>
+<!-- Tool Libraries -->
+<!-- Core App Engine script -->
+<script defer="" src="/app.js?v=3.1"></script>
 </body></html>

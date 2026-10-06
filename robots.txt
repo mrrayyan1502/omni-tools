@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
 
+# Google AdSense Crawler
+User-agent: Mediapartners-Google
+Allow: /
+
+
 # Explicit AI Search Engine Crawlers (AEO / GEO Optimization)
 User-agent: GPTBot
 Allow: /
