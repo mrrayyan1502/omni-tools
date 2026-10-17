@@ -267,48 +267,165 @@
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
 <h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Free JWT Decoder - Complete Developer Guide to JSON Web Tokens</h3>
-<div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. What is a JWT and Why Do Developers Use It?</h4>
-<p style="margin-bottom: 1rem;">A JSON Web Token (JWT) is a compact, URL-safe string that securely carries information between two parties, most commonly between a server and a browser after a user logs in. Instead of storing session data on a server, the server signs a token containing the user identity and permissions, and the client sends that token with every request. This makes JWTs the backbone of modern stateless authentication used by APIs, single-page applications and mobile apps.</p>
-<p style="margin-bottom: 1rem;">Every JWT has three parts separated by dots: the <strong>header</strong> (which algorithm was used, such as HS256 or RS256), the <strong>payload</strong> (the actual claims like user ID, roles and expiry time), and the <strong>signature</strong> (a cryptographic seal proving the token was not tampered with). Our free decoder splits these three parts instantly and presents the header and payload as clean, readable JSON.</p>
+<!-- Developer Monetization Callout Box -->
+<div class="developer-callout-box" style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.08)); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <span style="display: inline-block; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: rgba(16, 185, 129, 0.2); color: #10b981; border-radius: 4px; margin-bottom: 0.4rem;">Identity &amp; Auth Stack</span>
+      <h4 style="color: #fff; font-size: 1.05rem; margin: 0;">Enterprise OAuth 2.0 &amp; Asymmetric Token Verification</h4>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.3rem 0 0 0;">In backend production services, verify RS256/ES256 signatures asynchronously by fetching JWKS (JSON Web Key Set) public keys from your OIDC discovery endpoint with automated key rotation.</p>
+    </div>
+    <a href="/base64-encoder-decoder/" class="btn btn-outline btn-sm" style="border-color: #10b981; color: #10b981; white-space: nowrap;">Encode Base64URL</a>
+  </div>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. How to Decode a JWT with This Tool</h4>
-<p style="margin-bottom: 1rem;">Using the decoder takes under ten seconds. Copy the full token from your browser developer tools, Postman, or your application logs, then paste it into the input box above. The moment you paste, the tool parses the token structure and renders the decoded header and payload side by side, with no button clicks and no page reloads.</p>
-<p style="margin-bottom: 1rem;">Because decoding happens entirely inside your browser using JavaScript, your token never leaves your machine. This matters enormously in professional environments: tokens often contain email addresses, user IDs and permission scopes, so pasting them into random online decoders that log requests is a genuine security risk. A local, client-side decoder removes that risk completely.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">1. What is a JWT and Why Do Developers Rely on It?</h4>
+<p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">A JSON Web Token (JWT) is an open, compact, URL-safe data transfer standard formalized under <strong>RFC 7519</strong>. Extensively utilized across OAuth 2.0 frameworks and OpenID Connect (OIDC) identity layers, JWTs carry cryptographically verifiable claims between two distributed systems (such as a single-page web application, mobile client, and backend microservice cluster). Instead of storing session state in heavy server-side caches like Memcached or Redis, the authorization server signs a self-contained token containing user identity and permission scopes. The client sends this token with subsequent HTTP requests inside the <code>Authorization: Bearer &lt;token&gt;</code> header, enabling completely stateless API validation.</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Common JWT Claims You Will See</h4>
-<p style="margin-bottom: 1rem;">When you decode real-world tokens you will repeatedly meet a handful of standard claims. <strong>iss</strong> identifies who issued the token, <strong>sub</strong> is the subject (usually the user ID), <strong>exp</strong> is the expiry timestamp, <strong>iat</strong> is when the token was issued, and <strong>aud</strong> defines the intended audience. Timestamps are stored as Unix epoch seconds, so a quick mental conversion tells you whether a token is still valid.</p>
-<p style="margin-bottom: 1rem;">Custom claims are equally common. Auth0, Firebase, AWS Cognito and most enterprise identity providers add their own namespaced claims for roles, tenant IDs and feature flags. Reading these claims directly is the fastest way to debug authorisation bugs, for example when a user insists they are an admin but the API disagrees.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">2. JWS Compact Serialization Syntax Breakdown &amp; Cryptographic Anatomy</h4>
+<p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">Every standard JSON Web Signature (JWS) compact token consists of three distinct segments delimited by period (<code>.</code>) characters:</p>
+<div style="background: rgba(0, 0, 0, 0.4); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); font-family: monospace; font-size: 0.88rem; color: #00f2fe; line-height: 1.6; margin: 1rem 0;">
+  JWS Compact Serialization Formula:<br/>
+  <code>JWT = Base64URL(Header) + "." + Base64URL(Payload) + "." + Base64URL(Signature)</code><br/><br/>
+  • <strong>Header:</strong> Metadata JSON declaring the token type (<code>"typ": "JWT"</code>) and cryptographic signing algorithm (e.g., <code>"alg": "HS256"</code> or <code>"alg": "RS256"</code>).<br/>
+  • <strong>Payload:</strong> The body containing registered, public, and private claims (user ID, tenant, role permissions, and timestamps).<br/>
+  • <strong>Signature Formula:</strong> <code>Signature = HMAC-SHA256(Base64URL(Header) + "." + Base64URL(Payload), SecretKey)</code>
 </div>
+<p style="color: #cbd5e1; line-height: 1.7;">OmniTools splits these three components instantly and renders the decoded header and payload as clean, highlighted JSON without transmitting your tokens to any external server.</p>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Security Best Practices When Handling Tokens</h4>
-<p style="margin-bottom: 1rem;">Decoding is not the same as verifying. Anyone can decode a JWT because the payload is only Base64URL-encoded, not encrypted. Verification means checking the signature against a secret or public key, which this tool intentionally does not do, because that would require your private keys. Never treat a decoded payload as proof of authenticity on its own.</p>
-<p style="margin-bottom: 1rem;">Practical rules worth following: never paste production tokens into third-party websites that transmit data, always check the <strong>exp</strong> claim before assuming a token should work, prefer short-lived access tokens with refresh token rotation, and never store sensitive secrets in the payload itself. Treat every JWT like a temporary password.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">3. RFC 7519 Standard Registered Claims Reference Table</h4>
+<p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">The IETF RFC 7519 specification defines seven core registered claim keys that provide standardized metadata for token consumers. The following technical reference table outlines these claims, their data formats, and backend validation requirements:</p>
+
+<div style="overflow-x: auto; margin: 1.25rem 0;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;">
+    <thead>
+      <tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid rgba(16,185,129,0.3);">
+        <th style="padding: 10px 14px;">Claim Key</th>
+        <th style="padding: 10px 14px;">Formal Name</th>
+        <th style="padding: 10px 14px;">Data Type</th>
+        <th style="padding: 10px 14px;">Description / Purpose</th>
+        <th style="padding: 10px 14px;">Backend Validation Rule</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #10b981;">iss</td>
+        <td style="padding: 9px 14px;">Issuer</td>
+        <td style="padding: 9px 14px; font-family: monospace;">String (URI)</td>
+        <td style="padding: 9px 14px;">Identifies the principal that issued the JWT (e.g. Auth0, Cognito)</td>
+        <td style="padding: 9px 14px;">Must strictly match trusted authorization server URL</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #10b981;">sub</td>
+        <td style="padding: 9px 14px;">Subject</td>
+        <td style="padding: 9px 14px; font-family: monospace;">String</td>
+        <td style="padding: 9px 14px;">Identifies the principal that is the subject of the JWT (User ID)</td>
+        <td style="padding: 9px 14px;">Must be locally unique in the context of the issuer</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #10b981;">aud</td>
+        <td style="padding: 9px 14px;">Audience</td>
+        <td style="padding: 9px 14px; font-family: monospace;">String / Array</td>
+        <td style="padding: 9px 14px;">Identifies the recipients that the JWT is intended for (API Resource)</td>
+        <td style="padding: 9px 14px;">API must reject token if its client ID is not in <code>aud</code></td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #eab308;">exp</td>
+        <td style="padding: 9px 14px;">Expiration Time</td>
+        <td style="padding: 9px 14px; font-family: monospace;">NumericDate</td>
+        <td style="padding: 9px 14px;">Unix timestamp (seconds) identifying when token ceases to be valid</td>
+        <td style="padding: 9px 14px;">Current time must be strictly before <code>exp</code> (with leeway)</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #eab308;">nbf</td>
+        <td style="padding: 9px 14px;">Not Before</td>
+        <td style="padding: 9px 14px; font-family: monospace;">NumericDate</td>
+        <td style="padding: 9px 14px;">Unix timestamp identifying the time before which token cannot be accepted</td>
+        <td style="padding: 9px 14px;">Current time must be equal to or greater than <code>nbf</code></td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #60a5fa;">iat</td>
+        <td style="padding: 9px 14px;">Issued At</td>
+        <td style="padding: 9px 14px; font-family: monospace;">NumericDate</td>
+        <td style="padding: 9px 14px;">Unix timestamp identifying when the JWT was generated by auth server</td>
+        <td style="padding: 9px 14px;">Used to reject tokens issued before user password changes</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #a855f7;">jti</td>
+        <td style="padding: 9px 14px;">JWT ID</td>
+        <td style="padding: 9px 14px; font-family: monospace;">String (UUID)</td>
+        <td style="padding: 9px 14px;">Unique identifier for the token to prevent token replay attacks</td>
+        <td style="padding: 9px 14px;">Backend caches <code>jti</code> to block duplicate one-time use</td>
+      </tr>
+      <tr>
+        <td style="padding: 9px 14px; font-weight: bold; font-family: monospace; color: #f5af19;">kid</td>
+        <td style="padding: 9px 14px;">Key ID (Header)</td>
+        <td style="padding: 9px 14px; font-family: monospace;">String</td>
+        <td style="padding: 9px 14px;">Identifies which public key in the JWKS set was used for signing</td>
+        <td style="padding: 9px 14px;">Used to select corresponding verification key from JWKS</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">4. Real-World Developer Production Scenarios</h4>
+<p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">Decoding JWT payloads is an indispensable diagnostic step during web and mobile API development:</p>
+
+<div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #10b981; border-radius: 0 8px 8px 0;">
+  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Debugging Silent HTTP 403 Forbidden Errors in Role-Based Access Control (RBAC)</h5>
+  <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
+    A frontend engineer builds a dashboard where an administrative user consistently receives HTTP 403 Forbidden responses when invoking a protected billing endpoint. The developer copies the bearer token from browser network DevTools and pastes it into OmniTools JWT Decoder. Within milliseconds, the engineer observes that while the user has the <code>user:read</code> scope, the identity provider omitted the required <code>billing:admin</code> claim due to a misconfigured permission rule in Auth0. The issue is identified and resolved without touching backend code.
+  </p>
+</div>
+
+<div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0;">
+  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Inspecting Multi-Tenant Microservice Authorization Claims &amp; Clock Skew</h5>
+  <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
+    In SaaS architectures where a single backend serves thousands of enterprise tenants, every incoming request must be segmented by <code>tenant_id</code>. If server clocks drift, an API gateway might prematurely reject requests with "Token not yet valid" errors. By pasting the token into OmniTools, the DevOps team verifies the exact Unix timestamps of <code>iat</code>, <code>nbf</code>, and <code>exp</code> relative to standard UTC clock time, diagnosing network clock skew anomalies.
+  </p>
+</div>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.3rem;">Frequently Asked Questions</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
-<div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Is it safe to paste my JWT into this decoder?</h4>
-<p style="font-size: 0.95rem;">Yes. This tool runs 100% client-side in your browser. The token you paste is decoded locally with JavaScript and is never transmitted to any server, logged, or stored. You can even disconnect from the internet after the page loads and the decoder will keep working.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Is it safe to paste production JWTs into this decoder?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. OmniTools runs 100% client-side in your browser runtime. The token you paste is parsed locally using JavaScript <code>atob()</code> and UTF-8 decoders. Zero data is transmitted to any server, logged in remote files, or saved in databases.</p>
 </div>
-<div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Can this tool verify a JWT signature?</h4>
-<p style="font-size: 0.95rem;">No, and deliberately so. Signature verification requires your signing secret or private key, which should never be entered into a web page. This tool decodes the header and payload for inspection and debugging only. For verification, use your backend framework or a library such as jsonwebtoken for Node.js or PyJWT for Python.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Can this tool verify a JWT cryptographic signature?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No, and intentionally so. Cryptographic signature verification requires entering your private signing key or shared HMAC secret, which should never be entered into any web page. This tool is dedicated to safe inspection and debugging of headers and payload claims.</p>
 </div>
-<div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Why does my decoded payload look like random text?</h4>
-<p style="font-size: 0.95rem;">That usually means the token was copied incompletely. A JWT must contain all three segments separated by two dots. If even one character is missing from the middle, the Base64URL decoding fails or produces garbled output. Copy the entire string again, making sure there is no trailing whitespace.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Why are JWT payloads encoded with Base64URL rather than standard Base64?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Standard Base64 contains <code>+</code>, <code>/</code>, and <code>=</code> padding characters that carry reserved syntactic meanings in HTTP headers, URLs, and query strings. Base64URL substitutes <code>-</code> for <code>+</code> and <code>_</code> for <code>/</code> and omits padding, ensuring tokens pass cleanly through web proxies without percent-encoding.</p>
 </div>
-<div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: What is the difference between encoding and encryption?</h4>
-<p style="font-size: 0.95rem;">Encoding (like Base64URL used in JWTs) is a reversible format change that anyone can undo, offering zero secrecy. Encryption requires a key and makes data unreadable without it. Standard JWT payloads are encoded, not encrypted, so never place passwords or sensitive personal data inside them.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What is the critical difference between encoding and encryption in JWTs?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Encoding (Base64URL) is an open, reversible transformation that provides zero secrecy—anyone holding the token can read the payload claims. Encryption (such as JWE - JSON Web Encryption) encrypts the payload with a secret key so only authorized recipients can decrypt it. Never store raw passwords or SSNs in a standard JWS token.</p>
 </div>
-<div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: How do I check if a JWT has expired?</h4>
-<p style="font-size: 0.95rem;">Decode the token and look at the exp claim in the payload. It is a Unix timestamp in seconds. Compare it with the current time; if the current time is greater, the token has expired and any well-built API will reject it with a 401 response.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: How do I know if a decoded JWT has expired?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Inspect the <code>exp</code> claim in the decoded payload. It represents an integer Unix epoch timestamp in seconds. Compare it with the current Unix timestamp (<code>Math.floor(Date.now() / 1000)</code>). If the current time exceeds <code>exp</code>, the token is expired and will be rejected with an HTTP 401 Unauthorized.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What does the "alg: none" vulnerability mean in JWT implementations?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">The JWS specification supports an <code>alg: none</code> option for unsecured tokens. In poorly coded backends that blindly trust the header algorithm, an attacker can modify the payload to grant admin permissions and set <code>alg: none</code>, bypassing signature verification entirely. Compliant backends must reject tokens with <code>alg: none</code>.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What is the difference between HS256 and RS256 signing algorithms?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">HS256 (HMAC with SHA-256) is a symmetric algorithm requiring both the auth server and API service to share the same secret key. RS256 (RSA Signature with SHA-256) is asymmetric: the auth server signs tokens using a private key, and API services verify them using a public key, eliminating the risk of secret key exposure.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Can I use this JWT decoder completely offline without internet?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. Once the page is loaded into your browser, all parsing and JSON formatting logic resides in client memory. You can disconnect your workstation from the network, and the decoder will continue functioning with full speed.</p>
 </div>
 </div>
 </div>

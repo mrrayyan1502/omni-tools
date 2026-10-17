@@ -289,46 +289,159 @@
 <!-- SEO roman Urdu informational Guide -->
 <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
 <h3>Professional Guide to JSON Formatting, Validation &amp; Minification</h3>
-<p>JavaScript Object Notation (JSON) is the universal standard data interchange format for modern distributed software. Built upon two fundamental structures—a collection of name/value pairs (objects) and an ordered list of values (arrays)—JSON is both human-readable and easily parsed by computers. However, unformatted, minified, or syntactically invalid JSON payloads can stall debugging workflows and cause runtime API crashes. OmniTools provides an ultra-fast, zero-telemetry formatter and validator designed for developers.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">1. Key Capabilities of the Formatter Engine</h4>
-<p>Our JSON engineering suite provides comprehensive tools for inspecting and transforming payloads:</p>
-<ul>
-<li><strong>Beautify / Pretty-Print:</strong> Reconstructs minified JSON into structured, indented code with customizable indentation (2 spaces, 4 spaces, or tabs) for effortless visual inspection.</li>
-<li><strong>Minify / Compact:</strong> Strips all non-essential whitespace, line breaks, and indentation from the payload to minimize payload byte size for production network transmission.</li>
-<li><strong>Strict Syntax Validation:</strong> Detects common JSON syntax violations—such as trailing commas, unquoted keys, single quotes instead of double quotes, and unescaped control characters—with line-specific error highlighting.</li>
-<li><strong>Interactive Tree View:</strong> Enables collapsible tree hierarchy navigation, allowing engineers to drill down into deeply nested arrays and objects without getting lost in closing braces.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">2. Common JSON Syntax Errors &amp; How to Avoid Them</h4>
-<p>According to the ECMA-404 JSON Data Interchange Standard, JSON enforces stricter rules than standard JavaScript object literals:</p>
-<ul>
-<li><strong>Strict Double Quotes:</strong> In JSON, all object property keys and string values must be enclosed in double quotes (<code>"key": "value"</code>). Single quotes (<code>'key': 'value'</code>) are strictly invalid.</li>
-<li><strong>No Trailing Commas:</strong> Placing a comma after the final property in an object or the last item in an array (e.g., <code>{"id": 1, "name": "Omni",}</code>) will trigger parsing exceptions across strict JSON parsers.</li>
-<li><strong>Permitted Data Types:</strong> JSON strictly permits strings, numbers, booleans, null, arrays, and objects. Functions, <code>undefined</code>, and <code>NaN</code> cannot be serialized in valid JSON.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">3. Client-Side Privacy: Shielding Proprietary API Payloads</h4>
-<p>Developers routinely handle sensitive API responses containing customer identifiers, JWT tokens, and private server configurations. Transmitting these payloads to cloud-based formatters poses extreme security risks. OmniTools operates 100% locally in your browser memory using native Web APIs. No network requests are made, ensuring complete adherence to GDPR, CCPA, and internal corporate security mandates.</p>
-<div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Frequently Asked Questions (FAQ)</h4>
+<p>JavaScript Object Notation (JSON) is an open, language-independent data interchange format formalized under standards <strong>RFC 8259</strong>, <strong>ECMA-404</strong>, and <strong>ISO/IEC 21778:2017</strong>. Built upon two universal data structures—a collection of name/value pairs (an object in JavaScript, dictionary in Python, or hash table in Ruby) and an ordered sequence of values (an array or list)—JSON has surpassed XML and YAML as the dominant payload protocol for RESTful web services, GraphQL APIs, and NoSQL document databases like MongoDB and CouchDB. However, working with raw, unformatted, or minified JSON strings can severely impede software engineering workflows and trigger catastrophic runtime parsing exceptions. OmniTools provides a high-performance, zero-telemetry formatter, validator, and interactive tree inspector running 100% locally in your web browser.</p>
+
+<!-- Developer Monetization Callout Box -->
+<div class="developer-callout-box" style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(30, 60, 114, 0.15), rgba(42, 82, 152, 0.2)); border: 1px solid rgba(0, 242, 254, 0.25); border-radius: 10px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <span style="display: inline-block; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: rgba(0, 242, 254, 0.2); color: #00f2fe; border-radius: 4px; margin-bottom: 0.4rem;">Developer API Testing Stack</span>
+      <h4 style="color: #fff; font-size: 1.05rem; margin: 0;">Automated Schema Validation &amp; API Mocking</h4>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.3rem 0 0 0;">Validate production JSON responses against strict JSON Schema (Draft 7 / 2020-12) specifications using Ajv or Postman contract test suites before shipping to end users.</p>
+    </div>
+    <a href="/json-to-csv/" class="btn btn-outline btn-sm" style="border-color: #00f2fe; color: #00f2fe; white-space: nowrap;">Convert JSON to CSV</a>
+  </div>
+</div>
+
+<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">1. Formal RFC 8259 Grammar Formula &amp; Syntax Breakdown</h4>
+<p>To avoid syntax ambiguity, RFC 8259 defines JSON using formal Backus-Naur Form (BNF) grammar productions. Every compliant JSON text must satisfy the following structural equations:</p>
+<div style="background: rgba(0, 0, 0, 0.4); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); font-family: monospace; font-size: 0.88rem; color: #00f2fe; line-height: 1.6; margin: 1rem 0;">
+  JSON-text   = ws value ws<br/>
+  value       = false / null / true / object / array / number / string<br/>
+  object      = begin-object [ member *( value-separator member ) ] end-object<br/>
+  member      = string name-separator value<br/>
+  array       = begin-array [ value *( value-separator value ) ] end-array<br/>
+  string      = quotation-mark *char quotation-mark<br/>
+  name-sep    = ws %x3A ws ; colon (:) &nbsp;&nbsp;&nbsp;&nbsp; value-sep = ws %x2C ws ; comma (,)
+</div>
+<p>Unlike loose JavaScript object literals, JSON requires all property names to be strictly enclosed in double quotes (<code>"key"</code>). Single quotes (<code>'key'</code>) and unquoted identifiers are syntactically illegal and cause instant parser termination.</p>
+
+<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">2. RFC 8259 JSON Primitive Data Types &amp; Syntax Rules Reference Table</h4>
+<p>The following technical reference table outlines how JSON data types are evaluated, their serialization rules, and common developer pitfalls under strict ECMA-404 standards:</p>
+
+<div style="overflow-x: auto; margin: 1.25rem 0;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;">
+    <thead>
+      <tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid rgba(0,242,254,0.3);">
+        <th style="padding: 10px 14px;">Data Type</th>
+        <th style="padding: 10px 14px;">Syntax Example</th>
+        <th style="padding: 10px 14px;">RFC Specification Rules</th>
+        <th style="padding: 10px 14px;">Valid in Strict JSON?</th>
+        <th style="padding: 10px 14px;">Common Error / Developer Pitfall</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #38ef7d;">String</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>"hello world"</code></td>
+        <td style="padding: 9px 14px;">Unicode chars enclosed in double quotes</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">YES (Strict)</td>
+        <td style="padding: 9px 14px;">Using single quotes <code>'text'</code> triggers syntax error</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #00f2fe;">Number</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>42, -18.5, 1e6</code></td>
+        <td style="padding: 9px 14px;">Base 10 integers, floats, exponent notation</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">YES (Strict)</td>
+        <td style="padding: 9px 14px;">Leading zeros (<code>05</code>), <code>NaN</code>, and <code>Infinity</code> forbidden</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #60a5fa;">Object</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>{"id": 1, "active": true}</code></td>
+        <td style="padding: 9px 14px;">Unordered key-value pairs inside curly braces</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">YES (Strict)</td>
+        <td style="padding: 9px 14px;">Trailing comma after final property is illegal</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #eab308;">Array</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>[1, "two", false]</code></td>
+        <td style="padding: 9px 14px;">Ordered collection of heterogeneous values</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">YES (Strict)</td>
+        <td style="padding: 9px 14px;">Trailing comma <code>[1, 2,]</code> triggers parse failure</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #a855f7;">Boolean</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>true, false</code></td>
+        <td style="padding: 9px 14px;">Exact lowercase literal tokens</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">YES (Strict)</td>
+        <td style="padding: 9px 14px;">Capitalized <code>True</code> or <code>FALSE</code> treated as invalid literals</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #94a3b8;">Null</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>null</code></td>
+        <td style="padding: 9px 14px;">Explicit absent or empty value token</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">YES (Strict)</td>
+        <td style="padding: 9px 14px;">Capitalized <code>None</code> (Python) or <code>nil</code> (Go/Ruby) invalid</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #f12711;">Undefined / Func</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>undefined, () =&gt; {}</code></td>
+        <td style="padding: 9px 14px;">JavaScript runtime primitives</td>
+        <td style="padding: 9px 14px; color: #f12711; font-weight: bold;">NO (Illegal)</td>
+        <td style="padding: 9px 14px;">Stripped or throws <code>TypeError</code> in <code>JSON.stringify</code></td>
+      </tr>
+      <tr>
+        <td style="padding: 9px 14px; font-weight: bold; color: #f5af19;">Date Object</td>
+        <td style="padding: 9px 14px; font-family: monospace;"><code>"2026-10-17T12:00:00Z"</code></td>
+        <td style="padding: 9px 14px;">Serialized as ISO 8601 string</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">YES (As String)</td>
+        <td style="padding: 9px 14px;">Parsed back as string; requires manual <code>new Date()</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">3. Real-World Developer Production Scenarios</h4>
+<p>JSON manipulation is an everyday task for full-stack, mobile, and backend engineers. Below are two typical production scenarios where in-browser validation and formatting are critical:</p>
+
+<div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #00f2fe; border-radius: 0 8px 8px 0;">
+  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Debugging Complex Stripe &amp; GitHub Webhook Failures</h5>
+  <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
+    When third-party webhooks fail in production, server logs typically capture raw, unformatted single-line JSON payloads containing thousands of escaped characters and nested objects (e.g., payment intent events, refund objects, line-item metadata). Pasting the raw log snippet into OmniTools JSON Formatter instantly un-escapes quotes, formats indentation to clean 2-space hierarchy, and pinpoints unclosed braces. Engineers inspect transaction IDs and billing records without manually scrolling through a 50,000-character single line.
+  </p>
+</div>
+
+<div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #38ef7d; border-radius: 0 8px 8px 0;">
+  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Compacting Large GeoJSON &amp; Configuration Buffers for Production Edge Caching</h5>
+  <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
+    Mapping applications and geo-spatial analytics services consume multi-megabyte GeoJSON polygon files containing coordinate arrays. When stored in readable indented form, whitespace accounts for 25% to 40% of the raw file size. Using OmniTools Minify button strips every redundant space, carriage return, and tab while preserving floating-point geographic coordinates, slashing download payload sizes and edge CDN egress costs.
+  </p>
+</div>
+
+<div class="faq-section" style="margin-top: 2.5rem;">
+<h4 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Frequently Asked Questions (FAQ)</h4>
 <div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: What is the maximum payload size this formatter can handle?</strong></p>
-<p>Because processing runs locally on your machine, OmniTools easily handles payloads up to dozens of megabytes, bounded only by your browser's allocated memory.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What is the maximum payload size this JSON formatter can handle?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Because processing runs 100% locally in your browser memory using optimized JavaScript engines (V8/SpiderMonkey), OmniTools easily formats and validates JSON files exceeding 25MB without server timeouts or payload limits.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Can the formatter automatically fix broken JSON syntax?</strong></p>
-<p>When common syntax bugs (such as single quotes or trailing commas) are detected, our smart linter suggests automated fixes to repair the payload with a single click.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Can the formatter automatically fix trailing commas and unquoted keys?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. If your input contains relaxed JavaScript object notation (such as trailing commas or unquoted keys), our smart repair engine can normalize and convert it into strict RFC 8259 compliant JSON with a single click.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: How do I copy or download the formatted JSON?</strong></p>
-<p>Use the "Copy to Clipboard" button for instant pasting into your IDE, or click "Download JSON" to save the formatted file directly to disk.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Does formatting change numeric precision or floating-point numbers?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Never. Formatting only normalizes syntactic whitespace, indentation, and newlines. Numerical precision, 64-bit integer strings, boolean flags, and string values remain strictly bit-for-bit identical to the source input.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Does formatting change the data values inside my JSON?</strong></p>
-<p>Never. Formatting only adjusts whitespace and indentation. Numeric precision, boolean values, and string contents remain completely unaltered.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Are my confidential API tokens or customer data uploaded to any server?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Zero data leaves your workstation. All parsing, beautification, minification, and tree construction occur strictly in your browser runtime sandbox. Nothing is transmitted over the internet or logged in remote databases.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Is there any cost or registration required?</strong></p>
-<p>No. OmniTools JSON Formatter is 100% free and unrestricted for both personal and enterprise use.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Why does JSON reject single quotes around keys or string values?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Under the formal grammar of RFC 8259, strings are defined exclusively with the double-quote delimiter (ASCII <code>0x22</code>). Single quotes (<code>'</code>) are not recognized as string boundaries by compliant JSON parsers, throwing a <code>SyntaxError: Unexpected token '</code>.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What is the difference between Minifying and Beautifying JSON?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Beautifying (pretty-printing) adds indentations (typically 2 or 4 spaces) and newlines to make complex JSON easily human-readable. Minifying removes all unnecessary whitespace to produce the smallest possible byte count for fast network transmission.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: How does the interactive JSON Tree View help with nested data?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">The Tree View converts raw text into collapsible DOM nodes, enabling developers to expand or collapse parent arrays and objects, inspect array lengths, and isolate specific key-value pairs without being overwhelmed by massive raw text blocks.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Can comments be included in standard JSON files?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Standard JSON (RFC 8259) explicitly forbids comments (<code>//</code> or <code>/* */</code>) to ensure simplicity and prevent parser divergence. Formats that allow comments (such as JSONC in VS Code or JSON5) are supersets and must have comments stripped before parsing with standard JSON parsers.</p>
 </div>
 </div>
 </div>

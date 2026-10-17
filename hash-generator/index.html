@@ -317,49 +317,173 @@
 <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
 <h3>The Definitive Guide to Cryptographic Hash Functions &amp; Integrity Verification</h3>
 <p>A cryptographic hash function is a deterministic mathematical algorithm that maps an arbitrary block of digital data into a fixed-size bit string known as a digest or checksum. Regardless of whether the input is a single character, an essay, or a multi-gigabyte operating system image, the resulting hash output is always uniform in length. Cryptographic hashing is the fundamental building block of modern cybersecurity, password storage, blockchain verification, and software integrity assurance.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">1. Core Cryptographic Algorithms Supported</h4>
-<p>OmniTools leverages the native Web Cryptography API (SubtleCrypto) to calculate high-speed hardware-accelerated digests across the most critical hashing families:</p>
-<ul>
-<li><strong>SHA-256 (Secure Hash Algorithm 256-bit):</strong> Member of the SHA-2 family designed by the National Security Agency (NSA). It outputs a 64-character hexadecimal digest and represents the global benchmark for SSL/TLS certificates, Bitcoin proof-of-work, and code signing.</li>
-<li><strong>SHA-512 (Secure Hash Algorithm 512-bit):</strong> Produces a 128-character hexadecimal digest, providing superior mathematical collision resistance and optimized performance on 64-bit microprocessors.</li>
-<li><strong>SHA-1 (Legacy 160-bit):</strong> Produces a 40-character hex string. While deprecated for security-sensitive cryptographic digital signatures due to theoretical collision attacks, it remains widely utilized in Git commit identification and legacy file verification.</li>
-<li><strong>MD5 (Message Digest 5 - 128-bit):</strong> Developed by Ronald Rivest in 1991. Although cryptographically broken for collision resistance, MD5 remains ubiquitous as a rapid checksum for detecting accidental data corruption during file transfers.</li>
+<!-- Developer Monetization Callout Box -->
+<div class="developer-callout-box" style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(0, 242, 254, 0.05), rgba(79, 172, 254, 0.08)); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 10px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <span style="display: inline-block; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: rgba(0, 242, 254, 0.2); color: #00f2fe; border-radius: 4px; margin-bottom: 0.4rem;">Security &amp; DevSecOps Stack</span>
+      <h4 style="color: #fff; font-size: 1.05rem; margin: 0;">Automated Vulnerability Scanning &amp; Container Signing</h4>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.3rem 0 0 0;">Verify package integrity in CI/CD pipelines using Cosign and Sigstore immutable digest verification before deploying container images to production Kubernetes clusters.</p>
+    </div>
+    <a href="/jwt-decoder/" class="btn btn-outline btn-sm" style="border-color: #00f2fe; color: #00f2fe; white-space: nowrap;">Inspect JWT Signatures</a>
+  </div>
+</div>
+
+<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">1. Core Cryptographic Algorithms &amp; Mathematical Architectures</h4>
+<p>OmniTools leverages the native W3C Web Cryptography API (<code>window.crypto.subtle.digest</code>) to calculate high-speed, hardware-accelerated cryptographic digests. Unlike legacy online tools that transmit inputs to remote servers, all message compression occurs in local CPU registers across the core cryptographic hashing families:</p>
+<ul style="line-height: 1.8; color: #cbd5e1; padding-left: 1.25rem;">
+<li><strong>SHA-256 (Secure Hash Algorithm 256-bit):</strong> Defined by NIST in FIPS PUB 180-4, SHA-256 operates on 512-bit message blocks through a 64-round compression function using 32-bit words. It outputs a 64-character hexadecimal digest (256 bits) and represents the foundational pillar of SSL/TLS certificates, Bitcoin proof-of-work, and DNSSEC validation.</li>
+<li><strong>SHA-512 (Secure Hash Algorithm 512-bit):</strong> Operates on 1024-bit message blocks through 80 rounds of 64-bit word operations. Producing a 128-character hexadecimal string, SHA-512 delivers exceptional mathematical security and runs with native speed on modern 64-bit server processors.</li>
+<li><strong>SHA-384 (Truncated SHA-2 Variant):</strong> Computes a 512-bit state initialized with distinct initial vector constants and truncated to 384 bits (96 hex characters). Widely mandated in US Government Suite B Cryptography and high-assurance military PKI certificates.</li>
+<li><strong>SHA-1 (Legacy 160-bit):</strong> Formulated in 1995 to produce a 40-character hex string. Although formally broken by Google and CWI Amsterdam via the SHAttered collision demonstration in 2017, SHA-1 is preserved in OmniTools strictly for legacy file deduplication and Git internal object identity tracking.</li>
+<li><strong>MD5 (Message Digest 5 - 128-bit):</strong> Formulated by Ronald Rivest in RFC 1321. Broken for cryptographic digital signatures since 2004, MD5 is universally utilized as an ultra-fast checksum for detecting non-malicious transmission corruption across torrents and file transfers.</li>
 </ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">2. Fundamental Properties of Secure Cryptographic Hashes</h4>
-<p>To serve as a reliable cryptographic tool, a hash function must satisfy three rigorous mathematical tenets:</p>
-<ul>
-<li><strong>Pre-image Resistance (One-Way Function):</strong> Given a hash value <code>h</code>, it must be computationally infeasible to reverse-engineer or reconstruct the original input message <code>m</code>.</li>
-<li><strong>Second Pre-image Resistance (Weak Collision Resistance):</strong> Given an input <code>m1</code>, it must be practically impossible to calculate a distinct input <code>m2</code> such that <code>hash(m1) == hash(m2)</code>.</li>
-<li><strong>The Avalanche Effect:</strong> A minute modification in the input data—such as changing a single capitalized letter or adding a trailing space—must drastically and unpredictably mutate the entire output digest, rendering patterns undetectable.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">3. Practical Use Cases for Engineers and System Administrators</h4>
-<ol>
-<li><strong>Software &amp; Firmware Download Verification:</strong> Open-source repositories and Linux distributions publish SHA-256 checksums alongside ISO downloads. By generating the hash of your downloaded file locally, you verify that the binary was not corrupted or modified by a man-in-the-middle attack.</li>
-<li><strong>Database Password Hashing Principles:</strong> Secure systems never store plaintext passwords. While general hashes like SHA-256 must be combined with key-stretching algorithms (such as bcrypt, Argon2, or PBKDF2) and random salts to defeat rainbow tables, understanding basic hashing mechanics is vital for application architecture.</li>
-<li><strong>Digital Forensics &amp; Tamper Evident Logging:</strong> In legal proceedings and forensic audits, generating an immutable cryptographic hash of hard drive images proves that evidence has remained untouched and authentic throughout custody.</li>
-</ol>
-<div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Frequently Asked Questions (FAQ)</h4>
+
+<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">2. Cryptographic Hash Function Comparison Matrix</h4>
+<p>Choosing the correct hashing primitive requires evaluating bit length, collision security, mathematical structure, and industry compliance. The following technical reference table summarizes the security posture of modern and legacy hashing algorithms:</p>
+
+<div style="overflow-x: auto; margin: 1.25rem 0;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;">
+    <thead>
+      <tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid rgba(0,242,254,0.3);">
+        <th style="padding: 10px 14px;">Algorithm</th>
+        <th style="padding: 10px 14px;">Digest Bits</th>
+        <th style="padding: 10px 14px;">Hex Output Length</th>
+        <th style="padding: 10px 14px;">Internal Block Size</th>
+        <th style="padding: 10px 14px;">Collision Resistance</th>
+        <th style="padding: 10px 14px;">Primary Industry Application</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #38ef7d;">SHA-256</td>
+        <td style="padding: 9px 14px;">256 bits</td>
+        <td style="padding: 9px 14px; font-family: monospace;">64 chars</td>
+        <td style="padding: 9px 14px;">512 bits</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">Unbroken (Secure)</td>
+        <td style="padding: 9px 14px;">TLS/SSL, Blockchain, Subresource Integrity (SRI)</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #38ef7d;">SHA-512</td>
+        <td style="padding: 9px 14px;">512 bits</td>
+        <td style="padding: 9px 14px; font-family: monospace;">128 chars</td>
+        <td style="padding: 9px 14px;">1024 bits</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">Unbroken (Secure)</td>
+        <td style="padding: 9px 14px;">Financial ledger integrity, 64-bit microservices, Ed25519</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #38ef7d;">SHA-384</td>
+        <td style="padding: 9px 14px;">384 bits</td>
+        <td style="padding: 9px 14px; font-family: monospace;">96 chars</td>
+        <td style="padding: 9px 14px;">1024 bits</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">Unbroken (Secure)</td>
+        <td style="padding: 9px 14px;">NSA Suite B, W3C SRI CDN integrity headers</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #f5af19;">SHA-1</td>
+        <td style="padding: 9px 14px;">160 bits</td>
+        <td style="padding: 9px 14px; font-family: monospace;">40 chars</td>
+        <td style="padding: 9px 14px;">512 bits</td>
+        <td style="padding: 9px 14px; color: #f12711; font-weight: bold;">Broken (Deprecated)</td>
+        <td style="padding: 9px 14px;">Git commit tree hashes, legacy archive validation</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #f12711;">MD5</td>
+        <td style="padding: 9px 14px;">128 bits</td>
+        <td style="padding: 9px 14px; font-family: monospace;">32 chars</td>
+        <td style="padding: 9px 14px;">512 bits</td>
+        <td style="padding: 9px 14px; color: #f12711; font-weight: bold;">Broken (Vulnerable)</td>
+        <td style="padding: 9px 14px;">Rapid file download checksums, non-crypto hash tables</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #00f2fe;">BLAKE3</td>
+        <td style="padding: 9px 14px;">256 bits</td>
+        <td style="padding: 9px 14px; font-family: monospace;">64 chars</td>
+        <td style="padding: 9px 14px;">Tree Mode</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">High (Modern)</td>
+        <td style="padding: 9px 14px;">High-throughput disk I/O, SIMD parallel hashing</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+        <td style="padding: 9px 14px; font-weight: bold; color: #eab308;">Argon2id</td>
+        <td style="padding: 9px 14px;">Variable</td>
+        <td style="padding: 9px 14px; font-family: monospace;">Modular format</td>
+        <td style="padding: 9px 14px;">Memory-hard</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">Maximum KDF</td>
+        <td style="padding: 9px 14px;">Password hashing (Winner of Password Hashing Competition)</td>
+      </tr>
+      <tr>
+        <td style="padding: 9px 14px; font-weight: bold; color: #a855f7;">bcrypt</td>
+        <td style="padding: 9px 14px;">184 bits</td>
+        <td style="padding: 9px 14px; font-family: monospace;">60 chars ($2a$)</td>
+        <td style="padding: 9px 14px;">Blowfish state</td>
+        <td style="padding: 9px 14px; color: #38ef7d; font-weight: bold;">Tunable Work Factor</td>
+        <td style="padding: 9px 14px;">Database authentication, salted password verification</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">3. The Merkle-Damgård Construction &amp; Compression Formula</h4>
+<p>Most classical cryptographic hash algorithms—including SHA-256 and MD5—rely on the <strong>Merkle-Damgård construction</strong>. The input message <code>M</code> is first appended with a single bit <code>1</code>, followed by zero bits until the bit length equals <code>448 mod 512</code>. Finally, the original message length encoded as a 64-bit integer is appended, yielding an exact multiple of 512 bits.</p>
+<p>The padded message is divided into sequential blocks <code>M_1, M_2, ..., M_n</code>. Each block is iteratively fed into an internal compression function <code>f</code> alongside the previous intermediate state <code>H_{i-1}</code>:</p>
+<div style="background: rgba(0, 0, 0, 0.4); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); font-family: monospace; font-size: 0.88rem; color: #00f2fe; line-height: 1.6; margin: 1rem 0;">
+  Initial State Vector: <code>H_0 = Initial_Constants (First 32 bits of fractional parts of square roots of first 8 primes)</code><br/>
+  Iterative Compression Formula: <code>H_i = f(H_{i-1}, M_i) + H_{i-1}</code><br/>
+  Final Cryptographic Digest: <code>Digest = H_n</code>
+</div>
+<p>Because the internal state size matches the output size, Merkle-Damgård hashes can be susceptible to length extension attacks if used in simple MAC constructions without HMAC framing.</p>
+
+<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">4. Real-World Developer Production Scenarios</h4>
+<p>Cryptographic hashes are critical throughout DevOps, web performance, and cybersecurity engineering. Here are two real-world developer workflows:</p>
+
+<div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #00f2fe; border-radius: 0 8px 8px 0;">
+  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Subresource Integrity (SRI) Checksums in Production CDN Deployments</h5>
+  <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
+    When loading critical JavaScript libraries (e.g., React, Bootstrap, or Lucide icons) from public Content Delivery Networks (CDNs), malicious actors compromising the third-party CDN can inject malicious keyloggers or crypto-miners. By generating a SHA-384 or SHA-256 hash of the script and declaring it in the HTML tag (e.g., <code>&lt;script src="..." integrity="sha384-..." crossorigin="anonymous"&gt;</code>), the client browser verifies the cryptographic digest before executing the script. If a single byte is tampered with, the browser blocks execution immediately.
+  </p>
+</div>
+
+<div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #38ef7d; border-radius: 0 8px 8px 0;">
+  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Immutable Container Image Digest Pinning in Kubernetes (GitOps)</h5>
+  <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
+    In enterprise Kubernetes environments, referencing container tags like <code>my-service:latest</code> or <code>my-service:v1.2.0</code> is anti-pattern because image tags are mutable—an attacker or compromised registry can overwrite a tag with malicious code. GitOps deployment pipelines resolve image tags to immutable SHA-256 digests: <code>my-service@sha256:7f83b1657ff1...</code>. The Kubernetes kubelet downloads the image and verifies the SHA-256 hash against the cluster registry index, guaranteeing that the exact binary that passed security audits runs on the cluster.
+  </p>
+</div>
+
+<div class="faq-section" style="margin-top: 2.5rem;">
+<h4 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Frequently Asked Questions (FAQ)</h4>
 <div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Is it possible to decrypt or reverse a SHA-256 hash?</strong></p>
-<p>No. Cryptographic hashing is fundamentally not encryption. Encryption is a two-way function designed to be decrypted with a secret key. Hashing is a one-way lossy compression algorithm that permanently discards mathematical state.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Is it possible to decrypt or reverse a SHA-256 hash back to plaintext?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No. Cryptographic hashing is fundamentally not encryption. Encryption is a two-way reversible process using a mathematical key. A cryptographic hash function is a one-way lossy compression algorithm that compresses inputs of arbitrary size into a fixed 256-bit output. Mathematical information is permanently discarded, making inversion mathematically impossible.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Are my secret strings or passwords sent to your servers?</strong></p>
-<p>Never. OmniTools computes all hashes locally inside your browser using the native W3C Web Cryptography API. Your input text is never transmitted over any internet connection or recorded in any remote access log.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Are my confidential passwords or text strings uploaded to your server?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Never. OmniTools computes all hash digests locally in your browser using the native Web Cryptography API (crypto.subtle). No plaintext, password, or hash is ever transmitted across the internet or logged on any remote server.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: What is a hash collision?</strong></p>
-<p>A hash collision occurs when two distinct inputs yield the exact same hash output. Because there are infinite possible inputs and finite hash lengths (2^256 states for SHA-256), collisions theoretically exist, but the probability of finding one in SHA-256 requires more computational energy than the entire universe can provide.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What is the Avalanche Effect in cryptographic hashing?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">The Avalanche Effect refers to the strict mathematical property where altering even a single bit in the input message (such as changing a lowercase 'a' to an uppercase 'A') causes roughly 50% of the output bits in the resulting digest to flip unpredictably, preventing statistical or cryptographic cryptanalysis.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: What is the difference between HMAC and a standard hash?</strong></p>
-<p>A Hash-based Message Authentication Code (HMAC) incorporates a secret cryptographic key alongside the message. This proves not only data integrity but also authenticity—verifying that the sender possessed the private key.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What is a hash collision and has one ever occurred in SHA-256?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">A collision occurs when two distinct inputs produce the identical output digest. While legacy MD5 and SHA-1 have known collision vulnerabilities, no SHA-256 collision has ever been found in history. The search space (2^256 states) is larger than the number of atoms in the observable universe.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Can I use this tool offline without an active internet connection?</strong></p>
-<p>Yes. Once OmniTools loads into your browser cache, the entire cryptographic execution engine functions seamlessly without requiring any internet connectivity.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Can I use fast hashes like SHA-256 or MD5 to store user passwords in a database?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No. General-purpose hashes like SHA-256 are engineered to be extremely fast, allowing modern GPU clusters to compute billions of guesses per second, making passwords vulnerable to rainbow tables. Passwords must be hashed using adaptive, memory-hard algorithms such as Argon2id, bcrypt, or scrypt.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: What is the difference between a standard hash and an HMAC?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">A standard hash verifies data integrity (that the message was not modified in transit). A Hash-based Message Authentication Code (HMAC) incorporates a shared secret cryptographic key, verifying both message integrity and message authenticity (proving the sender possessed the secret key).</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Why does Git use SHA-1 and is it safe despite known collisions?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Git uses SHA-1 as a content addressable storage key, not a digital signature. To mitigate SHAttered collision attacks, Git has incorporated SHA-1DC (detect-collision) to abort operations if colliding patterns are detected, and Git is actively transitioning repositories to SHA-256.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Can I verify file downloads using this online hash generator?</strong></p>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. You can paste file contents or strings directly into the workspace to generate SHA-256, SHA-512, or MD5 checksums and compare them against checksums published by open-source release maintainers.</p>
 </div>
 </div>
 </div>
