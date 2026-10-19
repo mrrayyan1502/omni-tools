@@ -326,47 +326,186 @@
 </div>
 </div>
 <!-- SEO & Educational Guide Section -->
-<article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
-<h3>Complete Guide to Unix Epoch Time, Timezones, and System Clocks</h3>
-<p>Unix time (also known as Epoch time, POSIX time, or Unix timestamp) is a universal system for describing an instantaneous point in time across computer systems. Defined as the exact number of seconds that have elapsed since the Unix epoch—midnight Coordinated Universal Time (UTC) on January 1, 1970—it eliminates ambiguity caused by regional timezones, Daylight Saving Time (DST) transitions, and differing cultural calendar notations.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">1. Why Unix Timestamps are Essential for Software Engineering</h4>
-<p>In distributed database clusters, microservices architectures, and global mobile applications, handling localized datetime strings (such as <code>10/06/2026 03:30 PM</code>) is fraught with hazards. Consider these critical advantages of standardized timestamps:</p>
-<ul>
-<li><strong>Universal Timezone Independence:</strong> A Unix timestamp represents an absolute physical instant. Regardless of whether an event is logged in Tokyo, London, or San Francisco, the Unix timestamp integer is identical.</li>
-<li><strong>High-Speed Sorting and Arithmetic:</strong> Because a timestamp is an integer, determining time differences, computing time-to-live (TTL) cache expirations, and sorting database indexes requires basic subtraction rather than computationally expensive calendar parsing.</li>
-<li><strong>No Daylight Saving Time Disruptions:</strong> When regional clocks "spring forward" or "fall back", standard clock strings repeat or skip hours. Unix time flows forward monotonically without discontinuous jumps.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">2. Seconds vs. Milliseconds: The 10-Digit vs. 13-Digit Distinction</h4>
-<p>A frequent point of developer confusion is distinguishing between Unix timestamps denominated in seconds versus milliseconds:</p>
-<ul>
-<li><strong>10-Digit Timestamps (Seconds):</strong> Native Unix, Linux, C/C++, Python (<code>time.time()</code> integer part), PHP (<code>time()</code>), and MySQL (<code>UNIX_TIMESTAMP()</code>) traditionally measure Epoch time in seconds (e.g., <code>1791295200</code>).</li>
-<li><strong>13-Digit Timestamps (Milliseconds):</strong> JavaScript (<code>Date.now()</code>), Java (<code>System.currentTimeMillis()</code>), and modern telemetry databases measure time down to the millisecond (e.g., <code>1791295200000</code>).</li>
-</ul>
-<p>OmniTools automatically detects whether your input contains 10 digits or 13 digits and converts between formats with full precision.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">3. The Year 2038 Problem (Y2038 / Epochalypse)</h4>
-<p>On legacy 32-bit systems, Unix time is stored as a signed 32-bit integer. The maximum positive value a signed 32-bit integer can hold is <code>2,147,483,647</code>. On <strong>Tuesday, January 19, 2038, at 03:14:07 UTC</strong>, 32-bit counters will overflow into negative values, causing affected computers to believe the date is December 13, 1901. Modern 64-bit operating systems have expanded the timestamp storage to a 64-bit integer, extending the Epoch overflow limit to approximately 292 billion years in the future—long after the sun has exhausted its nuclear fuel.</p>
+<article class="seo-guide-section glass-card mt-4" style="padding: 2rem; margin-top: 2rem; line-height: 1.7; color: var(--text-muted);">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Unix Epoch Timestamp Architecture: POSIX Specifications, Chronometry &amp; Mathematical Model</h3>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Theoretical Foundations: POSIX Time &amp; Temporal Discretization</h4>
+<p style="margin-bottom: 1rem;">Unix time (formally designated as POSIX.1 time or Epoch time) represents an international system for encoding chronological instants as scalar integer offsets. Formulated during the early development of the Unix operating system at Bell Laboratories, Epoch time defines \(T = 0\) as precisely <strong>00:00:00 Coordinated Universal Time (UTC) on Thursday, January 1, 1970</strong> (the Unix Epoch), excluding leap seconds.</p>
+<p style="margin-bottom: 1rem;">Prior to the widespread adoption of standardized integer timestamps, computing systems recorded dates as heterogeneous string structures (e.g., <code>"MM/DD/YYYY"</code>, <code>"DD-MM-YY"</code>). In distributed architectures, parsing arbitrary string dates creates extreme CPU serialization overhead, timezone ambiguity, and vulnerabilities to daylight saving time (DST) shifts. Unix timestamps transform complex temporal calculations into simple integer arithmetic, allowing high-performance sorting, range partitioning, and sub-millisecond event sequencing across global networks.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Conversion Algorithm &amp; Temporal Mathematical Model</h4>
+<p style="margin-bottom: 1rem;">Converting between Gregorian calendar dates and raw Unix timestamps requires deterministic mathematical models that account for non-uniform leap year cycles. Under the astronomical Gregorian model, the calculation formula determines cumulative elapsed days since the epoch base:</p>
+<div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
+<strong>Unix Epoch Calculation Formula &amp; Mathematical Model:</strong><br/>
+T_seconds = (D_gregorian - 2440587.5) &times; 86400 + (hours &times; 3600) + (minutes &times; 60) + seconds<br/>
+where D_gregorian is the Julian Day Number (JDN) of the target date.<br/><br/>
+<strong>Millisecond to Second Normalization Formula:</strong><br/>
+T_sec = &lfloor; T_millis / 1000 &rfloor;, &emsp; T_millis = T_sec &times; 1000 + ms_fraction<br/><br/>
+<strong>Integer Overflow Boundary Equation (The Y2038 Problem):</strong><br/>
+Signed 32-bit Maximum: T_max = 2^31 - 1 = 2,147,483,647 &emsp; (2038-01-19T03:14:07 UTC)<br/>
+Signed 64-bit Maximum: T_max64 = 2^63 - 1 &approx; 9.223 &times; 10^18 &emsp; (~292 Billion Years)
+</div>
+<p style="margin-bottom: 1rem;">Because Earth's rotational speed varies subtly, the International Earth Rotation and Reference Systems Service (IERS) introduces occasional leap seconds into UTC. In POSIX time, leap seconds are handled by repeating the final second (e.g., <code>23:59:59</code> occurs twice) or via "leap smearing" across network time protocol (NTP) daemons, ensuring the 86,400 seconds-per-day mathematical invariant is strictly preserved.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Milestone Unix Timestamps Reference Table</h4>
+<p style="margin-bottom: 1rem;">This technical reference table details critical historical milestones, future system thresholds, and architectural boundary markers across the Unix epoch timeline.</p>
+<div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+<thead>
+<tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid var(--border-color);">
+<th style="padding: 0.85rem 1rem;">Unix Timestamp (Sec)</th>
+<th style="padding: 0.85rem 1rem;">Hex Representation</th>
+<th style="padding: 0.85rem 1rem;">ISO 8601 UTC Date &amp; Time</th>
+<th style="padding: 0.85rem 1rem;">Significance &amp; Architectural Context</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">0</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x00000000</td>
+<td style="padding: 0.75rem 1rem;">1970-01-01T00:00:00Z</td>
+<td style="padding: 0.75rem 1rem;">The Unix Epoch zero-point origin; baseline for all POSIX time systems.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">500,000,000</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x1DCD6500</td>
+<td style="padding: 0.75rem 1rem;">1985-11-05T00:53:20Z</td>
+<td style="padding: 0.75rem 1rem;">Mid-point decade milestone during early ARPANET and BSD Unix expansion.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">946,684,800</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x386D4380</td>
+<td style="padding: 0.75rem 1rem;">2000-01-01T00:00:00Z</td>
+<td style="padding: 0.75rem 1rem;">Year 2000 (Y2K) rollover; zero disruption to Unix timestamp architectures.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">1,000,000,000</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x3B9ACA00</td>
+<td style="padding: 0.75rem 1rem;">2001-09-09T01:46:40Z</td>
+<td style="padding: 0.75rem 1rem;">Unix Giga-second (billennium) celebration across the global hacker community.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">1,234,567,890</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x499602D2</td>
+<td style="padding: 0.75rem 1rem;">2009-02-13T23:31:30Z</td>
+<td style="padding: 0.75rem 1rem;">Ascending sequential digits milestone celebrated by computer scientists.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">1,500,000,000</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x59682F00</td>
+<td style="padding: 0.75rem 1rem;">2017-07-14T02:40:00Z</td>
+<td style="padding: 0.75rem 1rem;">Sesquibillion milestone during the rise of cloud microservices and Docker.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">1,700,000,000</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x65540E80</td>
+<td style="padding: 0.75rem 1rem;">2023-11-14T22:13:20Z</td>
+<td style="padding: 0.75rem 1rem;">Modern cloud computing milestone; foundational point for modern telemetry.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">2,000,000,000</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x77359400</td>
+<td style="padding: 0.75rem 1rem;">2033-05-18T03:33:20Z</td>
+<td style="padding: 0.75rem 1rem;">Upcoming bi-billion second marker; legacy software migration deadline.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">2,147,483,647</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0x7FFFFFFF</td>
+<td style="padding: 0.75rem 1rem;">2038-01-19T03:14:07Z</td>
+<td style="padding: 0.75rem 1rem;">Signed 32-bit Integer Overflow (Y2038 / Epochalypse threshold).</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">4,294,967,295</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0xFFFFFFFF</td>
+<td style="padding: 0.75rem 1rem;">2106-02-07T06:28:15Z</td>
+<td style="padding: 0.75rem 1rem;">Unsigned 32-bit Integer Maximum boundary.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: High-Performance Distributed UUIDv7 Sharding</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A database engineer designs a high-throughput financial transactions table in PostgreSQL. Rather than using random UUIDv4 keys that cause severe B-Tree index fragmentation and cache misses, the engineer implements time-ordered UUIDv7:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>-- UUIDv7 embeds 48-bit millisecond Unix timestamp
+-- Resulting IDs sort naturally in chronological order:
+CREATE TABLE ledger_transactions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v7(),
+    account_id BIGINT NOT NULL,
+    amount NUMERIC(14,2) NOT NULL
+);</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Because the leading 48 bits encode the Unix epoch millisecond, inserts append to the right edge of the index tree, reducing disk write amplification by over 80%.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Microservices JWT Token Expiration &amp; Clock Skew</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A cybersecurity architect verifies authentication payloads between microservices. If internal server clocks drift by even 2 seconds, legitimate tokens fail validation immediately upon generation unless a clock skew tolerance window is applied:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>// JWT Claims Verification with 5s Clock Skew Window
+const currentEpoch = Math.floor(Date.now() / 1000);
+const clockSkewToleranceSec = 5;
+
+if (token.exp + clockSkewToleranceSec &lt; currentEpoch) {
+    throw new Error("Token has expired");
+}</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Evaluating integer seconds against standard epoch thresholds avoids expensive timezone transformations while preventing replay attacks.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(79,172,254,0.06)); border: 1px solid rgba(0,242,254,0.25); border-radius: var(--radius-md); padding: 1.5rem;">
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="clock" style="width: 20px; height: 20px;"></i> Recommended Developer Resource: Timezone Resilient Chronometry
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #e2e8f0;">
+Always store temporal values in persistence layers (PostgreSQL, MongoDB, Redis) as UTC Unix timestamps or ISO 8601 UTC strings (<code>TIMESTAMPTZ</code>). Never persist localized dates with arbitrary daylight saving offsets in database storage. Localize timestamps strictly at the UI presentation boundary using browser-native <code>Intl.DateTimeFormat</code> APIs.
+</p>
+<p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">
+Need to parse token expiration claims? Inspect raw tokens in our <a href="/jwt-decoder/" style="color: #00f2fe; text-decoration: underline;">JSON Web Token (JWT) Decoder</a> or generate cryptographically secure identifiers with the <a href="/uuid-generator/" style="color: #00f2fe; text-decoration: underline;">UUID v4/v7 Generator</a>.
+</p>
+</div>
+
 <div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Frequently Asked Questions (FAQ)</h4>
-<div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Does Unix time account for leap seconds?</strong></p>
-<p>Unix time is not strictly linear with atomic time (TAI) because it ignores leap seconds. When an official leap second is introduced by the International Earth Rotation Service, Unix time repeats or smears the second to keep synchrony with UTC.</p>
+<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Unix Timestamps &amp; Chronometry)</h3>
+<div class="faq-grid" style="display: grid; gap: 1rem;">
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q1: How do I distinguish between a 10-digit and a 13-digit Unix timestamp?</h4>
+<p style="font-size: 0.95rem;">A 10-digit Unix timestamp (e.g., 1726690000) measures elapsed time in seconds, commonly used in Unix systems, C, Python, PHP, and PostgreSQL. A 13-digit timestamp (e.g., 1726690000000) measures elapsed time in milliseconds, which is the native representation in JavaScript (Date.now()) and Java. OmniTools automatically detects whether your input is in seconds or milliseconds and calculates the correct UTC and local calendar date.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: How do I get the current Unix timestamp in different programming languages?</strong></p>
-<p>In JavaScript use <code>Math.floor(Date.now() / 1000)</code>; in Python use <code>import time; int(time.time())</code>; in PHP use <code>time()</code>; in Go use <code>time.Now().Unix()</code>; and in Bash use <code>date +%s</code>.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q2: What is the Year 2038 Problem (Y2038 / Epochalypse) and how is it resolved?</h4>
+<p style="font-size: 0.95rem;">On legacy 32-bit systems, time_t is stored as a signed 32-bit integer. The maximum integer value is 2,147,483,647. On January 19, 2038, at 03:14:07 UTC, this counter will overflow to -2,147,483,648, causing systems to interpret the date as December 13, 1901. Modern operating systems, databases, and programming languages prevent this by migrating time_t to a signed 64-bit integer, extending the timestamp ceiling to ~292 billion years.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Can Unix timestamps represent dates prior to 1970?</strong></p>
-<p>Yes. Using signed integers, negative timestamps represent dates prior to January 1, 1970. For example, <code>-315619200</code> corresponds to January 1, 1960 UTC.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q3: How does Unix time handle leap seconds introduced by the IERS?</h4>
+<p style="font-size: 0.95rem;">POSIX time specification requires that every day consists of exactly 86,400 seconds. Consequently, when an astronomical leap second occurs, Unix time does not introduce an 86,401st second; instead, the timestamp repeats second 86,399 or modern NTP servers employ leap smearing to gradually distribute the extra second across a 24-hour window.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Does this converter automatically adjust for my local browser timezone?</strong></p>
-<p>Yes. OmniTools converts the UTC Epoch timestamp into both your precise local system timezone (including daylight saving offsets) and standard ISO 8601 UTC notation side-by-side.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q4: Can Unix timestamps represent dates prior to January 1, 1970?</h4>
+<p style="font-size: 0.95rem;">Yes. Modern systems employ signed integers for timestamps. Negative values denote instants prior to January 1, 1970. For instance, the timestamp -315,619,200 corresponds to 00:00:00 UTC on January 1, 1960. Standard 64-bit signed timestamps can accurately represent historical dates extending billions of years into the past.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Are my converted timestamps logged or monitored?</strong></p>
-<p>No. All calculations are executed entirely on client-side JavaScript. No timestamps, IP logs, or data inputs are transmitted to external servers.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q5: How do I generate the current Unix timestamp across primary programming languages?</h4>
+<p style="font-size: 0.95rem;">In JavaScript: Math.floor(Date.now() / 1000); in Python: import time; int(time.time()); in Go: time.Now().Unix(); in PHP: time(); in Ruby: Time.now.to_i; in C#: DateTimeOffset.UtcNow.ToUnixTimeSeconds(); and in Bash terminal: date +%s.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q6: Does this converter automatically handle my local daylight saving time (DST) shifts?</h4>
+<p style="font-size: 0.95rem;">Yes. While Unix timestamps are strictly immutable UTC coordinates, OmniTools converts the UTC timestamp into your local browser's exact timezone using JavaScript's native Intl and Date runtimes, displaying your local time adjusted for Daylight Saving Time side-by-side with UTC.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q7: Is my timestamp or calendar data recorded on remote servers?</h4>
+<p style="font-size: 0.95rem;">No. All date transformations, ticking clock intervals, and formatting operations occur strictly within your client-side browser runtime. No session data, timestamps, or IP logs are ever transmitted to external servers.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q8: What is the difference between Unix Epoch time and ISO 8601 calendar strings?</h4>
+<p style="font-size: 0.95rem;">Unix Epoch time is a pure scalar integer representing elapsed seconds, optimal for low-overhead database indexing, math, and caching. ISO 8601 (e.g., 2026-10-19T14:30:00Z) is an international standard text string format that is human-readable and preserves timezone offset information.</p>
 </div>
 </div>
 </div>

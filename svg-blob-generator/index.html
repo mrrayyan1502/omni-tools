@@ -299,51 +299,183 @@
 </div>
 </div>
 <!-- SEO roman Urdu informational Guide -->
-<article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
-<h3>The Complete Guide to Organic SVG Blobs, Bézier Curves &amp; Modern UI Design</h3>
-<p>In modern web design, stark geometric boxes and sharp rectangles can make digital interfaces feel rigid and mechanical. Organic SVG blobs—fluid, asymmetrical, morphing vector shapes—inject natural dynamism, playful elegance, and human warmth into digital layouts. Frequently utilized behind hero section illustrations, feature badges, and avatar frames, SVG blobs provide lightweight, scalable visual assets that render flawlessly on any screen resolution.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">1. Mathematical Anatomy of an SVG Blob</h4>
-<p>Scalable Vector Graphics (SVG) represent shapes mathematically using XML nodes rather than raster pixel grids. A fluid blob shape is constructed using the SVG <code>&lt;path&gt;</code> element governed by cubic and quadratic <strong>Bézier curves</strong>:</p>
-<ul>
-<li><strong>Control Points &amp; Tangents:</strong> The generator distributes anchor points circularly around a central origin and applies smooth cubic Bézier commands (<code>C x1 y1, x2 y2, x y</code>) to calculate continuous curvature between nodes.</li>
-<li><strong>Randomized Complexity &amp; Growth:</strong> By varying point count (complexity) and deviation distance (contrast/irregularity), the generator creates shapes ranging from subtle soft circles to dramatic abstract splatters.</li>
-<li><strong>Resolution Independence:</strong> Because SVGs are vector math, a 2-kilobyte blob asset scales infinitely from a smartwatch screen to a 4K billboard without pixelation or artifacting.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">2. Creative Ways to Incorporate SVG Blobs in Web Design</h4>
-<ol>
-<li><strong>Hero Section Framing:</strong> Layer a translucent, vibrant gradient blob beneath your hero product screenshot or 3D illustration to anchor user attention without cluttering the page.</li>
-<li><strong>Organic Avatar Clip Paths:</strong> Use the generated blob as a CSS <code>clip-path</code> mask (<code>clip-path: url(#blobPath);</code>) to display team member portraits in creative, non-rectangular frames.</li>
-<li><strong>Morphing CSS Keyframe Animations:</strong> By interpolating between two SVG paths sharing the same number of control points, you can create smooth, liquid morphing animations that breathe life into interactive landing pages.</li>
-</ol>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">3. Export Options for Designers and Developers</h4>
-<p>OmniTools provides versatile export pipelines tailored to modern design and coding workflows:</p>
-<ul>
-<li><strong>Raw SVG Code:</strong> Copies clean, semantic <code>&lt;svg&gt;</code> markup ready for direct inlining into React, Vue, Svelte, or standard HTML templates.</li>
-<li><strong>CSS Background Property:</strong> Exports an optimized <code>background-image: url('data:image/svg+xml,...');</code> string for rapid stylesheet integration.</li>
-<li><strong>Download SVG File:</strong> Saves a production-ready <code>.svg</code> vector asset directly to your computer for importing into Figma, Sketch, or Adobe Illustrator.</li>
-</ul>
+<article class="seo-guide-section glass-card mt-4" style="padding: 2rem; margin-top: 2rem; line-height: 1.7; color: var(--text-muted);">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Algorithmic SVG Blob Generation: Bézier Curvature, Spline Mathematics &amp; Vector Aesthetics</h3>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Mathematical Foundations: Polar Distributions &amp; Cubic Bézier Curves</h4>
+<p style="margin-bottom: 1rem;">Organic SVG blob generation bridges procedural geometry and vector graphic rendering. In standard rectilinear coordinates, drawing irregular curved polygons requires hundreds of discrete vertices that bloat DOM node memory. Procedural blob generators overcome this limitation by deploying continuous parametric splines across a closed polar coordinate space.</p>
+<p style="margin-bottom: 1rem;">The generation algorithm operates by partitioning a unit circle (\(2\pi\) radians) into \(N\) discrete angular sectors where \(N\) corresponds to the user-selected complexity parameter. For each vertex \(k \in \{0, 1, \dots, N-1\}\), an angular coordinate \(\theta_k = \frac{2\pi k}{N}\) is established. The radial distance \(r_k\) is then randomly perturbed around a mean radius \(R\) by a stochastic variance coefficient \(\sigma\):</p>
+<div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
+<strong>Parametric Vertex &amp; Bézier Spline Mathematical Model:</strong><br/>
+x_k = x_center + r_k &times; cos(&theta;_k), &emsp; y_k = y_center + r_k &times; sin(&theta;_k)<br/>
+where: r_k = R &times; [1 + (&Delta;r / 100) &times; rand(-1, 1)]<br/><br/>
+<strong>Cubic B&eacute;zier Parametric Formulation:</strong><br/>
+B(t) = (1 - t)^3 &times; P_0 + 3(1 - t)^2 &times; t &times; P_1 + 3(1 - t) &times; t^2 &times; P_2 + t^3 &times; P_3 &emsp; (t &isin; [0, 1])
+</div>
+<p style="margin-bottom: 1rem;">To achieve \(C^1\) geometric continuity (tangent smoothness at boundary nodes), control points \(P_1\) and \(P_2\) are computed using Catmull-Rom to cubic Bézier conversion matrices. This guarantees that adjacent curve segments meet with matching first-order derivatives (\(\frac{dy}{dx}\)), eliminating visible kinks or sharp corner seams across the perimeter.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. W3C Scalable Vector Graphics (SVG) Path Data Specification</h4>
+<p style="margin-bottom: 1rem;">The generated vector string is encoded inside an XML <code>&lt;path d="..." /&gt;</code> element governed by W3C SVG 2 specifications. A single path string contains compact command letters followed by Cartesian coordinates. Understanding the underlying SVG command vocabulary allows developers to manipulate, morph, and optimize vector paths programmatically.</p>
+<div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+<thead>
+<tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid var(--border-color);">
+<th style="padding: 0.85rem 1rem;">Command</th>
+<th style="padding: 0.85rem 1rem;">Syntax Signature</th>
+<th style="padding: 0.85rem 1rem;">Geometric Operation</th>
+<th style="padding: 0.85rem 1rem;">Mathematical Characteristic</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">M / m</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">M x y</td>
+<td style="padding: 0.75rem 1rem;">Move To</td>
+<td style="padding: 0.75rem 1rem;">Establishes a new current point without drawing. Upper-case indicates absolute coordinates; lower-case indicates relative offsets.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">C / c</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">C x1 y1, x2 y2, x y</td>
+<td style="padding: 0.75rem 1rem;">Cubic B&eacute;zier Curve</td>
+<td style="padding: 0.75rem 1rem;">Draws smooth curve to (x, y) utilizing two separate control points (x1, y1) and (x2, y2). Core building block of organic blobs.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">S / s</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">S x2 y2, x y</td>
+<td style="padding: 0.75rem 1rem;">Smooth Cubic B&eacute;zier</td>
+<td style="padding: 0.75rem 1rem;">Draws cubic curve where the first control point is automatically reflected from the prior command's second control point to preserve C1 continuity.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Q / q</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">Q x1 y1, x y</td>
+<td style="padding: 0.75rem 1rem;">Quadratic B&eacute;zier</td>
+<td style="padding: 0.75rem 1rem;">Draws quadratic curve using a single control point (x1, y1). Computationally cheaper than cubic but offers less inflection control.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">T / t</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">T x y</td>
+<td style="padding: 0.75rem 1rem;">Smooth Quadratic</td>
+<td style="padding: 0.75rem 1rem;">Draws quadratic curve where control point is reflected from previous quadratic segment; ensures zero tangent disruption.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">A / a</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">A rx ry rot large sweep x y</td>
+<td style="padding: 0.75rem 1rem;">Elliptical Arc</td>
+<td style="padding: 0.75rem 1rem;">Draws elliptical arc between points based on radii (rx, ry), x-axis rotation, large-arc-flag, and sweep-direction flag.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">L / l</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">L x y</td>
+<td style="padding: 0.75rem 1rem;">Line To</td>
+<td style="padding: 0.75rem 1rem;">Connects current point to (x, y) with a straight line segment.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">H / h</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">H x</td>
+<td style="padding: 0.75rem 1rem;">Horizontal Line To</td>
+<td style="padding: 0.75rem 1rem;">Draws purely horizontal line to coordinate x while keeping y coordinate fixed.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">V / v</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">V y</td>
+<td style="padding: 0.75rem 1rem;">Vertical Line To</td>
+<td style="padding: 0.75rem 1rem;">Draws purely vertical line to coordinate y while keeping x coordinate fixed.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Z / z</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">Z</td>
+<td style="padding: 0.75rem 1rem;">Close Path</td>
+<td style="padding: 0.75rem 1rem;">Connects current point back to initial Move To (M) coordinate, creating a closed vector polygon ready for fill rendering.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Real-World Engineering Scenarios</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: Dynamic Clip-Path Avatar Masking in React / Next.js</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A design systems engineer needs to render personalized user avatars inside dynamic organic frames rather than boring circular crops. They generate an SVG blob and bind its <code>&lt;clipPath&gt;</code> element to high-resolution user profile images:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>&lt;svg viewBox="0 0 500 500" width="160" height="160"&gt;
+  &lt;defs&gt;
+    &lt;clipPath id="avatarBlob"&gt;
+      &lt;path d="M410,310 C390,410,270,440,160,390 C60,340,50,220,110,140 C170,60,300,50,380,120 C460,190,430,210,410,310 Z" /&gt;
+    &lt;/clipPath&gt;
+  &lt;/defs&gt;
+  &lt;image href="/user.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" clipPath="url(#avatarBlob)" /&gt;
+&lt;/svg&gt;</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">This architecture keeps HTML payload sizes under 1.5 KB while delivering custom vector clipping that hardware-accelerates on the GPU.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Liquid Morphing Animations with GSAP &amp; Framer Motion</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A front-end developer building a marketing landing page needs a hero graphic that breathes and morphs continuously. By generating two blobs with identical vertex counts (e.g., Complexity = 6), the developer interpolates between the two path definitions using GSAP MorphSVG:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>import { gsap } from "gsap";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+gsap.registerPlugin(MorphSVGPlugin);
+
+gsap.to("#primaryBlob", {
+  duration: 6,
+  morphSVG: "#targetBlob",
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut"
+});</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Because both paths maintain isomorphic cubic Bézier counts, the browser animates points smoothly without jitter or coordinate misalignment.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(79,172,254,0.06)); border: 1px solid rgba(0,242,254,0.25); border-radius: var(--radius-md); padding: 1.5rem;">
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="palette" style="width: 20px; height: 20px;"></i> Recommended Developer Resource: Vector Color Harmony
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #e2e8f0;">
+High-impact SVG graphics rely on high-contrast, harmonious color gradients. Pairing deep obsidian dark modes with dual-stop linear gradients (#00f2fe to #4facfe) provides aesthetic depth. When preparing marketing assets, always ensure the text placed over vector shapes maintains WCAG AA contrast compliance (&ge; 4.5:1).
+</p>
+<p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">
+Generate accessible gradient pairs with our <a href="/color-palette-generator/" style="color: #00f2fe; text-decoration: underline;">WCAG Color Palette Generator</a> or design frosted glass containers using the <a href="/css-glassmorphism-generator/" style="color: #00f2fe; text-decoration: underline;">CSS Glassmorphism Generator</a>.
+</p>
+</div>
+
 <div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Frequently Asked Questions (FAQ)</h4>
-<div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Does using SVG blobs impact web page performance or Core Web Vitals?</strong></p>
-<p>Not at all! Inline SVG markup typically weighs under 1 to 2 KB, compared to heavy raster PNGs or GIFs which can weigh hundreds of kilobytes. SVG blobs contribute to lightning-fast Largest Contentful Paint (LCP) scores.</p>
+<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (SVG Vector Generation)</h3>
+<div class="faq-grid" style="display: grid; gap: 1rem;">
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q1: How do SVG vector blobs impact Core Web Vitals and page load speed?</h4>
+<p style="font-size: 0.95rem;">SVG blobs deliver superior web performance compared to raster image formats like PNG, JPEG, or WebP. An inline SVG path averages between 800 bytes and 2 KB of raw text, avoiding external HTTP round-trip requests. Inlined SVGs render synchronously during initial DOM parsing, preventing layout shifts (CLS = 0) and contributing to near-instant Largest Contentful Paint (LCP) times.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Can I apply custom CSS gradients to the generated blob?</strong></p>
-<p>Yes. OmniTools supports single-color fills, linear gradients, and radial gradients with customizable angle and color stop controls.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q2: What is the mathematical difference between cubic and quadratic Bézier curves?</h4>
+<p style="font-size: 0.95rem;">A quadratic Bézier curve (Q command) calculates position as a second-degree polynomial influenced by a single control point. A cubic Bézier curve (C command) employs a third-degree polynomial governed by two independent control points. Cubic curves provide vastly greater inflection flexibility, enabling s-curves, loops, and organic contouring essential for natural-looking vector blobs.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Are the generated SVG blobs royalty-free for commercial client work?</strong></p>
-<p>Yes. Every SVG vector generated with OmniTools is 100% royalty-free and can be utilized in personal, open-source, or commercial commercial client projects without attribution.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q3: How do I export and use the generated SVG in CSS as a background image?</h4>
+<p style="font-size: 0.95rem;">You can embed the SVG directly into your CSS stylesheet without saving a separate asset file by using a data URI: <code>background-image: url('data:image/svg+xml;utf8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"&gt;...&lt;/svg&gt;');</code>. For production bundles, ensure special characters such as '#' in hex colors are URI-encoded as '%23'.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Can I use SVG blobs as background patterns?</strong></p>
-<p>Yes. By pairing low-opacity SVG blobs with CSS absolute positioning or pattern repetition, you can create modern, tactile background textures across web sections.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q4: Can I animate SVG blob paths using pure CSS @keyframes without JavaScript?</h4>
+<p style="font-size: 0.95rem;">Yes, modern Chromium and WebKit browsers support pure CSS path interpolation via the <code>d: path(...)</code> property inside <code>@keyframes</code>, provided both keyframe paths share identical command types and vertex counts. For cross-browser backward compatibility with legacy engines, JavaScript vector libraries like GSAP or anime.js remain the gold standard.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Is an account or subscription needed?</strong></p>
-<p>No. OmniTools SVG Blob Generator is completely free with no account creation or usage caps.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q5: Are the generated SVG assets royalty-free for commercial client projects?</h4>
+<p style="font-size: 0.95rem;">Yes. Every vector shape, path definition, and gradient asset produced by OmniTools is completely royalty-free and open for use in personal, open-source, SaaS, and commercial client designs without requiring attribution or license fees.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q6: How does the viewBox attribute ensure resolution independence across Retina displays?</h4>
+<p style="font-size: 0.95rem;">The <code>viewBox="min-x min-y width height"</code> attribute defines an internal abstract coordinate system independent of CSS pixel dimensions. When an SVG is scaled via CSS (e.g., <code>width: 100%</code>), the browser vector rasterizer recalculates curve segments against physical display pixels, rendering perfectly crisp anti-aliased edges on 4K, 5K, and mobile screens.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q7: Is any vector geometry or design telemetry transmitted to external servers?</h4>
+<p style="font-size: 0.95rem;">No. All coordinate math, trigonometric point distribution, and SVG XML construction happen strictly within your local browser JavaScript runtime. No graphic assets, coordinates, or user data are ever uploaded to remote servers.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q8: How can I import the downloaded SVG blob into design software like Figma or Adobe Illustrator?</h4>
+<p style="font-size: 0.95rem;">Simply click 'Download SVG File' or copy the raw code and paste it directly onto your Figma or Illustrator canvas. The application automatically reconstructs the vector nodes and gradient fills, allowing full manual path editing using vector pen tools.</p>
 </div>
 </div>
 </div>

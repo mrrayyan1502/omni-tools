@@ -277,50 +277,195 @@
 <a class="btn btn-outline" href="/css-box-shadow/" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">CSS Shadows</a>
 </div>
 </div>
-</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Free Word Counter - Word Count, Reading Time and SEO Writing Guide</h3>
+</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Computational Linguistics &amp; Text Analysis Technical Guide: Metrics, Readability &amp; Tokenization</h3>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. Why Word Count Still Matters in 2026</h4>
-<p style="margin-bottom: 1rem;">Word count is one of those metrics that means different things to different people, and nearly everyone needs it. Students face strict essay limits where 2,000 words means 2,000 words, not 2,050. Copywriters bill by length and hit client specifications exactly. Novelists track daily output against manuscript targets, and social media managers live inside character limits that truncate anything longer.</p>
-<p style="margin-bottom: 1rem;">For SEO professionals, length intersects with ranking reality. Studies of top-ranking pages repeatedly find that comprehensive content, typically 1,500 to 2,500 words for competitive informational queries, outperforms thin pages. Google has stated that word count itself is not a ranking factor, but depth of coverage correlates strongly with it, and depth takes words. This counter gives you the numbers instantly, as you write or paste.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Linguistic Foundations &amp; Tokenization Methodology</h4>
+<p style="margin-bottom: 1rem;">Text analytics in modern software engineering bridges natural language processing (NLP), cognitive psycholinguistics, and search engine optimization (SEO). While casual writers treat a "word" as an intuitive visual concept, computational parsers must define exact tokenization boundaries. In standard Unicode typography, text contains diverse whitespace sequences (space, non-breaking space <code>&amp;nbsp;</code>, tab, carriage return), hyphenated compound nouns (e.g., <code>"state-of-the-art"</code>), alphanumeric codes (e.g., <code>"UUIDv4"</code>), and international script orthographies without explicit word separators (such as Japanese kanji or Thai script).</p>
+<p style="margin-bottom: 1rem;">A robust word counter executes boundary analysis conforming to Unicode Standard Annex #29 (Unicode Text Segmentation). By categorizing codepoints into alphanumeric letter clusters, punctuation delimiters, and whitespace sequences, the parser avoids common calculation traps such as counting empty strings, orphan punctuation marks, or double spaces as genuine lexical words.</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. How to Use This Counter</h4>
-<p style="margin-bottom: 1rem;">Paste your text into the input area or start typing directly. The statistics update live: total words, characters with and without spaces, sentence count and estimated reading time. There is no submit button and no delay, so the tool works as a companion while you write, not a checkpoint you visit afterwards.</p>
-<p style="margin-bottom: 1rem;">Everything is counted locally in your browser, which makes the tool safe for unpublished manuscripts, confidential reports and client work under NDA. Nothing you paste is transmitted or stored anywhere, and the counter keeps working even when your connection does not.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Readability Formulas, Cognitive Models &amp; Reading Time Equations</h4>
+<p style="margin-bottom: 1rem;">Beyond raw token counts, quantitative text metrics evaluate cognitive comprehension burden. The readability formulas developed by Rudolf Flesch, J. Peter Kincaid, and Robert Gunning evaluate structural difficulty by measuring average sentence length (syntactic complexity) against average syllables per word (lexical complexity):</p>
+<div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
+<strong>Flesch Reading Ease (FRE) Formula &amp; Mathematical Model:</strong><br/>
+FRE = 206.835 - 1.015 &times; (Total Words / Total Sentences) - 84.6 &times; (Total Syllables / Total Words)<br/>
+Score: 90-100 (5th grade / very easy), 60-70 (8th-9th grade / plain English), 0-30 (college graduate / extremely dense).<br/><br/>
+<strong>Flesch-Kincaid Grade Level (FKGL) Formula:</strong><br/>
+FKGL = 0.39 &times; (Total Words / Total Sentences) + 11.8 &times; (Total Syllables / Total Words) - 15.59<br/><br/>
+<strong>Gunning Fog Index (Syntactic Complexity):</strong><br/>
+Fog = 0.4 &times; [(Total Words / Total Sentences) + 100 &times; (Complex Words / Total Words)]<br/>
+where complex words contain 3 or more syllables (excluding proper nouns, compound words, and standard suffixes).<br/><br/>
+<strong>Reading &amp; Speaking Duration Algorithm:</strong><br/>
+Silent Reading Duration: T_read (minutes) = Total Words / 225 WPM (Words Per Minute)<br/>
+Speech Presentation Duration: T_speech (minutes) = Total Words / 140 WPM
 </div>
+<p style="margin-bottom: 1rem;">Publishers, governmental bodies, and healthcare organizations mandate target readability thresholds. For example, the US Plain Writing Act of 2010 requires public legal instructions to achieve a Flesch-Kincaid Grade Level of 8 or lower to ensure accessibility across diverse literacy levels.</p>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Understanding the Metrics Beyond Word Count</h4>
-<p style="margin-bottom: 1rem;">Character count drives entire industries. Twitter posts, meta descriptions, SMS campaigns and app store listings all live or die by characters, and the with-spaces versus without-spaces distinction matters more than people expect. Meta descriptions, for instance, truncate around 155 to 160 characters in search results, so writing to 300 wastes effort on text nobody will ever read.</p>
-<p style="margin-bottom: 1rem;">Reading time estimates, typically calculated at 200 to 230 words per minute for adult readers, have become standard on blogs and news sites because they set expectations and measurably improve engagement. Sentence count reveals something subtler: style. Averages above twenty-five words per sentence signal dense, demanding prose that most web readers abandon; twelve to fifteen keeps them moving.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Quantitative Readability Benchmarks Reference Table</h4>
+<p style="margin-bottom: 1rem;">This empirical reference table correlates standard readability metrics, structural grade levels, cognitive processing speeds, and intended target demographics.</p>
+<div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+<thead>
+<tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid var(--border-color);">
+<th style="padding: 0.85rem 1rem;">Flesch Reading Ease</th>
+<th style="padding: 0.85rem 1rem;">US Grade Level (FKGL)</th>
+<th style="padding: 0.85rem 1rem;">Cognitive Reading Level</th>
+<th style="padding: 0.85rem 1rem;">Target Reading Audience</th>
+<th style="padding: 0.85rem 1rem;">Typical Sentence Length</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #22c55e; font-weight: bold;">90.0 - 100.0</td>
+<td style="padding: 0.75rem 1rem;">5th Grade</td>
+<td style="padding: 0.75rem 1rem;">Very Easy</td>
+<td style="padding: 0.75rem 1rem;">Children's literature, basic instructions, comic books.</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">8 - 10 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #22c55e; font-weight: bold;">80.0 - 89.9</td>
+<td style="padding: 0.75rem 1rem;">6th Grade</td>
+<td style="padding: 0.75rem 1rem;">Easy</td>
+<td style="padding: 0.75rem 1rem;">Consumer product packaging, user guides, blog tutorials.</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">11 - 13 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">70.0 - 79.9</td>
+<td style="padding: 0.75rem 1rem;">7th Grade</td>
+<td style="padding: 0.75rem 1rem;">Fairly Easy</td>
+<td style="padding: 0.75rem 1rem;">Popular commercial fiction, mass-market novels, email newsletters.</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">14 - 16 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">60.0 - 69.9</td>
+<td style="padding: 0.75rem 1rem;">8th - 9th Grade</td>
+<td style="padding: 0.75rem 1rem;">Plain English Standard</td>
+<td style="padding: 0.75rem 1rem;">Major newspapers (NYT, BBC), SaaS marketing copy, Wikipedia.</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">17 - 20 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #eab308; font-weight: bold;">50.0 - 59.9</td>
+<td style="padding: 0.75rem 1rem;">10th - 12th Grade</td>
+<td style="padding: 0.75rem 1rem;">Fairly Difficult</td>
+<td style="padding: 0.75rem 1rem;">High school textbooks, business publications, technical case studies.</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">21 - 24 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #eab308; font-weight: bold;">30.0 - 49.9</td>
+<td style="padding: 0.75rem 1rem;">College Undergraduate</td>
+<td style="padding: 0.75rem 1rem;">Difficult</td>
+<td style="padding: 0.75rem 1rem;">Academic journals, engineering whitepapers, financial prospectuses.</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">25 - 29 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #ef4444; font-weight: bold;">0.0 - 29.9</td>
+<td style="padding: 0.75rem 1rem;">College Graduate / Postgrad</td>
+<td style="padding: 0.75rem 1rem;">Extremely Difficult</td>
+<td style="padding: 0.75rem 1rem;">Legal contracts, patent applications, medical research monographs.</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">30+ words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #4facfe;">Meta Title (SEO)</td>
+<td style="padding: 0.75rem 1rem;">N/A</td>
+<td style="padding: 0.75rem 1rem;">Search Snippet Title</td>
+<td style="padding: 0.75rem 1rem;">SERP Click-Through Optimization (Target: 50 - 60 characters).</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">6 - 9 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #4facfe;">Meta Desc (SEO)</td>
+<td style="padding: 0.75rem 1rem;">N/A</td>
+<td style="padding: 0.75rem 1rem;">Search Summary Snippet</td>
+<td style="padding: 0.75rem 1rem;">SERP Snippet Display (Target: 145 - 160 characters).</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">22 - 28 words</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #4facfe;">Social Post (X)</td>
+<td style="padding: 0.75rem 1rem;">N/A</td>
+<td style="padding: 0.75rem 1rem;">Microblogging</td>
+<td style="padding: 0.75rem 1rem;">Organic Feed Engagement (Maximum: 280 characters).</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">35 - 50 words</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Practical Word Targets for Common Content Types</h4>
-<p style="margin-bottom: 1rem;">Blog posts targeting competitive search queries perform best between 1,500 and 2,500 words, though a simple answer to a simple question wins at 400. Product descriptions convert well at 150 to 300 words with scannable structure. Landing pages typically land between 500 and 1,000 words, front-loading the value proposition.</p>
-<p style="margin-bottom: 1rem;">Academic essays follow their brief exactly, usually with a ten percent margin either way. Cover letters succeed at 250 to 400 words; longer letters simply do not get read. Email newsletters hold attention under 200 words for promotional sends. Whatever you write, knowing your number, and hitting it deliberately, separates professional output from hopeful typing.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: CI/CD Documentation Readability Linting (Vale / Proselint)</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A technical writing team building open-source developer documentation integrates an automated prose linter into their GitHub Actions pipeline. Pull requests modifying Markdown files are automatically audited against a maximum allowable Flesch-Kincaid threshold:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code># .vale.ini Documentation Linter Config
+BasedOnStyles = Vale
+Vale.Terms = YES
+Google.WordList = YES
+prose.FleschKincaid = { grade: 9.0, action: error }</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Automated readability assertions prevent engineers from merging convoluted documentation that impedes developer adoption.</p>
 </div>
-<div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: LLM Prompt Engineering &amp; Token Budget Estimation</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A backend AI developer constructs Retrieval-Augmented Generation (RAG) pipelines querying OpenAI or Anthropic models. Because LLM context windows and API billing are denominated in BPE tokens rather than raw characters:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>// English prose token approximation heuristic:
+// 1 Token &approx; 0.75 Words &rarr; Total Tokens &approx; WordCount / 0.75
+const estimatedTokens = Math.ceil(wordCount * 1.33);
+const estimatedCost = (estimatedTokens / 1000) * 0.0015;</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Monitoring live word and character counts enables engineers to prevent context window overflow exceptions and optimize vector chunk sizes.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(79,172,254,0.06)); border: 1px solid rgba(0,242,254,0.25); border-radius: var(--radius-md); padding: 1.5rem;">
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="book-open" style="width: 20px; height: 20px;"></i> Recommended Developer Resource: Editorial &amp; Markdown Formatting
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #e2e8f0;">
+Effective writing pairs precise word limits with clean document hierarchy. When drafting content for technical blogs, technical whitepapers, or README files, format your drafts with semantic headings (H1-H4), bulleted lists, and structured code blocks.
+</p>
+<p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">
+Draft your prose in real-time with our live-previewing <a href="/markdown-editor/" style="color: #00f2fe; text-decoration: underline;">Markdown Editor</a> or optimize search snippets with our <a href="/meta-tag-generator/" style="color: #00f2fe; text-decoration: underline;">SEO Meta Tag Generator</a>.
+</p>
+</div>
+
+<div class="faq-section" style="margin-top: 2rem;">
+<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Word Counting &amp; Readability)</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: How is the word count calculated?</h4>
-<p style="font-size: 0.95rem;">Words are counted by splitting your text on whitespace, the same method used by Microsoft Word and Google Docs. Hyphenated compounds count as one word, and numbers count as words. Small differences between tools come from how they treat standalone punctuation, which is why Word and this counter may occasionally differ by one or two on unusual text.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: How is word count calculated algorithmically in this tool?</h4>
+<p style="font-size: 0.95rem;">OmniTools calculates word count by parsing text across contiguous non-whitespace character clusters using the regular expression /\S+/g. This approach mirrors the standard counting algorithms employed by Microsoft Word, Google Docs, and professional publishing platforms. Hyphenated compound words (e.g., 'real-world') count as a single word, while numerals count as individual words.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: How accurate is the reading time estimate?</h4>
-<p style="font-size: 0.95rem;">The estimate uses the widely accepted average adult reading speed of around 200 to 230 words per minute for screen reading. Technical or dense material reads slower, light content faster, so treat the figure as a solid guide rather than a laboratory measurement. It matches the estimates shown on major publishing platforms.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q2: How is the estimated reading time calculated?</h4>
+<p style="font-size: 0.95rem;">Reading time is determined using the internationally recognized cognitive average reading speed of 225 words per minute (WPM) for adult silent reading on digital screens. The total word count is divided by 225, with fractional results rounded up to the nearest minute. For spoken presentations, public speeches, or podcast recordings, an average rate of 130 to 150 WPM should be estimated.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: What is the ideal word count for SEO content?</h4>
-<p style="font-size: 0.95rem;">There is no magic number, and Google confirms word count is not a direct ranking factor. What correlates with rankings is comprehensive coverage of the topic. As a practical guide: 1,500 to 2,500 words for competitive informational keywords, 800 to 1,200 for standard blog posts, and as few words as honestly answer the query for simple questions.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q3: What is the optimal word count for search engine optimization (SEO)?</h4>
+<p style="font-size: 0.95rem;">Search engines like Google evaluate topic comprehensiveness and search intent rather than satisfying an arbitrary fixed word count. However, comprehensive industry benchmarks reveal that top-ranking informational long-form articles average between 1,200 and 2,500 words. For short-form queries, clear and concise direct answers of 300 to 500 words perform best.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Is my text stored or sent anywhere when I paste it?</h4>
-<p style="font-size: 0.95rem;">No. All counting happens in your browser with JavaScript. Your text is never transmitted to a server, logged or saved, which makes the tool safe for unpublished books, legal documents, academic submissions and confidential business writing.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q4: Is my confidential text, unpublished manuscript, or essay stored on your servers?</h4>
+<p style="font-size: 0.95rem;">No. OmniTools operates with strict client-side data sovereignty. Every keystroke, string parse, and statistical calculation is performed entirely within your web browser's local JavaScript sandbox. No text is ever uploaded to remote servers, logged in telemetry databases, or exposed to third parties.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Does the counter handle languages other than English?</h4>
-<p style="font-size: 0.95rem;">Yes. Character and sentence counting works for any language, and word counting works for all space-separated languages including French, Spanish, German and Urdu. Character-based scripts like Chinese and Japanese are best measured by character count rather than words, which this tool also provides.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q5: Does this tool count characters with spaces or without spaces?</h4>
+<p style="font-size: 0.95rem;">The tool displays total character count including spaces natively in the main analytics dashboard. Character counts with spaces are essential when drafting social media posts, SMS messages, and search engine title tags. To inspect length without whitespace, refer to the character density breakdown.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q6: How does sentence detection work when abbreviations or decimals are present?</h4>
+<p style="font-size: 0.95rem;">Sentence count is calculated using delimiter matching for terminal punctuation marks (periods, exclamation marks, question marks) followed by whitespace. The parser handles common abbreviations and decimal points within floating-point numbers without incorrectly incrementing the sentence tally.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q7: Can I use this counter for non-English languages and multilingual scripts?</h4>
+<p style="font-size: 0.95rem;">Yes. Character and sentence metrics function universally across all Unicode character sets. For space-delimited languages (including English, Spanish, French, German, Urdu, and Arabic), word counts are accurately calculated. For non-segmented Asian scripts such as Chinese and Japanese, character counts provide the authoritative length metric.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q8: What is the relationship between word count and AI token limits?</h4>
+<p style="font-size: 0.95rem;">Large Language Models (LLMs) break text into Byte-Pair Encoding (BPE) sub-word tokens rather than full words. In typical English prose, 1,000 words correspond to approximately 1,333 tokens (a ratio of ~0.75 words per token). In technical text containing code syntax, URLs, or uncommon acronyms, token counts increase relative to word count.</p>
 </div>
 </div>
 </div>

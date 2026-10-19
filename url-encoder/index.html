@@ -274,50 +274,196 @@
 <a class="btn btn-outline" href="/css-box-shadow/" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">CSS Shadows</a>
 </div>
 </div>
-</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Free URL Encoder and Decoder - A Developer Guide to Percent-Encoding</h3>
+</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">RFC 3986 URI Percent-Encoding Technical Guide: Grammar, UTF-8 Serialization &amp; Security</h3>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. What is URL Encoding and Why Does It Exist?</h4>
-<p style="margin-bottom: 1rem;">URLs were designed in the early 1990s around a limited alphabet of safe characters. Spaces, symbols, punctuation and non-English characters can all break a link or, worse, change its meaning, because characters like ?, &amp; and = have structural jobs inside a URL. Percent-encoding solves this by representing unsafe characters as a percent sign followed by their hexadecimal byte value: a space becomes %20, an ampersand becomes %26.</p>
-<p style="margin-bottom: 1rem;">Without encoding, a search query containing an ampersand would silently truncate, a filename with a space would 404, and an Arabic or Japanese product name would corrupt in transit. Every time you share a link with parameters, redirect through a tracking URL, or pass user input into a query string, encoding is the invisible machinery keeping the web coherent.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Historical Architecture &amp; The RFC 3986 URI Specification</h4>
+<p style="margin-bottom: 1rem;">Uniform Resource Identifiers (URIs) and Uniform Resource Locators (URLs) were standardized by Tim Berners-Lee and the Internet Engineering Task Force (IETF) in <strong>RFC 3986</strong>. Because early internet transport protocols were strictly limited to 7-bit US-ASCII channels, transmitting arbitrary binary payloads, whitespace, non-Latin scripts, and control codes across HTTP requests posed severe corruption risks. Furthermore, certain characters possess structural meaning within a URI hierarchy—for example, the colon (<code>:</code>) delimits schemes, the slash (<code>/</code>) delineates hierarchical path segments, the question mark (<code>?</code>) initiates the query component, and the hash (<code>#</code>) designates fragments.</p>
+<p style="margin-bottom: 1rem;">Percent-encoding (often termed URL encoding) provides a deterministic mechanism to represent any arbitrary octet (byte) within the constrained ASCII character set. An unreserved character requires no transformation, whereas any reserved, control, or non-ASCII byte is transformed into a three-character sequence consisting of the percent symbol <code>%</code> followed by a two-digit hexadecimal representation of the underlying byte. Understanding the exact boundaries between reserved delimiters and data payloads is foundational for web security, API design, and web crawler optimization.</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. How to Encode or Decode with This Tool</h4>
-<p style="margin-bottom: 1rem;">Paste your text or URL into the input field and choose encode or decode. The result appears instantly, ready to copy back into your code, browser bar or marketing platform. The tool handles full UTF-8 input correctly, so emoji, accented characters and non-Latin scripts encode to their proper multi-byte sequences rather than garbage.</p>
-<p style="margin-bottom: 1rem;">Because conversion happens entirely in your browser, you can safely encode URLs containing internal parameters, unreleased product names or staging environment paths. Nothing is transmitted anywhere, which is more than most online encoders can honestly claim.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Multi-Byte UTF-8 Serialization Algorithm &amp; URI Syntax Breakdown</h4>
+<p style="margin-bottom: 1rem;">Modern web applications operate primarily in Unicode (UTF-8). When a non-ASCII character—such as an accented letter, an Asian ideograph, or an emoji—is encoded into a URL, RFC 3986 mandates a two-stage encoding pipeline governed by this serialization algorithm and mathematical model:</p>
+<div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
+<strong>RFC 3986 Generic URI Syntax Breakdown Equation:</strong><br/>
+URI = scheme ":" ["//" authority] path ["?" query] ["#" fragment]<br/>
+authority = [userinfo "@"] host [":" port]<br/><br/>
+<strong>Multi-Byte UTF-8 Percent-Encoding Algorithm:</strong><br/>
+Step 1: Convert Unicode Code Point (U+XXXX) into its raw UTF-8 octet sequence (1 to 4 bytes).<br/>
+Step 2: Format each non-unreserved octet into hexadecimal: %HH = "%" + Hex(Byte, 2, Uppercase)<br/><br/>
+<strong>Byte Length Mapping Model:</strong><br/>
+1-Byte ASCII (U+0000 to U+007F): 1 Octet &rarr; %HH (e.g., Space U+0020 &rarr; %20)<br/>
+2-Byte Range (U+0080 to U+07FF): 2 Octets &rarr; %C0..%DF %80..%BF (e.g., &eacute; U+00E9 &rarr; %C3%A9)<br/>
+3-Byte Range (U+0800 to U+FFFF): 3 Octets &rarr; %E0..%EF %80..%BF %80..%BF (e.g., &euro; U+20AC &rarr; %E2%82%AC)<br/>
+4-Byte Range (U+10000 to U+10FFFF): 4 Octets &rarr; %F0..%F4 %80..%BF %80..%BF %80..%BF (e.g., &#128640; U+1F680 &rarr; %F0%9F%9A%80)
 </div>
+<p style="margin-bottom: 1rem;">A common vulnerability is "double-encoding", which occurs when an already-encoded percent sign (<code>%20</code>) is re-processed by an un-sanitized pipeline, converting <code>%20</code> into <code>%2520</code>. When ingested by backend controllers, the server decodes <code>%2520</code> back to the literal string <code>"%20"</code> rather than an actual space, resulting in authentication failures and broken routing paths.</p>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. encodeURI vs encodeURIComponent - The Distinction That Matters</h4>
-<p style="margin-bottom: 1rem;">JavaScript gives developers two encoding functions and confusing them causes real bugs. <strong>encodeURI</strong> encodes a complete URL while preserving its structural characters, so https://example.com/search?q=a b becomes ...?q=a%20b with the slashes and question mark intact. <strong>encodeURIComponent</strong> encodes a single value aggressively, escaping everything reserved, which is what you want when inserting a value into a query parameter.</p>
-<p style="margin-bottom: 1rem;">The rule of thumb: encoding a whole address, use encodeURI; encoding a value that travels inside an address, use encodeURIComponent. Double-encoding is the related trap, where an already-encoded %20 becomes %2520 and the server decodes it back to a literal %20 string instead of a space. When a parameter looks wrong on the server, count the percent signs first.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. RFC 3986 Reserved &amp; Special Characters Reference Table</h4>
+<p style="margin-bottom: 1rem;">This technical reference table details character classifications, hexadecimal byte equivalents, structural roles, and encoding requirements across standard HTTP URIs.</p>
+<div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+<thead>
+<tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid var(--border-color);">
+<th style="padding: 0.85rem 1rem;">Literal Character</th>
+<th style="padding: 0.85rem 1rem;">Hex / Percent Code</th>
+<th style="padding: 0.85rem 1rem;">RFC 3986 Classification</th>
+<th style="padding: 0.85rem 1rem;">Structural Architectural Role</th>
+<th style="padding: 0.85rem 1rem;">Encoding Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">[Space]</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%20 (or +)</td>
+<td style="padding: 0.75rem 1rem;">Disallowed / Unsafe</td>
+<td style="padding: 0.75rem 1rem;">Terminates URI tokens in plain text protocols and headers.</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444; font-weight: bold;">Always Encode</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">/</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%2F</td>
+<td style="padding: 0.75rem 1rem;">General Delimiter (gen-delims)</td>
+<td style="padding: 0.75rem 1rem;">Delineates hierarchical path segments in authority and resource paths.</td>
+<td style="padding: 0.75rem 1rem;">Encode inside query/component values</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">?</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%3F</td>
+<td style="padding: 0.75rem 1rem;">General Delimiter (gen-delims)</td>
+<td style="padding: 0.75rem 1rem;">Initiates query parameter string component.</td>
+<td style="padding: 0.75rem 1rem;">Encode inside path &amp; parameter values</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">&amp;</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%26</td>
+<td style="padding: 0.75rem 1rem;">Sub-delimiter (sub-delims)</td>
+<td style="padding: 0.75rem 1rem;">Separates individual key-value pairs within a query component.</td>
+<td style="padding: 0.75rem 1rem;">Encode inside parameter keys/values</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">=</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%3D</td>
+<td style="padding: 0.75rem 1rem;">Sub-delimiter (sub-delims)</td>
+<td style="padding: 0.75rem 1rem;">Assigns parameter value to parameter name (key=value).</td>
+<td style="padding: 0.75rem 1rem;">Encode when present within a data value</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">#</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%23</td>
+<td style="padding: 0.75rem 1rem;">General Delimiter (gen-delims)</td>
+<td style="padding: 0.75rem 1rem;">Initiates client-side document fragment / anchor identifier.</td>
+<td style="padding: 0.75rem 1rem;">Encode if meant to transmit to web server</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">:</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%3A</td>
+<td style="padding: 0.75rem 1rem;">General Delimiter (gen-delims)</td>
+<td style="padding: 0.75rem 1rem;">Delimits protocol scheme (https:) and port designation (:443).</td>
+<td style="padding: 0.75rem 1rem;">Encode when inside query/path variables</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">%</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%25</td>
+<td style="padding: 0.75rem 1rem;">Escape Indicator</td>
+<td style="padding: 0.75rem 1rem;">Escape token prefix for all percent-encoded octets.</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444; font-weight: bold;">Always Encode literal percent signs</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">+</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">%2B</td>
+<td style="padding: 0.75rem 1rem;">Sub-delimiter / Legacy Space</td>
+<td style="padding: 0.75rem 1rem;">Interpreted as space in application/x-www-form-urlencoded forms.</td>
+<td style="padding: 0.75rem 1rem;">Encode when a literal plus sign is intended</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">a-z, A-Z, 0-9, - _ . ~</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">Literal</td>
+<td style="padding: 0.75rem 1rem;">Unreserved Characters</td>
+<td style="padding: 0.75rem 1rem;">Universal safe character set defined by RFC 3986 Section 2.3.</td>
+<td style="padding: 0.75rem 1rem; color: #22c55e;">Never Requires Encoding</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Scenarios Where Encoding Saves You</h4>
-<p style="margin-bottom: 1rem;">Email marketers encoding UTM parameters discover quickly that an unencoded ampersand splits their tracking data in half. Developers building redirect chains learn that a destination URL passed as a parameter must itself be fully encoded. Anyone sharing a WhatsApp or mailto link with prefilled text needs spaces and line breaks encoded or the message truncates.</p>
-<p style="margin-bottom: 1rem;">API consumers meet encoding daily: OAuth callbacks, signed URLs, search endpoints and pagination tokens all ride in query strings. When an API call fails with a mysterious 400 error, decoding the request URL with this tool often reveals the culprit in seconds, whether it is a stray space, an unescaped plus sign or a mangled unicode character.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: OAuth 2.0 PKCE Redirect URI Sanitization</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">An identity platform engineer configures an OAuth 2.0 authorization code flow with PKCE. The client authorization URL must pass a complex callback destination containing internal query parameters as the <code>redirect_uri</code> parameter:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>const authServer = "https://auth.example.com/oauth/authorize";
+const targetCallback = "https://app.example.com/callback?tab=billing&amp;plan=pro";
+
+// Must encode the targetCallback component completely:
+const safeAuthUrl = `${authServer}?client_id=xyz&amp;redirect_uri=${encodeURIComponent(targetCallback)}`;</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Without <code>encodeURIComponent</code>, the authorization server parses <code>&amp;plan=pro</code> as its own parameter, corrupting the OAuth handshake and triggering an 'Invalid Redirect URI' error.</p>
 </div>
-<div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Analytics Tracking URL (UTM Parameter) Integrity</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A growth engineer builds an automated marketing pipeline that appends campaign tags containing ampersands, spaces, and company names (e.g., <code>"Q4 Promo &amp; Sale"</code>):</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>// Constructing query params via URLSearchParams
+const params = new URLSearchParams();
+params.set("utm_source", "newsletter");
+params.set("utm_campaign", "Q4 Promo &amp; Sale");
+// Serializes to: utm_source=newsletter&amp;utm_campaign=Q4+Promo+%26+Sale</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Using standard percent-encoding prevents the unescaped ampersand from splitting the campaign parameter into an invalid second query parameter.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(79,172,254,0.06)); border: 1px solid rgba(0,242,254,0.25); border-radius: var(--radius-md); padding: 1.5rem;">
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="link-2" style="width: 20px; height: 20px;"></i> Recommended Developer Resource: Modern URL API &amp; URLSearchParams
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #e2e8f0;">
+In modern JavaScript (Node.js and modern browsers), prefer using the native <code>URL</code> and <code>URLSearchParams</code> classes over manual string concatenation with <code>encodeURI</code> or <code>encodeURIComponent</code>. <code>URLSearchParams.prototype.set()</code> automatically normalizes character boundaries, handles UTF-8 multi-byte encoding, and avoids double-encoding bugs.
+</p>
+<p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">
+Need to parse token parameters or check query payloads? Test them with our <a href="/jwt-decoder/" style="color: #00f2fe; text-decoration: underline;">JSON Web Token Decoder</a> or analyze string lengths with our <a href="/word-counter/" style="color: #00f2fe; text-decoration: underline;">Word &amp; Character Counter</a>.
+</p>
+</div>
+
+<div class="faq-section" style="margin-top: 2rem;">
+<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (URL Encoding &amp; RFC 3986)</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: What is the difference between %20 and + for spaces?</h4>
-<p style="font-size: 0.95rem;">Both represent a space, but in different contexts. Within the path of a URL only %20 is valid. Inside a query string, the older application/x-www-form-urlencoded convention also allows the plus sign. Modern practice is to use %20 everywhere, because a literal plus sign in a path means an actual plus character.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: What is the technical difference between encodeURI() and encodeURIComponent() in JavaScript?</h4>
+<p style="font-size: 0.95rem;">encodeURI() is designed to encode an entire complete URL. It preserves protocol delimiters, path slashes, query delimiters, and fragment identifiers (; , / ? : @ &amp; = + $ #). Conversely, encodeURIComponent() is designed to encode an individual query parameter key or value. It aggressively escapes all reserved punctuation characters into percent sequences, ensuring special characters within data values do not corrupt URL syntax.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Why does my URL contain %25 after encoding?</h4>
-<p style="font-size: 0.95rem;">That is double-encoding. The percent sign itself encodes as %25, so if you encode an already-encoded string, %20 turns into %2520. Decode the string once with this tool to check, then re-encode only the raw value. Double-encoding is one of the most common causes of broken tracking links.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q2: What is the difference between %20 and the plus symbol (+) for space encoding?</h4>
+<p style="font-size: 0.95rem;">Under the pure RFC 3986 URI standard, a space must always be encoded as %20. The plus symbol (+) as a space replacement originated in the legacy HTML form standard (application/x-www-form-urlencoded), specifically restricted to the query component. Using + within a URL path is invalid and represents a literal plus character. Modern web APIs recommend using %20 consistently across all URI components.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Can this tool encode non-English characters like Arabic or Chinese?</h4>
-<p style="font-size: 0.95rem;">Yes. The encoder is fully UTF-8 aware, converting each character into its correct multi-byte percent sequence. An Arabic product name or Chinese search term encodes into standards-compliant output that works across browsers, email clients and social platforms.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q3: What is double-encoding and why is it dangerous in web applications?</h4>
+<p style="font-size: 0.95rem;">Double-encoding occurs when a string containing percent-encoded sequences is mistakenly passed through an encoder a second time. The leading percent sign (%) is itself escaped as %25, turning %20 into %2520. When decoded once by an intermediate reverse proxy or API gateway, the string resolves to %20 instead of the original space character. This causes 404 routing errors, broken search filters, and signature verification failures in OAuth protocols.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Is it safe to paste private URLs here?</h4>
-<p style="font-size: 0.95rem;">Yes. Encoding and decoding run locally in your browser with JavaScript. The URLs you paste never leave your device, are never logged and never touch a server, so staging links, internal tools and unreleased campaign URLs stay private.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q4: How does this tool handle multi-byte Unicode characters and international emojis?</h4>
+<p style="font-size: 0.95rem;">OmniTools is fully UTF-8 compliant. When a Unicode character (such as Cyrillic, Arabic, Chinese characters, or emojis) is submitted, the encoder first decomposes the character into its underlying 2, 3, or 4-byte UTF-8 octet sequence. Each individual byte is then converted to its corresponding %HH hex representation, producing RFC 3986 compliant outputs accepted by all global browsers and web servers.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Which characters never need encoding?</h4>
-<p style="font-size: 0.95rem;">The unreserved set defined by the URL standard: uppercase and lowercase letters, digits, and the four characters hyphen, period, underscore and tilde. Everything else is either reserved with a structural meaning (like / ? # &amp;) or unsafe, and should be encoded when it appears as data rather than structure.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q5: Which characters are considered unreserved and never require encoding under RFC 3986?</h4>
+<p style="font-size: 0.95rem;">According to RFC 3986 Section 2.3, the unreserved character set consists solely of: uppercase letters (A-Z), lowercase letters (a-z), decimal digits (0-9), and four special punctuation marks: hyphen (-), underscore (_), period (.), and tilde (~). All other characters should be evaluated for potential encoding depending on their context.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q6: Are the URLs, tokens, or query strings I encode transmitted to remote logging servers?</h4>
+<p style="font-size: 0.95rem;">No. OmniTools executes all URL encoding, decoding, and parsing operations strictly within your local browser JavaScript runtime. No URLs, query parameters, API keys, or private payload strings are ever uploaded to remote servers, persisted in databases, or logged in server telemetry.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q7: Can URL encoding prevent Cross-Site Scripting (XSS) and injection attacks?</h4>
+<p style="font-size: 0.95rem;">Percent-encoding prevents URI structure manipulation by neutralising control characters such as quotes, angle brackets, and spaces within URLs. However, URL encoding is not a substitute for contextual HTML entity escaping or SQL parameterization. When reflecting URL parameters onto an HTML page, always apply proper HTML escaping (e.g., converting &lt; to &amp;lt;) to prevent reflected XSS.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q8: Does this tool support bulk URL encoding and decoding for large sitemaps?</h4>
+<p style="font-size: 0.95rem;">Yes. You can paste multi-line lists of URLs, query parameters, or file paths into the input field. The encoder processes the full payload instantly without truncation or artificial length limits.</p>
 </div>
 </div>
 </div>

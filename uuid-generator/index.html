@@ -269,50 +269,193 @@
 <a class="btn btn-outline" href="/css-box-shadow/" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">CSS Shadows</a>
 </div>
 </div>
-</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Free UUID Generator - Understanding Universally Unique Identifiers</h3>
+</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Universally Unique Identifier (UUID) Architecture: RFC 4122/9562 Standards, Collision Mathematics &amp; Entropy</h3>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. What is a UUID and Why Do Systems Need Them?</h4>
-<p style="margin-bottom: 1rem;">A UUID (Universally Unique Identifier) is a 128-bit identifier written as 36 characters in five hyphenated groups, like 3f2504e0-4f89-41d3-9a0c-0305e82c3301. Its purpose is beautifully simple: let any machine anywhere generate an identifier that is, for all practical purposes, guaranteed to be unique, without asking a central authority for permission.</p>
-<p style="margin-bottom: 1rem;">Databases traditionally used auto-increment integers, but integers leak information (customer number 1042 knows roughly how many customers exist), collide when systems merge, and cannot be generated offline. UUIDs solve all three problems at once. Every record, session, file and transaction can mint its own ID the moment it is born, whether on a server farm or a phone in airplane mode.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Architectural Foundations: Decentralized Identity &amp; The 128-Bit Space</h4>
+<p style="margin-bottom: 1rem;">A Universally Unique Identifier (UUID), standardized under IETF <strong>RFC 4122</strong> and recently modernized in <strong>RFC 9562</strong> (also known as a Globally Unique Identifier or GUID in Microsoft architectures), is a 128-bit integer designed to guarantee global uniqueness across distributed computer networks without relying on a central registration authority or coordination coordinator. In string format, a UUID is canonicalized as a 36-character hexadecimal sequence organized into five hyphen-delimited fields: <code>8-4-4-4-12</code> (e.g., <code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code>).</p>
+<p style="margin-bottom: 1rem;">Centralized auto-incrementing serial IDs (1, 2, 3...) introduce acute scalability bottlenecks in modern distributed systems. Serial integers leak business intelligence (e.g., exposing order volume to competitors via invoice IDs), cause collision deadlocks when merging sharded databases, and prevent offline clients from pre-allocating record identifiers before network synchronization. UUIDs eliminate these limitations by delegating generation to client runtimes using cryptographically secure pseudorandom number generators (CSPRNG).</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. How to Generate UUIDs with This Tool</h4>
-<p style="margin-bottom: 1rem;">Click generate and the tool produces a fresh version 4 UUID instantly, ready to copy into your database migration, API request, test fixture or configuration file. Need several? Generate another, and another; there is no limit and no rate throttling because everything happens locally.</p>
-<p style="margin-bottom: 1rem;">Crucially, this generator uses the Web Crypto API, the same cryptographically secure random source your browser trusts for TLS keys. Many older online generators quietly used Math.random, which is predictable and unsuitable for security-sensitive identifiers. Here, every one of the 122 random bits comes from a source designed to be unguessable.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Collision Probability Mathematics &amp; UUIDv4 Bit Allocation Model</h4>
+<p style="margin-bottom: 1rem;">A Version 4 UUID is minted entirely from pseudo-random bits, save for 6 structural control bits. Four bits encode the version number (binary <code>0100</code> = 4 in the 13th hex position) and two bits define the RFC 4122 variant (binary <code>10xx</code>, yielding hex characters <code>8, 9, a, b</code> in the 17th position). This leaves exactly <strong>122 bits of pure cryptographic entropy</strong>, yielding a total keyspace of \(2^{122} \approx 5.3169 \times 10^{36}\) possible unique identifiers.</p>
+<div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
+<strong>UUIDv4 Collision Probability Mathematical Model (Birthday Paradox):</strong><br/>
+P(collision, n) &approx; 1 - exp(-n^2 / (2 &times; 2^122)) = 1 - exp(-n^2 / 2^123)<br/>
+where n is the total number of independently generated UUIDs.<br/><br/>
+<strong>RFC 4122 128-Bit Layout Syntax Breakdown:</strong><br/>
+Bits 00..31: time_low (32 bits / 8 hex digits)<br/>
+Bits 32..47: time_mid (16 bits / 4 hex digits)<br/>
+Bits 48..63: time_hi_and_version (16 bits / 4 hex digits &rarr; 0100xxxx)<br/>
+Bits 64..79: clock_seq_hi_res_and_variant (16 bits / 4 hex digits &rarr; 10xxxxxx)<br/>
+Bits 80..127: node (48 bits / 12 hex digits)<br/><br/>
+<strong>Threshold Collision Benchmarks:</strong><br/>
+To reach a 50% probability of a single collision: n &approx; 2.71 &times; 10^18 UUIDs (~2.7 Quintillion).<br/>
+Generating 1 billion UUIDs per second continuously requires 85.9 years to reach a 50% collision probability.
 </div>
+<p style="margin-bottom: 1rem;">To prevent duplicate collisions, generation algorithms must avoid deterministic seeds like <code>Math.random()</code>, which relies on 32-bit linear congruential or xorshift PRNGs. OmniTools strictly executes the browser's native <code>crypto.randomUUID()</code> and <code>crypto.getRandomValues()</code> Web Cryptography API, harvesting atmospheric thermal noise and hardware CPU interrupts.</p>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. UUID Versions Explained Simply</h4>
-<p style="margin-bottom: 1rem;">The UUID standard defines several versions. <strong>Version 1</strong> mixes a timestamp with the machine MAC address, unique but privacy-hostile because it reveals where and when it was made. <strong>Version 4</strong>, the one this tool generates, is pure randomness: 122 bits drawn from a secure source, giving about 5.3 x 10^36 possible values. Newer proposals like version 7 combine timestamps with randomness for database-friendly sorting.</p>
-<p style="margin-bottom: 1rem;">The collision question always comes up: what are the odds of two v4 UUIDs matching? To reach even a 50 percent chance of a single collision you would need to generate about 2.7 quintillion UUIDs. Generating one billion per second, that takes over 85 years. For every real system on Earth, the risk is not zero in theory and effectively zero in practice.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Comprehensive RFC 4122 &amp; RFC 9562 UUID Versions Reference Table</h4>
+<p style="margin-bottom: 1rem;">This technical reference table details structural specifications, entropy mechanisms, and ideal engineering applications across all established UUID versions.</p>
+<div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+<thead>
+<tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid var(--border-color);">
+<th style="padding: 0.85rem 1rem;">Version</th>
+<th style="padding: 0.85rem 1rem;">RFC Standard</th>
+<th style="padding: 0.85rem 1rem;">Generation Mechanism &amp; Entropy Source</th>
+<th style="padding: 0.85rem 1rem;">Sorting Property</th>
+<th style="padding: 0.85rem 1rem;">Primary Use-Case &amp; Trade-offs</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 1</td>
+<td style="padding: 0.75rem 1rem;">RFC 4122</td>
+<td style="padding: 0.75rem 1rem;">60-bit 100ns Gregorian timestamp + 48-bit IEEE 802 MAC address.</td>
+<td style="padding: 0.75rem 1rem;">Non-natural (time_low first)</td>
+<td style="padding: 0.75rem 1rem;">Legacy networks; exposes physical hardware MAC address and timestamp.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 2</td>
+<td style="padding: 0.75rem 1rem;">DCE 1.1</td>
+<td style="padding: 0.75rem 1rem;">POSIX UID/GID user identity + truncated timestamp.</td>
+<td style="padding: 0.75rem 1rem;">Non-natural</td>
+<td style="padding: 0.75rem 1rem;">DCE security systems; rarely used in modern web engineering.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 3</td>
+<td style="padding: 0.75rem 1rem;">RFC 4122</td>
+<td style="padding: 0.75rem 1rem;">Cryptographic MD5 hash of namespace UUID + name string.</td>
+<td style="padding: 0.75rem 1rem;">None (Deterministic)</td>
+<td style="padding: 0.75rem 1rem;">Deterministic hashing; superseded by SHA-1 (v5) and SHA-256 due to MD5 collisions.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 4</td>
+<td style="padding: 0.75rem 1rem;">RFC 4122</td>
+<td style="padding: 0.75rem 1rem;">122 bits of pure CSPRNG pseudorandom entropy.</td>
+<td style="padding: 0.75rem 1rem;">Random (No sorting)</td>
+<td style="padding: 0.75rem 1rem;">Universal standard for web sessions, tokens, and general distributed keys.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 5</td>
+<td style="padding: 0.75rem 1rem;">RFC 4122</td>
+<td style="padding: 0.75rem 1rem;">Cryptographic SHA-1 hash of namespace UUID + name string.</td>
+<td style="padding: 0.75rem 1rem;">None (Deterministic)</td>
+<td style="padding: 0.75rem 1rem;">Deterministic idempotency keys across disparate microservice domains.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 6</td>
+<td style="padding: 0.75rem 1rem;">RFC 9562</td>
+<td style="padding: 0.75rem 1rem;">Reordered 60-bit Gregorian timestamp (big-endian) + MAC address.</td>
+<td style="padding: 0.75rem 1rem;">Chronologically Sortable</td>
+<td style="padding: 0.75rem 1rem;">Direct drop-in upgrade for legacy v1 systems requiring B-Tree sorting.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 7</td>
+<td style="padding: 0.75rem 1rem;">RFC 9562</td>
+<td style="padding: 0.75rem 1rem;">48-bit Unix Epoch ms timestamp + 74 bits of random CSPRNG.</td>
+<td style="padding: 0.75rem 1rem;">Chronologically Sortable</td>
+<td style="padding: 0.75rem 1rem;">Modern gold standard for database primary keys; prevents index fragmentation.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Version 8</td>
+<td style="padding: 0.75rem 1rem;">RFC 9562</td>
+<td style="padding: 0.75rem 1rem;">Custom vendor-defined payload format within standard 128 bits.</td>
+<td style="padding: 0.75rem 1rem;">Implementation Specific</td>
+<td style="padding: 0.75rem 1rem;">Proprietary enterprise schemas requiring specialized internal bitfields.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Nil UUID</td>
+<td style="padding: 0.75rem 1rem;">RFC 4122</td>
+<td style="padding: 0.75rem 1rem;">All 128 bits set to zero (00000000-0000-0000-0000-000000000000).</td>
+<td style="padding: 0.75rem 1rem;">Minimum Value</td>
+<td style="padding: 0.75rem 1rem;">Represents null reference, unassigned identifier, or empty sentinel value.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe; font-weight: bold;">Max UUID</td>
+<td style="padding: 0.75rem 1rem;">RFC 9562</td>
+<td style="padding: 0.75rem 1rem;">All 128 bits set to one (ffffffff-ffff-ffff-ffff-ffffffffffff).</td>
+<td style="padding: 0.75rem 1rem;">Maximum Value</td>
+<td style="padding: 0.75rem 1rem;">Used as high-boundary sentinel in database range scans and binary masks.</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Where UUIDs Are Used in Modern Development</h4>
-<p style="margin-bottom: 1rem;">Distributed databases like PostgreSQL, CockroachDB and DynamoDB use UUIDs as primary keys so shards can mint IDs independently. Payment platforms assign a UUID to every transaction for idempotency, ensuring a retried request never charges twice. File storage systems name uploads with UUIDs so no two users can overwrite each other.</p>
-<p style="margin-bottom: 1rem;">Front-end developers use UUIDs for React keys in dynamic lists, correlation IDs that trace one request through a dozen microservices, and anonymous analytics identifiers. Test engineers generate fresh UUIDs per run so parallel test suites never collide. Wherever identity must be unique, immediate and coordination-free, the UUID is the default answer.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: Database B-Tree Index Fragmentation &amp; Migration to UUIDv7</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A high-scale payments platform uses random UUIDv4 as primary keys across an events table ingesting 50,000 transactions/second. Because v4 UUIDs are uniformly random, inserts land randomly across leaf pages of the database B-Tree index, forcing constant page splits, cache evictions, and severe I/O degradation.</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>// Modern UUIDv7: First 48 bits encode Unix epoch milliseconds
+// New records append strictly to right-most B-Tree node:
+const id = uuidv7(); // 018ec7e2-45e0-7981-8c43-4e892c48e712</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Switching to time-ordered UUIDv7 reduces page splits by 95% while retaining decentralized offline generation.</p>
 </div>
-<div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Idempotent Payment Processing &amp; Webhook Deduplication</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A checkout service communicates with payment gateways like Stripe over unreliable mobile network connections. When network dropouts cause the client to retry an HTTP request, the gateway uses a client-generated UUIDv4 as an <code>Idempotency-Key</code> header:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>POST /v1/charges
+Idempotency-Key: e6b41cb8-1f5e-4c47-9279-37651a5c6893
+Content-Type: application/json</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Even if the payment request is submitted five times during network retries, the payment gateway executes the transaction once, preventing double charges.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(79,172,254,0.06)); border: 1px solid rgba(0,242,254,0.25); border-radius: var(--radius-md); padding: 1.5rem;">
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="shield" style="width: 20px; height: 20px;"></i> Recommended Developer Resource: Cryptographic Entropy Verification
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #e2e8f0;">
+Never generate security tokens, session keys, or database IDs using pseudorandom engines that can be seeded or predicted. Always verify that UUID generation libraries leverage <code>window.crypto.randomUUID()</code> in browsers or <code>crypto.randomUUID()</code> in Node.js (v14.17+).
+</p>
+<p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">
+Need to generate one-way security signatures? Compute SHA-256 and MD5 digests with our <a href="/hash-generator/" style="color: #00f2fe; text-decoration: underline;">Cryptographic Hash Generator</a> or generate secure passwords with our <a href="/password-generator/" style="color: #00f2fe; text-decoration: underline;">Password Generator</a>.
+</p>
+</div>
+
+<div class="faq-section" style="margin-top: 2rem;">
+<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (UUID &amp; GUID Architecture)</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Are these UUIDs truly random and secure?</h4>
-<p style="font-size: 0.95rem;">Yes. The generator uses the Web Crypto API (crypto.randomUUID or crypto.getRandomValues), a cryptographically secure random number source built into your browser. It is suitable for session identifiers, security tokens and database keys, unlike older generators that relied on the predictable Math.random function.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: Are the UUIDs generated by this tool cryptographically secure?</h4>
+<p style="font-size: 0.95rem;">Yes. OmniTools relies exclusively on the browser's hardware-backed Web Cryptography API (crypto.randomUUID() or crypto.getRandomValues()). It does not use predictable pseudorandom functions like Math.random(). Each generated identifier contains 122 bits of true entropy, making it suitable for session keys, security tokens, and critical database primary keys.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: What is the chance of two UUIDs colliding?</h4>
-<p style="font-size: 0.95rem;">Astronomically small. A version 4 UUID has 122 random bits, giving around 5.3 undecillion possible values. You would need to generate about 2.7 quintillion UUIDs before the probability of one collision reached 50 percent. No real-world system comes close to that scale.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q2: What is the exact mathematical probability of a UUIDv4 collision occurring?</h4>
+<p style="font-size: 0.95rem;">With 122 bits of entropy, the total number of unique UUIDv4 combinations is approximately 5.3 &times; 10^36. According to the Birthday Paradox formula, you would need to generate approximately 2.71 quintillion UUIDs (2.71 &times; 10^18) before the mathematical chance of a single collision reaches 50%. In real-world enterprise architectures, the risk of a collision is effectively zero.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Should I use UUIDs or auto-increment integers as database keys?</h4>
-<p style="font-size: 0.95rem;">It depends on your architecture. Integers are smaller and slightly faster for single-database applications. UUIDs win when data is created on multiple nodes, merged from different systems, exposed in public URLs where sequence leaks information, or generated before the record reaches the database. Many teams use both: an internal integer and a public UUID.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q3: What is the technical difference between a UUID and a Microsoft GUID?</h4>
+<p style="font-size: 0.95rem;">Technically, GUID (Globally Unique Identifier) is Microsoft's implementation of the RFC 4122 UUID standard. While both represent 128-bit values formatted as 36-character hexadecimal strings, older Microsoft COM/OLE APIs encoded GUID fields in mixed-endian (little-endian for the first three fields), whereas standard network UUIDs use strict big-endian network byte order. In modern software, UUID and GUID are treated as interchangeable synonyms.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Can I use these UUIDs in production systems?</h4>
-<p style="font-size: 0.95rem;">Absolutely. The output is a standards-compliant RFC 4122 version 4 UUID, accepted by every database, framework and programming language. Copy it into PostgreSQL, MongoDB, your API payloads or your environment configuration without modification.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q4: Why should modern databases prefer UUIDv7 over UUIDv4 for primary keys?</h4>
+<p style="font-size: 0.95rem;">UUIDv4 generates pure random numbers. When indexed by relational databases (such as PostgreSQL or MySQL InnoDB), random IDs cause extreme B-Tree index fragmentation and cache misses because inserts scatter randomly across disk blocks. Standardized in RFC 9562, UUIDv7 embeds a 48-bit Unix timestamp at the front, ensuring IDs sort chronologically. This restores append-only sequential writes to B-Tree indexes while preserving decentralized uniqueness.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Do generated UUIDs get stored or logged anywhere?</h4>
-<p style="font-size: 0.95rem;">No. Generation happens entirely in your browser. The UUIDs exist only on your screen until you copy them; nothing is transmitted, saved or logged. Refresh the page and they are gone forever, which for identifiers is precisely the correct behaviour.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q5: Can I generate multiple UUIDs in batch mode for testing and seed fixtures?</h4>
+<p style="font-size: 0.95rem;">Yes. OmniTools supports batch generation of up to 1,000 UUIDs in a single click. The entire batch is minted in milliseconds inside your local browser memory and formatted as a clean, newline-delimited list ready for pasting into database migrations, CSV seed files, or API mock fixtures.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q6: Are any generated UUIDs saved, logged, or sent to external servers?</h4>
+<p style="font-size: 0.95rem;">Zero identifiers are logged. Generation runs 100% locally on your computer using client-side JavaScript. Generated UUIDs exist solely in your browser memory until you copy them or refresh the tab. Nothing is uploaded to remote servers or third-party telemetry databases.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q7: How do I validate a UUID string format using regular expressions?</h4>
+<p style="font-size: 0.95rem;">A standard RFC 4122 compliant UUID can be validated using the regular expression: ^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$ (case-insensitive). To specifically enforce UUIDv4 format, check that the 13th character is strictly '4' and the 17th character is one of '8', '9', 'a', or 'b'.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q8: What are deterministic UUIDs (v3 and v5) and when should they be used?</h4>
+<p style="font-size: 0.95rem;">Unlike v4 (random) and v7 (time-based), UUID versions 3 and 5 are deterministic name-based hashes. By combining a namespace UUID with a unique input string (such as a URL or user email), the algorithm produces an identical UUID every time it is evaluated. This enables idempotent foreign key generation across distributed systems without cross-service database lookups.</p>
 </div>
 </div>
 </div>
