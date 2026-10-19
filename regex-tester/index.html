@@ -270,50 +270,176 @@
 <a class="btn btn-outline" href="/css-box-shadow/" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">CSS Shadows</a>
 </div>
 </div>
-</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Online Regex Tester - Master Regular Expressions with Live Feedback</h3>
+</section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Online Regex Tester & Debugger — Architecture, DFA/NFA Automata & ReDoS Prevention</h3>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. What Are Regular Expressions and Why Learn Them?</h4>
-<p style="margin-bottom: 1rem;">A regular expression (regex) is a compact pattern language for matching text. With a single line like <strong>\b\w+@\w+\.\w+\b</strong> you can find every email address in a ten-thousand-line document. Developers use regex for input validation, log analysis, search-and-replace refactoring and data extraction; even non-developers meet it in tools like Google Analytics filters and spreadsheet formulas.</p>
-<p style="margin-bottom: 1rem;">The trouble with regex is that it is famously write-only: a pattern that made perfect sense yesterday looks like line noise today. That is exactly why a live tester matters. Instead of editing code, running it and printing debug output, you paste your pattern and sample text here and watch matches highlight in real time as you type.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Formal Language Theory & The Chomsky Hierarchy</h4>
+<p style="margin-bottom: 1rem;">Regular expressions originate in theoretical computer science and formal language theory, formulated by mathematician Stephen Cole Kleene in the 1950s. In the Chomsky hierarchy of formal grammars, regular languages occupy Type 3—the most restrictive yet computationally tractable tier. A pure regular language can be recognized by a Finite State Automaton (FSA) requiring strictly finite memory \(O(1)\) auxiliary space. However, modern implementation engines—such as ECMAScript <code>RegExp</code>, PCRE (Perl Compatible Regular Expressions), Python <code>re</code>, and Java <code>java.util.regex</code>—extend far beyond classical regular grammars by incorporating backreferences, lookaround assertions, and recursive matching, making modern pattern engines non-regular in the strict Chomskyan sense.</p>
+<p style="margin-bottom: 1rem;">When an expression is compiled in JavaScript via <code>new RegExp(pattern, flags)</code>, the browser's engine (such as Google Chrome's V8 or Mozilla's SpiderMonkey) parses the tokens into an Abstract Syntax Tree (AST), optimizes redundant quantifier chains, and compiles the pattern into a state transition machine or bytecode interpreted by an internal virtual machine (such as V8's Irregexp engine). Understanding how these internal automata transition between states is essential for developing resilient production code that handles millions of strings without latency bottlenecks.</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. How to Test a Pattern with This Tool</h4>
-<p style="margin-bottom: 1rem;">Type or paste your regular expression into the pattern field, add any flags you need (g for global, i for case-insensitive, m for multiline), then paste your sample text below. Matches are highlighted instantly, and the match list shows each capture with its position so you can confirm the pattern behaves exactly as intended before shipping it into production code.</p>
-<p style="margin-bottom: 1rem;">The tester uses the JavaScript regex engine, which is the same engine used by Node.js and every modern browser. That makes it ideal for front-end validation logic, although you should remember that other languages have small dialect differences; Python, Java and PCRE support features like lookbehinds and named groups with slightly different syntax.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Automata Architecture: DFA vs. NFA Engines</h4>
+<p style="margin-bottom: 1rem;">Regular expression engines fall into two primary architectural families: Deterministic Finite Automata (DFA) engines and Non-Deterministic Finite Automata (NFA) engines. DFA engines (employed by tools like Google's RE2, Rust's <code>regex</code> crate, and grep) maintain linear execution time \(O(n)\) relative to input length \(n\). In a DFA, each character read from the input stream dictates exactly one deterministic state transition. A DFA never backtracks, guaranteeing immune behavior against algorithmic complexity attacks.</p>
+<p style="margin-bottom: 1rem;">Conversely, traditional engines (including JavaScript V8, Python, PHP, Ruby, and .NET) utilize Traditional NFA or Backtracking NFA architectures. An NFA engine is expression-directed: it evaluates the regex token by token, exploring alternative branches and greedy quantifiers. If a tentative path fails to match downstream characters, the engine rewinds the input cursor and steps back through prior states—a mechanism known as <em>backtracking</em>. While NFA engines unlock advanced expressive capabilities like capturing groups, non-destructive lookaround assertions, and backreferences, unconstrained backtracking introduces catastrophic computational risks.</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Essential Patterns Every Developer Should Know</h4>
-<p style="margin-bottom: 1rem;">A handful of building blocks cover most real-world needs. <strong>\d</strong> matches any digit, <strong>\w</strong> matches word characters, <strong>\s</strong> matches whitespace, and the dot matches almost anything. Quantifiers control repetition: <strong>+</strong> means one or more, <strong>*</strong> means zero or more, and <strong>{2,4}</strong> means between two and four. Anchors like <strong>^</strong> and <strong>$</strong> pin a pattern to the start or end of a line.</p>
-<p style="margin-bottom: 1rem;">Groups are where regex becomes genuinely powerful. Parentheses capture portions of a match so you can extract or rearrange them, for example turning <strong>(\d{2})/(\d{2})/(\d{4})</strong> into a reordered date with a replacement string like $3-$2-$1. Testing capture groups live, as this tool allows, is far faster than trial and error inside a codebase.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Catastrophic Backtracking & Regular Expression Denial of Service (ReDoS)</h4>
+<p style="margin-bottom: 1rem;">Catastrophic backtracking occurs when a non-deterministic engine encounters ambiguous nested quantifiers combined with an input string that matches initial repetitions but fails at the very end. Consider the notorious pathological pattern: <code>(a+)+$</code> tested against an input like <code>"aaaaaaaaaaaaaaaaaaaaX"</code>. For each character appended, the number of internal state branches explored by the backtracking algorithm doubles, yielding exponential time complexity:</p>
+<div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
+<strong>Backtracking Complexity Model:</strong><br/>
+Worst-Case Time Complexity: T(n) = O(2^n) or O(n^k)<br/>
+Where n = length of input string, k = degree of nested ambiguous quantifiers.<br/>
+Linear Safe Engine: T(n) = O(n) (Strict Thompson NFA / DFA)
 </div>
+<p style="margin-bottom: 1rem;">In a production Node.js or browser environment, an unmitigated ReDoS vulnerability will lock the single-threaded event loop completely. A single malicious HTTP request containing a 30-character payload can cause 100% CPU utilization for hours, rendering web services unresponsive. Preventing ReDoS requires eliminating nested quantifiers over overlapping character sets, utilizing atomic groups or lookahead emulations, and verifying regex execution bounds using client-side testing environments.</p>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Common Regex Mistakes and How to Avoid Them</h4>
-<p style="margin-bottom: 1rem;">The classic trap is greediness. A pattern like <strong>.*</strong> devours as much text as possible, so extracting one HTML tag with <strong>&lt;.*&gt;</strong> often swallows half the document. The fix is the lazy quantifier <strong>.*?</strong>, which stops at the first valid end. The second classic trap is forgetting to escape special characters: a literal dot must be written as \., a literal bracket as \[.</p>
-<p style="margin-bottom: 1rem;">Catastrophic backtracking is the subtler danger. Nested quantifiers such as <strong>(a+)+</strong> can make the engine explore exponentially many paths and freeze on crafted input. Keep patterns specific, prefer character classes over wildcards, and always test against realistic worst-case strings, exactly the kind of experiment this tester is built for.</p>
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Comprehensive Regex Meta-Characters & Quantifiers Reference Table</h4>
+<p style="margin-bottom: 1rem;">Use this technical reference table to look up token definitions, quantifiers, lookaround assertions, and their respective matching characteristics across standard ECMAScript engines.</p>
+<div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+<thead>
+<tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid var(--border-color);">
+<th style="padding: 0.85rem 1rem;">Token / Syntax</th>
+<th style="padding: 0.85rem 1rem;">Category</th>
+<th style="padding: 0.85rem 1rem;">Technical Definition & Behavior</th>
+<th style="padding: 0.85rem 1rem;">Engine Evaluation Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">^ / $</td>
+<td style="padding: 0.75rem 1rem;">Boundary Anchor</td>
+<td style="padding: 0.75rem 1rem;">Asserts start (^) or end ($) of string; with 'm' flag, asserts start/end of individual line.</td>
+<td style="padding: 0.75rem 1rem;">Zero-width assertion; prunes invalid branches immediately.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">\b / \B</td>
+<td style="padding: 0.75rem 1rem;">Word Boundary</td>
+<td style="padding: 0.75rem 1rem;">\b matches position between a \w and \W character; \B matches non-word boundaries.</td>
+<td style="padding: 0.75rem 1rem;">Zero-width assertion; does not consume text cursor.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">[abc] / [^abc]</td>
+<td style="padding: 0.75rem 1rem;">Character Class</td>
+<td style="padding: 0.75rem 1rem;">Matches any single character in set; leading caret (^) negates the character set.</td>
+<td style="padding: 0.75rem 1rem;">Single state transition; highly performant O(1) set lookup.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">* / + / ?</td>
+<td style="padding: 0.75rem 1rem;">Greedy Quantifiers</td>
+<td style="padding: 0.75rem 1rem;">* matches 0 or more; + matches 1 or more; ? matches 0 or 1. Consumes maximal characters.</td>
+<td style="padding: 0.75rem 1rem;">Pushes backtrack checkpoints onto engine execution stack.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">*? / +? / ??</td>
+<td style="padding: 0.75rem 1rem;">Lazy Quantifiers</td>
+<td style="padding: 0.75rem 1rem;">Reluctant match: consumes minimal characters necessary before testing subsequent tokens.</td>
+<td style="padding: 0.75rem 1rem;">Evaluates following token before expanding repeat cursor.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">{n,m}</td>
+<td style="padding: 0.75rem 1rem;">Range Quantifier</td>
+<td style="padding: 0.75rem 1rem;">Matches between n and m repetitions inclusive; {n,} matches at least n times.</td>
+<td style="padding: 0.75rem 1rem;">Bounded repeat counter; limits uncontrolled stack growth.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">(...) / (?:...)</td>
+<td style="padding: 0.75rem 1rem;">Capturing vs Non-Cap</td>
+<td style="padding: 0.75rem 1rem;">Parentheses create numbered capture groups ($1..$9); (?:...) groups without capturing.</td>
+<td style="padding: 0.75rem 1rem;">Non-capturing skips memory allocation for capture arrays.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">(?=...) / (?!...)</td>
+<td style="padding: 0.75rem 1rem;">Lookahead Assertion</td>
+<td style="padding: 0.75rem 1rem;">(?=...) positive lookahead: must match downstream; (?!...) negative lookahead: must not match.</td>
+<td style="padding: 0.75rem 1rem;">Zero-width lookahead; checks future text without moving cursor.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">(?&lt;=...) / (?&lt;!...)</td>
+<td style="padding: 0.75rem 1rem;">Lookbehind Assertion</td>
+<td style="padding: 0.75rem 1rem;">(?&lt;=...) positive lookbehind: precedes cursor; (?&lt;!...) negative lookbehind: must not precede.</td>
+<td style="padding: 0.75rem 1rem;">Zero-width inspection of preceding characters; ECMAScript 2018+.</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-family: monospace; color: #00f2fe;">(?&lt;name&gt;...)</td>
+<td style="padding: 0.75rem 1rem;">Named Capture Group</td>
+<td style="padding: 0.75rem 1rem;">Captures matched substring into dictionary accessible via match.groups.name.</td>
+<td style="padding: 0.75rem 1rem;">Self-documenting AST structure; simplifies parsing pipelines.</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">5. Real-World Engineering Scenarios</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: High-Throughput Server Log Ingestion & Named Groups</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A systems engineer must parse millions of Common Log Format (CLF) web server access logs in an asynchronous Node.js streaming pipeline. Rather than writing brittle string splits, they formulate an optimized non-backtracking pattern with named capture groups:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>^(?&lt;ip&gt;\d{1,3}(?:\.\d{1,3}){3}) - - \[(?&lt;timestamp&gt;[^\]]+)\] "(?&lt;method&gt;GET|POST|PUT|DELETE) (?&lt;path&gt;\S+) HTTP\/\d\.\d" (?&lt;status&gt;\d{3}) (?&lt;bytes&gt;\d+)$</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">By explicitly restricting the IP octet separators, pinning start/end anchors, and utilizing non-capturing sub-groups, the parser extracts clean JSON objects across gigabytes of streaming logs without thread stalls.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Multi-Requirement Password Policy Lookaheads</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A security architect must enforce NIST SP 800-63B password complexity on user registrations: at least 12 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character, without forcing fixed positional sequences:</p>
+<pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*()_+\-=[\]{};':"\\|,&lt;.&gt;\/?]).{12,128}$</code></pre>
+<p style="font-size: 0.85rem; margin-bottom: 0;">By chaining zero-width positive lookaheads <code>(?=...)</code> at the start anchor, each policy condition is validated concurrently across the same input string before the length quantifier executes, providing zero-overhead client validation.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(79,172,254,0.06)); border: 1px solid rgba(0,242,254,0.25); border-radius: var(--radius-md); padding: 1.5rem;">
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="terminal" style="width: 20px; height: 20px;"></i> Recommended Developer Resource: High-Performance Regex Compilation
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #e2e8f0;">
+When executing regular expressions in high-concurrency environments, avoid re-instantiating <code>new RegExp()</code> inside loops. In JavaScript, regex objects with the global (<code>g</code>) flag maintain a mutable <code>lastIndex</code> state property between executions. Always compile static patterns once at module initialization or reset <code>regex.lastIndex = 0</code> before successive match executions.
+</p>
+<p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">
+Need to validate structural tokens or sanitize payload formats? Explore our companion utilities: <a href="/json-formatter/" style="color: #00f2fe; text-decoration: underline;">JSON Formatter &amp; Validator</a> and <a href="/base64-encoder-decoder/" style="color: #00f2fe; text-decoration: underline;">Base64 Encoder/Decoder</a>.
+</p>
+</div>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Regex &amp; Pattern Matching)</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Which regex flavour does this tester use?</h4>
-<p style="font-size: 0.95rem;">It uses the JavaScript (ECMAScript) regex engine, identical to what runs in Chrome, Firefox, Edge and Node.js. If your final code is in JavaScript or TypeScript, what you test here behaves the same in production. For Python, Java or .NET, most basics transfer directly but advanced features may differ slightly.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: Which regular expression engine and specification does this tester execute?</h4>
+<p style="font-size: 0.95rem;">This tool executes natively within your web browser using the client-side ECMAScript (JavaScript) RegExp engine. It supports modern ECMAScript specifications including named capture groups, lookbehind assertions (positive and negative), the dotAll (s) flag, and Unicode property escapes (\p{...}). Patterns evaluated here mirror production execution in Chrome (V8), Node.js, Firefox (SpiderMonkey), and Safari (JavaScriptCore).</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: What do the flags g, i and m mean?</h4>
-<p style="font-size: 0.95rem;">The g flag finds all matches instead of stopping after the first. The i flag makes matching case-insensitive so ABC and abc are equivalent. The m flag changes the ^ and $ anchors to match the start and end of each line rather than the whole text, which is essential for multi-line logs and documents.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q2: What is the technical difference between greedy, lazy, and possessive quantifiers?</h4>
+<p style="font-size: 0.95rem;">Greedy quantifiers (*, +, {n,}) consume as many matching characters as possible, yielding characters back one by one if downstream patterns fail. Lazy or reluctant quantifiers (*?, +?, ??), consume the minimum necessary characters before testing the remainder. Possessive quantifiers (*+, ++, present in PCRE and Java) consume maximally and lock their match permanently without ever backtracking, eliminating ReDoS vulnerabilities.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Why does my pattern match here but fail in my code?</h4>
-<p style="font-size: 0.95rem;">The most common cause is escaping. In many programming languages the regex lives inside a string, so a backslash must itself be escaped: \d in a tester becomes \\d in a Java or Python string literal. Check for double-escaping first, then confirm your language supports the features your pattern uses, such as lookbehind assertions.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q3: What causes the infamous 'RegExp.prototype.test() alternating true/false' bug in JavaScript?</h4>
+<p style="font-size: 0.95rem;">When a regular expression is instantiated with the global (/g) or sticky (/y) flag, the regex object maintains an internal state variable called lastIndex. Each call to test() or exec() advances lastIndex to the end of the previous match. Once the string end is reached, the subsequent test() fails, returning false and resetting lastIndex to 0. To prevent this, reset regex.lastIndex = 0 before invoking test(), or omit the /g flag when testing single boolean matches.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Is my sample text uploaded anywhere?</h4>
-<p style="font-size: 0.95rem;">No. Matching runs entirely in your browser using JavaScript. Nothing you paste, whether it is log files, customer data or confidential documents, ever leaves your device. You can verify this by opening your browser network tab while using the tool.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q4: Why does a pattern that matches in this online tester fail inside my backend code?</h4>
+<p style="font-size: 0.95rem;">The most common discrepancy stems from string literal escaping. In languages like Java, C#, or Python without raw strings, backslashes are interpreted by the language compiler first. An expression like \d+\.\w+ must be written as "\\d+\\.\\w+" in Java string literals. Additionally, distinct language engines support differing regex dialects—for example, PCRE supports atomic grouping (?>...) and branch reset (?|...), which are not natively available in standard ECMAScript.</p>
 </div>
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: How do I match a literal special character like a dot or bracket?</h4>
-<p style="font-size: 0.95rem;">Prefix it with a backslash. A literal dot is \., a literal opening bracket is \[, and a literal backslash is \\. Inside a character class most characters lose their special meaning, so [.] matches a dot without escaping.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q5: How do zero-width lookaround assertions work without consuming input characters?</h4>
+<p style="font-size: 0.95rem;">Lookaround assertions (lookaheads (?=...) and lookbehinds (?&lt;=...)) are zero-width directional tests. When the engine encounters a lookahead, it attempts to match the enclosed sub-pattern starting at the current cursor position. If the sub-pattern matches, the engine returns success, but immediately resets the character cursor back to where the assertion began. Lookarounds allow developers to enforce cross-cutting validation rules without advancing the stream.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q6: Is my sensitive test data or proprietary code uploaded to external servers?</h4>
+<p style="font-size: 0.95rem;">Zero data leaves your browser. All pattern compilation, syntax validation, and input string testing are performed entirely client-side using your browser's local JavaScript runtime. No server requests, database logging, or telemetry traces are executed, guaranteeing complete privacy for confidential credentials, token strings, and internal server logs.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q7: How do Unicode property escapes (\p{...}) differ from traditional character sets?</h4>
+<p style="font-size: 0.95rem;">Traditional character classes like [a-zA-Z] and word tokens (\w) are restricted to standard ASCII alphanumeric sets. In modern globalized software, user names, currencies, and international text span diverse UTF-8 blocks. Enabled by the 'u' flag in ECMAScript, Unicode property escapes like \p{Letter}, \p{Number}, or \p{Script=Arabic} match any character classified under that Unicode category regardless of regional script.</p>
+</div>
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q8: What are the performance best practices when parsing massive multi-megabyte text files?</h4>
+<p style="font-size: 0.95rem;">When processing large datasets, anchor patterns using ^ or $ whenever possible to prevent the engine from re-testing every index in the file. Avoid unbounded leading wildcards (.*), use non-capturing groups (?:...) to eliminate capture allocation overhead, pre-compile patterns outside inner loops, and split large inputs into chunked lines or streams to ensure low memory consumption.</p>
 </div>
 </div>
 </div>

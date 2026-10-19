@@ -306,50 +306,202 @@
 </div>
 </div>
 </div>
-<!-- SEO Guide / FAQs -->
-<article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
-<h3>The Comprehensive Guide to HTML Meta Tags, OpenGraph &amp; Search Snippet Optimization</h3>
-<p>HTML meta tags are machine-readable directives embedded within the <code>&lt;head&gt;</code> section of web pages. They communicate essential metadata to search engine crawlers (Google, Bing, DuckDuckGo), social media sharing platforms (Facebook, LinkedIn, X/Twitter), and modern AI answer engines (ChatGPT, Gemini, Perplexity). Well-crafted meta tags directly influence organic click-through rates (CTR), social engagement, and indexing accuracy.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">1. Core Technical Meta Tags for Organic Search</h4>
-<p>Every public web page must implement the essential triad of search meta directives:</p>
-<ul>
-<li><strong>Title Tag:</strong> While technically a separate element, the <code>&lt;title&gt;</code> tag is the single most critical on-page SEO signal. Keep titles between 50 and 60 characters to prevent truncation in Google search results.</li>
-<li><strong>Meta Description:</strong> A compelling 150-160 character summary that search engines display beneath your title link in organic search snippets. An optimized meta description acts as organic ad copy that drives search clicks.</li>
-<li><strong>Canonical Tag (<code>rel="canonical"</code>):</strong> Prevents duplicate content penalties by specifying the authoritative, preferred URL version of a web page to search indexers.</li>
-<li><strong>Robots Meta Directives:</strong> Directives like <code>&lt;meta name="robots" content="index, follow"&gt;</code> govern how search crawlers index content and follow links.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">2. Social Media Sharing: OpenGraph &amp; Twitter Cards</h4>
-<p>When users share your web links across social networks or messaging applications (Slack, WhatsApp, Discord, iMessage), platforms read specialized metadata protocols to build interactive visual preview cards:</p>
-<ul>
-<li><strong>OpenGraph Protocol (OG):</strong> Developed by Facebook and universally adopted across modern web ecosystems. Essential tags include <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:url</code>, and <code>og:type</code>.</li>
-<li><strong>High-Resolution OG Images:</strong> The optimal recommended OpenGraph image dimension is <strong>1200 x 630 pixels</strong> with an aspect ratio of 1.91:1. This ensures crisp rendering on both high-DPI desktop displays and mobile feeds.</li>
-<li><strong>Twitter / X Cards:</strong> Use tags like <code>twitter:card</code> (set to <code>summary_large_image</code>) and <code>twitter:creator</code> to render full-width visual previews on X.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">3. AI Search Engine Optimization (GEO &amp; AEO)</h4>
-<p>Next-generation generative search engines (such as Google AI Overviews, Perplexity, and ChatGPT Search) analyze semantic meta declarations to evaluate site entity authority and content provenance. OmniTools generates clean, structured meta tags paired with JSON-LD schema recommendations to maximize visibility across modern AI search architectures.</p>
-<div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Frequently Asked Questions (FAQ)</h4>
+<!-- SEO Guide / Informational Content -->
+<article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem; line-height: 1.7; color: var(--text-muted);">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Comprehensive Guide to HTML Meta Tags, Open Graph Protocols &amp; Search Engine Optimization</h3>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The Critical Architecture of Document Metadata</h4>
+<p style="margin-bottom: 1rem;">HTML metadata elements embedded within the document <code>&lt;head&gt;</code> represent the invisible communicative handshake between your web application and external consumer systems. Search engine indexing spiders (Googlebot, Bingbot), social graph scrapers (Facebook Open Graph, Twitter/X Cards, LinkedIn bot), conversational AI agents (OpenAI GPTBot, Google Gemini, Anthropic ClaudeBot), and native mobile web views do not interpret your website through visual eye contact; they execute programmatic parsing routines against structured metadata declarations.</p>
+<p style="margin-bottom: 1rem;">A web application with pristine design but flawed or absent meta tags suffers severe distribution handicaps: links shared across messaging apps (WhatsApp, Slack, Discord, iMessage) render as bare, suspicious plaintext URLs rather than rich interactive cards with branded imagery and summaries; search result listings trigger algorithmic truncation ellipses; and search engine crawlers encounter duplicate content penalties when canonical declarations are omitted. Mastering metadata optimization is essential for maximizing organic search click-through rates (CTR) and guaranteeing viral presentation fidelity across social ecosystems.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. Search Engine Optimization Mathematical Model &amp; Pixel Width Formula</h4>
+<p style="margin-bottom: 1rem;">A widespread misconception among web publishers is that Google measures search titles and descriptions strictly by character count. In reality, Google's search engine results page (SERP) renders snippets within fixed graphical desktop containers constrained by exact display pixel widths. Because variable-width fonts (such as Arial and Roboto) assign differing pixel widths to individual letters (e.g., an uppercase "W" occupies approximately 16px while a lowercase "i" occupies only 4px), character limits serve merely as practical heuristics:</p>
+
+<div style="background: rgba(0, 0, 0, 0.35); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.88rem; color: #e2e8f0; overflow-x: auto;">
+<strong>SERP Display Constraint &amp; Open Graph Aspect Ratio Formula:</strong><br>
+Google Desktop Title Pixel Budget Constraint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width_title = &sum;_{i=1}^{n} glyph_width(c_i) &le; 580px&nbsp;&nbsp;&nbsp;&nbsp;[&approx; 50 to 60 characters in Arial 18px]<br><br>
+Google Desktop Meta Description Pixel Budget Constraint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Width_desc = &sum;_{j=1}^{m} glyph_width(c_j) &le; 960px&nbsp;&nbsp;&nbsp;&nbsp;[&approx; 150 to 160 characters in Arial 14px]<br><br>
+Open Graph (OG) High-DPI Dimension &amp; Aspect Ratio Equation:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AR_og = Width / Height = 1200px / 630px &approx; 1.9047:1 &approx; 1.91:1<br><br>
+Organic Click-Through Rate (CTR) Optimization Metric:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTR_organic = (Total_Clicks / Total_Search_Impressions) * 100%
+</div>
+
+<p style="margin-bottom: 1rem;">When a title string exceeds <strong>580 pixels</strong> on desktop or <strong>600 pixels</strong> on mobile devices, Google's layout engine forcibly truncates the trailing string with an ellipsis (<code>...</code>), often severing secondary keywords and commercial calls to action. Similarly, social media platforms calculate exact aspect ratios: deviating from the <code>1.91:1</code> ratio causes Facebook and LinkedIn to aggressively crop hero imagery, cutting off typography and brand logos.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Primary SEO &amp; Social Graph Meta Directives Matrix</h4>
+<p style="margin-bottom: 1rem;">The following reference table catalogs the 10 foundational metadata tags required for modern production web applications, indicating their structural syntax, optimal budgets, and SEO impact scores:</p>
+
+<div style="overflow-x: auto; margin: 1.5rem 0;">
+<table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<thead>
+<tr style="background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--border-color); color: #fff;">
+<th style="padding: 0.75rem 1rem;">Meta Directive Tag</th>
+<th style="padding: 0.75rem 1rem;">Syntactic Format</th>
+<th style="padding: 0.75rem 1rem;">Optimal Length / Budget</th>
+<th style="padding: 0.75rem 1rem;">Target Consumer</th>
+<th style="padding: 0.75rem 1rem;">Failure Consequence</th>
+<th style="padding: 0.75rem 1rem;">Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Document Title</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;title&gt;Page Title&lt;/title&gt;</td>
+<td style="padding: 0.75rem 1rem;">50 – 60 chars (&le; 580px)</td>
+<td style="padding: 0.75rem 1rem;">Google, Bing, Browser Tabs</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">Severe SERP truncation / lower ranking</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">10 / 10 (Critical)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Meta Description</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta name="description" ...&gt;</td>
+<td style="padding: 0.75rem 1rem;">150 – 160 chars (&le; 960px)</td>
+<td style="padding: 0.75rem 1rem;">Search Engines, AI Answer Bots</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Search engine synthesizes random snippet</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">9 / 10 (High CTR)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Canonical URL Link</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;link rel="canonical" href="..."&gt;</td>
+<td style="padding: 0.75rem 1rem;">Absolute HTTPS URL</td>
+<td style="padding: 0.75rem 1rem;">Search Engine Crawlers</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">Duplicate content penalties, diluted PageRank</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">10 / 10 (Critical)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Robots Directive</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta name="robots" content="..."&gt;</td>
+<td style="padding: 0.75rem 1rem;">"index, follow"</td>
+<td style="padding: 0.75rem 1rem;">All Web Spiders</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">Accidental "noindex" de-indexes whole site</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">10 / 10 (Critical)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Open Graph Title</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta property="og:title" ...&gt;</td>
+<td style="padding: 0.75rem 1rem;">40 – 70 characters</td>
+<td style="padding: 0.75rem 1rem;">Facebook, LinkedIn, Slack</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Falls back to standard title</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">8 / 10 (Viral Reach)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Open Graph Image</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta property="og:image" ...&gt;</td>
+<td style="padding: 0.75rem 1rem;">1200 &times; 630 px (&lt; 1MB)</td>
+<td style="padding: 0.75rem 1rem;">Social Media &amp; Chat Previews</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">Link shares render without thumbnail card</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">9 / 10 (Engagement)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Twitter Card Type</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta name="twitter:card" ...&gt;</td>
+<td style="padding: 0.75rem 1rem;">"summary_large_image"</td>
+<td style="padding: 0.75rem 1rem;">X / Twitter Platform</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Renders tiny square thumbnail rather than banner</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">8 / 10</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Viewport Meta Tag</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta name="viewport" ...&gt;</td>
+<td style="padding: 0.75rem 1rem;">"width=device-width, initial-scale=1"</td>
+<td style="padding: 0.75rem 1rem;">Mobile Web Browsers</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">Mobile layout fails to zoom, Google mobile penalty</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #10b981;">10 / 10 (Critical)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Browser Theme Color</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta name="theme-color" ...&gt;</td>
+<td style="padding: 0.75rem 1rem;">Hex / CSS Color token</td>
+<td style="padding: 0.75rem 1rem;">Chrome Android, Safari iOS</td>
+<td style="padding: 0.75rem 1rem; color: #6b7280;">Generic browser UI chrome color</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #3b82f6;">6 / 10 (Branding)</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Open Graph Type</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;meta property="og:type" ...&gt;</td>
+<td style="padding: 0.75rem 1rem;">"website" | "article"</td>
+<td style="padding: 0.75rem 1rem;">Social Knowledge Graphs</td>
+<td style="padding: 0.75rem 1rem; color: #6b7280;">Defaulted to website; loss of publication author data</td>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #3b82f6;">7 / 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Developer &amp; Marketing Scenarios</h4>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario A: Preventing Canonical Dilution on Multi-Tenant &amp; Tracking URLs</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">When digital marketing campaigns run paid advertisements or email newsletters, URLs frequently append tracking query parameters (e.g., <code>https://example.com/tool?utm_source=twitter&amp;utm_medium=cpc&amp;ref=affiliate123</code>). Search engine bots crawling these links treat each unique parameter string as an independent web page, dispersing incoming backlink equity (PageRank) across dozens of duplicates. By enforcing an explicit canonical link: <code>&lt;link rel="canonical" href="https://example.com/tool"&gt;</code>, developers instruct search algorithms to consolidate 100% of index authority and backlink weight onto the clean primary URL.</p>
+</div>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario B: Edge-Computed Dynamic Social Cards (@vercel/og &amp; Cloudflare Workers)</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">For content-heavy platforms with tens of thousands of dynamic user-generated pages (such as e-commerce products, technical forums, or blog articles), designing individual 1200x630 Open Graph banners by hand is impossible. Senior engineering teams configure automated edge functions (such as Vercel Edge <code>@vercel/og</code> or Cloudflare Workers Canvas) that dynamically rasterize SVG typography, author avatars, and article headlines into a cached PNG banner at runtime, injecting the generated URL dynamically into the <code>og:image</code> tag.</p>
+</div>
+</div>
+
+<div style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border: 1px solid rgba(37,99,235,0.3); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="share-2" style="width: 18px; height: 18px; color: var(--accent);"></i> Recommended Developer Resource: Technical SEO &amp; Open Graph Suite
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #cbd5e1;">Pair your generated social and SEO meta directives with companion optimization tools: resize your Open Graph hero images to exactly 1200x630 pixels using <a href="/image-resizer/" style="color: var(--accent); text-decoration: underline;">Free Image Resizer</a>, compress PNG assets with <a href="/image-compressor/" style="color: var(--accent); text-decoration: underline;">Free Image Compressor</a>, and audit character length limits with <a href="/word-counter/" style="color: var(--accent); text-decoration: underline;">Free Word Counter</a>.</p>
+</div>
+
+<div class="faq-section">
+<h4 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.2rem;">Frequently Asked Questions (FAQ)</h4>
 <div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Does Google use meta keywords for search ranking?</strong></p>
-<p>No. Google officially announced in 2009 that the <code>meta keywords</code> tag is completely ignored in web search rankings due to widespread keyword stuffing abuses in the 1990s.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q1: Does Google use meta keywords as a ranking signal in search results?</p>
+<p style="font-size: 0.95rem;">No. Google officially decommissioned the <code>meta keywords</code> tag in September 2009. Because search spammers abused keywords with invisible repetition in the late 1990s, modern search ranking algorithms rely entirely upon semantic body content, structural headings, backlink graphs, and user interaction signals. Including meta keywords provides zero ranking benefit.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Why does Google sometimes rewrite my meta title or description?</strong></p>
-<p>Google may dynamically rewrite search snippets if it determines that your provided title or description is too long, keyword-stuffed, repetitive, or poorly aligned with the specific query entered by the user.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q2: Why does Google sometimes rewrite or replace my defined meta title and description?</p>
+<p style="font-size: 0.95rem;">Google's search algorithm dynamically rewrites approximately 30% to 60% of search snippets when it determines that the author's defined metadata is excessively long, keyword-stuffed, duplicated across multiple pages, or poorly matched to the user's specific conversational search intent. Crafting concise, query-relevant descriptions minimizes rewriting.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: What happens if I omit the viewport meta tag?</strong></p>
-<p>Omitting <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> causes mobile browsers to render the website as a zoomed-out desktop canvas, failing Google's Mobile-Friendly tests and hurting mobile rankings.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q3: What are the exact dimensions for social media Open Graph preview images?</p>
+<p style="font-size: 0.95rem;">The universal industry standard for Open Graph images (<code>og:image</code>) is <strong>1200 &times; 630 pixels</strong>, maintaining an exact aspect ratio of <strong>1.91:1</strong>. Keep file weight under 1MB (in PNG or high-quality WebP/JPEG format) and ensure critical text or logos reside within the central 1200x540 safe zone to prevent edge cropping on mobile feeds.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Can I test how my link preview will look before publishing?</strong></p>
-<p>Yes! OmniTools includes live preview cards that render accurate mockups of your Google search snippet, Facebook share card, and Twitter preview as you type.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q4: What is the difference between Open Graph and Twitter Card tags?</p>
+<p style="font-size: 0.95rem;">Open Graph was developed by Facebook and is supported universally by LinkedIn, Slack, WhatsApp, and Discord. Twitter/X maintains its own proprietary metadata namespace (<code>twitter:card</code>, <code>twitter:site</code>, <code>twitter:creator</code>). However, if Twitter tags are omitted, X automatically falls back to standard Open Graph tags as secondary defaults.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Is there any cost or attribution required to use generated tags?</strong></p>
-<p>None. The generated meta tags are completely free and ready for direct insertion into your website's codebase.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q5: Why is the canonical tag (rel="canonical") considered mandatory for technical SEO?</p>
+<p style="font-size: 0.95rem;">Canonical tags establish the definitive, authoritative source URL when identical content is accessible via multiple pathways (e.g., HTTP vs HTTPS, with or without 'www', URL tracking parameters, or multi-category blog routing). It consolidates ranking equity onto a single indexable destination, avoiding algorithmic duplicate content penalties.</p>
 </div>
+
+<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q6: How do AI search engines (ChatGPT Search, Perplexity, Google AI Overviews) use metadata?</p>
+<p style="font-size: 0.95rem;">Modern generative AI engines crawl page metadata to evaluate domain entity authority, author credentials, content publication dates, and concise topical summaries. High-quality descriptive metadata paired with Schema.org JSON-LD structured data dramatically improves the likelihood of being cited as an authoritative source in AI-generated answers.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q7: Does this meta tag generator store or transmit my website URLs?</p>
+<p style="font-size: 0.95rem;">No. OmniTools Meta Tag Generator executes entirely client-side within your browser using local JavaScript. Your website addresses, draft marketing campaigns, and proprietary page descriptions are never uploaded, logged, or analyzed on remote servers.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q8: What is the purpose of the theme-color meta tag?</p>
+<p style="font-size: 0.95rem;">The <code>&lt;meta name="theme-color" content="#0b0d19"&gt;</code> tag instructs mobile browsers (including Google Chrome on Android and Apple Safari on iOS) to tint the browser's native top status bar and navigation address chrome to match your website's exact brand color palette, creating an immersive, native-app feel.</p>
+</div>
+
 </div>
 </div>
 </article>

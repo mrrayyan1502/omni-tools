@@ -292,59 +292,217 @@
 </div>
 </div>
 <p class="calculator-disclaimer" role="note"><strong>Important:</strong> Results are illustrative estimates, not financial advice or a guarantee of future returns. Rates, inflation, taxes, fees and market performance can change.</p><!-- SEO Guide / Rich Informational Content -->
-<article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
-<h3>The Power of Compound Interest: Mathematical Principles &amp; Wealth Accumulation</h3>
-<p>Compound interest is the fundamental financial force described by Albert Einstein as the "eighth wonder of the world." Unlike simple interest, which computes returns strictly against the original principal, compound interest reinvests earned interest back into the underlying balance. Over extended investment horizons, this creates exponential growth where the interest earned on accumulated interest vastly surpasses the original deposits made.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">1. The Mathematical Compound Interest Formula</h4>
-<p>The standard compound interest formula used by financial institutions, mutual funds, and retirement planners is expressed as:</p>
-<div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 1.05rem; margin: 0.75rem 0;">
-        A = P(1 + r/n)^(nt)
-    </div>
-<p>Where the variables represent:</p>
-<ul>
-<li><strong>A:</strong> Future accumulated balance, including both principal and total interest.</li>
-<li><strong>P:</strong> Initial principal deposit (starting investment amount).</li>
-<li><strong>r:</strong> Nominal annual interest rate (expressed as a decimal, e.g., 7% = 0.07).</li>
-<li><strong>n:</strong> Compounding frequency per calendar year (e.g., 1 for annually, 12 for monthly, 365 for daily).</li>
-<li><strong>t:</strong> Total time duration in years.</li>
+<article class="seo-guide-section glass-card mt-4" style="padding: 2rem; margin-top: 2rem; line-height: 1.7; color: var(--text-muted);">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">The Mathematics of Compound Interest: Continuous Exponential Growth &amp; Annuity Modeling</h3>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Compounding Foundations &amp; Exponential Trajectory</h4>
+<p style="margin-bottom: 1rem;">Compound interest constitutes the mathematical foundation of modern capital accumulation and financial economics. While simple interest accrues linearly as a static fraction of the initial principal deposit (\(I = P \cdot r \cdot t\)), compound interest re-capitalizes earned yields into the principal base at discrete time intervals. Consequently, each subsequent calculation cycle computes interest not solely on original capital, but upon all accumulated historical gains. Over multi-decade investment horizons, this non-linear feedback loop produces an exponential hockey-stick trajectory where interest generation eclipses total cumulative deposits.</p>
+<p style="margin-bottom: 1rem;">The mechanics of compounding operate symmetrically across both sides of the balance sheet. For long-term investors, compounding acts as a primary wealth-generating engine through equity market reinvestment and dividend compounding. Conversely, for borrowers servicing high-interest revolving credit or variable-rate loans, compounding operates destructively, exponentially increasing repayment burdens when debt amortization is delayed.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Rigorous Mathematical Models &amp; Annuity Derivations</h4>
+<p style="margin-bottom: 1rem;">The future value of an initial lump-sum deposit subject to periodic compounding is expressed by the fundamental compound interest equation:</p>
+<div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
+<strong>Lump-Sum Compound Growth Formula:</strong><br/>
+A = P &times; (1 + r / n)^(n &times; t)<br/><br/>
+<strong>Ordinary Annuity (Periodic Regular Contributions):</strong><br/>
+A_total = P &times; (1 + r / n)^(n &times; t) + PMT &times; [((1 + r / n)^(n &times; t) - 1) / (r / n)]<br/><br/>
+<strong>Continuous Compounding Limit (Euler's Constant e):</strong><br/>
+A_continuous = P &times; e^(r &times; t)<br/><br/>
+<strong>Effective Annual Rate (Annual Percentage Yield - APY):</strong><br/>
+APY = (1 + r / n)^n - 1
+</div>
+<p style="margin-bottom: 1rem;">Where:</p>
+<ul style="padding-left: 1.5rem; margin-bottom: 1rem;">
+<li><strong>A (Future Value):</strong> Total accumulated wealth balance inclusive of initial principal, cumulative periodic contributions, and accrued compound interest.</li>
+<li><strong>P (Principal):</strong> Initial lump-sum capital invested at time \(t = 0\).</li>
+<li><strong>r (Nominal Interest Rate):</strong> Stated annual nominal rate expressed as a decimal (e.g., 8.5% is 0.085).</li>
+<li><strong>n (Compounding Frequency):</strong> Number of compounding conversion periods per calendar year (Annual: 1, Semi-Annual: 2, Quarterly: 4, Monthly: 12, Daily: 365).</li>
+<li><strong>t (Time Horizon):</strong> Total duration of investment or liability in calendar years.</li>
+<li><strong>PMT (Periodic Payment):</strong> Recurring contribution deposited at the end of each compounding interval.</li>
+<li><strong>e (Euler's Number):</strong> The mathematical constant approximately equal to 2.718281828.</li>
 </ul>
-<p>When periodic regular deposits (e.g., monthly contributions) are added, the formula integrates an ordinary annuity calculation to capture the compound trajectory of each recurring contribution.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">2. The Critical Impact of Compounding Frequency</h4>
-<p>The frequency with which interest is compounded directly affects total yield. Because interest begins generating returns sooner when compounded more frequently, a 7% nominal rate compounded daily delivers a higher Effective Annual Rate (EAR) than the same 7% compounded annually:</p>
-<ul>
-<li><strong>Annual Compounding:</strong> Interest is calculated and added once every 12 months.</li>
-<li><strong>Monthly Compounding:</strong> Standard for credit cards, mortgages, and high-yield savings accounts.</li>
-<li><strong>Daily / Continuous Compounding:</strong> Maximizes the mathematical limit of exponential growth according to Euler's number <code>e</code>.</li>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Compounding Frequency Yield Comparison Matrix</h4>
+<p style="margin-bottom: 1rem;">This empirical table illustrates how compounding frequency alters total accumulated capital and effective yield. The baseline calculation assumes an initial principal deposit of <strong>$10,000</strong> at a constant nominal annual yield of <strong>8.00%</strong> with zero supplemental monthly additions.</p>
+<div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+<thead>
+<tr style="background: rgba(255,255,255,0.06); color: #fff; border-bottom: 2px solid var(--border-color);">
+<th style="padding: 0.85rem 1rem;">Compounding Frequency</th>
+<th style="padding: 0.85rem 1rem;">Conversion Cycles (n)</th>
+<th style="padding: 0.85rem 1rem;">Effective Annual Yield (APY)</th>
+<th style="padding: 0.85rem 1rem;">Balance: 5 Years</th>
+<th style="padding: 0.85rem 1rem;">Balance: 10 Years</th>
+<th style="padding: 0.85rem 1rem;">Balance: 20 Years</th>
+<th style="padding: 0.85rem 1rem;">Balance: 30 Years</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Annual (1x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.0000%</td>
+<td style="padding: 0.75rem 1rem;">$14,693.28</td>
+<td style="padding: 0.75rem 1rem;">$21,589.25</td>
+<td style="padding: 0.75rem 1rem;">$46,609.57</td>
+<td style="padding: 0.75rem 1rem;">$100,626.57</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Semi-Annual (2x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">2</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.1600%</td>
+<td style="padding: 0.75rem 1rem;">$14,802.44</td>
+<td style="padding: 0.75rem 1rem;">$21,911.23</td>
+<td style="padding: 0.75rem 1rem;">$48,010.21</td>
+<td style="padding: 0.75rem 1rem;">$105,196.27</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Quarterly (4x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">4</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.2432%</td>
+<td style="padding: 0.75rem 1rem;">$14,859.47</td>
+<td style="padding: 0.75rem 1rem;">$22,080.40</td>
+<td style="padding: 0.75rem 1rem;">$48,754.39</td>
+<td style="padding: 0.75rem 1rem;">$107,651.63</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Bi-Monthly (6x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">6</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.2715%</td>
+<td style="padding: 0.75rem 1rem;">$14,878.82</td>
+<td style="padding: 0.75rem 1rem;">$22,137.95</td>
+<td style="padding: 0.75rem 1rem;">$49,008.85</td>
+<td style="padding: 0.75rem 1rem;">$108,499.78</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Monthly (12x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">12</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.2999%</td>
+<td style="padding: 0.75rem 1rem;">$14,898.46</td>
+<td style="padding: 0.75rem 1rem;">$22,196.40</td>
+<td style="padding: 0.75rem 1rem;">$49,268.03</td>
+<td style="padding: 0.75rem 1rem;">$109,357.30</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Bi-Weekly (26x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">26</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.3153%</td>
+<td style="padding: 0.75rem 1rem;">$14,909.07</td>
+<td style="padding: 0.75rem 1rem;">$22,228.05</td>
+<td style="padding: 0.75rem 1rem;">$49,408.84</td>
+<td style="padding: 0.75rem 1rem;">$109,824.16</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Weekly (52x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">52</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.3220%</td>
+<td style="padding: 0.75rem 1rem;">$14,913.72</td>
+<td style="padding: 0.75rem 1rem;">$22,241.95</td>
+<td style="padding: 0.75rem 1rem;">$49,470.78</td>
+<td style="padding: 0.75rem 1rem;">$110,029.56</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.02);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Daily (365x / yr)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">365</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.3278%</td>
+<td style="padding: 0.75rem 1rem;">$14,917.68</td>
+<td style="padding: 0.75rem 1rem;">$22,253.79</td>
+<td style="padding: 0.75rem 1rem;">$49,523.57</td>
+<td style="padding: 0.75rem 1rem;">$110,204.81</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Continuous Limit (e)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&infin;</td>
+<td style="padding: 0.75rem 1rem; color: #00f2fe;">8.3287%</td>
+<td style="padding: 0.75rem 1rem;">$14,918.25</td>
+<td style="padding: 0.75rem 1rem;">$22,255.41</td>
+<td style="padding: 0.75rem 1rem;">$49,530.32</td>
+<td style="padding: 0.75rem 1rem;">$110,231.76</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size: 0.85rem; margin-top: 0.75rem; color: var(--text-muted);"><em>Analysis: As compounding frequency transitions from annual to continuous, 30-year terminal wealth expands from $100,626 to $110,231—delivering an incremental $9,605 in compound interest purely from intra-year interest reinvestment.</em></p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Wealth Planning Scenarios</h4>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: 30-Year Index Fund Dollar-Cost Averaging</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A 25-year-old software engineer initiates retirement planning with a modest $5,000 principal in a low-cost S&amp;P 500 index ETF. They commit to automated monthly dollar-cost averaging deposits of $500. Assuming a conservative historical inflation-adjusted nominal market return of 9.0% compounded monthly:</p>
+<ul style="font-size: 0.85rem; padding-left: 1.25rem; margin-bottom: 0.75rem;">
+<li>Total Cumulative Out-of-Pocket Deposits: $5,000 + ($500 &times; 360) = $185,000.</li>
+<li>Future Value at Age 55 (30 Years): <strong>$993,027.60</strong>.</li>
+<li>Pure Accrued Compound Interest: <strong>$808,027.60 (81.4% of total portfolio value)</strong>.</li>
 </ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">3. Practical Financial Planning: The Rule of 72</h4>
-<p>A classic mental shortcut for estimating investment doubling time is the <strong>Rule of 72</strong>. Dividing 72 by your expected annual rate of return yields the approximate number of years required for your money to double:</p>
-<ul>
-<li>At a 6% annual return: 72 / 6 = <strong>12 years</strong> to double.</li>
-<li>At an 8% annual return: 72 / 8 = <strong>9 years</strong> to double.</li>
-<li>At a 10% historical equity market return: 72 / 10 = <strong>7.2 years</strong> to double.</li>
+<p style="font-size: 0.85rem; margin-bottom: 0;">By relying on steady monthly compounding, interest earned outweighs cumulative personal contributions by more than 4.3x.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: The Mathematical Hazard of Revolving Credit APR</h5>
+<p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A consumer maintains an outstanding credit card balance of $12,000 at an aggressive 24.99% APR, with interest compounding on an Average Daily Balance (ADB) schedule (n = 365). Paying solely the minimum payment (calculated as 1% principal + accrued monthly finance charges):</p>
+<ul style="font-size: 0.85rem; padding-left: 1.25rem; margin-bottom: 0.75rem;">
+<li>Effective Annual Percentage Yield (APY): (1 + 0.2499/365)^365 - 1 = <strong>28.36%</strong>.</li>
+<li>Initial Monthly Finance Charge: $12,000 &times; (0.2499 / 12) = <strong>$249.90/month</strong>.</li>
+<li>Total Time Required to Amortize Debt: Exceeds 26 Years.</li>
+<li>Total Aggregate Interest Paid: In excess of <strong>$21,400</strong> on a $12,000 balance.</li>
 </ul>
+<p style="font-size: 0.85rem; margin-bottom: 0;">Understanding daily compounding math demonstrates why aggressive debt amortization must precede speculative equity investing.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(0,242,254,0.06), rgba(79,172,254,0.06)); border: 1px solid rgba(0,242,254,0.25); border-radius: var(--radius-md); padding: 1.5rem;">
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="trending-up" style="width: 20px; height: 20px;"></i> Recommended Financial Engineering Resource: Real vs. Nominal Returns
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #e2e8f0;">
+When projecting portfolio growth across decades, raw nominal balances can mislead if inflation is neglected. Economists utilize the Fisher Equation to determine actual purchasing power expansion: \( (1 + r_{\text{nominal}}) = (1 + r_{\text{real}}) \times (1 + i) \). If your portfolio achieves 10% nominal return while inflation averages 3.5%, your true economic wealth growth rate is approximately 6.28%.
+</p>
+<p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">
+Analyze macroeconomic inflation trends alongside your investment strategy with our dedicated <a href="/inflation-calculator/" style="color: #00f2fe; text-decoration: underline;">Inflation &amp; Purchasing Power Calculator</a>.
+</p>
+</div>
+
 <div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Frequently Asked Questions (FAQ)</h4>
-<div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: What is the difference between APR and APY?</strong></p>
-<p>Annual Percentage Rate (APR) represents the simple annualized interest rate without accounting for intra-year compounding. Annual Percentage Yield (APY) reflects the true annual return earned after factoring in compounding frequency.</p>
+<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Compound Interest Modeling)</h3>
+<div class="faq-grid" style="display: grid; gap: 1rem;">
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q1: What is the fundamental distinction between APR and APY?</h4>
+<p style="font-size: 0.95rem;">Annual Percentage Rate (APR) reflects the simple annual nominal rate without factoring in the compounding of interest within the year. In contrast, Annual Percentage Yield (APY) accounts for compounding frequency (whether quarterly, monthly, or daily). APY mathematically reveals the genuine effective rate of return you earn or borrow over a full 12-month period. Whenever interest compounds more than once annually, APY is strictly greater than APR.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: How does inflation affect my compound returns?</strong></p>
-<p>While nominal compound interest grows your numerical dollar balance, inflation erodes purchasing power. To find your "real" wealth growth, subtract the prevailing annual inflation rate from your nominal return.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q2: What is the mathematical Rule of 72 and how accurate is it?</h4>
+<p style="font-size: 0.95rem;">The Rule of 72 is an empirical mathematical heuristic used to approximate the time required for an invested principal to double at a fixed annual interest rate. By dividing 72 by the nominal interest rate (e.g., 72 / 8 = 9 years at 8%), investors gain a rapid estimate without evaluating logarithmic equations (\(t = \ln(2) / \ln(1 + r)\)). The Rule of 72 is highly accurate for rates between 5% and 12%; for lower rates near 2-4%, a numerator of 69.3 provides exact continuous approximation.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Should I make contributions at the start or end of each compounding period?</strong></p>
-<p>Contributions made at the beginning of each period (annuity due) earn slightly more interest over time than contributions made at the end (ordinary annuity) because each deposit spends an extra month compounding.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q3: How does contribution timing (Annuity Due vs. Ordinary Annuity) alter growth?</h4>
+<p style="font-size: 0.95rem;">An Ordinary Annuity assumes cash deposits occur at the end of each payment period, whereas an Annuity Due assumes contributions are deposited at the beginning of each period. Because payments deposited at the start of the month compound for an additional 30 days compared to end-of-month deposits, an Annuity Due produces a terminal balance exactly multiplied by \((1 + r/n)\). Over thirty years, beginning-of-period deposits can generate tens of thousands in extra yield.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Are my financial figures or savings balances stored on your server?</strong></p>
-<p>No. OmniTools performs all calculations locally in your web browser. No financial data, account values, or personal inputs are transmitted over any network.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q4: What causes the mathematical ceiling in continuous compounding?</h4>
+<p style="font-size: 0.95rem;">As compounding frequency \(n\) increases towards infinity, one might intuitively expect the accumulated return to skyrocket to infinity. However, calculus proves that \(\lim_{n \to \infty} (1 + r/n)^n = e^r\), where \(e \approx 2.71828\). This represents Euler's constant and creates an asymptotic upper bound. As shown in our comparison table, daily compounding at 8% yields 8.3278% APY while continuous compounding yields 8.3287% APY—a negligible difference of just 0.0009%.</p>
 </div>
-<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Is this calculator free to use for commercial financial advisory?</strong></p>
-<p>Yes. OmniTools is completely free for individual investors, students, and professional financial planners alike.</p>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q5: How do capital gains taxes and fund management expense ratios (MER) degrade compounding?</h4>
+<p style="font-size: 0.95rem;">Taxes and fees represent recurring frictional drags on compounding velocity. If an equity mutual fund charges a 1.5% annual expense ratio while producing 8% gross return, your net compounding rate falls to 6.5%. Over 30 years on a $100,000 portfolio, this seemingly minor 1.5% fee differential drains over $340,000 in lost terminal wealth. Utilizing tax-advantaged accounts (such as Roth IRAs, 401(k)s, or ISAs) preserves compounding momentum by sheltering interim dividends from tax liabilities.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q6: How does inflation erode nominal compound returns over time?</h4>
+<p style="font-size: 0.95rem;">Inflation diminishes the future purchasing power of money. While nominal compound calculations exhibit impressive numerical balances, a million dollars thirty years from now will buy significantly fewer goods and services. To project realistic lifestyle purchasing power, financial planners calculate 'Real Wealth' by deflating future balances via the Consumer Price Index (CPI) equation: \(P_{\text{real}} = A / (1 + i)^t\), where \(i\) represents the average annual inflation rate.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q7: Is my financial profile, account balance, or deposit data stored on your servers?</h4>
+<p style="font-size: 0.95rem;">No. OmniTools operates with strict client-side data sovereignty. Every calculation, rate exponentiation, and interactive chart rendering is executed locally inside your web browser's JavaScript engine. No banking credentials, salary inputs, or financial projections are ever transmitted over external networks or persisted in remote databases.</p>
+</div>
+<div class="faq-item glass-card" style="padding: 1.25rem;">
+<h4 style="margin-bottom: 0.35rem; color: var(--accent-primary); font-size: 1.05rem;">Q8: Can this tool be utilized by professional wealth managers and financial planners?</h4>
+<p style="font-size: 0.95rem;">Yes. OmniTools is completely free to use for individual investors, educational academic institutions, and registered commercial financial advisory practices. You may utilize these analytical simulations to illustrate compounding principles during client portfolio reviews or educational seminars.</p>
 </div>
 </div>
 </div>

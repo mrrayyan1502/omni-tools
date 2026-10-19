@@ -307,54 +307,213 @@
 </div>
 </div>
 </div>
-<!-- SEO roman Urdu informational Guide -->
-<article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
-<h3>The Comprehensive Guide to Password Entropy, Cryptography &amp; Account Security</h3>
-<p>Weak, reused, and predictable passwords remain the single leading attack vector for unauthorized data breaches, identity theft, and corporate ransomware incidents. Automated brute-force attacks and credential stuffing tools can compromise simple 8-character passwords in mere milliseconds. OmniTools Password Generator combines cryptographically secure pseudo-random number generation with Shannon entropy analysis to create impenetrable authentication credentials.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">1. Cryptographic Randomness vs. Standard Pseudo-Randomness</h4>
-<p>Standard programming functions like JavaScript's <code>Math.random()</code> use deterministic algorithms designed for performance, not security. Their internal states can be reverse-engineered by attackers to predict subsequent outputs. OmniTools utilizes the W3C standard <strong>Web Cryptography API (<code>crypto.getRandomValues()</code>)</strong>, which taps into hardware entropy sources (such as thermal CPU noise and hardware timing jitter) to generate true, cryptographically unguessable random values.</p>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">2. Understanding Password Entropy (Bits of Security)</h4>
-<p>Password strength is measured mathematically in <strong>bits of entropy</strong>, defined by the formula:</p>
-<div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 1.05rem; margin: 0.75rem 0;">
-        E = L * log2(R)
-    </div>
-<p>Where <code>L</code> is password length and <code>R</code> is the size of the character pool:</p>
-<ul>
-<li><strong>Under 40 Bits (Very Weak):</strong> Vulnerable to instant brute-force recovery via precomputed rainbow tables.</li>
-<li><strong>40 to 64 Bits (Moderate):</strong> Vulnerable to distributed GPU hash cracking clusters (e.g., Hashcat with multi-RTX 4090 rigs).</li>
-<li><strong>65 to 80 Bits (Strong):</strong> Resistant to targeted brute-force attacks; recommended minimum for personal online accounts.</li>
-<li><strong>80+ Bits (Impenetrable):</strong> Mathematically unbreakable within the lifetime of the universe using classical computing power.</li>
-</ul>
-<h4 style="margin-top: 1.25rem; font-size: 1.1rem;">3. NIST Password Guidelines (SP 800-63B) Best Practices</h4>
-<p>The National Institute of Standards and Technology (NIST) recommends following modern password principles:</p>
-<ol>
-<li><strong>Length Over Complexity:</strong> A 16-character passphrase containing basic characters provides vastly superior entropy compared to a convoluted 8-character password.</li>
-<li><strong>Eliminate Periodic Expiration:</strong> Arbitrary 90-day password change policies encourage users to make predictable incremental tweaks (e.g., changing <code>Spring2026!</code> to <code>Summer2026!</code>). Passwords should only be changed upon suspected breach.</li>
-<li><strong>Adopt Multi-Factor Authentication (MFA):</strong> Even the strongest password should be paired with hardware security keys (FIDO2/WebAuthn) or time-based one-time passwords (TOTP) to safeguard critical accounts.</li>
-</ol>
-<div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Frequently Asked Questions (FAQ)</h4>
+<!-- SEO Guide / Informational Content -->
+<article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem; line-height: 1.7; color: var(--text-muted);">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Comprehensive Guide to Password Entropy, Cryptography &amp; Zero-Trust Authentication</h3>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The State of Credential Security &amp; Automated Brute-Force Economics</h4>
+<p style="margin-bottom: 1rem;">Authentication credentials represent the foundational gatekeepers of contemporary digital infrastructure. Despite the emergence of hardware security keys and biometric passkeys, alphanumeric passwords remain the primary authentication mechanism across over 80% of consumer and enterprise online systems. However, according to Verizon's Data Breach Investigations Report, stolen, compromised, or easily guessable passwords account for upwards of 82% of all unauthorized web application breaches and ransomware incidents.</p>
+<p style="margin-bottom: 1rem;">The threat landscape is dominated by automated adversary toolkits: high-speed credential stuffing engines, precomputed rainbow tables, and dedicated GPU cracking clusters (running Hashcat or John the Ripper across multi-RTX 4090 arrays) capable of calculating billions of SHA-256 or NTLM password hashes per second. Against these industrial attacks, predictable human-chosen passwords (such as replacing "o" with "0" or appending "2026!") offer zero meaningful resistance. Defeating automated cryptanalysis demands mathematically verified, high-entropy pseudo-random generation paired with modern cryptographic standards.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. Cryptographic Entropy Formula &amp; Brute-Force Mathematical Model</h4>
+<p style="margin-bottom: 1rem;">Password strength is not subjective; it is quantified in information-theoretic <strong>bits of entropy</strong> ($E$). Entropy measures the number of binary decisions an attacker must make to guess a password through exhaustive search. The total combinatorial keyspace ($K$) and entropy are defined by Claude Shannon's formulation:</p>
+
+<div style="background: rgba(0, 0, 0, 0.35); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.88rem; color: #e2e8f0; overflow-x: auto;">
+<strong>Information-Theoretic Password Entropy &amp; Exhaustive Search Formula:</strong><br>
+Combinatorial Keyspace Equation:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K = R^L&nbsp;&nbsp;&nbsp;&nbsp;[where R = Character Pool Size, L = Character Length]<br><br>
+Shannon Entropy Bits Formula:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E = L * log_2(R) = L * [ ln(R) / ln(2) ]<br><br>
+Standard Character Pool Sizes (R):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Numeric: R = 10 | Alpha (a-z, A-Z): R = 52 | Alphanumeric + Symbols: R = 95 (Full Printable ASCII)<br><br>
+Average Brute-Force Crack Duration Formula:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T_crack = (K / 2) / H = (R^L) / (2 * H)&nbsp;&nbsp;&nbsp;&nbsp;[where H = GPU Hashrate in guesses/second]
+</div>
+
+<p style="margin-bottom: 1rem;">OmniTools generates random characters strictly via the W3C <code>crypto.getRandomValues()</code> standard, tapping into the operating system's native Cryptographically Secure Pseudo-Random Number Generator (CSPRNG)—such as Linux <code>/dev/urandom</code> or Windows CNG. This avoids the deterministic predictability inherent in legacy pseudo-random functions like <code>Math.random()</code>.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Password Entropy, Keyspace &amp; GPU Crack Time Benchmark Matrix</h4>
+<p style="margin-bottom: 1rem;">The following reference table models password compositions, their resulting Shannon entropy, total possible search combinations, and estimated brute-force recovery times against an enterprise GPU cluster calculating $10^{11}$ (100 Billion) hashes per second:</p>
+
+<div style="overflow-x: auto; margin: 1.5rem 0;">
+<table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<thead>
+<tr style="background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--border-color); color: #fff;">
+<th style="padding: 0.75rem 1rem;">Password Composition</th>
+<th style="padding: 0.75rem 1rem;">Pool Size (R)</th>
+<th style="padding: 0.75rem 1rem;">Entropy (Bits)</th>
+<th style="padding: 0.75rem 1rem;">Total Keyspace Combinations</th>
+<th style="padding: 0.75rem 1rem;">GPU Crack Time (100B/s)</th>
+<th style="padding: 0.75rem 1rem;">Security Tier</th>
+<th style="padding: 0.75rem 1rem;">Vulnerability Exposure</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">6-Digit PIN (Numeric)</td>
+<td style="padding: 0.75rem 1rem;">10</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">19.9 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1 &times; 10^6</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444; font-weight: 600;">&lt; 0.0001 seconds</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">Catastrophic</td>
+<td style="padding: 0.75rem 1rem;">Instant exhaustive recovery</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">8-Char Lowercase (a-z)</td>
+<td style="padding: 0.75rem 1rem;">26</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">37.6 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">2.08 &times; 10^11</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444; font-weight: 600;">1.04 seconds</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">Very Weak</td>
+<td style="padding: 0.75rem 1rem;">Trivially cracked on single desktop GPU</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">8-Char Mixed Alphanumeric</td>
+<td style="padding: 0.75rem 1rem;">62</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">47.6 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">2.18 &times; 10^14</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444; font-weight: 600;">18.2 minutes</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Weak</td>
+<td style="padding: 0.75rem 1rem;">Compromised in short online breach audit</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">10-Char Mixed with Symbols</td>
+<td style="padding: 0.75rem 1rem;">95</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">65.7 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">5.98 &times; 10^19</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">9.5 years</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate</td>
+<td style="padding: 0.75rem 1rem;">Vulnerable to distributed botnet clusters</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">12-Char Mixed with Symbols</td>
+<td style="padding: 0.75rem 1rem;">95</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">78.8 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">5.40 &times; 10^23</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">85,600 years</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Strong</td>
+<td style="padding: 0.75rem 1rem;">Recommended minimum for general web accounts</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">14-Char Mixed with Symbols</td>
+<td style="padding: 0.75rem 1rem;">95</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">92.0 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">4.87 &times; 10^27</td>
+<td style="padding: 0.75rem 1rem; color: #10b981; font-weight: 600;">772 Million years</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Very Strong</td>
+<td style="padding: 0.75rem 1rem;">Resistant to all state-sponsored attacks</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">16-Char Mixed with Symbols</td>
+<td style="padding: 0.75rem 1rem;">95</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">105.1 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">4.39 &times; 10^31</td>
+<td style="padding: 0.75rem 1rem; color: #10b981; font-weight: 600;">6.9 Trillion years</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Impenetrable</td>
+<td style="padding: 0.75rem 1rem;">NIST recommended standard for enterprise masters</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">20-Char Mixed with Symbols</td>
+<td style="padding: 0.75rem 1rem;">95</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">131.4 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">3.58 &times; 10^39</td>
+<td style="padding: 0.75rem 1rem; color: #10b981; font-weight: 600;">Exceeds Age of Universe</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Military Grade</td>
+<td style="padding: 0.75rem 1rem;">Root infrastructure &amp; master vault keys</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">4-Word Diceware Passphrase</td>
+<td style="padding: 0.75rem 1rem;">7,776</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">51.7 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">3.65 &times; 10^15</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">5.1 hours</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate</td>
+<td style="padding: 0.75rem 1rem;">Needs 5–6 words for true long-term security</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">64-Char Random Hex Key</td>
+<td style="padding: 0.75rem 1rem;">16</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">256.0 Bits</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1.15 &times; 10^77</td>
+<td style="padding: 0.75rem 1rem; color: #10b981; font-weight: 600;">Mathematically Infinite</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Quantum Proof</td>
+<td style="padding: 0.75rem 1rem;">Cryptographic private keys &amp; HMAC secrets</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Developer &amp; Security Engineering Scenarios</h4>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario A: Automated Credential Generation in Cloud DevOps Pipelines</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">When provisioning automated cloud infrastructure across AWS, GCP, or Azure using Terraform or Ansible, engineers must generate root database passwords, API secret keys, and JWT signing credentials. Relying on hardcoded or human-typed credentials introduces catastrophic leak risks. Developers use our CSPRNG logic to generate 32-character strings containing 210 bits of entropy, dynamically injecting them into encrypted secret vaults (AWS Secrets Manager, HashiCorp Vault) with zero human exposure.</p>
+</div>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario B: Defense-in-Depth Password Hashing (Argon2id vs. bcrypt)</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">Even high-entropy passwords become vulnerable if server databases store them using obsolete fast hashing algorithms (MD5, SHA-1, or plain SHA-256). In zero-trust back-end architectures, software engineers pass generated credentials through modern memory-hard Key Derivation Functions (KDFs). The gold standard recognized by NIST and OWASP is <strong>Argon2id</strong> (winner of the Password Hashing Competition), which requires substantial RAM allocation per hashing attempt, neutralizing parallel GPU and ASIC cracking economics.</p>
+</div>
+</div>
+
+<div style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border: 1px solid rgba(37,99,235,0.3); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="shield-check" style="width: 18px; height: 18px; color: var(--accent);"></i> Recommended Developer Resource: Security &amp; Cryptography Suite
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #cbd5e1;">Pair your generated credentials with our cryptographic developer utilities: calculate SHA-256 and SHA-512 checksums with <a href="/hash-generator/" style="color: var(--accent); text-decoration: underline;">Cryptographic Hash Generator</a>, inspect authentication payloads with <a href="/jwt-decoder/" style="color: var(--accent); text-decoration: underline;">JWT Token Decoder</a>, and generate RFC 4122 identifiers with <a href="/uuid-generator/" style="color: var(--accent); text-decoration: underline;">UUID v4 Generator</a>.</p>
+</div>
+
+<div class="faq-section">
+<h4 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.2rem;">Frequently Asked Questions (FAQ)</h4>
 <div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Are generated passwords ever saved, transmitted, or logged?</strong></p>
-<p>Never. OmniTools generates every credential directly in your local browser runtime. No passwords, session tokens, or analytics telemetry are sent across any network.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q1: Are generated passwords ever transmitted, cached, or recorded on remote servers?</p>
+<p style="font-size: 0.95rem;">Never. OmniTools Password Generator operates 100% client-side inside your local browser memory using the W3C Web Cryptography API. Generated strings, length configurations, and character toggles never cross the network or touch external disk drives. You can safely disconnect your internet before generating sensitive master passwords.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: What is the optimal password length for critical accounts?</strong></p>
-<p>Security experts recommend at least 16 to 20 characters for primary email accounts, banking portals, and password managers, incorporating uppercase letters, lowercase letters, numbers, and symbols.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q2: Why is Math.random() considered unsafe for generating security passwords?</p>
+<p style="font-size: 0.95rem;">JavaScript's <code>Math.random()</code> relies upon algorithms like xorshift128+ designed for execution speed, not cryptographic unpredictability. Because its internal seed state is small, an attacker who observes a sequence of outputs can determine the PRNG internal state and calculate all future generated passwords. In contrast, <code>crypto.getRandomValues()</code> draws true physical entropy from hardware sources.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Can I generate pronounceable passphrases?</strong></p>
-<p>Yes. You can switch to passphrase mode to generate multi-word Diceware-style passphrases (e.g., <code>correct-horse-battery-staple</code>) that are easy to remember but offer tremendous cryptographic entropy.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q3: What password length is officially recommended by NIST SP 800-63B?</p>
+<p style="font-size: 0.95rem;">NIST Special Publication 800-63B guidelines recommend prioritizing password length over convoluted complexity rules. A password should contain at least 16 characters for critical accounts. Furthermore, NIST advises against mandatory periodic 90-day expiration rules unless an actual security breach has occurred, as frequent expirations lead users to choose predictable variations.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Does the generator exclude ambiguous characters?</strong></p>
-<p>Yes. You can enable the "Exclude Ambiguous Characters" toggle to omit visually similar glyphs like <code>0</code> and <code>O</code>, or <code>1</code>, <code>l</code>, and <code>I</code>, preventing typos when typing passwords manually.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q4: What is the difference between a random password and a Diceware passphrase?</p>
+<p style="font-size: 0.95rem;">A random password is an arbitrary string of mixed alphanumeric characters and symbols (e.g., <code>k7#P9!mZ2$vR</code>), maximizing entropy per character. A Diceware passphrase chains multiple random natural language dictionary words together (e.g., <code>correct-horse-battery-staple</code>). Passphrases achieve high entropy through length while remaining easy for humans to memorize and type on mobile touchscreens.</p>
 </div>
+
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
-<p><strong>Q: Is this password generator completely free?</strong></p>
-<p>Yes. OmniTools Password Generator is 100% free with no registration, no tracking, and no usage limitations.</p>
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q5: How many bits of entropy are required to withstand modern GPU cracking clusters?</p>
+<p style="font-size: 0.95rem;">A credential with 64 bits of entropy offers bare minimum resistance against targeted attacks. For robust protection against state-sponsored actors and distributed cracking networks, cybersecurity standards mandate at least <strong>80 to 90 bits of entropy</strong>. A 16-character password using full printable ASCII achieves 105 bits of entropy, placing it beyond exhaustive computational recovery.</p>
 </div>
+
+<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q6: Why should I avoid reusing passwords even if they contain high entropy?</p>
+<p style="font-size: 0.95rem;">If you reuse a 20-character impenetrable master password across multiple websites, your security is only as strong as the least secure service you use. If one low-security forum suffers a database breach and leaks your password hash, attackers use automated credential stuffing bots to test that exact password against your email, banking, and cloud storage accounts.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q7: Does this password generator support excluding ambiguous characters?</p>
+<p style="font-size: 0.95rem;">Yes. When deploying passwords into terminal shells or printed recovery sheets, visually confusing glyphs (such as uppercase <code>O</code> and digit <code>0</code>, or lowercase <code>l</code>, uppercase <code>I</code>, and digit <code>1</code>) cause frustrating human transcription errors. The generator allows you to filter ambiguous characters while maintaining high cryptographic entropy.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
+<p style="font-weight: 600; color: #fff; margin-bottom: 0.25rem;">Q8: How does multi-factor authentication (MFA) complement a strong password?</p>
+<p style="font-size: 0.95rem;">Multi-factor authentication enforces defense-in-depth by requiring two independent verification factors: something you know (your high-entropy password) and something you have (a FIDO2 hardware security key or TOTP authenticator app like Google Authenticator). Even if a password is stolen via phishing, MFA prevents unauthorized account takeover.</p>
+</div>
+
 </div>
 </div>
 </article>

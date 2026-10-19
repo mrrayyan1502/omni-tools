@@ -263,50 +263,189 @@
 </div>
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Free Markdown Editor - Write, Preview and Export with Live Rendering</h3>
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Comprehensive Guide to Markdown, CommonMark Standards &amp; AST Parsing Engines</h3>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. What is Markdown and Why Has It Taken Over Writing?</h4>
-<p style="margin-bottom: 1rem;">Markdown is a lightweight formatting language created by John Gruber in 2004 with one goal: let people write for the web using plain text that stays readable even before it is rendered. Two decades later it is the native format of GitHub, Reddit, Notion, Discord, Obsidian, Stack Overflow and virtually every developer documentation platform on earth.</p>
-<p style="margin-bottom: 1rem;">The appeal is speed and portability. Your hands never leave the keyboard to reach for formatting buttons, and the files you produce are future-proof plain text that any tool can read in fifty years. A heading is just a hash symbol, bold is double asterisks, and lists are dashes. You learn the core syntax in ten minutes and use it for the rest of your career.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The Architectural History &amp; Ascendancy of Plaintext Markdown</h4>
+<p style="margin-bottom: 1rem;">Created in 2004 by John Gruber and Aaron Swartz, Markdown was conceived with a revolutionary objective: enabling content creators and technical authors to write rich web documents using clean, human-readable plain text that remains visually elegant prior to compilation. In traditional WYSIWYG word processors and raw HTML authoring, text is obscured by verbose markup tags (such as <code>&lt;p&gt;</code>, <code>&lt;strong&gt;</code>, and <code>&lt;span style="..."&gt;</code>) or proprietary binary formats that require specialized software to view. Markdown inverted this paradigm by using natural punctuation conventions that humans already utilized in plain-text emails.</p>
+<p style="margin-bottom: 1rem;">Two decades later, Markdown has become the lingua franca of global software development, technical documentation, and publishing infrastructure. It powers repository README files on GitHub and GitLab, static site engines (Astro, Next.js, Hugo, Docusaurus), developer forums (Stack Overflow, Reddit), and second-brain knowledge management tools (Obsidian, Notion). By writing in Markdown, authors decouple pure content from visual presentation themes, guaranteeing that their technical prose remains perpetually accessible and immune to proprietary vendor lock-in.</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. How to Use This Live Editor</h4>
-<p style="margin-bottom: 1rem;">The screen is split into two panels. On the left you write raw Markdown; on the right the rendered HTML preview updates with every keystroke. There is no save button and no account: your work stays in your browser, and you can copy the finished Markdown or the rendered output whenever you are ready.</p>
-<p style="margin-bottom: 1rem;">Because everything runs client-side, the editor is ideal for sensitive drafts too. Strategy documents, unpublished blog posts, internal runbooks: none of it touches a server. For writers who draft in cafes, trains and airports, the tool also keeps working when Wi-Fi does not.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. CommonMark AST Parsing Algorithm &amp; Lexical Grammar Formula</h4>
+<p style="margin-bottom: 1rem;">Because early Markdown implementations relied upon loose regular expressions with ambiguous edge cases, the formal <strong>CommonMark Specification</strong> was established to provide a mathematically rigorous, deterministic grammar. Modern Markdown compilers operate through a two-phase Abstract Syntax Tree (AST) state machine:</p>
+
+<div style="background: rgba(0, 0, 0, 0.35); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.88rem; color: #e2e8f0; overflow-x: auto;">
+<strong>CommonMark AST Grammar &amp; Parsing Pipeline Specification:</strong><br>
+Phase 1: Block Structure Parsing (Context-Free Grammar):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Document ::= (Block)*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Block&nbsp;&nbsp;&nbsp;&nbsp;::= Heading | FencedCode | Paragraph | Blockquote | List | Table | HTMLBlock<br><br>
+Phase 2: Inline Tokenization &amp; Delimiter Matching State Machine:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inline&nbsp;&nbsp;&nbsp;::= Text | CodeSpan | Strong | Emphasis | Link | Image | LineBreak<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emphasis Flanking Rule: P_open = (c == '*') &and; (&not;is_whitespace(c_next)) &and; (&not;is_punctuation(c_next) &or; is_whitespace(c_prev))<br><br>
+AST Node Construction Pipeline:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Raw Markdown &rarr; Character Stream &rarr; Block Scanner &rarr; Line AST &rarr; Inline Scanner &rarr; HTML String
 </div>
+
+<p style="margin-bottom: 1rem;">During block-level parsing, the compiler establishes parent-child tree relationships (such as nesting a list item inside a blockquote). Subsequently, the inline token scanner resolves delimiter runs (e.g., distinguishing between multiplication symbols and italic asterisks) using delimiter stack algorithms before rendering clean, semantic HTML5 markup.</p>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. The Markdown Syntax Cheatsheet You Will Actually Use</h4>
-<p style="margin-bottom: 1rem;">Headings are hashes from # for H1 to ###### for H6. Emphasis uses *italic* and **bold** markers. Links wrap text in square brackets followed by the URL in parentheses, and images are the same with a leading exclamation mark. Unordered lists use dashes, ordered lists use numbers, and task lists use - [ ] checkboxes that GitHub renders interactively.</p>
-<p style="margin-bottom: 1rem;">Code is where Markdown shines for technical writers. Inline code sits between single backticks, while fenced blocks use triple backticks with an optional language name for syntax highlighting, such as ```python. Blockquotes start with a greater-than sign, tables use pipes and dashes, and a horizontal rule is three hyphens on their own line. Mastering this dozen constructs covers ninety-five percent of real documents.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Markdown &amp; GitHub Flavored Markdown (GFM) Syntax Reference</h4>
+<p style="margin-bottom: 1rem;">The following reference table outlines canonical CommonMark and GFM syntax constructs, showing their raw syntax, generated HTML elements, and behavioral rendering rules:</p>
+
+<div style="overflow-x: auto; margin: 1.5rem 0;">
+<table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<thead>
+<tr style="background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--border-color); color: #fff;">
+<th style="padding: 0.75rem 1rem;">Syntactic Element</th>
+<th style="padding: 0.75rem 1rem;">Markdown Source Syntax</th>
+<th style="padding: 0.75rem 1rem;">Compiled HTML5 Tag</th>
+<th style="padding: 0.75rem 1rem;">Visual Rendering Behavior</th>
+<th style="padding: 0.75rem 1rem;">Parser Rules &amp; Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Section Heading (H1–H6)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;"># H1 to ###### H6</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;h1&gt; to &lt;h6&gt;</td>
+<td style="padding: 0.75rem 1rem;">Large bold section headers</td>
+<td style="padding: 0.75rem 1rem;">Requires space between # and text</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Emphasis (Italics)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">*italic* or _italic_</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;em&gt;italic&lt;/em&gt;</td>
+<td style="padding: 0.75rem 1rem;">Oblique / slanted font style</td>
+<td style="padding: 0.75rem 1rem;">No whitespace inside flanking delimiters</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Strong Importance (Bold)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">**bold** or __bold__</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;strong&gt;bold&lt;/strong&gt;</td>
+<td style="padding: 0.75rem 1rem;">High-weight bold typography</td>
+<td style="padding: 0.75rem 1rem;">Double asterisks preferred over underscores</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Inline Code Snippet</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">`const x = 10;`</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;code&gt;...&lt;/code&gt;</td>
+<td style="padding: 0.75rem 1rem;">Monospace chip with background</td>
+<td style="padding: 0.75rem 1rem;">Escapes literal HTML characters automatically</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Fenced Code Block</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">```json ... ```</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;pre&gt;&lt;code class="lang"&gt;</td>
+<td style="padding: 0.75rem 1rem;">Multi-line block with syntax colors</td>
+<td style="padding: 0.75rem 1rem;">Supports language hint for highlighter integration</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Hyperlink</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">[Anchor](https://...)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;a href="..."&gt;Anchor&lt;/a&gt;</td>
+<td style="padding: 0.75rem 1rem;">Underlined interactive anchor link</td>
+<td style="padding: 0.75rem 1rem;">Supports optional tooltip title parameter</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Image Embed</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">![Alt text](image.png)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;img src="..." alt="..."&gt;</td>
+<td style="padding: 0.75rem 1rem;">Inline responsive image</td>
+<td style="padding: 0.75rem 1rem;">Exclamation mark preceding standard link syntax</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Blockquote</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&gt; Quoted text block</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;blockquote&gt;&lt;p&gt;...&lt;/p&gt;&lt;/blockquote&gt;</td>
+<td style="padding: 0.75rem 1rem;">Indented panel with vertical border</td>
+<td style="padding: 0.75rem 1rem;">Can be nested arbitrarily using &gt;&gt;</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">GFM Task List</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">- [x] Done - [ ] Pending</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;input type="checkbox"&gt;</td>
+<td style="padding: 0.75rem 1rem;">Interactive checklist item</td>
+<td style="padding: 0.75rem 1rem;">GFM extension; space inside brackets = unchecked</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">GFM Data Table</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">| Col1 | Col2 | \n | --- | --- |</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">&lt;table&gt;&lt;thead&gt;&lt;tbody&gt;</td>
+<td style="padding: 0.75rem 1rem;">Tabular data grid</td>
+<td style="padding: 0.75rem 1rem;">Delimiter dashes determine column alignment (:---:)</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Workflows This Editor Supports</h4>
-<p style="margin-bottom: 1rem;">Developers draft README files here before pushing them to GitHub, checking that badges, tables of contents and code samples render correctly. Technical writers preview documentation before committing it to a docs-as-code pipeline. Bloggers draft posts in clean Markdown and paste them straight into Ghost, WordPress or static site generators like Hugo and Astro.</p>
-<p style="margin-bottom: 1rem;">Students and researchers use Markdown to keep notes in a format that converts cleanly to PDF, Word or slides via Pandoc. Product managers write specs that engineers can actually read in the repository. Whatever your role, a fast live preview removes the render-commit-check cycle and lets you focus on the words themselves.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Developer &amp; Technical Author Scenarios</h4>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario A: Docs-as-Code Automated Static Site Pipelines</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">In enterprise software organizations, engineering teams write technical product manuals and developer API documentation directly in Markdown within their Git repositories. During CI/CD pipelines, tools like Astro, Hugo, or Docusaurus ingest these raw <code>.md</code> files, parse frontmatter YAML metadata, compile Markdown AST nodes into HTML, and deploy static documentation to global CDNs. Our live editor allows authors to draft and visually verify complex formatting—such as nested tables, code fences, and callout blocks—before submitting pull requests.</p>
 </div>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario B: Client-Side XSS Sanitization in Community Commenting Systems</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">When web platforms permit users to submit comments or bug tickets in Markdown, malicious actors frequently attempt Cross-Site Scripting (XSS) attacks by injecting malicious HTML scripts (e.g., <code>&lt;script&gt;stealTokens()&lt;/script&gt;</code> or <code>&lt;img src="x" onerror="maliciousCode()"&gt;</code>). Senior developers pair client-side Markdown compilers with sanitization libraries like DOMPurify. Our editor processes and renders HTML safely within isolated sandbox constraints, demonstrating secure preview patterns for production web applications.</p>
+</div>
+</div>
+
+<div style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border: 1px solid rgba(37,99,235,0.3); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="file-text" style="width: 18px; height: 18px; color: var(--accent);"></i> Recommended Developer Resource: Technical Writing &amp; Parsing Suite
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #cbd5e1;">Pair your Markdown authoring workflow with companion developer tools: verify regex extraction patterns with <a href="/regex-tester/" style="color: var(--accent); text-decoration: underline;">Regular Expression Tester</a>, audit word density and reading time in <a href="/word-counter/" style="color: var(--accent); text-decoration: underline;">Free Word Counter</a>, and format database queries with <a href="/sql-formatter/" style="color: var(--accent); text-decoration: underline;">SQL Formatter</a>.</p>
+</div>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions (FAQ)</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Does this editor support GitHub Flavoured Markdown?</h4>
-<p style="font-size: 0.95rem;">Yes. The live preview handles the extensions GitHub popularised, including tables, task lists, strikethrough and fenced code blocks with language hints. What you see here is very close to what GitHub will render in your README, issues and pull requests.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: What is the difference between standard Markdown and CommonMark?</h4>
+<p style="font-size: 0.95rem;">Original 2004 Markdown lacked a formal grammar specification, causing different compilers (PHP Markdown, Python-Markdown, Discount) to render identical text inconsistently. CommonMark was created by an industry consortium to establish a rigorous, unambiguous specification with comprehensive test suites, ensuring 100% deterministic parsing across all languages.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Is my writing saved or uploaded to a server?</h4>
-<p style="font-size: 0.95rem;">No. Everything you type stays inside your browser. The preview is generated locally with JavaScript and nothing is transmitted, logged or stored on any server. Close the tab and the text is gone unless you copied it, which is exactly the privacy guarantee many writers want for unpublished drafts.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q2: Does this editor support GitHub Flavored Markdown (GFM) extensions?</h4>
+<p style="font-size: 0.95rem;">Yes. The live editor supports primary GFM extensions including pipe tables, interactive task lists (<code>- [ ]</code> and <code>- [x]</code>), strikethrough (<code>~~text~~</code>), automatic URL autolinking, and fenced code blocks with language identifiers.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Can I export my document as HTML?</h4>
-<p style="font-size: 0.95rem;">Yes. The rendered preview panel shows the final formatted output, and you can copy the generated HTML for use in a CMS, email template or static site. The raw Markdown copies just as easily for pasting into GitHub, Notion or your favourite docs tool.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q3: Are my confidential document drafts or notes uploaded to a remote server?</h4>
+<p style="font-size: 0.95rem;">No. OmniTools Markdown Editor processes text 100% locally in your web browser via client-side JavaScript. Your text never leaves your device, is never transmitted across the network, and is never cached on external servers—making it safe for proprietary enterprise documentation and unpublished drafts.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Why does my table not render correctly?</h4>
-<p style="font-size: 0.95rem;">Markdown tables are strict about structure. The header row must be followed by a separator row of dashes, such as | --- | --- |, and every row needs the same number of pipe separators. Check that your separator row exists and that no cell contains an unescaped pipe character.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q4: How do I create a table with right-aligned or centered text in Markdown?</h4>
+<p style="font-size: 0.95rem;">Column alignment is controlled by colons in the table separator row: <code>| :--- |</code> creates left alignment (default), <code>| :---: |</code> creates center alignment, and <code>| ---: |</code> forces numeric right alignment.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: What is the difference between Markdown and HTML?</h4>
-<p style="font-size: 0.95rem;">HTML is the full markup language of the web, powerful but verbose. Markdown is a shorthand for the most common formatting needs, designed to be readable as plain text. Markdown converts to HTML automatically, and most Markdown processors let you mix in raw HTML when you need something the shorthand cannot express.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q5: Can I include raw HTML tags inside my Markdown document?</h4>
+<p style="font-size: 0.95rem;">Yes. The Markdown specification explicitly allows raw HTML tags (e.g., <code>&lt;kbd&gt;</code>, <code>&lt;details&gt;</code>, <code>&lt;summary&gt;</code>) for features that pure Markdown shorthand does not natively support.</p>
 </div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q6: How do I force a line break without creating a new paragraph?</h4>
+<p style="font-size: 0.95rem;">In standard CommonMark, end a line with two trailing spaces followed by a carriage return, or insert an explicit HTML <code>&lt;br&gt;</code> tag. A single standard enter stroke will continue rendering text on the same line according to standard HTML whitespace collapsing rules.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q7: Can I export rendered HTML directly to clipboard?</h4>
+<p style="font-size: 0.95rem;">Yes. You can select and copy the compiled HTML markup directly from the live preview panel for immediate pasting into Content Management Systems (WordPress, Ghost), web emails, or static templates.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q8: Does this Markdown editor work offline without an active internet connection?</h4>
+<p style="font-size: 0.95rem;">Yes. Once the web page assets are cached by your browser, the entire rendering pipeline operates without network connectivity, allowing uninterrupted writing on flights, trains, or in low-connectivity environments.</p>
+</div>
+
 </div>
 </div>
 </article>
