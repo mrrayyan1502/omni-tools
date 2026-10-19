@@ -297,50 +297,191 @@
 </div>
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">CSS Box Shadow Generator - A Visual Guide to Depth and Elevation</h3>
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Comprehensive Guide to CSS Box-Shadow, Depth Hierarchies &amp; GPU Rendering</h3>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. What Box Shadows Do for Your Design</h4>
-<p style="margin-bottom: 1rem;">The box-shadow property is how flat web pages gain physical depth. A well-crafted shadow tells the user which elements float above others, what is clickable, and where the interface hierarchy lives. Google Material Design built an entire visual language on this idea, mapping elevation levels to shadow recipes so users intuitively understand that a raised card sits above the surface beneath it.</p>
-<p style="margin-bottom: 1rem;">The syntax packs six values into one line: horizontal offset, vertical offset, blur radius, spread radius, colour, and an optional inset keyword. Each value controls a distinct aspect of the shadow character, and the generator above gives each one a dedicated slider so you can watch the effect of every adjustment live instead of guessing numbers in a stylesheet.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The Physics and Visual Semiotics of Box Shadows</h4>
+<p style="margin-bottom: 1rem;">In two-dimensional graphical user interfaces, the <code>box-shadow</code> CSS property is the primary mechanism for simulating three-dimensional spatial elevation along the virtual Z-axis. By casting simulated shadows onto the canvas, digital interfaces emulate physical lighting environments, immediately communicating to users which surfaces are stationary, which cards are interactive, and which modals occupy higher operational planes. Systems like Google Material Design and Apple macOS Human Interface Guidelines rely upon elevation tokens to establish clear tactile hierarchies without relying on heavy graphical skeuomorphism.</p>
+<p style="margin-bottom: 1rem;">In physical reality, light rarely emanates from a single infinitesimal pinpoint; ambient light bounces off nearby walls, desks, and atmospheric particles. Consequently, a realistic physical object produces two distinct shadow components: a crisp, dark <em>contact shadow</em> (ambient occlusion) hugging the base of the object, and a soft, dispersed <em>key shadow</em> extending along the primary light path. Mastering modern CSS involves understanding how to layer multiple box-shadow declarations to reproduce these natural physical phenomena in browser compositing engines.</p>
 </div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. How to Build a Shadow with This Generator</h4>
-<p style="margin-bottom: 1rem;">Start with the preview element and adjust the vertical offset first; most natural shadows fall downward because real light comes from above. Then raise the blur radius until the edge softens to taste. Add a small negative spread to keep the shadow tighter than the element, and finish by tuning the colour. Professionals rarely use pure black; a dark shade of your background hue looks dramatically more natural.</p>
-<p style="margin-bottom: 1rem;">When the preview matches your vision, copy the generated CSS declaration and paste it directly into your stylesheet. The output is standards-compliant CSS that works in every modern browser without vendor prefixes, and because the tool runs locally, you can experiment through dozens of iterations in seconds.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. Mathematical Model &amp; Box-Shadow Syntax Breakdown</h4>
+<p style="margin-bottom: 1rem;">Under the W3C CSS Backgrounds and Borders Module Level 3 specification, a box-shadow declaration accepts up to six parameters. The rendering pipeline evaluates the shadow geometry before passing rasterized vectors through a two-dimensional Gaussian blur convolution kernel:</p>
+
+<div style="background: rgba(0, 0, 0, 0.35); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.88rem; color: #e2e8f0; overflow-x: auto;">
+<strong>CSS Box-Shadow Grammar &amp; Gaussian Convolution Formula:</strong><br>
+Syntax: box-shadow: [inset] &lt;offset-x&gt; &lt;offset-y&gt; &lt;blur-radius&gt; &lt;spread-radius&gt; &lt;color&gt;;<br><br>
+Gaussian Blur Kernel (Continuous Domain):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G(x, y) = (1 / (2 * &pi; * &sigma;^2)) * e^(- (x^2 + y^2) / (2 * &sigma;^2))<br><br>
+Where &sigma; (standard deviation) is proportional to the CSS &lt;blur-radius&gt; (&sigma; &approx; blur / 2).<br>
+Multi-Layer Realistic Elevation Formula:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shadow_Total = Shadow_Contact(0, 1px, 2px, 0px, &alpha;_1) + Shadow_Key(0, E, 2E, -E/2, &alpha;_2)
 </div>
+
+<p style="margin-bottom: 1rem;">Here, <strong>offset-x</strong> and <strong>offset-y</strong> dictate the angle of virtual illumination. <strong>blur-radius</strong> governs the standard deviation (&sigma;) of the Gaussian blur algorithm: a blur radius of <code>0px</code> produces a razor-sharp vector silhouette, while higher values smoothly dissipate alpha across adjacent pixels. The <strong>spread-radius</strong> parameter expands or contracts the underlying bounding shape prior to the Gaussian convolution: negative spread prevents unsightly "dirty halo" effects around floating cards.</p>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. The Layering Secret Behind Premium Shadows</h4>
-<p style="margin-bottom: 1rem;">One shadow looks flat; layered shadows look real. Real-world shadows have two components: a soft, large ambient shadow and a tighter, darker contact shadow near the object. CSS supports comma-separated multiple shadows on a single element, so a professional card might combine 0 2px 4px rgba(0,0,0,0.1) for contact with 0 16px 40px rgba(0,0,0,0.08) for ambience.</p>
-<p style="margin-bottom: 1rem;">This generator lets you build and preview layered shadows together, which is where truly premium interfaces come from. Study the sites you admire: Stripe, Linear and Apple all use two to four stacked shadows per elevated element, each subtle on its own, combining into depth that feels photographic rather than digital.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Standard UI Elevation Levels &amp; Multi-Layer Recipe Matrix</h4>
+<p style="margin-bottom: 1rem;">The following reference table details industry-standard elevation levels, multi-layered CSS shadow recipes, physical z-index semantics, and GPU compositing performance costs:</p>
+
+<div style="overflow-x: auto; margin: 1.5rem 0;">
+<table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<thead>
+<tr style="background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--border-color); color: #fff;">
+<th style="padding: 0.75rem 1rem;">Elevation Level</th>
+<th style="padding: 0.75rem 1rem;">UI Component Use Case</th>
+<th style="padding: 0.75rem 1rem;">Multi-Layer CSS Recipe</th>
+<th style="padding: 0.75rem 1rem;">Apparent Depth</th>
+<th style="padding: 0.75rem 1rem;">Light Source Angle</th>
+<th style="padding: 0.75rem 1rem;">GPU Repaint Cost</th>
+<th style="padding: 0.75rem 1rem;">Recommended Element</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Elevation 0 (Flat)</td>
+<td style="padding: 0.75rem 1rem;">Base Canvas / Background</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">box-shadow: none;</td>
+<td style="padding: 0.75rem 1rem;">0 mm (Flush)</td>
+<td style="padding: 0.75rem 1rem;">Ambient diffuse</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Negligible (0 ms)</td>
+<td style="padding: 0.75rem 1rem;">Body, static wrapper</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Elevation 1 (Subtle)</td>
+<td style="padding: 0.75rem 1rem;">Resting Cards &amp; Data Tiles</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04)</td>
+<td style="padding: 1px 1rem;">1 mm (Resting)</td>
+<td style="padding: 0.75rem 1rem;">Top-down (90&deg;)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Very Low (&lt;0.2 ms)</td>
+<td style="padding: 0.75rem 1rem;">Dashboard cards, list items</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Elevation 2 (Floating)</td>
+<td style="padding: 0.75rem 1rem;">Dropdown Menus &amp; Popovers</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)</td>
+<td style="padding: 0.75rem 1rem;">3 mm (Raised)</td>
+<td style="padding: 0.75rem 1rem;">Top-down (85&deg;)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Low (&lt;0.5 ms)</td>
+<td style="padding: 0.75rem 1rem;">Select menus, auto-completes</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Elevation 3 (Sticky)</td>
+<td style="padding: 0.75rem 1rem;">Sticky Navigation &amp; App Bars</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)</td>
+<td style="padding: 0.75rem 1rem;">6 mm (Suspended)</td>
+<td style="padding: 0.75rem 1rem;">Direct overhead</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate (composited layer)</td>
+<td style="padding: 0.75rem 1rem;">Fixed header on scroll</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Elevation 4 (Interactive)</td>
+<td style="padding: 0.75rem 1rem;">Hovered Cards &amp; Drag Items</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)</td>
+<td style="padding: 0.75rem 1rem;">10 mm (Hover)</td>
+<td style="padding: 0.75rem 1rem;">Subtle top-front</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate (animate via opacity)</td>
+<td style="padding: 0.75rem 1rem;">Hovered pricing cards</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Elevation 5 (Overlay)</td>
+<td style="padding: 0.75rem 1rem;">Modal Dialogs &amp; Lightboxes</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 25px 50px -12px rgba(0,0,0,0.25)</td>
+<td style="padding: 0.75rem 1rem;">24 mm (Prominent)</td>
+<td style="padding: 0.75rem 1rem;">Direct center-top</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate (dedicated render pass)</td>
+<td style="padding: 0.75rem 1rem;">Confirmation modals, alert sheets</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Elevation 6 (Floating)</td>
+<td style="padding: 0.75rem 1rem;">Floating Action Buttons (FAB)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 12px 28px rgba(0,0,0,0.28), 0 8px 10px rgba(0,0,0,0.22)</td>
+<td style="padding: 0.75rem 1rem;">16 mm (Independent)</td>
+<td style="padding: 0.75rem 1rem;">Perpendicular overhead</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Low (fixed positioning)</td>
+<td style="padding: 0.75rem 1rem;">Chat triggers, quick-add FAB</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Inset (Recessed)</td>
+<td style="padding: 0.75rem 1rem;">Pressed Buttons &amp; Text Inputs</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">inset 0 2px 4px rgba(0,0,0,0.15)</td>
+<td style="padding: 0.75rem 1rem;">-2 mm (Sunken)</td>
+<td style="padding: 0.75rem 1rem;">Internal top edge</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Low</td>
+<td style="padding: 0.75rem 1rem;">Text inputs, active toggle switches</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Common Shadow Mistakes and Performance Tips</h4>
-<p style="margin-bottom: 1rem;">The most common mistake is overdoing it: heavy, dark shadows on every element make interfaces feel muddy and dated. Shadows should whisper, not shout. Reserve strong elevation for modals and floating action buttons, keep cards gentle, and increase shadow intensity on hover to reward interaction rather than demanding attention permanently.</p>
-<p style="margin-bottom: 1rem;">On performance, large blur radii are the expensive part because the browser must calculate soft edges pixel by pixel. Animating box-shadow directly can trigger costly repaints on weaker devices; a smoother technique is animating opacity on a pseudo-element holding the final shadow. Inset shadows, meanwhile, are perfect for pressed states and input fields, giving the illusion of elements recessed into the surface.</p>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Developer &amp; Designer Scenarios</h4>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario A: Achieving 60 FPS Smooth Card Animations via Pseudo-Elements</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">Directly transitioning the <code>box-shadow</code> CSS property (e.g., <code>transition: box-shadow 0.3s ease</code>) forces the browser CPU/GPU to recalculate the Gaussian blur convolution kernel on every frame. On low-powered smartphones, this induces frame drops and jank. Senior front-end engineers resolve this by attaching the elevated shadow recipe to an absolutely positioned <code>::after</code> pseudo-element with <code>opacity: 0</code>. On card hover, they simply animate <code>opacity: 1</code> on the pseudo-element and apply a subtle <code>transform: translateY(-4px)</code>. Because opacity and transforms are handled exclusively on the GPU compositor thread, the card lifts smoothly at a locked 60 frames per second.</p>
 </div>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario B: Dark-Mode Elevation Engineering (Surface Luminance vs. Black Shadows)</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">In true dark-mode interfaces with deep obsidian backgrounds (e.g., <code>#0f172a</code> or <code>#000000</code>), standard black drop shadows (<code>rgba(0,0,0,0.5)</code>) are completely invisible because the surface beneath is already pitch black. Rather than relying purely on dark shadows, developers combine a subtle outer glow (e.g., <code>box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 25px -5px rgba(0,0,0,0.8)</code>) with progressive surface lightening. As elements elevate closer to the virtual viewer in dark mode, their background surface color lightens by 3% to 8%, mimicking physical light bounce.</p>
+</div>
+</div>
+
+<div style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border: 1px solid rgba(37,99,235,0.3); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="layers" style="width: 18px; height: 18px; color: var(--accent);"></i> Recommended Designer Resource: High-Performance CSS Styling Suite
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #cbd5e1;">Combine your custom box-shadow elevations with our <a href="/css-glassmorphism-generator/" style="color: var(--accent); text-decoration: underline;">CSS Glassmorphism Generator</a> and <a href="/color-palette-generator/" style="color: var(--accent); text-decoration: underline;">Color Palette &amp; Contrast Checker</a> to build accessible, hardware-accelerated design tokens for modern web and mobile applications.</p>
+</div>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions (FAQ)</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: What do the six box-shadow values mean?</h4>
-<p style="font-size: 0.95rem;">In order: horizontal offset moves the shadow left or right; vertical offset moves it up or down; blur radius softens the edges, with zero giving a hard edge; spread radius grows or shrinks the shadow before blurring; colour sets the shade, ideally with alpha transparency; and the optional inset keyword draws the shadow inside the element for a pressed, recessed look.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: What is the exact purpose of the spread-radius parameter?</h4>
+<p style="font-size: 0.95rem;">The spread radius expands (positive value) or shrinks (negative value) the base shadow perimeter before the blur radius is applied. Negative spread is crucial in professional UI design because it pulls the shadow edges inwards, preventing the shadow from bleeding unnaturally around the sides of an element and focusing the blur directly beneath the bottom edge.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Should I use black shadows or coloured shadows?</h4>
-<p style="font-size: 0.95rem;">Almost never pure black. Real shadows borrow colour from their environment, so a shadow tinted with your background hue, such as a deep navy on a light blue page, looks richer and more cohesive. Using rgba or hsla colour with ten to twenty percent opacity keeps shadows subtle and lets the underlying design show through naturally.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q2: Why should designers avoid pure black (rgba(0,0,0,1)) shadows?</h4>
+<p style="font-size: 0.95rem;">In the physical world, shadows are translucent optical effects created by partial light occlusion; they inherit ambient chromatic reflections from surrounding surfaces. Pure opaque black creates harsh, synthetic edges that look outdated. Tinting shadows with low-alpha black (e.g., <code>rgba(0,0,0,0.08)</code>) or sampling the background hue creates a natural, modern aesthetic.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Can I apply multiple shadows to one element?</h4>
-<p style="font-size: 0.95rem;">Yes, and you should. Separate each shadow with a comma inside the same box-shadow declaration. A tight, darker contact shadow combined with a large, soft ambient shadow produces the realistic elevation seen on premium sites. Shadows listed first render on top of later ones.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q3: How does CSS render inset shadows differently from drop shadows?</h4>
+<p style="font-size: 0.95rem;">When the <code>inset</code> keyword is specified, the shadow renders inside the element's border box, clipped to the inner perimeter. This creates the visual illusion of recess, depth, or depression—making it ideal for pressed button states, inset search input fields, and sunken toggle tracks.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Why does my shadow look different on mobile?</h4>
-<p style="font-size: 0.95rem;">Screen pixel density and rendering engines differ slightly across devices, but the more common culprit is contrast: shadows visible on a bright desktop monitor can vanish on a dim phone screen in sunlight. Test on real devices, increase opacity slightly for mobile if needed, and avoid relying on shadow alone to communicate critical hierarchy.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q4: Does box-shadow impact browser layout reflows (paint vs. layout)?</h4>
+<p style="font-size: 0.95rem;">No. Modifying <code>box-shadow</code> triggers only repainting and composite layers; it does not alter the geometric layout flow of adjacent DOM elements (unlike changes to margin, padding, or border-width). However, repainting large blur radii across dozens of elements simultaneously can strain CPU/GPU fill rates.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Do box shadows slow down my website?</h4>
-<p style="font-size: 0.95rem;">Static shadows have negligible cost on modern browsers. Performance issues arise when animating shadows with large blur radii on many elements simultaneously, which forces expensive repaints. For animations, transition a pre-rendered pseudo-element shadow instead of the box-shadow property itself, and keep blur radii modest on low-end devices.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q5: Can I apply multiple stacked shadows to a single HTML element?</h4>
+<p style="font-size: 0.95rem;">Yes. CSS allows you to declare multiple comma-separated shadows on a single <code>box-shadow</code> property. Shadows listed first in the declaration render visually on top of subsequent shadows. High-end sites stack 2 to 4 layers to combine tight contact shadows with wide ambient dispersal.</p>
 </div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q6: How does border-radius interact with box-shadow?</h4>
+<p style="font-size: 0.95rem;">The box-shadow perimeter precisely mirrors the element's <code>border-radius</code> curve. If an element has <code>border-radius: 16px</code>, the resulting shadow conforms to that exact 16px curvature before Gaussian blurring, ensuring organic, cohesive corner transitions.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q7: What is the difference between box-shadow and filter: drop-shadow()?</h4>
+<p style="font-size: 0.95rem;"><code>box-shadow</code> creates a rectangular or border-radius-conforming shadow around the HTML bounding box, ignoring internal transparency. In contrast, CSS <code>filter: drop-shadow()</code> analyzes alpha channels, casting an organic shadow conforming to transparent PNGs, SVG icons, and clipped polygons.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q8: Are vendor prefixes (-webkit-box-shadow) still required?</h4>
+<p style="font-size: 0.95rem;">No. Standard <code>box-shadow</code> has been universally supported across all major evergreen desktop and mobile browsers (Chrome, Safari, Firefox, Edge, iOS Safari, Chrome Android) for well over a decade. Vendor prefixes are completely unnecessary in modern web production.</p>
+</div>
+
 </div>
 </div>
 </article>

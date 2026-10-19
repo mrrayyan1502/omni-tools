@@ -302,35 +302,205 @@
 </div>
 </div>
 <!-- SEO Guide / Informational Content -->
-<article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted);">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Glassmorphism &amp; Modern CSS UI Design Guide</h3>
+<article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
+<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Comprehensive Guide to CSS Glassmorphism, Backdrop Filters &amp; Optical UI Physics</h3>
+
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The Rise of Glassmorphism in Modern Web UI</h4>
-<p style="margin-bottom: 1rem;">Glassmorphism is a leading UI design trend characterized by semi-transparent backgrounds, subtle light borders, and heavily blurred backdrops. It mimics the aesthetic of frosted glass, establishing a strong sense of vertical depth and visual hierarchy. Major tech ecosystems (like Apple's macOS and iOS) utilize this design language to create elegant, premium, and airy user interfaces.</p>
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. Mastering CSS Backdrop Filters</h4>
-<p style="margin-bottom: 1rem;">The core CSS property powering this effect is `backdrop-filter: blur(px)`. Unlike the standard `filter` property which blurs the element itself, `backdrop-filter` exclusively blurs the content residing *behind* the transparent element. When combined with an RGBA background color containing low opacity (e.g., `rgba(255, 255, 255, 0.1)`) and a delicate semi-transparent border, it creates a pristine frosted glass illusion.</p>
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Best Practices for Accessibility and Performance</h4>
-<ul style="margin-left: 1.5rem; margin-bottom: 1rem; list-style-type: decimal;">
-<li style="margin-bottom: 0.25rem;"><strong>Contrast Ratios:</strong> Always verify that text placed over a glass card maintains a 4.5:1 WCAG contrast ratio against the dynamically changing background elements.</li>
-<li style="margin-bottom: 0.25rem;"><strong>Hardware Acceleration:</strong> Extensive use of backdrop filters can cause layout lag on low-end mobile devices. Use them sparingly on primary hero elements or navigation bars rather than massive background layers.</li>
-<li style="margin-bottom: 0.25rem;"><strong>Fallback Properties:</strong> Always provide a solid fallback background color for older browsers that do not support the webkit backdrop-filter property.</li>
-</ul>
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The Evolution &amp; Aesthetic Physics of Glassmorphism</h4>
+<p style="margin-bottom: 1rem;">Glassmorphism represents one of the most enduring design evolutions in contemporary graphical user interface engineering. Popularized across Apple macOS Sonoma/iOS, Microsoft Fluent Design System (Acrylic Material), and modern progressive web apps, the aesthetic emulates translucent frosted glass floating in physical space. Unlike primitive flat design or heavy skeuomorphic textures, glassmorphism preserves contextual situational awareness: users can observe colorful background media, charts, and navigational topography continuing underneath floating panels while interacting cleanly with foreground data.</p>
+<p style="margin-bottom: 1rem;">The optical credibility of a glassmorphic element relies upon three interconnected physical phenomena: <strong>surface translucency</strong> (partial transmission of light photons through an alpha-blended substrate), <strong>sub-surface scattering</strong> (diffuse Gaussian scattering of background pixels), and <strong>specular edge reflection</strong> (a delicate, high-luminance single-pixel highlight representing the internal refraction of ambient light along polished glass bevels). Omission of any one of these three physical cues degrades the illusion from organic glass into muddy, unreadable semi-opaque plastic.</p>
 </div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. Mathematical Model &amp; Alpha Blending Formula</h4>
+<p style="margin-bottom: 1rem;">From a computer graphics and GPU pipeline perspective, glassmorphic rendering relies upon the Porter-Duff source-over alpha compositing equation coupled with a real-time 2D spatial convolution filter executed over the pre-composited backdrop surface:</p>
+
+<div style="background: rgba(0, 0, 0, 0.35); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.88rem; color: #e2e8f0; overflow-x: auto;">
+<strong>Backdrop-Filter Optical Algorithm &amp; Alpha Blending Formula:</strong><br>
+Step 1: Porter-Duff Alpha Compositing Equation:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C_out = &alpha;_src * C_src + (1 - &alpha;_src) * C_backdrop<br>
+Step 2: Continuous 2D Spatial Backdrop Convolution (Gaussian Kernel):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_blur(x, y) = &iint; I_backdrop(u, v) * [1 / (2 * &pi; * &sigma;^2)] * e^(- ((x-u)^2 + (y-v)^2) / (2 * &sigma;^2)) du dv<br>
+Step 3: Specular Edge Refraction Boundary Model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Border_Specular = 1px solid rgba(255, 255, 255, &alpha;_edge)&nbsp;&nbsp;&nbsp;&nbsp;[where 0.10 &le; &alpha;_edge &le; 0.25]<br>
+Step 4: Composite Ambient Elevation Occlusion:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Elevation_Shadow = box-shadow: 0 8px 32px 0 rgba(0, 0, 0, &alpha;_shadow);
+</div>
+
+<p style="margin-bottom: 1rem;">In modern CSS implementations, the declaration <code>backdrop-filter: blur(12px)</code> directs the browser's compositing engine (such as Chromium Skia or Apple Core Animation) to snapshot the canvas pixels directly beneath the element's bounding box, isolate them into an offscreen render target, execute a multi-pass Gaussian blur shader, and finally blend the semi-transparent foreground background color over the blurred bitmap before rendering text and child nodes.</p>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Glassmorphic Style Presets &amp; Optical Parameters Matrix</h4>
+<p style="margin-bottom: 1rem;">The following reference table catalogs 8 production-tested glassmorphism design presets, specifying their exact CSS token values, WCAG text contrast viability, and GPU hardware consumption:</p>
+
+<div style="overflow-x: auto; margin: 1.5rem 0;">
+<table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+<thead>
+<tr style="background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--border-color); color: #fff;">
+<th style="padding: 0.75rem 1rem;">Preset Style Name</th>
+<th style="padding: 0.75rem 1rem;">Background RGBA</th>
+<th style="padding: 0.75rem 1rem;">Backdrop Blur</th>
+<th style="padding: 0.75rem 1rem;">Specular Border</th>
+<th style="padding: 0.75rem 1rem;">Elevation Shadow</th>
+<th style="padding: 0.75rem 1rem;">WCAG Contrast</th>
+<th style="padding: 0.75rem 1rem;">GPU Fill Cost</th>
+<th style="padding: 0.75rem 1rem;">Target Component</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">macOS Aero Frost</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(255,255,255,0.20)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(16px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(255,255,255,0.25)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 8px 32px rgba(0,0,0,0.12)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">AA Compliant (4.8:1)</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate</td>
+<td style="padding: 0.75rem 1rem;">Navigation bars, sidebars</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">iOS Obsidian Glass</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(15,23,42,0.65)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(20px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(255,255,255,0.10)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 20px 40px rgba(0,0,0,0.40)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">AAA Compliant (8.2:1)</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate</td>
+<td style="padding: 0.75rem 1rem;">Dark mode modals, sheets</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Cyberpunk Neon Ice</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(13,17,23,0.40)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(12px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(0,242,254,0.35)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 0 20px rgba(0,242,254,0.20)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">AA Compliant (5.1:1)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Low</td>
+<td style="padding: 0.75rem 1rem;">Gaming HUD, crypto tiles</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Minimalist Studio Ice</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(255,255,255,0.12)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(8px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(255,255,255,0.18)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 4px 16px rgba(0,0,0,0.06)</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Requires Dark Text</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Very Low</td>
+<td style="padding: 0.75rem 1rem;">SaaS dashboard metric cards</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">High-Contrast Accessible</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(10,12,20,0.85)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(24px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(255,255,255,0.25)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 12px 32px rgba(0,0,0,0.50)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">AAA Compliant (11.4:1)</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Moderate</td>
+<td style="padding: 0.75rem 1rem;">EAA compliant public portals</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Liquid Crystal Acrylic</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(240,249,255,0.28)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(30px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(255,255,255,0.40)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 10px 30px rgba(37,99,235,0.15)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">AA Compliant (4.6:1)</td>
+<td style="padding: 0.75rem 1rem; color: #ef4444;">High (Heavy Blur)</td>
+<td style="padding: 0.75rem 1rem;">Hero promotional cards</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border-color);">
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Velvet Midnight Glass</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(30,27,75,0.50)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(14px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(167,139,250,0.25)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 16px 36px rgba(15,23,42,0.60)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">AAA Compliant (7.8:1)</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Low</td>
+<td style="padding: 0.75rem 1rem;">Media player controllers</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem 1rem; font-weight: 600; color: #fff;">Holographic Prism Glass</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">rgba(255,255,255,0.08)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">blur(10px)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">1px solid rgba(236,72,153,0.30)</td>
+<td style="padding: 0.75rem 1rem; font-family: monospace;">0 8px 24px rgba(236,72,153,0.15)</td>
+<td style="padding: 0.75rem 1rem; color: #f59e0b;">Context Dependent</td>
+<td style="padding: 0.75rem 1rem; color: #10b981;">Low</td>
+<td style="padding: 0.75rem 1rem;">Creative portfolio highlights</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Developer &amp; Designer Scenarios</h4>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario A: Sticky Header with Dynamic Backdrop Scroll Awareness</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">When building fixed navigation headers across dynamic SaaS marketing sites, content scrolling beneath the header frequently causes visual vibration and legibility failure. By combining <code>backdrop-filter: blur(16px)</code> with a semi-transparent base color (<code>rgba(11, 13, 25, 0.75)</code>) and a 1px bottom border (<code>border-bottom: 1px solid rgba(255, 255, 255, 0.1)</code>), complex text and images scrolling beneath are softly blurred into a homogeneous chromatic underlay. Navigation links, search inputs, and CTA buttons remain crisp and effortlessly legible under WCAG 2.1 Level AA standards.</p>
+</div>
+
+<div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
+<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario B: Progressive Enhancement &amp; Low-End Mobile Battery Preservation</h5>
+<p style="margin-bottom: 0.75rem; font-size: 0.95rem;">High-radius backdrop blur filters execute thousands of texture lookups per frame, which can quickly drain mobile battery life or trigger GPU thermal throttling on budget devices. Senior web engineers implement progressive enhancement using CSS Feature Queries: <code>@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))</code>. In supported environments, the dynamic frosted glass rules execute; for legacy browsers or devices with battery-saver mode enabled, the rule falls back gracefully to a solid high-opacity color (<code>background-color: #0f172a</code>) without breaking layout geometry.</p>
+</div>
+</div>
+
+<div style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border: 1px solid rgba(37,99,235,0.3); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+<h4 style="color: #fff; margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+<i data-lucide="sparkles" style="width: 18px; height: 18px; color: var(--accent);"></i> Recommended Designer Resource: Modern Web UI &amp; Component Studio
+</h4>
+<p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #cbd5e1;">Complement your glassmorphic UI elements with our companion tools: craft tactile multi-layer elevations using <a href="/css-box-shadow/" style="color: var(--accent); text-decoration: underline;">CSS Box Shadow Studio</a>, verify font legibility with <a href="/color-palette-generator/" style="color: var(--accent); text-decoration: underline;">WCAG Contrast Checker</a>, and generate organic background vectors with <a href="/svg-blob-generator/" style="color: var(--accent); text-decoration: underline;">SVG Blob Generator</a>.</p>
+</div>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions</h3>
+<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions (FAQ)</h3>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Why doesn't the blur effect work on older browsers?</h4>
-<p style="font-size: 0.95rem;">The `backdrop-filter` property is a modern CSS feature that requires hardware-accelerated rendering. While supported by all modern Chromium and Safari browsers, legacy platforms may ignore it. Always provide an opaque fallback hex color.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: What is the fundamental difference between filter: blur() and backdrop-filter: blur()?</h4>
+<p style="font-size: 0.95rem;">The standard <code>filter: blur()</code> property applies Gaussian blurring directly to the target element and all of its nested child DOM nodes (rendering text and buttons blurry). In contrast, <code>backdrop-filter: blur()</code> blurs only the visual content positioned <em>behind</em> the element, leaving the element's own text, borders, and interactive children perfectly sharp.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: How do I make the glass card look more realistic?</h4>
-<p style="font-size: 0.95rem;">Realism is achieved through lighting cues. Add a 1px solid border using a highly transparent white (`rgba(255,255,255,0.2)`) and a subtle, soft drop shadow (`box-shadow: 0 8px 32px rgba(0,0,0,0.1)`) to simulate depth and edge reflection.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q2: Why is the -webkit- prefix mandatory for Safari and iOS?</h4>
+<p style="font-size: 0.95rem;">WebKit engines on macOS Safari and iOS Mobile Safari require the vendor prefix <code>-webkit-backdrop-filter</code> to instantiate their hardware-accelerated Core Animation pipeline. In production CSS, always specify both <code>-webkit-backdrop-filter: blur(12px);</code> and <code>backdrop-filter: blur(12px);</code> to ensure cross-platform compatibility.</p>
 </div>
+
 <div class="faq-item">
-<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q: Is Glassmorphism suitable for enterprise dashboards?</h4>
-<p style="font-size: 0.95rem;">While aesthetically pleasing, heavy glassmorphism can reduce readability in data-heavy environments. For enterprise dashboards, use it minimally (e.g., only for floating modals or sticky headers) to maintain focus on the core analytics.</p>
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q3: How do I ensure WCAG AA accessibility compliance on transparent glass cards?</h4>
+<p style="font-size: 0.95rem;">Translucent cards inherit unpredictable luminance from background media. To guarantee WCAG AA (4.5:1 text contrast), increase the card base opacity to at least <code>0.60</code> - <code>0.75</code> (e.g., <code>rgba(15,23,42,0.70)</code>), apply a minimum backdrop blur of <code>16px</code> to smooth out background text contrast spikes, and place bold <code>#ffffff</code> or <code>#0f172a</code> typography.</p>
 </div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q4: Does backdrop-filter cause performance bottlenecks or scroll jank?</h4>
+<p style="font-size: 0.95rem;">Applying large blur radii (e.g., <code>blur(50px)</code>) across large full-screen elements can trigger fill-rate bottlenecks during scrolling, as the GPU must continually recomposite and re-blur the background buffer. Keep blur values between <code>8px</code> and <code>20px</code>, limit usage to fixed navigation headers or modal dialogs, and test on mid-tier mobile hardware.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q5: Why is a semi-transparent border essential for the glass illusion?</h4>
+<p style="font-size: 0.95rem;">In real physics, light entering the edge of cut glass reflects internally (Fresnel effect), creating a bright highlight line along the perimeter. Adding <code>border: 1px solid rgba(255, 255, 255, 0.15)</code> visually separates the glass card from identical background tones, anchoring the card's geometric structure in space.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q6: Can I combine glassmorphic cards with CSS gradient backgrounds?</h4>
+<p style="font-size: 0.95rem;">Yes. In fact, glassmorphism looks its best over rich, multi-hue mesh gradients, animated SVG shapes, or dynamic high-resolution imagery. Without colorful background elements behind the glass, the frosted scattering effect has nothing to refract, appearing flat.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q7: How should I structure CSS fallbacks for non-supporting browsers?</h4>
+<p style="font-size: 0.95rem;">Declare a solid or semi-opaque fallback background first, followed by a feature query:
+<code>.glass-card { background: rgba(15, 23, 42, 0.95); }</code>
+<code>@supports (backdrop-filter: blur(10px)) { .glass-card { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); } }</code>. This guarantees a functional experience on every legacy browser.</p>
+</div>
+
+<div class="faq-item">
+<h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q8: Can glassmorphism be used inside mobile apps (React Native, Flutter)?</h4>
+<p style="font-size: 0.95rem;">Yes. In React Native, developers use <code>@react-native-community/blur</code>, while in Flutter, developers wrap widgets in <code>BackdropFilter</code> with an <code>ImageFilter.blur</code> sigma parameter. Both native APIs leverage the mobile GPU's native shader passes for 60fps rendering.</p>
+</div>
+
 </div>
 </div>
 </article>
