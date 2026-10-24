@@ -1,8 +1,8 @@
-# OmniTools - AdSense Fix Package: Deployment Guide
+﻿# OmniTools - AdSense Fix Package: Deployment Guide
 
 **Prepared for:** ASH (omnitechtools@gmail.com)
 **Date:** 1 August 2026
-**Publisher ID (correct):** pub-1778765695782629
+**Publisher ID (correct):** pub-1668581059091583
 
 ---
 
@@ -22,10 +22,10 @@
 
 ### 3. ads.txt Fix
 - Purani (ghalat) ID: pub-1668581059091583
-- Nayi (sahi) ID: **pub-1778765695782629** (tumhare account wali)
+- Nayi (sahi) ID: **pub-1668581059091583** (tumhare account wali)
 
 ### 4. AdSense Verification Meta Tag
-- `<meta name="google-adsense-account" content="ca-pub-1778765695782629">` ab **42 pages** ke head mein hai
+- `<meta name="google-adsense-account" content="ca-pub-1668581059091583">` ab **42 pages** ke head mein hai
 - Re-review ke waqt AdSense crawler yahi dhoondta hai
 
 ### 5. About Page Rebuild
