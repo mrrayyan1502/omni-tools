@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/url-encoder/#app", "name": "Free URL Encoder & Decoder Online", "url": "https://www.omnitechtools.com/url-encoder/", "description": "Encode or decode URL components and special characters safely in your browser.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/url-encoder/#faq", "mainEntity": [{"@type": "Question", "name": "Why is URL encoding necessary?", "acceptedAnswer": {"@type": "Answer", "text": "Certain characters like spaces, query delimiters, and ampersands have special meanings in URLs. Encoding converts them into safe percent-encoded escape sequences."}}, {"@type": "Question", "name": "Can I decode percent-encoded URLs back to plain text?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you can instantly toggle between URL encoding and decoding with one click."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/url-encoder/#app", "name": "Free URL Encoder & Decoder Online", "url": "https://www.omnitechtools.com/url-encoder/", "description": "Encode or decode URL components and special characters safely in your browser.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/url-encoder/#faq", "mainEntity": [{"@type": "Question", "name": "Why is URL encoding necessary?", "acceptedAnswer": {"@type": "Answer", "text": "Certain characters like spaces, query delimiters, and ampersands have special meanings in URLs. Encoding converts them into safe percent-encoded escape sequences."}}, {"@type": "Question", "name": "Can I decode percent-encoded URLs back to plain text?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you can instantly toggle between URL encoding and decoding with one click."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Encode and Decode URL Strings in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the URL Encoder & Decoder securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Paste Your URL or Query Parameter String",
+      "text": "Enter raw URLs, query strings, or URI components containing special characters, non-ASCII symbols, or reserved delimiters.",
+      "url": "https://www.omnitechtools.com/url-encoder/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Choose Encode or Decode Mode",
+      "text": "Select \"Encode\" to replace reserved characters with percent-encoded octets (e.g. spaces become %20), or \"Decode\" to restore human-readable text.",
+      "url": "https://www.omnitechtools.com/url-encoder/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Inspect and Copy Result",
+      "text": "Review the encoded URI components, verify parameter parsing, and copy the clean output for API endpoints, HTTP requests, or web links.",
+      "url": "https://www.omnitechtools.com/url-encoder/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -275,16 +315,16 @@
 </div>
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">RFC 3986 URI Percent-Encoding Technical Guide: Grammar, UTF-8 Serialization &amp; Security</h3>
+<h2 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">RFC 3986 URI Percent-Encoding Technical Guide: Grammar, UTF-8 Serialization &amp; Security</h2>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Historical Architecture &amp; The RFC 3986 URI Specification</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Historical Architecture &amp; The RFC 3986 URI Specification</h3>
 <p style="margin-bottom: 1rem;">Uniform Resource Identifiers (URIs) and Uniform Resource Locators (URLs) were standardized by Tim Berners-Lee and the Internet Engineering Task Force (IETF) in <strong>RFC 3986</strong>. Because early internet transport protocols were strictly limited to 7-bit US-ASCII channels, transmitting arbitrary binary payloads, whitespace, non-Latin scripts, and control codes across HTTP requests posed severe corruption risks. Furthermore, certain characters possess structural meaning within a URI hierarchy—for example, the colon (<code>:</code>) delimits schemes, the slash (<code>/</code>) delineates hierarchical path segments, the question mark (<code>?</code>) initiates the query component, and the hash (<code>#</code>) designates fragments.</p>
 <p style="margin-bottom: 1rem;">Percent-encoding (often termed URL encoding) provides a deterministic mechanism to represent any arbitrary octet (byte) within the constrained ASCII character set. An unreserved character requires no transformation, whereas any reserved, control, or non-ASCII byte is transformed into a three-character sequence consisting of the percent symbol <code>%</code> followed by a two-digit hexadecimal representation of the underlying byte. Understanding the exact boundaries between reserved delimiters and data payloads is foundational for web security, API design, and web crawler optimization.</p>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Multi-Byte UTF-8 Serialization Algorithm &amp; URI Syntax Breakdown</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Multi-Byte UTF-8 Serialization Algorithm &amp; URI Syntax Breakdown</h3>
 <p style="margin-bottom: 1rem;">Modern web applications operate primarily in Unicode (UTF-8). When a non-ASCII character—such as an accented letter, an Asian ideograph, or an emoji—is encoded into a URL, RFC 3986 mandates a two-stage encoding pipeline governed by this serialization algorithm and mathematical model:</p>
 <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
 <strong>RFC 3986 Generic URI Syntax Breakdown Equation:</strong><br/>
@@ -303,7 +343,7 @@ Step 2: Format each non-unreserved octet into hexadecimal: %HH = "%" + Hex(Byte,
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. RFC 3986 Reserved &amp; Special Characters Reference Table</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. RFC 3986 Reserved &amp; Special Characters Reference Table</h3>
 <p style="margin-bottom: 1rem;">This technical reference table details character classifications, hexadecimal byte equivalents, structural roles, and encoding requirements across standard HTTP URIs.</p>
 <div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
@@ -393,10 +433,10 @@ Step 2: Format each non-unreserved octet into hexadecimal: %HH = "%" + Hex(Byte,
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h3>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: OAuth 2.0 PKCE Redirect URI Sanitization</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: OAuth 2.0 PKCE Redirect URI Sanitization</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">An identity platform engineer configures an OAuth 2.0 authorization code flow with PKCE. The client authorization URL must pass a complex callback destination containing internal query parameters as the <code>redirect_uri</code> parameter:</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>const authServer = "https://auth.example.com/oauth/authorize";
 const targetCallback = "https://app.example.com/callback?tab=billing&amp;plan=pro";
@@ -406,7 +446,7 @@ const safeAuthUrl = `${authServer}?client_id=xyz&amp;redirect_uri=${encodeURICom
 <p style="font-size: 0.85rem; margin-bottom: 0;">Without <code>encodeURIComponent</code>, the authorization server parses <code>&amp;plan=pro</code> as its own parameter, corrupting the OAuth handshake and triggering an 'Invalid Redirect URI' error.</p>
 </div>
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Analytics Tracking URL (UTM Parameter) Integrity</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Analytics Tracking URL (UTM Parameter) Integrity</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A growth engineer builds an automated marketing pipeline that appends campaign tags containing ampersands, spaces, and company names (e.g., <code>"Q4 Promo &amp; Sale"</code>):</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>// Constructing query params via URLSearchParams
 const params = new URLSearchParams();
@@ -430,9 +470,60 @@ Need to parse token parameters or check query payloads? Test them with our <a hr
 </p>
 </div>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Encode and Decode URL Strings in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our URL Encoder & Decoder. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Paste Your URL or Query Parameter String</h3>
+      <p class="how-to-step-desc">Enter raw URLs, query strings, or URI components containing special characters, non-ASCII symbols, or reserved delimiters.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Choose Encode or Decode Mode</h3>
+      <p class="how-to-step-desc">Select "Encode" to replace reserved characters with percent-encoded octets (e.g. spaces become %20), or "Decode" to restore human-readable text.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Inspect and Copy Result</h3>
+      <p class="how-to-step-desc">Review the encoded URI components, verify parameter parsing, and copy the clean output for API endpoints, HTTP requests, or web links.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>URL Encoder & Decoder</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Native encodeURIComponent() and decodeURIComponent() executing RFC 3986 percent-encoding standards across full UTF-8 character repertoires.</strong>. Compliance with the governing standards specification (<strong>RFC 3986 Uniform Resource Identifier (URI): Generic Syntax</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section" style="margin-top: 2rem;">
-<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (URL Encoding &amp; RFC 3986)</h3>
+<h2 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (URL Encoding &amp; RFC 3986)</h2>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Why is URL encoding necessary?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Certain characters like spaces, query delimiters, and ampersands have special meanings in URLs. Encoding converts them into safe percent-encoded escape sequences.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Can I decode percent-encoded URLs back to plain text?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes, you can instantly toggle between URL encoding and decoding with one click.</p>
+</div>
 <div class="faq-item">
 <h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: What is the technical difference between encodeURI() and encodeURIComponent() in JavaScript?</h4>
 <p style="font-size: 0.95rem;">encodeURI() is designed to encode an entire complete URL. It preserves protocol delimiters, path slashes, query delimiters, and fragment identifiers (; , / ? : @ &amp; = + $ #). Conversely, encodeURIComponent() is designed to encode an individual query parameter key or value. It aggressively escapes all reserved punctuation characters into percent sequences, ensuring special characters within data values do not corrupt URL syntax.</p>
@@ -595,13 +686,12 @@ Need to parse token parameters or check query payloads? Test them with our <a hr
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->

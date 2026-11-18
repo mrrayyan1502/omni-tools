@@ -18,22 +18,42 @@ const routeMap = {
     '/color-palette-generator/': 'color-palette',
     '/password-generator/': 'password-generator',
     '/base64-encoder-decoder/': 'base64',
+    '/base64-converter/': 'base64',
     '/meta-tag-generator/': 'meta-generator',
     '/inflation-calculator/': 'inflation-calc',
-    '/diff-checker/': 'diff-checker',
+        '/diff-checker/': 'diff-checker',
+    '/private-offline-json-formatter/': 'json-formatter',
+    '/serverless-string-tools-secops/': 'base64-tool',
+    '/zero-data-logging-text-utilities/': 'diff-checker',
     '/image-resizer/': 'image-resizer',
     '/pdf-merge/': 'pdf-merge',
+    '/pdf-merger/': 'pdf-merge',
     '/unit-converter/': 'unit-converter',
     '/unix-timestamp-converter/': 'unix-timestamp',
     '/hash-generator/': 'hash-generator',
     '/json-to-csv/': 'json-to-csv',
-    '/text-to-speech/': 'text-to-speech',
+    '/jwt-decoder/': 'jwt-decoder',
+    '/markdown-editor/': 'markdown-editor',
+    '/regex-tester/': 'regex-tester',
+    '/sql-formatter/': 'sql-formatter',
+    '/css-box-shadow/': 'css-box-shadow',
+    '/word-counter/': 'word-counter',
+    '/lorem-ipsum/': 'lorem-ipsum',
+    '/uuid-generator/': 'uuid-generator',
+    '/url-encoder/': 'url-encoder',
     '/blog/': 'blog',
     '/blog/qr-codes-digital-marketing/': 'blog-article-qr',
     '/blog/image-compression-performance/': 'blog-article-compress',
     '/blog/css-glassmorphism-trends/': 'blog-article-glass',
     '/blog/financial-independence-compound-growth/': 'blog-article-fire',
-    '/blog/developer-utilities-privacy/': 'blog-article-privacy'
+    '/blog/developer-utilities-privacy/': 'blog-article-privacy',
+    '/blog/json-formatting-guide/': 'blog-article-json',
+    '/blog/svg-organic-blobs-design/': 'blog-article-svg',
+    '/blog/ui-color-theory-palettes/': 'blog-article-color',
+    '/blog/secure-password-cryptography/': 'blog-article-password',
+    '/blog/base64-encoding-explained/': 'blog-article-base64',
+    '/blog/seo-meta-tags-guide/': 'blog-article-meta',
+    '/blog/inflation-wealth-depreciation/': 'blog-article-inflation'
 };
 
 const tabToRouteMap = {
@@ -66,7 +86,6 @@ const tabToRouteMap = {
     'unix-timestamp': '/unix-timestamp-converter/',
     'hash-generator': '/hash-generator/',
     'json-to-csv': '/json-to-csv/',
-    'text-to-speech': '/text-to-speech/',
     'url-encoder': '/url-encoder/',
     'meta-generator': '/meta-tag-generator/',
     'inflation-calc': '/inflation-calculator/',
@@ -3163,7 +3182,7 @@ function convertUnits() {
 }
 
 // ==================== DIFF CHECKER TOOL ====================
-let currentDiffViewMode = 'split';
+var currentDiffViewMode = 'split';
 
 function setDiffViewMode(mode) {
     currentDiffViewMode = mode;
@@ -3781,3 +3800,10 @@ function downloadCsvFile() {
 document.addEventListener('DOMContentLoaded', () => {
     initUnixTimestamp();
 });
+
+// Robust execution handle for asynchronous or direct script loads (at end of script)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp);
+} else {
+    startApp();
+}

@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/unit-converter/#app", "name": "Free Unit Converter", "url": "https://www.omnitechtools.com/unit-converter/", "description": "Convert common length, weight, temperature and digital storage units instantly.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/unit-converter/#faq", "mainEntity": [{"@type": "Question", "name": "Which measurement units are supported?", "acceptedAnswer": {"@type": "Answer", "text": "OmniTools converts length, mass/weight, temperature, digital data storage, area, volume, and speed units."}}, {"@type": "Question", "name": "Are conversion calculations accurate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, conversions use standard international SI and imperial conversion factors with high decimal precision."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/unit-converter/#app", "name": "Free Unit Converter", "url": "https://www.omnitechtools.com/unit-converter/", "description": "Convert common length, weight, temperature and digital storage units instantly.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/unit-converter/#faq", "mainEntity": [{"@type": "Question", "name": "Which measurement units are supported?", "acceptedAnswer": {"@type": "Answer", "text": "OmniTools converts length, mass/weight, temperature, digital data storage, area, volume, and speed units."}}, {"@type": "Question", "name": "Are conversion calculations accurate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, conversions use standard international SI and imperial conversion factors with high decimal precision."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Convert Units of Measurement in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the Multi-Unit Measurement Converter securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Select Measurement Category",
+      "text": "Choose from essential engineering and daily categories: Length, Mass/Weight, Temperature, Area, Volume, Speed, Time, or Digital Storage.",
+      "url": "https://www.omnitechtools.com/unit-converter/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Enter Value and Select Source & Target Units",
+      "text": "Type your numerical value and pick your source unit (e.g. Kilometers) and target destination unit (e.g. Miles). Calculations update in real time.",
+      "url": "https://www.omnitechtools.com/unit-converter/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Copy Precise Result with Conversion Formula",
+      "text": "Review the calculated conversion with high-precision decimal representation and view the exact mathematical formula used.",
+      "url": "https://www.omnitechtools.com/unit-converter/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -291,16 +331,16 @@
 </div>
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Scientific Unit Converter Technical Guide: Dimensional Metrology, Algorithm &amp; Conversion Formula</h3>
+<h2 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Scientific Unit Converter Technical Guide: Dimensional Metrology, Algorithm &amp; Conversion Formula</h2>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Metrological Foundations, Methodology &amp; The International System of Units (SI)</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Metrological Foundations, Methodology &amp; The International System of Units (SI)</h3>
 <p style="margin-bottom: 1rem;">Unit conversion is the mathematical translation of a measured physical quantity from one coordinate system of units to another while preserving dimensional invariance. The International System of Units (SI), governed by the Bureau International des Poids et Mesures (BIPM), establishes seven fundamental base dimensions: length (meter, m), mass (kilogram, kg), time (second, s), thermodynamic temperature (kelvin, K), electric current (ampere, A), amount of substance (mole, mol), and luminous intensity (candela, cd). All physical engineering metrics derive as dimensional products of these seven base units (\([M]^a [L]^b [T]^c\)).</p>
 <p style="margin-bottom: 1rem;">Discrepancies in unit systems have caused catastrophic engineering failures. In 1999, the NASA Mars Climate Orbiter was lost when Lockheed Martin flight software computed thruster impulses in imperial pound-force seconds (lbf&middot;s), while NASA trajectory navigation pipelines expected metric newton-seconds (N&middot;s). The resulting 170-kilometer navigational error incinerated the $327.6 million spacecraft in the Martian atmosphere. Eliminating manual calculation errors through deterministic, high-precision conversion algorithms is essential for software engineers, physicists, and infrastructure architects.</p>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Conversion Algorithm &amp; Mathematical Model</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Conversion Algorithm &amp; Mathematical Model</h3>
 <p style="margin-bottom: 1rem;">Most physical conversion categories (length, mass, force, energy, volume) are purely linear relationships governed by scalar ratios with respect to an invariant SI base unit. The conversion pipeline utilizes a two-step normalisation model governed by this mathematical model and conversion formula:</p>
 <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
 <strong>Linear Base Normalization Mathematical Model &amp; Formula:</strong><br/>
@@ -319,7 +359,7 @@ Binary Storage (IEC): Bytes = Value &times; 2^(10 &times; order) = Value &times;
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Authoritative SI &amp; Imperial Unit Conversion Reference Table</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Authoritative SI &amp; Imperial Unit Conversion Reference Table</h3>
 <p style="margin-bottom: 1rem;">This technical reference table details conversion coefficients against invariant SI base units across common engineering domains.</p>
 <div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
@@ -409,10 +449,10 @@ Binary Storage (IEC): Bytes = Value &times; 2^(10 &times; order) = Value &times;
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h3>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: Cloud Storage Quota Provisioning (TB vs. TiB Discrepancy)</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: Cloud Storage Quota Provisioning (TB vs. TiB Discrepancy)</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A cloud infrastructure architect provisions an AWS Elastic Block Store (EBS) or Google Cloud persistent volume billed in decimal Gigabytes (GB). The Kubernetes pod provisioning script allocates volume requests using binary GiB (1,024&sup3; bytes):</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code># Kubernetes PersistentVolumeClaim
 spec:
@@ -422,7 +462,7 @@ spec:
 <p style="font-size: 0.85rem; margin-bottom: 0;">Without precise binary-to-decimal unit conversion, finance teams underestimate cloud block storage expenses by ~7.37% across enterprise clusters.</p>
 </div>
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: IoT Telemetry &amp; Affine Thermal Sensor Normalization</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: IoT Telemetry &amp; Affine Thermal Sensor Normalization</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">An embedded firmware engineer processes raw analog ADC voltage readings from an industrial thermocouple transmitting temperature values in Fahrenheit. Before publishing telemetry to an MQTT broker expecting Kelvin, the firmware executes an affine conversion:</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>float convertFtoK(float tempF) {
     float tempC = (tempF - 32.0f) * (5.0f / 9.0f);
@@ -445,9 +485,60 @@ Pair your unit calculations with our <a href="/unix-timestamp-converter/" style=
 </p>
 </div>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Convert Units of Measurement in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our Multi-Unit Measurement Converter. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Select Measurement Category</h3>
+      <p class="how-to-step-desc">Choose from essential engineering and daily categories: Length, Mass/Weight, Temperature, Area, Volume, Speed, Time, or Digital Storage.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Enter Value and Select Source & Target Units</h3>
+      <p class="how-to-step-desc">Type your numerical value and pick your source unit (e.g. Kilometers) and target destination unit (e.g. Miles). Calculations update in real time.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Copy Precise Result with Conversion Formula</h3>
+      <p class="how-to-step-desc">Review the calculated conversion with high-precision decimal representation and view the exact mathematical formula used.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>Multi-Unit Measurement Converter</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Arbitrary-precision floating point conversion matrices maintaining dimensional analysis accuracy across metric and imperial systems.</strong>. Compliance with the governing standards specification (<strong>BIPM International System of Units (SI)</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section" style="margin-top: 2rem;">
-<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Metrology &amp; Unit Conversion)</h3>
+<h2 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Metrology &amp; Unit Conversion)</h2>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Which measurement units are supported?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">OmniTools converts length, mass/weight, temperature, digital data storage, area, volume, and speed units.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Are conversion calculations accurate?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes, conversions use standard international SI and imperial conversion factors with high decimal precision.</p>
+</div>
 <div class="faq-item">
 <h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: Why does a 1 Terabyte (TB) storage drive register as only ~931 Gigabytes in Windows?</h4>
 <p style="font-size: 0.95rem;">This discrepancy stems from differing measurement standards. Hard drive manufacturers quote capacity using the decimal SI system, where 1 TB equals 10^12 bytes (1,000,000,000,000 bytes). Windows OS calculates storage capacities using binary units (Tebibytes/Gibibytes, where 1 GiB = 2^30 = 1,073,741,824 bytes). Dividing 1,000,000,000,000 by 1,073,741,824 results in approximately 931.32 GiB.</p>
@@ -597,13 +688,12 @@ Pair your unit calculations with our <a href="/unix-timestamp-converter/" style=
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->

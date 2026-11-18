@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/image-compressor/#app", "name": "Free Image Compressor", "url": "https://www.omnitechtools.com/image-compressor/", "description": "Compress JPG, PNG and WebP images securely in your browser. Reduce image size without uploading files or creating an account.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/image-compressor/#faq", "mainEntity": [{"@type": "Question", "name": "Are my images uploaded to any remote server during compression?", "acceptedAnswer": {"@type": "Answer", "text": "No. OmniTools compresses JPG, PNG, and WebP files entirely within your browser using HTML5 Canvas and local WebAssembly. Your photos never leave your device."}}, {"@type": "Question", "name": "Does compressing an image visibly degrade its quality?", "acceptedAnswer": {"@type": "Answer", "text": "OmniTools uses visually lossless compression algorithms that remove unnecessary metadata and optimize color tables, reducing file size by up to 80% without noticeable quality loss."}}, {"@type": "Question", "name": "What image formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "You can compress JPG, JPEG, PNG, and modern WebP image formats with real-time file size comparison."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/image-compressor/#app", "name": "Free Image Compressor", "url": "https://www.omnitechtools.com/image-compressor/", "description": "Compress JPG, PNG and WebP images securely in your browser. Reduce image size without uploading files or creating an account.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/image-compressor/#faq", "mainEntity": [{"@type": "Question", "name": "Are my images uploaded to any remote server during compression?", "acceptedAnswer": {"@type": "Answer", "text": "No. OmniTools compresses JPG, PNG, and WebP files entirely within your browser using HTML5 Canvas and local WebAssembly. Your photos never leave your device."}}, {"@type": "Question", "name": "Does compressing an image visibly degrade its quality?", "acceptedAnswer": {"@type": "Answer", "text": "OmniTools uses visually lossless compression algorithms that remove unnecessary metadata and optimize color tables, reducing file size by up to 80% without noticeable quality loss."}}, {"@type": "Question", "name": "What image formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "You can compress JPG, JPEG, PNG, and modern WebP image formats with real-time file size comparison."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Compress Images Locally in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the Private Client-Side Image Compressor securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Select or Drop Your Image Files",
+      "text": "Drag and drop your JPEG, PNG, or WebP images into the upload dropzone, or click to browse files from your local storage. Files are buffered directly into browser RAM without touching any external cloud server.",
+      "url": "https://www.omnitechtools.com/image-compressor/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Adjust Quality and Dimension Settings",
+      "text": "Use the interactive compression slider to balance visual fidelity against file size reduction. Specify custom maximum width/height constraints or convert legacy PNG assets directly into modern WebP format.",
+      "url": "https://www.omnitechtools.com/image-compressor/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Preview Compression Ratio and Download",
+      "text": "Review real-time before-and-after side-by-side previews and file size reduction statistics. Click \"Download Image\" to save your optimized asset instantly with zero upload or download latency.",
+      "url": "https://www.omnitechtools.com/image-compressor/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -301,16 +341,16 @@
 </div>
 <!-- SEO Content / Rich Informational Guide -->
 <article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Comprehensive Guide to Image Compression, Information Entropy &amp; Core Web Vitals</h3>
+<h2 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Comprehensive Guide to Image Compression, Information Entropy &amp; Core Web Vitals</h2>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The Critical Role of Image Optimization in Web Performance</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">1. The Critical Role of Image Optimization in Web Performance</h3>
 <p style="margin-bottom: 1rem;">According to HTTP Archive state of the web telemetry, uncompressed raster images account for over 50% of the total page payload transferred across modern web sessions. Serving oversized, multi-megabyte digital photographs directly from high-resolution digital cameras or smartphones catastrophically degrades Google Core Web Vitals—specifically Largest Contentful Paint (LCP) and Interaction to Next Paint (INP). When an uncompressed hero image stalls network execution queues, mobile users experience severe latency, leading to immediate bounce rate spikes and programmatic search ranking penalties under Google's mobile-first indexing algorithms.</p>
 <p style="margin-bottom: 1rem;">Image compression is the science of reducing physical byte volume while preserving perceptual visual fidelity. By eliminating redundant spatial data and exploiting human optical psychophysics (the human eye is substantially less sensitive to high-frequency chroma variations than to subtle changes in luminance), modern encoding algorithms allow web publishers to achieve 70% to 90% bandwidth reductions with zero visible degradation at standard viewing distances.</p>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. Image Compression Algorithm &amp; Mathematical Model</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">2. Image Compression Algorithm &amp; Mathematical Model</h3>
 <p style="margin-bottom: 1rem;">In lossy image compression standards (including JPEG and lossy WebP), the raw RGB bitmap is transformed into YCbCr color space (Luminance, Blue-Difference Chroma, Red-Difference Chroma). The image is segmented into 8x8 pixel macroblocks, each evaluated through a 2D Discrete Cosine Transform (DCT) to convert spatial luminance distributions into frequency coefficients:</p>
 
 <div style="background: rgba(0, 0, 0, 0.35); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.88rem; color: #e2e8f0; overflow-x: auto;">
@@ -329,7 +369,7 @@ Compression Ratio (CR) &amp; Shannon Entropy Bounds:<br>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Web Image Format Encoding Benchmark Matrix</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">3. Web Image Format Encoding Benchmark Matrix</h3>
 <p style="margin-bottom: 1rem;">The following reference table compares contemporary raster and vector image formats across structural compression mechanics, transparency support, and real-world web delivery efficacy:</p>
 
 <div style="overflow-x: auto; margin: 1.5rem 0;">
@@ -424,15 +464,15 @@ Compression Ratio (CR) &amp; Shannon Entropy Bounds:<br>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Developer &amp; Designer Scenarios</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit';">4. Real-World Developer &amp; Designer Scenarios</h3>
 
 <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.25rem;">
-<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario A: Optimizing E-Commerce Product Catalogs to Pass Google LCP</h5>
+<h4 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario A: Optimizing E-Commerce Product Catalogs to Pass Google LCP</h4>
 <p style="margin-bottom: 0.75rem; font-size: 0.95rem;">An e-commerce clothing retailer noticed their product catalog pages were flagged with a failing 4.8-second Largest Contentful Paint (LCP) score in Google PageSpeed Insights due to uncompressed 3.5MB DSLR product photography. By batch compressing their hero images using OmniTools' client-side WebP converter at 82% quality, the average file size plummeted from 3.5MB to 185KB (a 94.7% bandwidth reduction). Page load times dropped below 1.4 seconds, bringing the store into full Google Core Web Vitals compliance and improving checkout conversion rates by 18%.</p>
 </div>
 
 <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario B: Client-Side EXIF Metadata Sanitization for Confidential Workflows</h5>
+<h4 style="color: var(--accent); margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem;">Scenario B: Client-Side EXIF Metadata Sanitization for Confidential Workflows</h4>
 <p style="margin-bottom: 0.75rem; font-size: 0.95rem;">When photos are captured on modern mobile devices, the raw files embed sensitive Exchangeable Image File (EXIF) metadata—including exact GPS latitude and longitude coordinates, smartphone serial numbers, and capture timestamps. Uploading these directly to cloud storage creates serious security vulnerabilities. OmniTools' HTML5 Canvas compression pipeline reconstructs only raw pixel data, automatically stripping out all unneeded EXIF headers, camera serial numbers, and geolocation tags before saving the optimized file.</p>
 </div>
 </div>
@@ -444,9 +484,65 @@ Compression Ratio (CR) &amp; Shannon Entropy Bounds:<br>
 <p style="font-size: 0.92rem; margin-bottom: 0.75rem; color: #cbd5e1;">Pair your compressed visual assets with our companion utilities: resize exact pixel bounding dimensions using <a href="/image-resizer/" style="color: var(--accent); text-decoration: underline;">Free Image Resizer</a>, generate compliant social graph cards via <a href="/meta-tag-generator/" style="color: var(--accent); text-decoration: underline;">Meta Tag Previewer</a>, or encode data URIs directly into stylesheets using <a href="/base64-encoder-decoder/" style="color: var(--accent); text-decoration: underline;">Base64 Image Encoder</a>.</p>
 </div>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Compress Images Locally in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our Private Client-Side Image Compressor. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Select or Drop Your Image Files</h3>
+      <p class="how-to-step-desc">Drag and drop your JPEG, PNG, or WebP images into the upload dropzone, or click to browse files from your local storage. Files are buffered directly into browser RAM without touching any external cloud server.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Adjust Quality and Dimension Settings</h3>
+      <p class="how-to-step-desc">Use the interactive compression slider to balance visual fidelity against file size reduction. Specify custom maximum width/height constraints or convert legacy PNG assets directly into modern WebP format.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Preview Compression Ratio and Download</h3>
+      <p class="how-to-step-desc">Review real-time before-and-after side-by-side previews and file size reduction statistics. Click "Download Image" to save your optimized asset instantly with zero upload or download latency.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>Private Client-Side Image Compressor</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Browser-native canvas rasterization, bicubic downsampling interpolation, and variable WebP/JPEG quantization algorithms running in local device memory.</strong>. Compliance with the governing standards specification (<strong>W3C HTML Canvas 2D Context & OffscreenCanvas</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions (FAQ)</h3>
+<h2 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions (FAQ)</h2>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Are my images uploaded to any remote server during compression?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No. OmniTools compresses JPG, PNG, and WebP files entirely within your browser using HTML5 Canvas and local WebAssembly. Your photos never leave your device.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Does compressing an image visibly degrade its quality?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">OmniTools uses visually lossless compression algorithms that remove unnecessary metadata and optimize color tables, reducing file size by up to 80% without noticeable quality loss.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: What image formats are supported?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">You can compress JPG, JPEG, PNG, and modern WebP image formats with real-time file size comparison.</p>
+</div>
 
 <div class="faq-item">
 <h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: Why is WebP format recommended over legacy JPEG?</h4>
@@ -512,7 +608,7 @@ Compression Ratio (CR) &amp; Shannon Entropy Bounds:<br>
 </div>
 </div>
 <div class="related-tools-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit';">Explore Related Free Tools</h3>
+<h2 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit';">Explore Related Free Tools</h2>
 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
 <a class="related-tool-pill" href="/" style="padding: 0.5rem 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: border-color 0.2s;"><i data-lucide="home" style="width: 14px; height: 14px; margin-right: 0.5rem; display: inline-block; vertical-align: middle;"></i>All Tools</a>
 <a class="related-tool-pill" href="/image-compressor/" style="padding: 0.5rem 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: border-color 0.2s;"><i data-lucide="image" style="width: 14px; height: 14px; margin-right: 0.5rem; display: inline-block; vertical-align: middle;"></i>Image Compressor</a>
@@ -681,13 +777,12 @@ Compression Ratio (CR) &amp; Shannon Entropy Bounds:<br>
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->

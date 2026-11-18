@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/word-counter/#app", "name": "Free Word & Character Counter with Reading Time", "url": "https://www.omnitechtools.com/word-counter/", "description": "Count words, characters, sentences and estimated reading time instantly in your browser.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/word-counter/#faq", "mainEntity": [{"@type": "Question", "name": "What metrics does this word counter track?", "acceptedAnswer": {"@type": "Answer", "text": "It counts words, total characters, characters without spaces, sentences, paragraphs, reading time, and speaking time."}}, {"@type": "Question", "name": "Is there any text character limit?", "acceptedAnswer": {"@type": "Answer", "text": "No. Because text is processed in your local browser memory, you can analyze articles or code documents of any length."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/word-counter/#app", "name": "Free Word & Character Counter with Reading Time", "url": "https://www.omnitechtools.com/word-counter/", "description": "Count words, characters, sentences and estimated reading time instantly in your browser.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/word-counter/#faq", "mainEntity": [{"@type": "Question", "name": "What metrics does this word counter track?", "acceptedAnswer": {"@type": "Answer", "text": "It counts words, total characters, characters without spaces, sentences, paragraphs, reading time, and speaking time."}}, {"@type": "Question", "name": "Is there any text character limit?", "acceptedAnswer": {"@type": "Answer", "text": "No. Because text is processed in your local browser memory, you can analyze articles or code documents of any length."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Analyze Word, Character and Reading Metrics in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the Word & Character Counter securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Paste or Type Your Draft Text",
+      "text": "Type or paste your blog post, essay, social media caption, or technical documentation into the input editor. Analysis occurs in real time with zero keystroke delay.",
+      "url": "https://www.omnitechtools.com/word-counter/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Review Instant Statistical Metrics",
+      "text": "Inspect live metrics including word count, character count (with and without whitespace), sentence count, paragraph count, and average reading time estimated at 200 words per minute.",
+      "url": "https://www.omnitechtools.com/word-counter/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Verify Social Platform Character Limits",
+      "text": "Check progress bars against popular platform constraints including Twitter/X (280 chars), LinkedIn post limits, meta description thresholds (160 chars), and title tag limits (60 chars).",
+      "url": "https://www.omnitechtools.com/word-counter/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -278,16 +318,16 @@
 </div>
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Computational Linguistics &amp; Text Analysis Technical Guide: Metrics, Readability &amp; Tokenization</h3>
+<h2 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Computational Linguistics &amp; Text Analysis Technical Guide: Metrics, Readability &amp; Tokenization</h2>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Linguistic Foundations &amp; Tokenization Methodology</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Linguistic Foundations &amp; Tokenization Methodology</h3>
 <p style="margin-bottom: 1rem;">Text analytics in modern software engineering bridges natural language processing (NLP), cognitive psycholinguistics, and search engine optimization (SEO). While casual writers treat a "word" as an intuitive visual concept, computational parsers must define exact tokenization boundaries. In standard Unicode typography, text contains diverse whitespace sequences (space, non-breaking space <code>&amp;nbsp;</code>, tab, carriage return), hyphenated compound nouns (e.g., <code>"state-of-the-art"</code>), alphanumeric codes (e.g., <code>"UUIDv4"</code>), and international script orthographies without explicit word separators (such as Japanese kanji or Thai script).</p>
 <p style="margin-bottom: 1rem;">A robust word counter executes boundary analysis conforming to Unicode Standard Annex #29 (Unicode Text Segmentation). By categorizing codepoints into alphanumeric letter clusters, punctuation delimiters, and whitespace sequences, the parser avoids common calculation traps such as counting empty strings, orphan punctuation marks, or double spaces as genuine lexical words.</p>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Readability Formulas, Cognitive Models &amp; Reading Time Equations</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Readability Formulas, Cognitive Models &amp; Reading Time Equations</h3>
 <p style="margin-bottom: 1rem;">Beyond raw token counts, quantitative text metrics evaluate cognitive comprehension burden. The readability formulas developed by Rudolf Flesch, J. Peter Kincaid, and Robert Gunning evaluate structural difficulty by measuring average sentence length (syntactic complexity) against average syllables per word (lexical complexity):</p>
 <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
 <strong>Flesch Reading Ease (FRE) Formula &amp; Mathematical Model:</strong><br/>
@@ -306,7 +346,7 @@ Speech Presentation Duration: T_speech (minutes) = Total Words / 140 WPM
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Quantitative Readability Benchmarks Reference Table</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Quantitative Readability Benchmarks Reference Table</h3>
 <p style="margin-bottom: 1rem;">This empirical reference table correlates standard readability metrics, structural grade levels, cognitive processing speeds, and intended target demographics.</p>
 <div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
@@ -396,10 +436,10 @@ Speech Presentation Duration: T_speech (minutes) = Total Words / 140 WPM
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Real-World Engineering Scenarios</h3>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: CI/CD Documentation Readability Linting (Vale / Proselint)</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: CI/CD Documentation Readability Linting (Vale / Proselint)</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A technical writing team building open-source developer documentation integrates an automated prose linter into their GitHub Actions pipeline. Pull requests modifying Markdown files are automatically audited against a maximum allowable Flesch-Kincaid threshold:</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code># .vale.ini Documentation Linter Config
 BasedOnStyles = Vale
@@ -409,7 +449,7 @@ prose.FleschKincaid = { grade: 9.0, action: error }</code></pre>
 <p style="font-size: 0.85rem; margin-bottom: 0;">Automated readability assertions prevent engineers from merging convoluted documentation that impedes developer adoption.</p>
 </div>
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: LLM Prompt Engineering &amp; Token Budget Estimation</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: LLM Prompt Engineering &amp; Token Budget Estimation</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A backend AI developer constructs Retrieval-Augmented Generation (RAG) pipelines querying OpenAI or Anthropic models. Because LLM context windows and API billing are denominated in BPE tokens rather than raw characters:</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>// English prose token approximation heuristic:
 // 1 Token &approx; 0.75 Words &rarr; Total Tokens &approx; WordCount / 0.75
@@ -432,9 +472,60 @@ Draft your prose in real-time with our live-previewing <a href="/markdown-editor
 </p>
 </div>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Analyze Word, Character and Reading Metrics in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our Word & Character Counter. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Paste or Type Your Draft Text</h3>
+      <p class="how-to-step-desc">Type or paste your blog post, essay, social media caption, or technical documentation into the input editor. Analysis occurs in real time with zero keystroke delay.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Review Instant Statistical Metrics</h3>
+      <p class="how-to-step-desc">Inspect live metrics including word count, character count (with and without whitespace), sentence count, paragraph count, and average reading time estimated at 200 words per minute.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Verify Social Platform Character Limits</h3>
+      <p class="how-to-step-desc">Check progress bars against popular platform constraints including Twitter/X (280 chars), LinkedIn post limits, meta description thresholds (160 chars), and title tag limits (60 chars).</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>Word & Character Counter</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Intl.Segmenter and Unicode-aware regular expression tokenizers accurately parsing multilingual grapheme clusters, ideograms, and emoji sequences.</strong>. Compliance with the governing standards specification (<strong>Unicode Standard Annex #29 Text Segmentation</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section" style="margin-top: 2rem;">
-<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Word Counting &amp; Readability)</h3>
+<h2 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Word Counting &amp; Readability)</h2>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: What metrics does this word counter track?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">It counts words, total characters, characters without spaces, sentences, paragraphs, reading time, and speaking time.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Is there any text character limit?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No. Because text is processed in your local browser memory, you can analyze articles or code documents of any length.</p>
+</div>
 <div class="faq-item">
 <h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: How is word count calculated algorithmically in this tool?</h4>
 <p style="font-size: 0.95rem;">OmniTools calculates word count by parsing text across contiguous non-whitespace character clusters using the regular expression /\S+/g. This approach mirrors the standard counting algorithms employed by Microsoft Word, Google Docs, and professional publishing platforms. Hyphenated compound words (e.g., 'real-world') count as a single word, while numerals count as individual words.</p>
@@ -600,13 +691,12 @@ Draft your prose in real-time with our live-previewing <a href="/markdown-editor
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->

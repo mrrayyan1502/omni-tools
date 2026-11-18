@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/regex-tester/#app", "name": "Online JavaScript Regex Tester", "url": "https://www.omnitechtools.com/regex-tester/", "description": "Test JavaScript regular expressions against sample text with live matches, flags and replacement output.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/regex-tester/#faq", "mainEntity": [{"@type": "Question", "name": "Which regex flavor is supported?", "acceptedAnswer": {"@type": "Answer", "text": "OmniTools utilizes the native JavaScript ECMAScript RegExp engine, supporting standard flags like g (global), i (ignore case), m (multiline), and u (unicode)."}}, {"@type": "Question", "name": "Does it support regex string replacement testing?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can test match patterns as well as substitution patterns with live highlighted replacement output."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/regex-tester/#app", "name": "Online JavaScript Regex Tester", "url": "https://www.omnitechtools.com/regex-tester/", "description": "Test JavaScript regular expressions against sample text with live matches, flags and replacement output.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/regex-tester/#faq", "mainEntity": [{"@type": "Question", "name": "Which regex flavor is supported?", "acceptedAnswer": {"@type": "Answer", "text": "OmniTools utilizes the native JavaScript ECMAScript RegExp engine, supporting standard flags like g (global), i (ignore case), m (multiline), and u (unicode)."}}, {"@type": "Question", "name": "Does it support regex string replacement testing?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can test match patterns as well as substitution patterns with live highlighted replacement output."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Test and Debug Regular Expressions in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the Regular Expression Tester & Debugger securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Enter Your Regular Expression Pattern",
+      "text": "Type your regular expression pattern into the regex input bar, selecting appropriate flags such as global (g), case-insensitive (i), and multiline (m).",
+      "url": "https://www.omnitechtools.com/regex-tester/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Supply Your Test Sample Strings",
+      "text": "Paste your test string or log excerpts into the test text area. Matches and capturing groups are highlighted dynamically as you type.",
+      "url": "https://www.omnitechtools.com/regex-tester/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Inspect Match Groups and Token Breakdown",
+      "text": "Review the detailed match list including full matches, captured groups, match start/end indices, and substitution preview strings.",
+      "url": "https://www.omnitechtools.com/regex-tester/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -271,22 +311,22 @@
 </div>
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 2rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Online Regex Tester & Debugger — Architecture, DFA/NFA Automata & ReDoS Prevention</h3>
+<h2 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-size: 1.6rem;">Online Regex Tester & Debugger — Architecture, DFA/NFA Automata & ReDoS Prevention</h2>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Formal Language Theory & The Chomsky Hierarchy</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">1. Formal Language Theory & The Chomsky Hierarchy</h3>
 <p style="margin-bottom: 1rem;">Regular expressions originate in theoretical computer science and formal language theory, formulated by mathematician Stephen Cole Kleene in the 1950s. In the Chomsky hierarchy of formal grammars, regular languages occupy Type 3—the most restrictive yet computationally tractable tier. A pure regular language can be recognized by a Finite State Automaton (FSA) requiring strictly finite memory \(O(1)\) auxiliary space. However, modern implementation engines—such as ECMAScript <code>RegExp</code>, PCRE (Perl Compatible Regular Expressions), Python <code>re</code>, and Java <code>java.util.regex</code>—extend far beyond classical regular grammars by incorporating backreferences, lookaround assertions, and recursive matching, making modern pattern engines non-regular in the strict Chomskyan sense.</p>
 <p style="margin-bottom: 1rem;">When an expression is compiled in JavaScript via <code>new RegExp(pattern, flags)</code>, the browser's engine (such as Google Chrome's V8 or Mozilla's SpiderMonkey) parses the tokens into an Abstract Syntax Tree (AST), optimizes redundant quantifier chains, and compiles the pattern into a state transition machine or bytecode interpreted by an internal virtual machine (such as V8's Irregexp engine). Understanding how these internal automata transition between states is essential for developing resilient production code that handles millions of strings without latency bottlenecks.</p>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Automata Architecture: DFA vs. NFA Engines</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">2. Automata Architecture: DFA vs. NFA Engines</h3>
 <p style="margin-bottom: 1rem;">Regular expression engines fall into two primary architectural families: Deterministic Finite Automata (DFA) engines and Non-Deterministic Finite Automata (NFA) engines. DFA engines (employed by tools like Google's RE2, Rust's <code>regex</code> crate, and grep) maintain linear execution time \(O(n)\) relative to input length \(n\). In a DFA, each character read from the input stream dictates exactly one deterministic state transition. A DFA never backtracks, guaranteeing immune behavior against algorithmic complexity attacks.</p>
 <p style="margin-bottom: 1rem;">Conversely, traditional engines (including JavaScript V8, Python, PHP, Ruby, and .NET) utilize Traditional NFA or Backtracking NFA architectures. An NFA engine is expression-directed: it evaluates the regex token by token, exploring alternative branches and greedy quantifiers. If a tentative path fails to match downstream characters, the engine rewinds the input cursor and steps back through prior states—a mechanism known as <em>backtracking</em>. While NFA engines unlock advanced expressive capabilities like capturing groups, non-destructive lookaround assertions, and backreferences, unconstrained backtracking introduces catastrophic computational risks.</p>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Catastrophic Backtracking & Regular Expression Denial of Service (ReDoS)</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">3. Catastrophic Backtracking & Regular Expression Denial of Service (ReDoS)</h3>
 <p style="margin-bottom: 1rem;">Catastrophic backtracking occurs when a non-deterministic engine encounters ambiguous nested quantifiers combined with an input string that matches initial repetitions but fails at the very end. Consider the notorious pathological pattern: <code>(a+)+$</code> tested against an input like <code>"aaaaaaaaaaaaaaaaaaaaX"</code>. For each character appended, the number of internal state branches explored by the backtracking algorithm doubles, yielding exponential time complexity:</p>
 <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; margin: 1.25rem 0; font-family: 'Courier New', monospace; color: #4facfe;">
 <strong>Backtracking Complexity Model:</strong><br/>
@@ -298,7 +338,7 @@ Linear Safe Engine: T(n) = O(n) (Strict Thompson NFA / DFA)
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Comprehensive Regex Meta-Characters & Quantifiers Reference Table</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">4. Comprehensive Regex Meta-Characters & Quantifiers Reference Table</h3>
 <p style="margin-bottom: 1rem;">Use this technical reference table to look up token definitions, quantifiers, lookaround assertions, and their respective matching characteristics across standard ECMAScript engines.</p>
 <div style="overflow-x: auto; margin-top: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
@@ -377,16 +417,16 @@ Linear Safe Engine: T(n) = O(n) (Strict Thompson NFA / DFA)
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">5. Real-World Engineering Scenarios</h4>
+<h3 style="color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-size: 1.25rem;">5. Real-World Engineering Scenarios</h3>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: High-Throughput Server Log Ingestion & Named Groups</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario A: High-Throughput Server Log Ingestion & Named Groups</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A systems engineer must parse millions of Common Log Format (CLF) web server access logs in an asynchronous Node.js streaming pipeline. Rather than writing brittle string splits, they formulate an optimized non-backtracking pattern with named capture groups:</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>^(?&lt;ip&gt;\d{1,3}(?:\.\d{1,3}){3}) - - \[(?&lt;timestamp&gt;[^\]]+)\] "(?&lt;method&gt;GET|POST|PUT|DELETE) (?&lt;path&gt;\S+) HTTP\/\d\.\d" (?&lt;status&gt;\d{3}) (?&lt;bytes&gt;\d+)$</code></pre>
 <p style="font-size: 0.85rem; margin-bottom: 0;">By explicitly restricting the IP octet separators, pinning start/end anchors, and utilizing non-capturing sub-groups, the parser extracts clean JSON objects across gigabytes of streaming logs without thread stalls.</p>
 </div>
 <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem;">
-<h5 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Multi-Requirement Password Policy Lookaheads</h5>
+<h4 style="color: #00f2fe; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Scenario B: Multi-Requirement Password Policy Lookaheads</h4>
 <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">A security architect must enforce NIST SP 800-63B password complexity on user registrations: at least 12 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character, without forcing fixed positional sequences:</p>
 <pre style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; font-size: 0.82rem; overflow-x: auto; color: #a0aec0;"><code>^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*()_+\-=[\]{};':"\\|,&lt;.&gt;\/?]).{12,128}$</code></pre>
 <p style="font-size: 0.85rem; margin-bottom: 0;">By chaining zero-width positive lookaheads <code>(?=...)</code> at the start anchor, each policy condition is validated concurrently across the same input string before the length quantifier executes, providing zero-overhead client validation.</p>
@@ -406,9 +446,60 @@ Need to validate structural tokens or sanitize payload formats? Explore our comp
 </p>
 </div>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Test and Debug Regular Expressions in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our Regular Expression Tester & Debugger. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Enter Your Regular Expression Pattern</h3>
+      <p class="how-to-step-desc">Type your regular expression pattern into the regex input bar, selecting appropriate flags such as global (g), case-insensitive (i), and multiline (m).</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Supply Your Test Sample Strings</h3>
+      <p class="how-to-step-desc">Paste your test string or log excerpts into the test text area. Matches and capturing groups are highlighted dynamically as you type.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Inspect Match Groups and Token Breakdown</h3>
+      <p class="how-to-step-desc">Review the detailed match list including full matches, captured groups, match start/end indices, and substitution preview strings.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>Regular Expression Tester & Debugger</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Native V8 RegExp compilation engine providing zero-latency match highlighting with catastrophic backtracking timeout safeguards.</strong>. Compliance with the governing standards specification (<strong>ECMAScript RegExp Specification (ECMA-262)</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Regex &amp; Pattern Matching)</h3>
+<h2 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Regex &amp; Pattern Matching)</h2>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Which regex flavor is supported?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">OmniTools utilizes the native JavaScript ECMAScript RegExp engine, supporting standard flags like g (global), i (ignore case), m (multiline), and u (unicode).</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Does it support regex string replacement testing?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. You can test match patterns as well as substitution patterns with live highlighted replacement output.</p>
+</div>
 <div class="faq-item">
 <h4 style="margin-bottom: 0.25rem; color: var(--accent-primary);">Q1: Which regular expression engine and specification does this tester execute?</h4>
 <p style="font-size: 0.95rem;">This tool executes natively within your web browser using the client-side ECMAScript (JavaScript) RegExp engine. It supports modern ECMAScript specifications including named capture groups, lookbehind assertions (positive and negative), the dotAll (s) flag, and Unicode property escapes (\p{...}). Patterns evaluated here mirror production execution in Chrome (V8), Node.js, Firefox (SpiderMonkey), and Safari (JavaScriptCore).</p>
@@ -577,13 +668,12 @@ Need to validate structural tokens or sanitize payload formats? Explore our comp
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->

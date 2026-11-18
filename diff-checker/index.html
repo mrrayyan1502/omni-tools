@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/diff-checker/#app", "name": "Free Online Diff Checker", "url": "https://www.omnitechtools.com/diff-checker/", "description": "Compare two text or code files side-by-side online. Highlight character and line-by-line differences with additions and deletions instantly in your browser.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/diff-checker/#faq", "mainEntity": [{"@type": "Question", "name": "Is my code or sensitive text uploaded to any server?", "acceptedAnswer": {"@type": "Answer", "text": "No. All comparison and diff calculations occur 100% locally in your web browser. Nothing is ever sent to or stored on any server."}}, {"@type": "Question", "name": "What is the difference between Side-by-Side and Unified view?", "acceptedAnswer": {"@type": "Answer", "text": "Side-by-Side mode presents the original and modified texts in two parallel columns. Unified mode merges the changes into a single stream with + and - line markers, just like Git diffs."}}, {"@type": "Question", "name": "Can I copy the diff results as a patch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can click the Copy Diff Patch button to instantly copy standard unified diff text ready for code reviews or terminal patching."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/diff-checker/#app", "name": "Free Online Diff Checker", "url": "https://www.omnitechtools.com/diff-checker/", "description": "Compare two text or code files side-by-side online. Highlight character and line-by-line differences with additions and deletions instantly in your browser.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/diff-checker/#faq", "mainEntity": [{"@type": "Question", "name": "Is my code or sensitive text uploaded to any server?", "acceptedAnswer": {"@type": "Answer", "text": "No. All comparison and diff calculations occur 100% locally in your web browser. Nothing is ever sent to or stored on any server."}}, {"@type": "Question", "name": "What is the difference between Side-by-Side and Unified view?", "acceptedAnswer": {"@type": "Answer", "text": "Side-by-Side mode presents the original and modified texts in two parallel columns. Unified mode merges the changes into a single stream with + and - line markers, just like Git diffs."}}, {"@type": "Question", "name": "Can I copy the diff results as a patch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can click the Copy Diff Patch button to instantly copy standard unified diff text ready for code reviews or terminal patching."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Compare Text and Code Differences in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the Text & Code Diff Checker securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Input Your Original Text or Source Code",
+      "text": "Paste the base or original version of your text, JSON, configuration file, or source code into the left pane, or click \"Load Sample\" to explore example data.",
+      "url": "https://www.omnitechtools.com/diff-checker/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Input the Modified Version and Configure Options",
+      "text": "Paste the altered or updated version into the right pane. Configure comparison parameters such as ignoring trailing whitespace, ignoring letter casing, or stripping blank lines.",
+      "url": "https://www.omnitechtools.com/diff-checker/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Analyze Highlighted Diffs in Split or Unified View",
+      "text": "Toggle between Side-by-Side (Split) and Unified diff perspectives. Green highlights denote additions, red highlights denote deletions, and line numbers provide immediate reference for code reviews.",
+      "url": "https://www.omnitechtools.com/diff-checker/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -364,7 +404,7 @@
 <li>The comparison runs immediately. Review the additions highlighted in green and removals highlighted in red.</li>
 <li>Switch between <em>Side by Side</em> and <em>Unified</em> modes as desired, or click <em>Copy Diff Patch</em> to export.</li>
 </ol>
-<h3 class="mt-4">Frequently Asked Questions</h3>
+<h2 class="mt-4">Frequently Asked Questions</h2>
 <div class="faq-item mt-3">
 <h4>Is my code or sensitive data secure?</h4>
 <p>Yes, completely secure. All diff computations are executed in your browser's JavaScript engine. Zero data leaves your computer, making it compliant for proprietary code, NDA documents, and private configurations.</p>
@@ -380,7 +420,7 @@
 </article>
 </div>
 <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
-<h3>In-Depth Guide to Text &amp; Code Diff Comparison Algorithms</h3>
+<h2>In-Depth Guide to Text &amp; Code Diff Comparison Algorithms</h2>
 <p>A diff checker is an essential developer and writer tool designed to calculate, visualize, and analyze differences between two versions of text, source code, configuration files, or data schemas. From version control systems like Git to legal contract redlining and editorial revisions, identifying insertions, deletions, and line-by-line modifications with typographic precision saves hours of manual review and prevents costly production bugs.</p>
 
 <!-- Developer Monetization Callout Box -->
@@ -395,7 +435,7 @@
   </div>
 </div>
 
-<h4 style="margin-top: 1.5rem; font-size: 1.15rem; color: #fff;">1. How Difference Algorithms Compute Changes</h4>
+<h3 style="margin-top: 1.5rem; font-size: 1.15rem; color: #fff;">1. How Difference Algorithms Compute Changes</h3>
 <p>Under the hood, difference engines rely on classic computer science algorithms, primarily variations of the <strong>Longest Common Subsequence (LCS)</strong> problem and Eugene Myers' O(ND) Difference Algorithm:</p>
 <ul style="line-height: 1.8; color: #cbd5e1; padding-left: 1.25rem;">
 <li><strong>Myers' Difference Algorithm:</strong> The gold standard used by Git and OmniTools. It treats the comparison problem as finding the shortest edit path through an edit graph, minimizing both time complexity and memory overhead. The computational complexity is bounded by <code>O((N+M)D)</code>, where <code>N</code> and <code>M</code> represent document lengths and <code>D</code> is the total edit distance.</li>
@@ -403,7 +443,7 @@
 <li><strong>Whitespace &amp; Line Ending Normalization:</strong> Operating systems differ in line endings (Windows CRLF <code>\r\n</code> vs. Unix LF <code>\n</code>). Our tool provides options to normalize line endings and ignore trailing whitespace so false positives don't clutter your inspection.</li>
 </ul>
 
-<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">2. Comparison of Text Difference &amp; Similarity Algorithms</h4>
+<h3 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">2. Comparison of Text Difference &amp; Similarity Algorithms</h3>
 <p>Selecting the appropriate difference engine depends on whether your payload is code, natural language, or raw binary. The following reference table outlines how difference algorithms behave across technical metrics:</p>
 
 <div style="overflow-x: auto; margin: 1.25rem 0;">
@@ -478,33 +518,84 @@
   </table>
 </div>
 
-<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">3. Real-World Developer Production Scenarios</h4>
+<h3 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">3. Real-World Developer Production Scenarios</h3>
 <p>Diff inspection is a critical phase of professional software development and technical editing. Below are two typical production scenarios where private in-browser diffing is vital:</p>
 
 <div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #22c55e; border-radius: 0 8px 8px 0;">
-  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Resolving Subtle Kubernetes Manifest &amp; Terraform State Drift</h5>
+  <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Resolving Subtle Kubernetes Manifest &amp; Terraform State Drift</h4>
   <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
     DevOps engineers maintaining cloud infrastructure frequently face configuration drift between staging and production Kubernetes YAML manifests. An unintended change in a resource memory limit (e.g., <code>512Mi</code> vs <code>512M</code>) or an inverted boolean flag (<code>readOnlyRootFilesystem: true</code>) can trigger cascading container crashes. Pasting production configs into OmniTools Diff Checker highlights the exact character change in green and red with whitespace normalization enabled, catching deployment regressions before pushing code to cluster orchestrators.
   </p>
 </div>
 
 <div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #60a5fa; border-radius: 0 8px 8px 0;">
-  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Reviewing Proprietary API Contracts &amp; NDA Redlines Offline</h5>
+  <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Reviewing Proprietary API Contracts &amp; NDA Redlines Offline</h4>
   <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
     Legal counsel and enterprise architects routinely review confidential master service agreements (MSAs) and unreleased GraphQL/OpenAPI schema specifications. Uploading these documents to public cloud diff websites creates severe data leak liabilities and breaches non-disclosure agreements. Because OmniTools executes entirely within local browser memory with zero network requests, enterprise teams inspect confidential clauses and API payload schemas with complete peace of mind.
   </p>
 </div>
 
-<h4 style="margin-top: 1.5rem; font-size: 1.15rem; color: #fff;">4. Unified vs. Split (Side-by-Side) Comparison Views</h4>
+<h3 style="margin-top: 1.5rem; font-size: 1.15rem; color: #fff;">4. Unified vs. Split (Side-by-Side) Comparison Views</h3>
 <p>OmniTools offers two distinct visual comparison modes tailored to different workflows:</p>
 <ul style="line-height: 1.8; color: #cbd5e1; padding-left: 1.25rem;">
 <li><strong>Side-by-Side (Split) View:</strong> Positions the original text on the left and the modified version on the right. Synchronized scrollbars allow you to visually align large paragraphs, making it ideal for code reviews and prose editing.</li>
 <li><strong>Unified Inline View:</strong> Merges both versions into a single chronological stream, marking deleted lines with a red background and minus sign (<code>-</code>) and inserted lines with a green background and plus sign (<code>+</code>), matching the standard <code>git diff</code> output.</li>
 </ul>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Compare Text and Code Differences in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our Text & Code Diff Checker. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Input Your Original Text or Source Code</h3>
+      <p class="how-to-step-desc">Paste the base or original version of your text, JSON, configuration file, or source code into the left pane, or click "Load Sample" to explore example data.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Input the Modified Version and Configure Options</h3>
+      <p class="how-to-step-desc">Paste the altered or updated version into the right pane. Configure comparison parameters such as ignoring trailing whitespace, ignoring letter casing, or stripping blank lines.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Analyze Highlighted Diffs in Split or Unified View</h3>
+      <p class="how-to-step-desc">Toggle between Side-by-Side (Split) and Unified diff perspectives. Green highlights denote additions, red highlights denote deletions, and line numbers provide immediate reference for code reviews.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>Text & Code Diff Checker</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Linear-space Myers diff engine calculating the Shortest Edit Script (SES) and Longest Common Subsequence (LCS) directly in client JavaScript.</strong>. Compliance with the governing standards specification (<strong>Myers Difference Algorithm (O(ND))</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section" style="margin-top: 2rem;">
-<h4 style="font-size: 1.2rem; margin-bottom: 1rem; color: #fff;">Frequently Asked Questions (FAQ)</h4>
+<h2 style="font-size: 1.2rem; margin-bottom: 1rem; color: #fff;">Frequently Asked Questions (FAQ)</h2>
 <div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Is my code or sensitive text uploaded to any server?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No. All comparison and diff calculations occur 100% locally in your web browser. Nothing is ever sent to or stored on any server.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Can I copy the diff results as a patch?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. You can click the Copy Diff Patch button to instantly copy standard unified diff text ready for code reviews or terminal patching.</p>
+</div>
 <div class="faq-item glass-card" style="padding: 1rem 1.25rem;">
 <p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Can I compare source code written in languages like Python, JavaScript, and HTML?</strong></p>
 <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. OmniTools supports plain text, JSON, YAML, HTML, CSS, SQL, Python, Java, C++, TypeScript, and markdown with syntactic line-matching and token preservation.</p>
@@ -654,13 +745,12 @@
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->

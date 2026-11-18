@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/jwt-decoder/#app", "name": "Free JWT Decoder", "url": "https://www.omnitechtools.com/jwt-decoder/", "description": "Decode JWT headers and payloads locally in your browser for debugging. This tool does not verify token signatures.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/jwt-decoder/#faq", "mainEntity": [{"@type": "Question", "name": "Is it safe to inspect JWT tokens with OmniTools?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Decoding happens entirely client-side in your browser. Tokens are never uploaded to any remote server or third-party service."}}, {"@type": "Question", "name": "Does this tool verify JWT cryptographic signatures?", "acceptedAnswer": {"@type": "Answer", "text": "This tool decodes and displays JSON header claims and payload data for debugging purposes. It does not verify or validate cryptographic signatures."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/jwt-decoder/#app", "name": "Free JWT Decoder", "url": "https://www.omnitechtools.com/jwt-decoder/", "description": "Decode JWT headers and payloads locally in your browser for debugging. This tool does not verify token signatures.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/jwt-decoder/#faq", "mainEntity": [{"@type": "Question", "name": "Is it safe to inspect JWT tokens with OmniTools?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Decoding happens entirely client-side in your browser. Tokens are never uploaded to any remote server or third-party service."}}, {"@type": "Question", "name": "Does this tool verify JWT cryptographic signatures?", "acceptedAnswer": {"@type": "Answer", "text": "This tool decodes and displays JSON header claims and payload data for debugging purposes. It does not verify or validate cryptographic signatures."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Inspect and Decode JSON Web Tokens in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the JSON Web Token (JWT) Decoder securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Paste Your Encoded JWT Token",
+      "text": "Paste your raw JSON Web Token (JWT) string into the input area. The token typically consists of three dot-separated Base64Url-encoded segments: Header, Payload, and Signature.",
+      "url": "https://www.omnitechtools.com/jwt-decoder/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Inspect Header Claims and Payload Data",
+      "text": "The tool automatically decodes the JOSE header (algorithm, token type) and payload claims (sub, iss, exp, iat, aud, custom roles) into formatted, color-coded JSON.",
+      "url": "https://www.omnitechtools.com/jwt-decoder/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Verify Expiration Timestamps and Human Dates",
+      "text": "Review token validity status and human-readable UTC timestamps for issued-at (iat) and expiration (exp) claims to verify authentication sessions.",
+      "url": "https://www.omnitechtools.com/jwt-decoder/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -266,7 +306,7 @@
 </div>
 </div>
 </section><article class="seo-guide-section glass-card" style="line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem; padding: 1.5rem;">
-<h3 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Free JWT Decoder - Complete Developer Guide to JSON Web Tokens</h3>
+<h2 style="color: #fff; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">Free JWT Decoder - Complete Developer Guide to JSON Web Tokens</h2>
 <!-- Developer Monetization Callout Box -->
 <div class="developer-callout-box" style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.08)); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px;">
   <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
@@ -280,12 +320,12 @@
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">1. What is a JWT and Why Do Developers Rely on It?</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">1. What is a JWT and Why Do Developers Rely on It?</h3>
 <p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">A JSON Web Token (JWT) is an open, compact, URL-safe data transfer standard formalized under <strong>RFC 7519</strong>. Extensively utilized across OAuth 2.0 frameworks and OpenID Connect (OIDC) identity layers, JWTs carry cryptographically verifiable claims between two distributed systems (such as a single-page web application, mobile client, and backend microservice cluster). Instead of storing session state in heavy server-side caches like Memcached or Redis, the authorization server signs a self-contained token containing user identity and permission scopes. The client sends this token with subsequent HTTP requests inside the <code>Authorization: Bearer &lt;token&gt;</code> header, enabling completely stateless API validation.</p>
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">2. JWS Compact Serialization Syntax Breakdown &amp; Cryptographic Anatomy</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">2. JWS Compact Serialization Syntax Breakdown &amp; Cryptographic Anatomy</h3>
 <p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">Every standard JSON Web Signature (JWS) compact token consists of three distinct segments delimited by period (<code>.</code>) characters:</p>
 <div style="background: rgba(0, 0, 0, 0.4); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); font-family: monospace; font-size: 0.88rem; color: #00f2fe; line-height: 1.6; margin: 1rem 0;">
   JWS Compact Serialization Formula:<br/>
@@ -298,7 +338,7 @@
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">3. RFC 7519 Standard Registered Claims Reference Table</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">3. RFC 7519 Standard Registered Claims Reference Table</h3>
 <p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">The IETF RFC 7519 specification defines seven core registered claim keys that provide standardized metadata for token consumers. The following technical reference table outlines these claims, their data formats, and backend validation requirements:</p>
 
 <div style="overflow-x: auto; margin: 1.25rem 0;">
@@ -375,26 +415,77 @@
 </div>
 
 <div style="margin-bottom: 2rem;">
-<h4 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">4. Real-World Developer Production Scenarios</h4>
+<h3 style="color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit'; font-size: 1.2rem;">4. Real-World Developer Production Scenarios</h3>
 <p style="margin-bottom: 1rem; color: #cbd5e1; line-height: 1.7;">Decoding JWT payloads is an indispensable diagnostic step during web and mobile API development:</p>
 
 <div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #10b981; border-radius: 0 8px 8px 0;">
-  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Debugging Silent HTTP 403 Forbidden Errors in Role-Based Access Control (RBAC)</h5>
+  <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Debugging Silent HTTP 403 Forbidden Errors in Role-Based Access Control (RBAC)</h4>
   <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
     A frontend engineer builds a dashboard where an administrative user consistently receives HTTP 403 Forbidden responses when invoking a protected billing endpoint. The developer copies the bearer token from browser network DevTools and pastes it into OmniTools JWT Decoder. Within milliseconds, the engineer observes that while the user has the <code>user:read</code> scope, the identity provider omitted the required <code>billing:admin</code> claim due to a misconfigured permission rule in Auth0. The issue is identified and resolved without touching backend code.
   </p>
 </div>
 
 <div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0;">
-  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Inspecting Multi-Tenant Microservice Authorization Claims &amp; Clock Skew</h5>
+  <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Inspecting Multi-Tenant Microservice Authorization Claims &amp; Clock Skew</h4>
   <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
     In SaaS architectures where a single backend serves thousands of enterprise tenants, every incoming request must be segmented by <code>tenant_id</code>. If server clocks drift, an API gateway might prematurely reject requests with "Token not yet valid" errors. By pasting the token into OmniTools, the DevOps team verifies the exact Unix timestamps of <code>iat</code>, <code>nbf</code>, and <code>exp</code> relative to standard UTC clock time, diagnosing network clock skew anomalies.
   </p>
 </div>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Inspect and Decode JSON Web Tokens in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our JSON Web Token (JWT) Decoder. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Paste Your Encoded JWT Token</h3>
+      <p class="how-to-step-desc">Paste your raw JSON Web Token (JWT) string into the input area. The token typically consists of three dot-separated Base64Url-encoded segments: Header, Payload, and Signature.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Inspect Header Claims and Payload Data</h3>
+      <p class="how-to-step-desc">The tool automatically decodes the JOSE header (algorithm, token type) and payload claims (sub, iss, exp, iat, aud, custom roles) into formatted, color-coded JSON.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Verify Expiration Timestamps and Human Dates</h3>
+      <p class="how-to-step-desc">Review token validity status and human-readable UTC timestamps for issued-at (iat) and expiration (exp) claims to verify authentication sessions.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>JSON Web Token (JWT) Decoder</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Client-side Base64Url parsing strictly isolating token inspection within browser memory so sensitive credentials and session keys never touch the web.</strong>. Compliance with the governing standards specification (<strong>RFC 7519 JSON Web Token (JWT) & RFC 7515 JWS</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section">
-<h3 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.3rem;">Frequently Asked Questions</h3>
+<h2 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.3rem;">Frequently Asked Questions</h2>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Is it safe to inspect JWT tokens with OmniTools?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. Decoding happens entirely client-side in your browser. Tokens are never uploaded to any remote server or third-party service.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Does this tool verify JWT cryptographic signatures?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">This tool decodes and displays JSON header claims and payload data for debugging purposes. It does not verify or validate cryptographic signatures.</p>
+</div>
 <div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
 <p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Is it safe to paste production JWTs into this decoder?</strong></p>
 <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. OmniTools runs 100% client-side in your browser runtime. The token you paste is parsed locally using JavaScript <code>atob()</code> and UTF-8 decoders. Zero data is transmitted to any server, logged in remote files, or saved in databases.</p>
@@ -565,13 +656,12 @@
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->

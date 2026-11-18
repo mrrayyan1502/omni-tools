@@ -51,7 +51,41 @@
 <!-- Lucide Icons for clean UI vectors (Critical) -->
 <script defer="" src="https://unpkg.com/lucide@latest"></script>
 <!-- Dynamic SEO Meta Tags (per route) -->
-<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/hash-generator/#app", "name": "Cryptographic Hash Generator", "url": "https://www.omnitechtools.com/hash-generator/", "description": "Generate secure SHA-256, SHA-512, SHA-384 and SHA-1 checksums locally in your browser using the native Web Cryptography API.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/hash-generator/#faq", "mainEntity": [{"@type": "Question", "name": "Is it safe to compute hashes of sensitive data here?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. OmniTools computes all hashes locally in your browser using the native Web Cryptography API (crypto.subtle.digest). Your text or file never leaves your device."}}, {"@type": "Question", "name": "Can a cryptographic hash be decrypted or reversed?", "acceptedAnswer": {"@type": "Answer", "text": "No. Cryptographic hashes are mathematically one-way functions. It is practically impossible to invert a SHA-256 or SHA-512 digest back to the original text."}}, {"@type": "Question", "name": "What is the difference between SHA-256 and SHA-1?", "acceptedAnswer": {"@type": "Answer", "text": "SHA-256 provides 256 bits of cryptographic security and is the global industry standard. SHA-1 is an older 160-bit algorithm now deprecated for security certificates but still used for Git commit checksums."}}]}]}</script></head>
+<meta content="index,follow,max-image-preview:large" name="robots"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "@id": "https://www.omnitechtools.com/hash-generator/#app", "name": "Cryptographic Hash Generator", "url": "https://www.omnitechtools.com/hash-generator/", "description": "Generate secure SHA-256, SHA-512, SHA-384 and SHA-1 checksums locally in your browser using the native Web Cryptography API.", "applicationCategory": "DeveloperApplication", "operatingSystem": "All", "browserRequirements": "Requires JavaScript. Requires HTML5.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "@id": "https://www.omnitechtools.com/hash-generator/#faq", "mainEntity": [{"@type": "Question", "name": "Is it safe to compute hashes of sensitive data here?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. OmniTools computes all hashes locally in your browser using the native Web Cryptography API (crypto.subtle.digest). Your text or file never leaves your device."}}, {"@type": "Question", "name": "Can a cryptographic hash be decrypted or reversed?", "acceptedAnswer": {"@type": "Answer", "text": "No. Cryptographic hashes are mathematically one-way functions. It is practically impossible to invert a SHA-256 or SHA-512 digest back to the original text."}}, {"@type": "Question", "name": "What is the difference between SHA-256 and SHA-1?", "acceptedAnswer": {"@type": "Answer", "text": "SHA-256 provides 256 bits of cryptographic security and is the global industry standard. SHA-1 is an older 160-bit algorithm now deprecated for security certificates but still used for Git commit checksums."}}]}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Generate SHA-256, SHA-512 & MD5 Hashes in 3 Easy Steps",
+  "description": "Step-by-step instructions for using the Cryptographic Hash Generator securely in your web browser with zero server data logging.",
+  "totalTime": "PT1M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Input Your Text String or Verification Payload",
+      "text": "Paste the plaintext string, password, token, or source code block you wish to hash into the primary cryptographic workspace.",
+      "url": "https://www.omnitechtools.com/hash-generator/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Select Cryptographic Hashing Algorithm",
+      "text": "Choose from industry-standard hash algorithms including SHA-256 (recommended for integrity checks and blockchain), SHA-512, SHA-384, or SHA-1.",
+      "url": "https://www.omnitechtools.com/hash-generator/#guide-how-to-use"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Generate and Verify Cryptographic Digest",
+      "text": "Inspect the resulting fixed-length hexadecimal digest. Compare against known checksums to verify data integrity and copy the digest with one click.",
+      "url": "https://www.omnitechtools.com/hash-generator/#guide-how-to-use"
+    }
+  ]
+}
+</script>
+
+</head>
 <body>
 <!-- App Shell Layout -->
 <div class="app-container">
@@ -210,6 +244,12 @@
 <button aria-label="Toggle Mobile Menu" class="mobile-menu-btn" onclick="toggleSidebar()">
 <i data-lucide="menu"></i>
 </button>
+<nav aria-label="Quick Trust Navigation" class="header-nav">
+<a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
+<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/contact/">Contact Us</a>
+</nav>
 <div class="header-search">
 <i class="search-icon" data-lucide="search"></i>
 <input aria-label="Search tools" id="toolSearch" oninput="searchTools()" placeholder="Search tools..." type="text"/>
@@ -315,7 +355,7 @@
 </div>
 <!-- SEO Educational Guide -->
 <article class="seo-guide-section glass-card mt-4" style="padding: 1.75rem; margin-top: 2rem;">
-<h3>The Definitive Guide to Cryptographic Hash Functions &amp; Integrity Verification</h3>
+<h2>The Definitive Guide to Cryptographic Hash Functions &amp; Integrity Verification</h2>
 <p>A cryptographic hash function is a deterministic mathematical algorithm that maps an arbitrary block of digital data into a fixed-size bit string known as a digest or checksum. Regardless of whether the input is a single character, an essay, or a multi-gigabyte operating system image, the resulting hash output is always uniform in length. Cryptographic hashing is the fundamental building block of modern cybersecurity, password storage, blockchain verification, and software integrity assurance.</p>
 <!-- Developer Monetization Callout Box -->
 <div class="developer-callout-box" style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(0, 242, 254, 0.05), rgba(79, 172, 254, 0.08)); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 10px;">
@@ -329,7 +369,7 @@
   </div>
 </div>
 
-<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">1. Core Cryptographic Algorithms &amp; Mathematical Architectures</h4>
+<h3 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">1. Core Cryptographic Algorithms &amp; Mathematical Architectures</h3>
 <p>OmniTools leverages the native W3C Web Cryptography API (<code>window.crypto.subtle.digest</code>) to calculate high-speed, hardware-accelerated cryptographic digests. Unlike legacy online tools that transmit inputs to remote servers, all message compression occurs in local CPU registers across the core cryptographic hashing families:</p>
 <ul style="line-height: 1.8; color: #cbd5e1; padding-left: 1.25rem;">
 <li><strong>SHA-256 (Secure Hash Algorithm 256-bit):</strong> Defined by NIST in FIPS PUB 180-4, SHA-256 operates on 512-bit message blocks through a 64-round compression function using 32-bit words. It outputs a 64-character hexadecimal digest (256 bits) and represents the foundational pillar of SSL/TLS certificates, Bitcoin proof-of-work, and DNSSEC validation.</li>
@@ -339,7 +379,7 @@
 <li><strong>MD5 (Message Digest 5 - 128-bit):</strong> Formulated by Ronald Rivest in RFC 1321. Broken for cryptographic digital signatures since 2004, MD5 is universally utilized as an ultra-fast checksum for detecting non-malicious transmission corruption across torrents and file transfers.</li>
 </ul>
 
-<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">2. Cryptographic Hash Function Comparison Matrix</h4>
+<h3 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">2. Cryptographic Hash Function Comparison Matrix</h3>
 <p>Choosing the correct hashing primitive requires evaluating bit length, collision security, mathematical structure, and industry compliance. The following technical reference table summarizes the security posture of modern and legacy hashing algorithms:</p>
 
 <div style="overflow-x: auto; margin: 1.25rem 0;">
@@ -423,7 +463,7 @@
   </table>
 </div>
 
-<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">3. The Merkle-Damgård Construction &amp; Compression Formula</h4>
+<h3 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">3. The Merkle-Damgård Construction &amp; Compression Formula</h3>
 <p>Most classical cryptographic hash algorithms—including SHA-256 and MD5—rely on the <strong>Merkle-Damgård construction</strong>. The input message <code>M</code> is first appended with a single bit <code>1</code>, followed by zero bits until the bit length equals <code>448 mod 512</code>. Finally, the original message length encoded as a 64-bit integer is appended, yielding an exact multiple of 512 bits.</p>
 <p>The padded message is divided into sequential blocks <code>M_1, M_2, ..., M_n</code>. Each block is iteratively fed into an internal compression function <code>f</code> alongside the previous intermediate state <code>H_{i-1}</code>:</p>
 <div style="background: rgba(0, 0, 0, 0.4); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); font-family: monospace; font-size: 0.88rem; color: #00f2fe; line-height: 1.6; margin: 1rem 0;">
@@ -433,26 +473,82 @@
 </div>
 <p>Because the internal state size matches the output size, Merkle-Damgård hashes can be susceptible to length extension attacks if used in simple MAC constructions without HMAC framing.</p>
 
-<h4 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">4. Real-World Developer Production Scenarios</h4>
+<h3 style="margin-top: 1.75rem; font-size: 1.2rem; color: #fff;">4. Real-World Developer Production Scenarios</h3>
 <p>Cryptographic hashes are critical throughout DevOps, web performance, and cybersecurity engineering. Here are two real-world developer workflows:</p>
 
 <div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #00f2fe; border-radius: 0 8px 8px 0;">
-  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Subresource Integrity (SRI) Checksums in Production CDN Deployments</h5>
+  <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario A: Subresource Integrity (SRI) Checksums in Production CDN Deployments</h4>
   <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
     When loading critical JavaScript libraries (e.g., React, Bootstrap, or Lucide icons) from public Content Delivery Networks (CDNs), malicious actors compromising the third-party CDN can inject malicious keyloggers or crypto-miners. By generating a SHA-384 or SHA-256 hash of the script and declaring it in the HTML tag (e.g., <code>&lt;script src="..." integrity="sha384-..." crossorigin="anonymous"&gt;</code>), the client browser verifies the cryptographic digest before executing the script. If a single byte is tampered with, the browser blocks execution immediately.
   </p>
 </div>
 
 <div style="margin: 1.25rem 0; padding: 1.25rem; background: rgba(255,255,255,0.02); border-left: 4px solid #38ef7d; border-radius: 0 8px 8px 0;">
-  <h5 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Immutable Container Image Digest Pinning in Kubernetes (GitOps)</h5>
+  <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.5rem;">Scenario B: Immutable Container Image Digest Pinning in Kubernetes (GitOps)</h4>
   <p style="font-size: 0.9rem; line-height: 1.6; margin: 0; color: #cbd5e1;">
     In enterprise Kubernetes environments, referencing container tags like <code>my-service:latest</code> or <code>my-service:v1.2.0</code> is anti-pattern because image tags are mutable—an attacker or compromised registry can overwrite a tag with malicious code. GitOps deployment pipelines resolve image tags to immutable SHA-256 digests: <code>my-service@sha256:7f83b1657ff1...</code>. The Kubernetes kubelet downloads the image and verifies the SHA-256 hash against the cluster registry index, guaranteeing that the exact binary that passed security audits runs on the cluster.
   </p>
 </div>
 
+
+<!-- Visible "How to Use This Tool (3 Easy Steps)" Guide & Technical Architecture (AdSense & Rich Snippets) -->
+<section class="how-to-guide" id="guide-how-to-use" style="margin-top: 3rem;">
+  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);">User Guide &amp; Technical Reference</span>
+    <h2 style="font-size: 1.6rem; color: #fff; margin-top: 0.35rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">How to Generate SHA-256, SHA-512 & MD5 Hashes in 3 Easy Steps</h2>
+    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Follow this comprehensive step-by-step walkthrough to get the most accurate, secure, and privacy-focused results from our Cryptographic Hash Generator. Everything executes strictly on your workstation with zero external network overhead.</p>
+  </div>
+
+  <div class="how-to-steps">
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">1</div>
+      <h3 class="how-to-step-title">Input Your Text String or Verification Payload</h3>
+      <p class="how-to-step-desc">Paste the plaintext string, password, token, or source code block you wish to hash into the primary cryptographic workspace.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">2</div>
+      <h3 class="how-to-step-title">Select Cryptographic Hashing Algorithm</h3>
+      <p class="how-to-step-desc">Choose from industry-standard hash algorithms including SHA-256 (recommended for integrity checks and blockchain), SHA-512, SHA-384, or SHA-1.</p>
+    </div>
+    <div class="how-to-step-card">
+      <div class="how-to-step-badge">3</div>
+      <h3 class="how-to-step-title">Generate and Verify Cryptographic Digest</h3>
+      <p class="how-to-step-desc">Inspect the resulting fixed-length hexadecimal digest. Compare against known checksums to verify data integrity and copy the digest with one click.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 2rem; border-left: 3px solid var(--primary); background: rgba(15, 18, 37, 0.65);">
+    <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Technical Architecture &amp; Client-Side Privacy Guarantees</h3>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Unlike conventional web utilities that transmit your sensitive payloads, code snippets, tokens, and documents over public networks to remote cloud servers, the OmniTechTools <strong>Cryptographic Hash Generator</strong> operates on a strict serverless client-side paradigm. All computational routines, parsing logic, validation passes, and memory allocations occur within your browser's sandboxed JavaScript execution thread (V8 on Chrome/Edge/Brave, SpiderMonkey on Firefox, and JavaScriptCore on Safari).
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin-bottom: 1rem;">
+      Under the hood, this utility leverages <strong>Native crypto.subtle.digest() hardware acceleration delivering near-instant 256-bit and 512-bit one-way avalanche effect hashing.</strong>. Compliance with the governing standards specification (<strong>FIPS PUB 180-4 Secure Hash Standard (SHS)</strong>) ensures that mathematical integrity, character encodings, and data boundary handling strictly mirror official enterprise specifications. Because calculation buffers exist exclusively in volatile system RAM, closing this browser tab or navigating away immediately purges all transient variables from memory, eliminating data exposure vectors, cloud database leaks, and server-side log retention risks.
+    </p>
+    <p style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75; margin: 0;">
+      Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
+    </p>
+  </div>
+</section>
+
 <div class="faq-section" style="margin-top: 2.5rem;">
-<h4 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Frequently Asked Questions (FAQ)</h4>
+<h2 style="font-size: 1.3rem; margin-bottom: 1.25rem; color: #fff;">Frequently Asked Questions (FAQ)</h2>
 <div class="faq-grid" style="display: flex; flex-direction: column; gap: 1rem;">
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Is it safe to compute hashes of sensitive data here?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes. OmniTools computes all hashes locally in your browser using the native Web Cryptography API (crypto.subtle.digest). Your text or file never leaves your device.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: Can a cryptographic hash be decrypted or reversed?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No. Cryptographic hashes are mathematically one-way functions. It is practically impossible to invert a SHA-256 or SHA-512 digest back to the original text.</p>
+</div>
+
+<div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
+<h3 style="font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-family: 'Outfit';">Q: What is the difference between SHA-256 and SHA-1?</h3>
+<p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">SHA-256 provides 256 bits of cryptographic security and is the global industry standard. SHA-1 is an older 160-bit algorithm now deprecated for security certificates but still used for Git commit checksums.</p>
+</div>
 <div class="faq-item glass-card" style="padding: 1.25rem 1.5rem;">
 <p style="font-weight: 600; color: #fff; margin-bottom: 0.4rem;"><strong>Q: Is it possible to decrypt or reverse a SHA-256 hash back to plaintext?</strong></p>
 <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin: 0;">No. Cryptographic hashing is fundamentally not encryption. Encryption is a two-way reversible process using a mathematical key. A cryptographic hash function is a one-way lossy compression algorithm that compresses inputs of arbitrary size into a fixed 256-bit output. Mathematical information is permanently discarded, making inversion mathematically impossible.</p>
@@ -601,13 +697,12 @@
 </div>
 </div>
 </div>
-<aside aria-label="Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
-<p><strong>Analytics choices</strong><br/>We use Google Analytics to understand which pages are useful. You can accept or decline analytics cookies.</p>
+<aside aria-label="Privacy & Cookie choices" class="cookie-notice glass-card" hidden="" id="cookieNotice">
+<p><strong>Privacy &amp; Cookie Choices (GDPR &amp; CCPA Compliant)</strong><br/>OmniTechTools uses essential client-side storage and optional analytics/advertising cookies to deliver serverless utilities and support free access. We never access, log, or share your locally processed tool inputs. You can accept or decline non-essential cookies at any time. <a href="/privacy-policy/" style="color: var(--primary); text-decoration: underline;">Read Privacy Policy</a>.</p>
 <div>
-<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline</button>
-<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept analytics</button>
+<button class="btn btn-outline" onclick="setAnalyticsConsent(false)" type="button">Decline All</button>
+<button class="btn btn-primary" onclick="setAnalyticsConsent(true)" type="button">Accept All</button>
 </div>
-<a href="/privacy-policy/">Read our privacy policy</a>
 </aside>
 <!-- Tool Libraries -->
 <!-- Core App Engine script -->
