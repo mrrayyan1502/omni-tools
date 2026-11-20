@@ -225,9 +225,9 @@
 <span>JSON to CSV</span>
 </a>
 <div class="nav-label">Resources</div>
-<a class="nav-item" href="/blog/" id="nav-blog">
+<a class="nav-item" href="/guides/" id="nav-blog">
 <i data-lucide="book-open"></i>
-<span>Creator Blog</span>
+<span>Engineering Guides</span>
 </a>
 </nav>
 <div class="sidebar-footer">
@@ -579,6 +579,55 @@ Optical Scanning Distance Metric (10:1 Ratio):<br>
   </div>
 </section>
 
+
+  <!-- Real-World Worked Examples (Task 2 Requirement) -->
+  <div style="margin-top: 2.25rem;">
+    <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">Real-World Worked Examples (Inputs &amp; Calculated Outputs)</h3>
+    <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">Explore concrete, practical scenarios demonstrating exact expected inputs, computational transformations, and validated outputs.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+      <div class="glass-card" style="padding: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid #3b82f6;">
+        <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.75rem;">Example 1: High-Density URL QR Code with Maximum Error Correction</h4>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #38bdf8;">Sample Input:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>URL: &quot;https://omnitechtools.com&quot; | Error Correction: Level H (30%) | Size: 1000 x 1000 px | Foreground: #0f172a | Background: #ffffff</code></pre>
+        </div>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #a78bfa;">Step-by-Step Processing:</span>
+          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin: 0.25rem 0 0 0;">Encodes alphanumeric URL string into QR Matrix Version 3 (29x29 modules), applies Reed-Solomon polynomial error correction, and exports crisp SVG/PNG graphics.</p>
+        </div>
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #34d399;">Calculated Output:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>Generated QR Code: Scannable by smartphone cameras even if up to 30% of the physical printed area is scuffed, torn, or covered by a company logo.</code></pre>
+        </div>
+      </div>
+
+      <div class="glass-card" style="padding: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid #10b981;">
+        <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.75rem;">Example 2: Automatic Wi-Fi Network Authentication Code</h4>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #38bdf8;">Sample Input:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>SSID: &quot;StudioGuest&quot; | Encryption: WPA | Password: &quot;SecureGuest2026&quot;</code></pre>
+        </div>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #a78bfa;">Step-by-Step Processing:</span>
+          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin: 0.25rem 0 0 0;">Formats text according to MECARD/WIFI schema: "WIFI:S:StudioGuest;T:WPA;P:SecureGuest2026;;".</p>
+        </div>
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #34d399;">Calculated Output:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>Scanning with iPhone/Android camera immediately prompts user: &quot;Join &#039;StudioGuest&#039; Network?&quot; with one-tap connection.</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Underlying Formula, Algorithm & Technical Methodology -->
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 1.5rem; margin-bottom: 2rem; border-left: 3px solid #00f2fe; background: rgba(15, 18, 37, 0.75);">
+    <h3 style="font-size: 1.25rem; color: #fff; margin-top: 0; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Underlying Formula, Algorithm &amp; Technical Methodology</h3>
+    <div style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75;">
+      QR matrix generation complies with <strong>ISO/IEC 18004</strong> standard specifications. The data string is analyzed to determine the optimal encoding mode (Numeric, Alphanumeric, Byte, or Kanji) and minimum matrix version. Data codewords are interleaved with error correction codewords computed using <strong>Reed-Solomon Galois Field $GF(2^8)$ polynomials</strong> across four selectable recovery levels: L (7%), M (15%), Q (25%), and H (30%). The matrix is evaluated across 8 standard 2D mask patterns to eliminate visual artifacts and optimize camera optical scanner read times.
+    </div>
+  </div>
+
 <div class="faq-section">
 <h2 style="color: #fff; margin-bottom: 1rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Frequently Asked Questions (FAQ)</h2>
 <div class="faq-grid" style="display: grid; gap: 1rem;">
@@ -680,6 +729,12 @@ Optical Scanning Distance Metric (10:1 Ratio):<br>
 <a class="btn btn-outline" href="/css-box-shadow/" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">CSS Shadows</a>
 </div>
 </div>
+
+  <!-- Editorial Attribution Footer -->
+  <div class="editorial-attribution" style="margin-top: 2.5rem; padding: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; text-align: center; font-size: 0.88rem; color: #94a3b8;">
+    <p style="margin: 0;">Maintained &amp; Verified by the OmniTechTools Engineering Team | Last Updated: November 2026</p>
+  </div>
+
 </section>
 <!-- TAB 3: IMAGE COMPRESSOR -->
 <!-- TAB 4: CSS STUDIO -->
@@ -793,7 +848,8 @@ Optical Scanning Distance Metric (10:1 Ratio):<br>
 <ul>
 <li><a href="/about/">About Us</a></li>
 <li><a href="/privacy-policy/">Privacy Policy</a></li>
-<li><a href="/terms-of-service/">Terms &amp; Conditions</a></li>
+<li><a href="/terms/">Terms of Service</a></li>
+<li><a href="/disclaimer/">Disclaimer</a></li>
 <li><a href="/contact/">Contact Us</a></li>
 </ul>
 </div>

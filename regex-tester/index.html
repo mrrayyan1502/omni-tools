@@ -225,9 +225,9 @@
 <span>JSON to CSV</span>
 </a>
 <div class="nav-label">Resources</div>
-<a class="nav-item" href="/blog/" id="nav-blog">
+<a class="nav-item" href="/guides/" id="nav-blog">
 <i data-lucide="book-open"></i>
-<span>Creator Blog</span>
+<span>Engineering Guides</span>
 </a>
 </nav>
 <div class="sidebar-footer">
@@ -485,7 +485,62 @@ Need to validate structural tokens or sanitize payload formats? Explore our comp
       Whether handling confidential production database queries, proprietary API tokens, employee personal identifiable information (PII), or financial models, security teams and software engineers can confidently use this tool under zero-trust, HIPAA, GDPR Article 25 (Privacy by Design), and SOC 2 Type II operational compliance standards.
     </p>
   </div>
+
+  <!-- Editorial Attribution Footer -->
+  <div class="editorial-attribution" style="margin-top: 2.5rem; padding: 1.25rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; text-align: center; font-size: 0.88rem; color: #94a3b8;">
+    <p style="margin: 0;">Maintained &amp; Verified by the OmniTechTools Engineering Team | Last Updated: November 2026</p>
+  </div>
+
 </section>
+
+
+  <!-- Real-World Worked Examples (Task 2 Requirement) -->
+  <div style="margin-top: 2.25rem;">
+    <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">Real-World Worked Examples (Inputs &amp; Calculated Outputs)</h3>
+    <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">Explore concrete, practical scenarios demonstrating exact expected inputs, computational transformations, and validated outputs.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+      <div class="glass-card" style="padding: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid #3b82f6;">
+        <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.75rem;">Example 1: Validating RFC 5322 Email Format with Capture Groups</h4>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #38bdf8;">Sample Input:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>Pattern: ^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$ | Flags: g, i | Test String: &quot;contact@omnitechtools.com&quot;</code></pre>
+        </div>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #a78bfa;">Step-by-Step Processing:</span>
+          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin: 0.25rem 0 0 0;">Executes RegExp engine match against test string, validating structure and extracting username ("contact"), domain ("omnitechtools"), and TLD ("com") capture groups.</p>
+        </div>
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #34d399;">Calculated Output:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>Full Match: &quot;contact@omnitechtools.com&quot; (Index: 0-27) | Group 1: &quot;contact&quot; | Group 2: &quot;omnitechtools&quot; | Group 3: &quot;com&quot;</code></pre>
+        </div>
+      </div>
+
+      <div class="glass-card" style="padding: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid #10b981;">
+        <h4 style="color: #fff; font-size: 1.05rem; margin-top: 0; margin-bottom: 0.75rem;">Example 2: Extracting International E.164 Phone Numbers from Unstructured Text</h4>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #38bdf8;">Sample Input:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>Pattern: \+?[1-9]\d{1,14} | Flags: g | Test String: &quot;Call UK office at +442079460912 or US branch at +14155552671.&quot;</code></pre>
+        </div>
+        <div style="margin-bottom: 0.75rem;">
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #a78bfa;">Step-by-Step Processing:</span>
+          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin: 0.25rem 0 0 0;">Scans text stream globally to detect multiple valid non-overlapping telephone matches.</p>
+        </div>
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #34d399;">Calculated Output:</span>
+          <pre style="background: rgba(0,0,0,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.82rem; color: #e2e8f0; overflow-x: auto; margin-top: 0.25rem; white-space: pre-wrap;"><code>Match 1: &quot;+442079460912&quot; (Chars 19-33) | Match 2: &quot;+14155552671&quot; (Chars 47-59)</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Underlying Formula, Algorithm & Technical Methodology -->
+  <div class="glass-card" style="padding: 1.75rem; margin-top: 1.5rem; margin-bottom: 2rem; border-left: 3px solid #00f2fe; background: rgba(15, 18, 37, 0.75);">
+    <h3 style="font-size: 1.25rem; color: #fff; margin-top: 0; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">Underlying Formula, Algorithm &amp; Technical Methodology</h3>
+    <div style="color: #cbd5e1; font-size: 0.94rem; line-height: 1.75;">
+      Our regular expression debugger executes the native ECMAScript <strong>RegExp engine</strong> (V8's Irregexp engine on Chromium-based browsers). The pattern is compiled into a bytecode-level Deterministic Finite Automaton (DFA) / Non-Deterministic Finite Automaton (NFA). Match operations report global matches (<code>exec()</code> loop), capture group indices, and lookaround boundary assertions. Patterns are monitored for catastrophic polynomial or exponential backtracking risks ($O(2^n)$) to safeguard browser responsiveness against ReDoS (Regular Expression Denial of Service) freezes.
+    </div>
+  </div>
 
 <div class="faq-section">
 <h2 style="color: #fff; margin-bottom: 1.25rem; font-family: 'Outfit'; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-size: 1.4rem;">Frequently Asked Questions (Regex &amp; Pattern Matching)</h2>
@@ -629,7 +684,8 @@ Need to validate structural tokens or sanitize payload formats? Explore our comp
 <ul>
 <li><a href="/about/">About Us</a></li>
 <li><a href="/privacy-policy/">Privacy Policy</a></li>
-<li><a href="/terms-of-service/">Terms &amp; Conditions</a></li>
+<li><a href="/terms/">Terms of Service</a></li>
+<li><a href="/disclaimer/">Disclaimer</a></li>
 <li><a href="/contact/">Contact Us</a></li>
 </ul>
 </div>

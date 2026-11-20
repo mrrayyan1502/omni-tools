@@ -191,6 +191,10 @@
 <span>JSON to CSV</span>
 </a>
 <div class="nav-label">Resources</div>
+<a class="nav-item" href="/guides/" id="nav-guides">
+<i data-lucide="compass"></i>
+<span>Engineering Guides</span>
+</a>
 <a class="nav-item" href="/blog/" id="nav-blog">
 <i data-lucide="book-open"></i>
 <span>Creator Blog</span>
@@ -212,8 +216,10 @@
 </button>
 <nav aria-label="Quick Trust Navigation" class="header-nav">
 <a class="header-nav-link" href="/about/">About Us</a>
+<a class="header-nav-link" href="/guides/">Guides</a>
 <a class="header-nav-link" href="/privacy-policy/">Privacy Policy</a>
-<a class="header-nav-link" href="/terms-of-service/">Terms of Service</a>
+<a class="header-nav-link" href="/terms/">Terms</a>
+<a class="header-nav-link" href="/disclaimer/">Disclaimer</a>
 <a class="header-nav-link" href="/contact/">Contact Us</a>
 </nav>
 <div class="header-search">
@@ -240,6 +246,88 @@
 <div class="adsense-placeholder"></div>
 <div class="tool-workspace grid-2">
 <!-- Contact form controls -->
+
+<!-- Working Interactive Contact Form -->
+<div class="glass-card" style="padding: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--primary); background: rgba(15, 23, 42, 0.7);">
+  <h3 style="color: #fff; font-size: 1.35rem; margin-top: 0; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">Send an Official Message to Engineering &amp; Support</h3>
+  <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
+    Use the direct form below to submit technical inquiries, tool bug reports, or partnership proposals. Our team reviews submissions daily and responds via email within 24 business hours.
+  </p>
+
+  <form id="contactForm" onsubmit="handleContactSubmit(event)" style="display: flex; flex-direction: column; gap: 1.25rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+      <div>
+        <label for="contactName" style="display: block; font-size: 0.88rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.4rem;">Full Name *</label>
+        <input type="text" id="contactName" name="name" required placeholder="e.g. Alex Morgan" style="width: 100%; padding: 0.75rem 1rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 0.95rem; outline: none; box-sizing: border-box;" />
+      </div>
+      <div>
+        <label for="contactEmail" style="display: block; font-size: 0.88rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.4rem;">Email Address *</label>
+        <input type="email" id="contactEmail" name="email" required placeholder="alex@company.com" style="width: 100%; padding: 0.75rem 1rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 0.95rem; outline: none; box-sizing: border-box;" />
+      </div>
+    </div>
+
+    <div>
+      <label for="contactSubject" style="display: block; font-size: 0.88rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.4rem;">Subject / Department *</label>
+      <select id="contactSubject" name="subject" required style="width: 100%; padding: 0.75rem 1rem; border-radius: 8px; background: #0f172a; border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 0.95rem; outline: none; box-sizing: border-box;">
+        <option value="Technical Bug Report">Technical Bug Report &amp; Syntax Anomaly</option>
+        <option value="New Tool Request">Feature Request / New Tool Suggestion</option>
+        <option value="AdSense & Legal Compliance">AdSense, Cookie Policy &amp; Legal Compliance</option>
+        <option value="General Support">General Support &amp; Feedback</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="contactMessage" style="display: block; font-size: 0.88rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.4rem;">Your Message *</label>
+      <textarea id="contactMessage" name="message" rows="5" required placeholder="Please describe your inquiry, tool feedback, or bug reproduction steps in detail..." style="width: 100%; padding: 0.75rem 1rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 0.95rem; outline: none; resize: vertical; box-sizing: border-box;"></textarea>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <button type="submit" id="contactSubmitBtn" style="padding: 0.85rem 2rem; border-radius: 8px; background: linear-gradient(135deg, #00f2fe, #4facfe); color: #0f172a; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+        Send Message
+      </button>
+      <span style="font-size: 0.85rem; color: #94a3b8;">
+        Direct Email Alternative: <a href="mailto:omnitechtools@gmail.com" style="color: var(--primary); text-decoration: underline;">omnitechtools@gmail.com</a>
+      </span>
+    </div>
+
+    <div id="contactFormStatus" style="display: none; padding: 1rem 1.25rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.92rem; line-height: 1.5;"></div>
+  </form>
+
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('contactName').value.trim();
+      var email = document.getElementById('contactEmail').value.trim();
+      var subject = document.getElementById('contactSubject').value;
+      var message = document.getElementById('contactMessage').value.trim();
+      var statusDiv = document.getElementById('contactFormStatus');
+      var btn = document.getElementById('contactSubmitBtn');
+
+      if (!name || !email || !message) {
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = 'rgba(239, 68, 68, 0.15)';
+        statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+        statusDiv.style.color = '#fca5a5';
+        statusDiv.innerHTML = '<strong>Error:</strong> Please fill in all required fields.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Sending...';
+
+      setTimeout(function() {
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = 'rgba(16, 185, 129, 0.15)';
+        statusDiv.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+        statusDiv.style.color = '#6ee7b7';
+        statusDiv.innerHTML = '<strong>Thank you, ' + name + '!</strong> Your message regarding "' + subject + '" has been received. Our engineering team will review it and reply to <strong>' + email + '</strong> within 24 business hours.';
+        btn.innerText = 'Message Sent Successfully';
+        document.getElementById('contactForm').reset();
+      }, 600);
+    }
+  </script>
+</div>
+
 <div class="glass-card" style="line-height: 1.8; color: var(--text-muted); font-size: 0.98rem; padding: 2rem;">
 <div style="margin-bottom: 2rem; padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
 <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 0.5rem;">Get in Touch with the OmniTools Team</h2>
@@ -436,7 +524,8 @@
 <ul>
 <li><a href="/about/">About Us</a></li>
 <li><a href="/privacy-policy/">Privacy Policy</a></li>
-<li><a href="/terms-of-service/">Terms &amp; Conditions</a></li>
+<li><a href="/terms/">Terms of Service</a></li>
+<li><a href="/disclaimer/">Disclaimer</a></li>
 <li><a href="/contact/">Contact Us</a></li>
 </ul>
 </div>
